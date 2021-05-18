@@ -1,0 +1,157 @@
+﻿//How to use map
+
+//---------------------------Envelopes--------------------------
+//envelopes are named variables that store strings. 
+//calling an envelope during dialogue will randomly display one of the strings
+//Many of these are predefined by the AYA scripting and will be listed on the CROW-SSP site
+//Envelopes are useful to store random information to keep the ghost's dialogue varied. Examples: various %(city), %(musicians), %(places), %(swearword)
+
+//Define your own envelopes if you want:
+exampleenvelope
+{
+	"Example Envelope Dialogue 1"
+	"Example Envelope Dialogue 2"
+	"Example Envelope Dialogue 3"
+}
+
+//An envelope IN an envelope:
+internalenvelope
+{
+	"Internal Envelope Dialogue 1 - %(exampleenvelope)"
+	"%(username)'s computer"
+	"Here is a blanklist object - %(blanklist)."
+}
+
+blanklist
+{
+	"List object 1"
+	"List object 2"
+	"List object 3"
+	"List object 4"
+	"List object 5"
+}
+
+blanklist2
+{
+	"List object 1"
+	"List object 2"
+	"List object 3"
+	"List object 4"
+	"List object 5"
+	"List object 6"
+	"List object 7"
+	"List object 8"
+}
+
+blanklist3
+{
+	"List object 1"
+	"List object 2"
+	"List object 3"
+	"List object 4"
+}
+
+blanklist4
+{
+	"List object 1"
+	"List object 2"
+}
+
+//Pretend the ghost is looking through user's files:
+usersfolder
+{
+	"%(username)'s Recycle Bin"
+	"%(username)'s Document folder"
+	"%(username)'s secret folder"
+}
+
+//It's possible to create a list of pairs, and it requires appropriate coding in aitalk.dic
+//Cindysuke's dictionary is a list of word,definition pairs:
+lessonkor
+{
+	"사과(sa-gua),apple"
+	"노동(no-dong),labor"
+	"손가락(son-ga-rak),finger"
+	"마르크스(ma-r-k-s),Marx"
+	"자본주의(ja-bon-ju-yi),capitalism"
+}
+
+//One line separated by semicolons functions the same as spaced list above
+blanklistparagraph
+{
+	"List paragraph 1"; "List paragraph 2"; "List paragraph 3"; "List paragraph 4"; "List paragraph 5";
+}
+
+//Keep it this way: 
+ On_\person
+{
+ 	person
+}
+
+
+jump
+{
+	"\w4\s[0]\i[113]\i[114]\i[52]\i[53]\w4\s[0]\i[113]\i[114]\w4\w4"		
+}
+
+excited
+{
+	"\w2\s[0]\i[113]\i[114]\i[52]\w2\s[0]\i[113]\i[114]\i[53]\w2"
+}
+
+z
+{
+	"\f[name,Courier New]\f[color,yellow]"
+}
+
+d
+{
+	"\f[name,default]\f[color,default]"
+}
+
+n
+{
+	"\f[name,Courier New]\f[color,pink]"
+}
+
+green
+{
+	"\f[color,green]"
+}
+
+red
+{
+	"\f[color,red]"
+}
+
+blue
+{
+	"\f[color,blue]"
+}
+
+purple
+{
+	"\f[color,purple]"
+}
+
+pink
+{
+	"\f[color,pink]"	
+}
+
+cyan
+{
+	"\f[color,cyan]"
+}
+
+orange
+{
+	"\f[color,orange]"	
+}
+
+//%(cyan)testtesttest%(d)
+
+Zilchsong
+{
+	"\n%(green)La la la la la!\%(wx)\n%(blue)La la la la la!\%(wx)\n%(red)La la la la la!\%(wx)\n%(purple)La la la la la!\%(wx)\n"
+}

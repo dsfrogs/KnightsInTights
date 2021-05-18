@@ -1,0 +1,53 @@
+//---------------------------Anchors and OnTranslate--------------------------
+//Anchor words are links to set conversations attached to certain words automatically. 
+//All text goes through OnTranslate first before it displays on your ghost, which is how it knows to turn certain words into links. Before you try it yourself, I've already tried adding automatic \w8 pauses after periods and that totally breaks everything.
+//You can set up anchor words to easy explanations for things your ghost might talk about that might confuse your user. 
+
+//--OnTranslate-----------------------------------------------------------------------//
+//OnTranslate filters through all the text your ghost displays and does whatever you specify to it. This is a powerful function that can be used in a lot of creative ways I bet, but I wouldn't mess with it too much since you can pretty easily break stuff.
+//If you're not interested in any anchor words, delete all the lines that start with _talk = REPLACE under OnTranslate.
+
+//
+OnTranslate
+{
+	_talk = reference0
+	_talk = REPLACE(_talk, "Anchor 1", "\_a[anchor1]Anchor 1\_a")
+	_talk = REPLACE(_talk, "Anchor 2", "\_a[anchor2]Anchor 2\_a")
+	_talk = REPLACE(_talk, "Anchor 3", "\_a[anchor3]Anchor 3\_a")
+	{
+		"%(_talk)"
+	}
+}
+	
+//function looks through the script for a defined word or set of words. In this case, it's "Anchor 1". It then replaces "Anchor 1" with the second set of text, "\_a[anchor1]Anchor 1\_a". \_a if you recall is the dialogue code for linking something, so this is linking the words Anchor 1 to something called anchor1 set up in the next function, OnAnchorSelect.
+//This is being used to change a word into a link, but you could conceivably use this to replace any text with any other kind of text if you wanted. I tried to replace . with .\w8  as I mentioned above which did not turn out well, haha, but there are probably other ways this could be used successfully.
+
+
+//--OnAnchorSelect------------------------------------------------------------------------//
+//runs whenn links are clicked: as specified above, or a link that begins with http://.
+
+OnAnchorSelect
+{
+	if "http://" _in_ reference0 //if it's a web address
+	{
+	"\j[%(reference0)]\e" //reference0 stores the adress the user just clicked. tag \j opens that url
+	}
+	else
+	{
+		case reference0 //switch case on anchor word
+		{
+			when "anchor1" 
+			{
+				"\0\s[0]This dialogue is for when Anchor 1 is clicked.\e"
+			}
+			when "anchor2" 
+			{
+				"\0\s[0]This dialogue is for when Anchor 2 is clicked.\e"
+			}
+			when "anchor3" 
+			{
+				"\1\s[10]This dialogue is for when Anchor 3 is clicked.\e"
+			}
+		}
+	}
+}

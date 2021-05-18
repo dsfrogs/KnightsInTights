@@ -1,0 +1,661 @@
+﻿//---------------------------Miscellaneous Functions-------------------------------------------//
+//Functions that didn't fit anywhere else. Coder's added functions go here, update functions as well
+
+//--OnFileDrop2--------------------------------------------------------------------------------//
+//Ghost will set an image as the desktop background when someone drags and drops an image on them. You don't need to touch any of the coding here, just replace the dialogue as needed and leave the \q options alone. More about \q options in bootend.dic and in the walkthrough.
+OnFileDrop2
+{
+	if 	endPhase==TOINT(0) && beginPhase==TOINT(0) && fridatePhase == TOINT(0) && wanthome== TOINT(0)		
+	{
+		_filepath = SPLITPATH(reference0)
+		_filename = _filepath[2]
+		_fileext = TOLOWER(_filepath[3]) 
+		
+		if  TOLOWER(_filename) == "proof"
+		{
+			waitingForProof = 2
+			familiarity ++
+			scienceExp +=5
+			--
+			"\0\s[0]* (You gave Zilch a proof.)\%(wx)\n\n%(z)\s[0]\i[107]\i[106]Wawawa so it's true!\%(wx) \s[0]\i[102]\i[103]There's a multiverse and time travel is possible \s[0]\i[109]\i[108]and you can create hard light and-%(d)\%(wx)\n\n\s[0]* (You say you can't confirm or deny)\n\n\%(wx)\n[half]%(z)\s[0]\i[109]\i[108]Oooooh.%(d)\%(wx)\s[0]\n\e"
+			--
+			LessUpsetNow
+		}
+		else
+		{
+			case _fileext
+			{
+				when ".jpg", ".jpeg", ".bmp" //Doesn't work with .png
+				{
+					Wallpaperfile = reference0
+					
+					"\0\s[0]The file you dropped is %(_filename)%(_fileext).\w8\0\s[0]How would you like us to set this picture as your wallpaper?\n\n[half]/
+					\q[Centered,SetWallpaper_0]\n/
+					\q[Tiled,SetWallpaper_1]\n/
+					\q[Stretched,SetWallpaper_2]\n\n[half]/
+					\q[No thanks,SetWallpaper_Cancel]\e"
+				}
+				when ".mid", ".wav", ".mp3", ".wma", ".au" 
+				{
+					"\0\s[0]* (%(_filename)%(_fileext) is a music file.)\e"
+				}
+				others //Any other file format. Dropping ghost related files should cause ghost to perform installation, provided it contains install.txt
+				{
+					"\0\s[0]* (This is %(_filename)%(_fileext).)\e"
+				}
+			}
+		}		
+	}
+}
+
+Select.SetWallpaper_0
+{
+	"\![set,wallpaper,%(Wallpaperfile),center]\0\s[0]* (Image is centered.)\e"
+}
+Select.SetWallpaper_1
+{
+	"\![set,wallpaper,%(Wallpaperfile),tile]\0\s[0]* (Image is tiled.)\e"
+}
+Select.SetWallpaper_2
+{
+	"\![set,wallpaper,%(Wallpaperfile),stretch]\0\s[0]* (Image is stretched.)\e"
+}
+Select.SetWallpaper_Cancel
+{
+	"\0\s[0]* (You've rejected the wallpaper.)\%(wx)\e"
+}
+
+
+//---- OnInstallBegin -------------------------------------------------------//
+//Called when a file with including install.txt is dropped
+OnInstallBegin
+{
+	"\0\s[0]* (Installing a file...)\w8\e"
+}
+
+//---- OnInstallComplete -------------------------------------------------------//
+//OnInstallComplete runs once the file above has finished installing. 
+OnInstallComplete
+{
+	"\0" //Main character
+ 	--
+	if reference0 == "shell" 
+	//Reference0 stored type as defined in install.txt: type,ghost type,shell or type, balloon
+	//reference1 stores the name of the shell installed.
+ 	{	
+		if reference1 == "Hypothetical Shell that doesn't actually exist" //Name of shell as defined in descript.txt in shell folder.
+		{
+			"\0\s[0]* (Shell installed:).\e"
+		}
+		elseif reference1 == "Another totally real shell wow" //elseifs multiple shells
+		{
+			"\0\s[0]* (Shell installed:).\e"
+		}
+		else //Any other shell
+		{
+		"\0\s[0]* (Shell installed: %(reference1).)\e"
+		}
+ 	}
+	elseif reference0 == "ghost"
+ 	{
+		"\0\s[0]* (Ghost installed: %(reference1).)\e"
+		//Reference1 stores the name of the ghost.
+ 	}
+	elseif reference0 == "balloon" 
+ 	{
+		"\0\s[0]* (Balloon installed: %(reference1).)\e"
+ 	}
+	elseif reference0 == "plugin" //for example, a saori
+ 	{
+		"\0\s[0]* (Plug-in installed: %(reference1).)\e"
+ 	}
+}
+
+//---- OnInstallFailure-------------------------------------------//
+OnInstallFailure
+ {
+	"\0\s[0]* (Installation failed.)\n\n[half]\w5" //intro
+	--
+	if reference0 == "unsupported" //File unsupported.
+	{
+		"* (File is unsupported.)\e"
+	}	
+	elseif reference0 == "extraction" //File didn't extract properly.
+	{
+		"* (File could not be extracted properly.)\e"
+	}
+ }
+ 
+//--OnInstallRefuse-----------------------------------------------// 
+OnInstallRefuse //File associated with another ghost
+{
+	"\0\s[0]* (You can't give it to Zilch.\%(wx) This is for %(reference0).)\e"
+}
+
+//**** Uninstallation ******************************************
+//There's an option to turn Uninstall on or off in config menus (menu.dic), and a greyed out option to uninstall in the right click menu. The following functions relate to uninstallation when it's on.
+
+//--OnVanishSelecting-------------------------------------------//
+//When you selecting uninstall in menu.
+OnVanishSelecting
+{
+	"\0\s[0]%(z)Just remembered I have to do something!\%(wx)%(d)\e"
+}
+
+//--OnVanishSelected---------------------------------------------//
+//When you decide to uninstall them. 
+OnVanishSelected
+{
+	"\0\s[0]%(z)Goodbyeeeeee!%(d)\w9\w9\e"
+}
+
+
+//--OnVanishCancel----------------------------------------------//
+//If you select Uninstall from the menu, but decide not to do it.
+OnVanishCancel
+{
+	"\0\s[0]%(z)Nevermind...%(d)\%(wx)\e"
+}
+
+//--TalkVanishButtonHold----------------------------------------//
+//Careful not to uninstall your ghost! Maybe best not to test and just look at dialouge in script input
+//Called when holding down uninstall in menu
+TalkVanishButtonHold
+{
+	"\0\s[0]%(z)I feel weird...%(d)\%(wx)\e"
+}
+
+//---- OnVanished --------------------------------------------//
+//Upon uninstalling, switch back to preiously used ghost  
+//reference0 stores uninstalled ghost's name  
+OnVanished
+{
+	"\0\s[0]* (The wind whispers a name...\%(wx)\n\n) %(z)\s[0]\i[109]%(reference0)?%(d)\%(wx)\s[0]\e"
+}
+
+//**** Mail Checking ******************************************************//
+//The next set of functions have to do with checking your email. This function is a slippery little thing - I've had people test it following my directions and have it work, but I've never actually gotten it to report back the right amount of emails myself. Very frustrating. But perhaps you'll have more luck with it, haha.
+
+
+//*********************Advanced User Info*******************************
+
+//If you want to set up your ghost to check your mail so you can more easily check these messages instead of just writing the dialogue and moving on, it's a little bit tricky, but not super hard.
+//Basically, you're going to need to find your POP settings for your email account. 
+//User needs to Google their provider + POP, and then go to right click menu, options, then preferences: and input the info into POP is in the left side.
+//***********************************************************************
+
+
+//---- OnBIFFBegin ---------------------------------------------------//
+//When telling ghost to check email.
+ 
+OnBIFFBegin
+{
+	"\0\s[0]* (Checking email...)\e"
+}
+
+ 
+//---- OnBIFFComplete ------------------------------------------------//
+//After checking mail, report back with how many new emails.
+OnBIFFComplete
+{
+	if reference0 == 0 //reference0 stores number of new emails.
+ 	{
+ 		"\0\s[0]* (No new mail.)\%(wx)\e"
+	}
+	elseif reference0 == 1 
+ 	{
+ 		"\0\s[0]* (One new email.)\%(wx)\e"
+	}
+	elseif reference0 > 1 && reference0 < 11 
+	{
+		"\0\s[0]* (%(reference0) emails.)\%(wx)\e"
+	}
+	elseif reference0 > 100 
+	{
+		"\0\s[0]* (There are %(reference0) emails unread.)\w8\0\s[0]%(z)Woah.%(d)\%(wx)\e"
+	}
+ 	else 
+	{
+		"\0\s[0]* (There are %(reference0) emails.)\%(wx)\e"
+ 	}
+}
+
+//---- OnBIFFFailure ------------------------------------------------//
+ 
+OnBIFFFailure
+{
+	if reference0 == "timeout" //If the connection times out.
+ 	{
+ 		"\0\s[0]* (Connection has timed out.)\e"
+	}
+ 	elseif reference0 == "kick" //If the account blocks the ghost from accessing it. Gmail may do this at first to try and protect your account from unapproved applications using it. It gives you the option to change the setting in the warning email they send you about it.
+	{
+		"\0\s[0]* (Can't access the account.)\e"
+ 	}
+	elseif reference0 == "defect" //The info put into the POP menu is wrong.
+ 	{
+ 		"\0\s[0]* (Email account was not set up properly.\w8\0\s[0]It can be reset at the POP menu.\![open,configurationdialog])\e"
+		
+		//Opens the preferences menu.
+	}
+ 	else //if there's some other kind of error.
+	{
+		"\0\s[0]* (Can't connect to the account.\w8\0\s[0]Error: '%(reference[0])'.)\e"
+		//reference0 stores the error message		
+ 	}
+}
+
+
+//**** Network Update *************************************************//
+//Network Update: connect to website, check for new files, and update itself.
+//Test the messages in Developer panel open---> choose update event
+ 
+//---- OnUpdateBegin -----------------------------------------------------//
+//When telling a ghost to update.
+OnUpdateBegin
+{
+	"\0\s[0]* (Starting update.)\w8\e"
+}
+
+//---- OnUpdateReady ---------------------------------------------------//
+//If new files to update were found.
+ 
+OnUpdateReady
+{
+	"\0\s[0]* (%(reference[0]) new files.)\w8\e"
+	//reference0 stores number of new files.
+}
+
+//---- OnUpdateComplete ---------------------------------------------------//
+//When done updating.
+
+OnUpdateComplete
+{
+	if reference0 == "none" 
+	{
+ 		"\0\s[0]* (No new files.)\e"	
+	}
+ 	else 
+	{
+		"\0\s[0]* (Update successful)\e"
+ 	}
+}
+
+//---- OnUpdateFailure ------------------------------------------------//
+//Error messages if the update process fails in some way.
+ 
+OnUpdateFailure
+{
+	if reference0 == "timeout" 
+ 	{
+ 		"\0\s[0]Update connection timed out.\e"
+	}
+ 	elseif reference0 == "md5 miss" 
+	{
+		"\0\s[0]* (MD5 hash of the files don't match.)\e"
+ 	}
+	else 
+ 	{
+ 		"\0\s[0]* (Update could not be completed.\w8\0\s[0]Error: '%(reference0)').\e"
+	}
+ }
+
+
+ //---- OnUpdate.OnDownloadBegin -----------------------------------------//
+ //This dialogue plays when they download a new file.
+ //Keep messages short, don't comment on every image file. 
+ 
+OnUpdate.OnDownloadBegin
+{
+ 	if "aitalk" _in_ reference0 //What kind of files are being downloaded. 
+ 	{
+ 		"\0\s[0]* (Downloading more dialogue...\w8)\e"
+ 	}
+ 	else //for files not specified above
+ 	{
+		"\0\s[0]* (New file found).\e"	
+	}
+}
+
+//---- OnUpdate.OnMD5CompareBegin ---------------------------------------//
+//This checks hash value of files in directory and files listed in updates.dau, for every file the user downloads. Keep it very brief, or just replace with "..." instead.
+ 
+OnUpdate.OnMD5CompareBegin
+{
+	"\0\s[0]* (Checking MD5 value.)\e"
+}
+
+//---- OnUpdate.OnMD5CompareComplete --------------------------------------------------
+//MD5 value matches
+OnUpdate.OnMD5CompareComplete
+{
+	"\0\s[0]* (MD5 check good.)\e"
+}
+
+//---- OnUpdate.OnMD5CompareFailure--------------------------------------//
+//File is missing, damaged or incomplete. You might run into it by forgetting a file. 
+OnUpdate.OnMD5CompareFailure
+{
+	"\0\s[0]* (MD5 values don't match.)\w8\e"
+}
+
+ //continue
+ 
+ //**** Headlines and RSS Feeds *********************************************************
+ //This section has to do with the RSS feeds option on your ghost. If you drag and drop a url on them, they'll add it to a list you can access via the right-click menu, and they'll tell you the last set of updates for the site. This works best with RSS feeds I think, but you can experiment with other sites to see how it works.
+ //The headlines you see under the tab are in the headline folder under your base SSP install. So it'd be SSP\headlines. You should see the folders for each linked headline in there. I've very rarely ever messed with them or used them. Likewise, your RSS feeds you've added will be under SSP\rss and I don't think that option will appear in the headlines/RSS tab until you add an RSS feed to a ghost. If you want to clear your RSS feeds or headlines, just delete either of those two folders.
+ 
+
+ //---- OnHeadlinesenseBegin -----------------------------------------------------------
+ //This dialogue comes up when you select something in your RSS feed as an intro, like the other On[Thing]Begin things we've seen so far. Replace as you need.
+ 
+OnHeadlinesenseBegin
+ {
+	"\0\s[0]* (%(reference0) selected)\e"
+ }
+
+ //---- OnHeadlinesense.OnFind --------------------------------------------------------
+ //This actually displays the feed. My set-up for it is pretty simple but gets the job done, it just has the name of the feed, a line space, then a list of links. You shouldn't have to edit any of these and I probably wouldn't honestly.
+ 
+OnHeadlinesense.OnFind
+{
+	//----  What page You're on
+ 	if reference2 == "First" || reference2 == "First and Last"
+	{
+ 		//---- First page
+		"\0\b2\s[0]%(reference0):"
+ 	}
+	elseif reference2 == "Next"
+ 	{
+		//---- Second page
+ 		"\0\b2\s[0]%(reference0):"
+	}
+ 	elseif reference2 == "Last"
+	{
+ 		//---- Last page
+		"\0\b2\s[0]%(reference0):"
+ 	}
+	--
+ 	//---- Headlines
+	"\n\n%reference3\n"
+ 	--
+	//---- Pages
+ 	if reference2 == "First" || reference2 == "Next"
+	{
+ 		//---- Bottom buttons
+		"\![*]\q[Next,] - \![*]\q[Stop,Headline_Cancel]\e"
+ 	}
+	else
+ 	{
+		//---- Bottom buttons
+ 		"\![*]\q[Stop,Headline_Cancel]\e"
+ 	}
+	
+}
+
+
+Select.Headline_Cancel
+{
+	"\0\s[0]* (Headline viewing complete.)\e"
+	//Actually I take that back, you can change this line of dialogue here for when you're done looking at a headline to something else if you want.
+}
+
+ //---- OnHeadlinesenseComplete -------------------------------------------------------
+ //This is an odd function. As far as I can gather, this is if the headline information gathering was successful, but there's no new information to report. Possibly if none of the feeds have updated? I'm a little fuzzy on this one.
+ 
+OnHeadlinesenseComplete
+ {
+	"\0\s[0]No update. %(reference0).\e"
+	//reference0 here supposedly always stores the value no update? Again this isn't hugely clear from what I can see. Anyway, this dialogue has never come up for me while using a ghost, so perhaps someone else who runs into it can offer more clarity. For now, you can leave it as is, or write up something else in here if you like.
+ }
+
+ //---- OnHeadlinesenseFailure ---------------------------------------------------------
+ //This one is more clearly for when the ghost can't get the information it needs about the RSS feed in question.
+ 
+OnHeadlinesenseFailure
+  {
+	"\0\s[0]Feed can't be updated.\w8\n\n[half]" 
+ 	--
+	if reference0 == "can't download" //if they can't download the rss feed for some reason
+ 	{
+		"It can't be downloaded."
+ 	}
+	elseif reference0 == "can't analyze" //if they can't read the file for some reason
+ 	{
+		"It can't be analyzed."
+ 	}
+	else //other errors
+ 	{
+		"Unknown error."
+ 	}
+	--
+ 	"\e" //And here is the final /e, so you don't need to include it in the if statements above. Another one of the very rare cases this occurs.
+}
+
+
+//**** Ghost Creation and Updating ******************************************************
+//These next few are related to creating updates2.dau and .nar files for your ghosts. You'll want to at least make a .nar to distribute your ghost, and if you're going to be using Network Update, you'll also want to make updates2.dau as well. It's unlikely that anyone other than you will see these messages, but you should be thorough and replace them anyway.
+//Primarily, you will see these messages when you're creating your updates file or updating your ghost.nar file. More on this on the walkthrough page. However, you could potentially drag and drop another ghost's folder onto them, and they'll also create a nar for that as well, though I've never done that myself. I really wouldn't mess around too much with this. Just follow the directions on the walkthrough page and fill out the dialogue here as required.
+
+
+ //---- OnUpdatedataCreating -----------------------------------------------------------
+ //This will begin the creation of the updates2.dau file. Not unlike the other beginning functions you've seen throughout this file. Replace with whatever you like.
+ 
+OnUpdatedataCreating
+ {
+	"\0\s[0]* (Creating updates2.dau file.)\e"
+ }
+
+ //---- OnUpdatedataCreated -------------------------------------------------------------
+ //After the updates2.dau file has been successfully created. Replace with whatever.
+ 
+OnUpdatedataCreated
+ {
+	"\0\s[0]* (Created updates2.dau.)\e"
+ }
+
+ //---- OnNarCreating ------------------------------------------------------------------
+ //Along the same lines, this is when they begin creating a .nar file for your ghost. .nars are the format most ghosts will be in, something similar to a .zip file, and this is the format you'll be distributing your ghost in most likely. Replace the dialogue with whatever you like.
+ 
+OnNarCreating
+ {
+	"\0\s[0]* (Creating .nar file...)\e"
+ }
+
+ //---- OnNarCreated -------------------------------------------------------------------
+ //After the nar file has been successfully created.
+ 
+OnNarCreated
+ {
+	 case bootPhase
+	 {
+		 when "Normal"
+		 {
+			"\0\s[0]* (Successfully created '%(reference0)'.)\e"			 
+		 }
+		 when "Nilch"
+		 {
+			"\0\s[0]\i[9]* (Successfully created '%(reference0)'.)\e"				 
+		 }
+	 }
+	 
+	//reference0 here will be the filename of the nar you just created. It should drop the nar in the folder where all your ghosts are listed, ssp\ghost\.
+ }
+
+ //****　Clock Synchronization　**********************************************************
+//**** 미카 (http://homepage2.nifty.com/ko-ki/)의 사전을 참고했습니다．감사＞こ 나무 성
+//This set of functions was done by the above Korean coder, I think. I'll leave their comment there untouched. 
+//If you right click your ghost and go into the Utilities menu, there's an option called NTP Time Sync. That's what this is for!
+ 
+
+ //----OnSNTPBegin ------------------------------------------------------------------
+ //As with the others you've seen above, this is the beginning bit of dialogue for this process.
+ 
+OnSNTPBegin
+ {
+	"\0\s[0]* (Checking time...\w9\0\s[0]Connecting to %(reference0)...)\e"
+	//%(reference0) here is the site they'll be using to check your clock. I wouldn't worry too much about what the site is or where it's defined, it should be accurate. Replace the dialogue with what you need, you don't have to use reference0 if you don't want to.
+ }
+
+
+ //----　OnSNTPCompare----------------------------------------------------------
+ //Now the ghost is going to compare the current time of your computer's system to the time of the site they connected to. Most of this you don't have to touch, just replace the dialogue as indicated.
+ 
+OnSNTPCompare
+ {
+ 	"Retrieved Time: %reference1[1]/%reference1[2]/%reference1[0] %reference1[3]:%reference1[4]:%reference1[5]\w2\n/
+	Your Time: %reference2[1]/%reference2[2]/%reference2[0] %reference2[3]:%reference2[4]:%reference2[5]\w2\n/
+ 	\n"
+	--
+ 	if reference3 == 0 //if your clock is already accurate.
+	{
+ 		"\0\s[0]* (Clock is accurate.)\e" //replace this with whatever message you like.
+	}
+ 	else //if your clock doesn't match
+	{
+	//you can redo this top line up to the \n\n[half] part, but leave the \q options alone.
+ 		"\0\s[0]* (Clock doesn't match.\w6\nFix it?\n\n[half])/
+		\![*]\q[Fix it,OnSNTPEXECUTE]\n/
+ 		\![*]\q[Leave it alone,OnSNTPCANCEL]\e"
+	}
+ }
+
+ //----　OnSNTPEXECUTE ------------------------------------------------------------------
+ //After they've fixed your clock. 
+ //\6 tag -  changes the clock. 
+ 
+OnSNTPEXECUTE
+ {
+	"\0\s[0]* (Clock has been fixed.)\6\e"
+ }
+
+ //----　OnSNTPCANCEL ------------------------------------------------------------------
+ //If you decide not to change your clock 
+ 
+OnSNTPCANCEL
+ {
+	"\0\s[0]* (User decided not to change the clock.)\e"
+ }
+
+ //----　OnSNTPFailure ------------------------------------------------------------------
+ //If they can't change the clock for some reason, possibly because the site timed out but it could be anything. Replace with what you want.
+ 
+OnSNTPFailure
+ {
+	"\0\s[0]* (Error. Couldn't change the clock.)\e"
+ }
+
+
+ //--OnDisplayChange----------------------------------------------------------------
+ //This is when you change the resolution of your monitor while your ghost is running. Don't mess with any of this, it should be fine as is.
+ 
+OnDisplayChange
+ {
+	displaybpp    = reference0
+ 	displaywidth  = reference1
+	displayheight = reference2
+ }
+
+
+
+ //---- OnScreenSaverStart -------------------------------------------------------
+ //This happens if your ghost is running when your screensaver starts up. This and OnScreenSaverEnd are optional, you can delete them both if you like. In fact, you can just delete the rest of the functions from this point on if you're tired and lazy, but we're close to the end, so don't give up yet!
+ 
+OnScreenSaverStart
+ {
+	"\0\s[0]* (Screensaver is starting.\w7)\e"
+	//Replace with what you want.
+ }
+
+ //---- OnScreenSaverEnd -------------------------------------------------------
+ //When you wiggle your mouse and stop your screensaver.
+ 
+OnScreenSaverEnd
+ {
+	"\0\s[0]* (Screensaver ended.)\e"
+	//Replace with what you want.
+ }
+
+
+ //---- OnApplicationBoot ---------------------------------------------------------------
+ //This supposedly is for when a program starts but I have honestly never gotten it to work or seen it happen. I wouldn't sweat these three related functions too much.
+ 
+OnApplicationBoot
+ {
+	"\0\s[0]* (%(reference0) just started.)\e"
+ }
+
+ //---- OnApplicationClose --------------------------------------------------------------
+ //See above, but for the program closing.
+ 
+OnApplicationClose
+ {
+	"\0\s[0]* (%(reference0) has closed.)\e"
+ }
+
+ //---- OnApplicationFileOpen ----------------------------------------------------------
+ //I believe this is for when the program detailed above opens a document file of some kind.
+ 
+OnApplicationFileOpen
+ {
+	"\0\s[0]* (Opening %(reference1).)\e"
+ }
+
+
+
+
+ //---- OnBatteryLow -----------------------------------------------------------------
+ //This is for when your laptop's battery is low. I don't have a laptop, so I've never really been able to test this. Perhaps someone with a laptop can report back to me with more details about the battery related functions?
+ 
+OnBatteryLow
+ {
+	"\0\s[0]* (Laptop's battery is low. \w8\0\s[0]%(reference0) power left.)\e"
+	//reference0 here is the amount of battery power. Replace as you like.
+ }
+ 
+ //--OnBatteryCritical-----------------------------------------------------------------
+ //Likewise, this is for if your battery is REALLY low. Replace as you like.
+ 
+OnBatteryCritical
+{
+	"\0\s[0]* (Laptop's battery is critically low.)\e"
+}
+ 
+//--OnBatteryNotify--------------------------------------------------------------------
+//This I believe checks to see if your laptop is plugged in or not. Originally this bit of code was commented out, so I suspect it may not work. It may need a plug-in of some sort. Either way, you can delete it or fill it out as you like.
+//Actually investigating this, leaving this in makes it so the ghost updates you about whether or not your computer is plugged-in constantly, which makes no sense for desktops. No doubt why it was commented out. Just leave it be.
+
+/*
+OnBatteryNotify
+{
+	if reference2 == "online" //If your laptop is plugged in
+	{
+		"\0\s[0]The laptop is plugged in.\e"
+	}
+	elseif reference2 == "offline" //If you unplug your laptop
+	{
+		"\0\s[0]The laptop is not plugged in.\w8\0\s[0]Watch your battery.\e"
+	}
+}
+*/
+
+
+ //---- OnSysResourceLow -----------------------------------------------------------
+ //A notification for if your system resources are low. I've never seen this happen and my system resources can run pretty low sometimes (woo windows xp woooo), so I suspect this one also may not work without the right plug-in, but I could be wrong. You might as well fill it out.
+ 
+OnSysResourceLow
+ {
+	"\0\s[0]* (System resources are low.)\e"
+ }
+
+ //--OnShellScaling
+ //right click-> Shell Scaling->different percentages. 
+OnShellScaling
+{
+
+	if bootPhase == "Normal" && upsetAfterFriday==TOINT(0) && verbos == "HIGH"
+	{
+		"\1\s[-1]\0\s[0]\i[109]\i[108]%(z)Ugh..! \%(wx)Something bit me.\i[8]%(d)\%(wx)\s[0]\e"
+	}	
+	
+}

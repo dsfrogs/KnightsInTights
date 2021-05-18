@@ -1,0 +1,95 @@
+//This is pretty short, you learn what happened, 
+//and then you're done talking about them
+
+Parents
+{
+	if parentsLvl > 0 && parentsClosed == 0
+	{	
+		if parentsPaused == 1
+		{
+			"%(g)\![*]\q[Parents,OnParentsTalk]%(w)"			
+		}
+		else
+		{
+			"\![*]\q[Parents,OnParentsTalk]"			
+		}
+		
+	}
+}
+
+
+ParentsLvlUp  
+{	
+	exp = parentsExp; lvl = parentsLvl; paused = parentsPaused;			
+	closed = parentsClosed;
+	
+	ShouldLvlUp
+
+	parentsExp = exp; parentsLvl = lvl; parentsPaused = paused;
+	exp = 0; lvl = 0; paused = 0; closed = 0;	
+}
+
+
+
+
+OnParentsTalk
+{
+	if parentsPaused == 0
+	{	
+		case parentsLvl
+		{
+			when 1
+			{
+				"\0\s[0] * (You ask Zilch what their parents do).\%(wx)\n\n \0\s[0]\i[2]%(z)My parents...?\%(wx) They're...\%(wx) gone.%(d)\%(wx)\n\n"
+				--
+				parentsExp ++
+				--
+				"\![*]\q[I'm sorry to hear that,SorryAboutParents]\n\![*]\q[...,QuietAboutParents]\n"	
+			}
+			when 2
+			{
+				"* (You ask what happened to their parnets.\%(wx) They don't have to say, if they don't want to...)\%(wx)\n\n%(z)\i[112]\i[2]Um,\%(wx) there was an accident.\%(wx)\0\s[0] They were both working in the lab when it happened.%(d)\%(wx)\n"
+				--
+				disorderExp++
+			}
+			when 3
+			{
+				"%(z)\0\s[0]\i[2]I miss them so much.\%(wx) And it hurts.\%(wx)%(d)"
+				--
+				parentsClosed = 1
+			}
+		}
+		--
+		parentsPaused = 1
+		//NumOfOpenSubjects--	
+	}
+	else
+	{
+
+	}
+	--
+	"\e"	
+}
+
+Select.QuietAboutParents
+{
+	quiet ++
+	--	
+	parentsClosed = TOINT(1)
+	//parentsPaused = 0
+	//parentsExp = 0
+	//parentsLvl = 0	
+}
+
+Select.SorryAboutParents
+{
+	"* (Zilch hums quietly)\%(wx)\0\s[0]"
+	--
+	LessUpsetNow
+}
+
+
+
+
+
+

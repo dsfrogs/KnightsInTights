@@ -1,0 +1,259 @@
+
+//abbreviated versions of text if re-installed
+//Can only see Zilch once mom and dad are seen
+//If pose isn't set right at start, should be invisible, I used \s[-1] to be on safe side
+
+OnContinueBeginPhase
+{
+	"\![enter,passivemode]"
+	--
+	blockPet = TOINT(1)
+	lockMenus = TOINT(1)
+	--
+	case beginPhase
+	{
+		when 1 
+		{
+			PreIntroSetUp
+		}
+		when 2 
+		{
+			OnFirstIntro
+		}
+		when 3 
+		{
+			Reinstalling_A
+		}
+		when 4 
+		{
+			"%(Select.LookAtHouse)"
+		}
+		when 5 
+		{
+			LookAtPeople
+		}
+		when 6 
+		{
+			"%(Select.LookAtChild)"
+		}
+		when 7  
+		{
+			Reinstalling_B
+		}
+		when 8  
+		{
+			Reinstalling_C
+		}
+		when 9  
+		{
+			Reinstalling_D
+		}
+		when 10 
+		{
+			Reinstalling_E
+		}
+		when 11 
+		{
+			Reinstalling_F
+		}
+		when 12 
+		{
+			Reinstalling_G
+		}
+		when 13
+		{
+			"%(Select.NoReinstall)"
+		}
+		
+	}
+}
+
+PreIntroSetUp
+{
+	beginPhase = TOINT(1)
+	bootPhase  = "Begin"
+	--
+	"\![enter,passivemode]"
+	--
+	blockPet = TOINT(1)
+	lockMenus = TOINT(1)
+	--
+	//"\0\s[-1]\![set,scaling,75]" //only here and not in reset, else they'll shrink for ever
+	//problem is, this doesn't sticks through reloading
+	--
+	FirstSetValues 
+	--
+	"\1\s[-1]"
+	--
+	if reference0 == 0 
+ 	{ 
+		"\0\s[-1]...Installing for the first time...\w8\c"
+		--		
+		OnFirstIntro
+ 	}
+	else 
+ 	{
+		"\0\s[-1]Attempting re-install...\w8\c"
+		--	
+		Reinstalling_A
+ 	}
+}
+
+OnFirstIntro
+{	
+	beginPhase = TOINT(2)
+	mom = 0
+	dad = 0
+	houseSeen = 0
+	--
+	if reinstalled = TOINT(1)
+	{
+		"\0\s[-1]You know how this goes.\%(wx)\n\n[half]\![*]\q[Look at the house?,LookAtHouse]\e"		
+	}
+	else
+	{
+		"\0\s[-1]All you see is darkness.\%(wx) No.\%(wx) Wait.\%(wx) There are stars.\%(wx) They shine over a small village on a hill.\%(wx) There's an isulated house at the edges of reality.\%(wx)\n\n[half]\![*]\q[Look at the house?,LookAtHouse]\e"
+	}	
+}	
+
+AtOnceIf
+{
+	if houseSeen == 1
+	{
+		"\_q"
+	}
+}
+
+WaitIf
+{
+	if houseSeen == 0
+	{
+		"\%(wx)"
+	}	
+}
+
+Select.LookAtHouse
+{
+	beginPhase = TOINT(4)
+	--
+	"\0\s[-1]"
+	--
+	if reinstalled == 1
+	{
+		"%(AtOnceIf)%(LookAtPeople)\e"		
+	}
+	else
+	{
+		"%(AtOnceIf)You look at the house.%(WaitIf) There are people inside. A man, a woman and a small person.%(WaitIf) \n\n[half]%(LookAtPeople)\e"
+	}
+}
+
+LookAtPeople
+{
+	beginPhase = TOINT(5)
+	--
+	"\0\s[-1]"
+	--
+	if dad == 0
+	{
+		"\![*]\q[Look at the man?,LookAtMan]\n"		
+	}
+	else
+	{
+		"\![*]You can no longer see the man\n"
+	}		
+	--
+	if mom == 0
+	{
+		"\![*]\q[Look at the woman?,LookAtWoman]\n"		
+	}
+	else
+	{
+		"\![*]You can no longer see the woman\n"
+	}	
+	--	
+	if mom == 1 && dad ==1
+	{
+		"\![*]\q[Look at the small person?,LookAtChild]\n\e"		
+	}
+	--
+	houseSeen = 1
+}
+
+Select.LookAtMan
+{
+	dad = 1
+	--
+	Select.LookAtHouse
+}
+
+Select.LookAtWoman
+{
+	mom = 1
+	--
+	Select.LookAtHouse	
+}
+
+Select.LookAtChild
+{
+	beginPhase = TOINT(6)
+	--
+	mom = 0
+	dad = 0
+	houseSeen = 0
+	--
+	"\0\s[-1]\1\s[-1]"
+	--
+	if reinstalled == TOINT(1)
+	{
+		"You can't see Zilch- they're covered in blankets...\%(wx) \n\n[half]\![*]\q[Wake them up,ZilchIntro]\n\![*]\q[Bring them here,ZilchIntro]\n\![*]\q[Do it all over again,ZilchIntro]\n\e"			
+	}
+	else
+	{
+		"The small person is covered in blankets- you can't see them.\%(wx) But you can just know.\%(wx) They want to be\n\n[half]\![*]\q[ y o u r  f r i e n d.,ZilchIntro]\e"	
+	}
+}
+
+Select.ZilchIntro
+{
+	"\0\s[0]\i[2]\i[108]\i[109]* (Zilch yawns.)\n\%(wx)\n %(z)...nmmmff\%(wx)\n\n\0\s[0]\i[107]who woke me up?%(d)\%(wx)\n\n* (Zilch blinks at the screen.)\%(wx)\n\s[0]\i[109]\n\n%(z)Oh, I see.\%(wx) It's a dream.\%(wx) I'm still asleep.\%(wx) \s[0]\i[122]Hello, dream person!%(d)\%(wx) \n\n[half]\![*]\q[Not a dream.,NotDream]\n\![*]\q[Say Nothing,SayNothing]\n\![*]\q[Hello Zilch!,HelloZilch]\n"		
+}
+
+ReleaseAfterBeginningEvent
+{
+	"\![leave,passivemode]"	
+	--
+	blockPet	= TOINT(0)
+	lockMenus	= TOINT(0)
+	beginPhase = TOINT(0)
+	bootPhase  = "Normal"
+}
+
+Select.NotDream
+{
+	thisPlaceExp++
+	dreamsExp++
+	themselfExp++
+	--
+	ReleaseAfterBeginningEvent
+	--
+	"\0\s[0]* (You insist you're perfectly real.)\%(wx)\n\n%(z)\i[105]\i[115]That's exactly what a dream person would say!%(d)\%(wx)\0\s[0]\e"
+}
+
+Select.SayNothing
+{
+	ReleaseAfterBeginningEvent
+	--
+	quiet++
+	--
+	"\0\s[0]* ...\e"	
+}
+
+Select.HelloZilch
+{
+	themselfExp++
+	--
+	ReleaseAfterBeginningEvent
+	--
+	"\0\s[0]* (Zilch seems pleased.)\e"
+}

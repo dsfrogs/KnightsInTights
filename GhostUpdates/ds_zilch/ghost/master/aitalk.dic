@@ -1,0 +1,372 @@
+﻿//---------------------------AI Talk--------------------------
+
+//I need to add ifs to check subjects aren't paused, or Z will end up saying nothing pretty often
+
+//I want a function that compares variables' value, and returns the name of Max/ Min (not the value) as a string
+//Well tough
+
+//--AiTalk---------------------------------------------------------//
+//setting up if dialogue is in a chain before it displays. 
+//Leave it unless you want to screw around with chains.
+AiTalk
+ {
+	if RAND(100) < communicateratio
+ 	{
+ 		StartCommunicate
+	}
+ 	else
+	{
+ 		if mikireflag == 0
+		{
+			if CHAIN.IDName == "" 
+			{
+ 				lastTalk = RandomTalk
+			}
+			else 
+			{
+				lastTalk = ChainTalk
+			}
+			lastTalk
+		}
+ 		else
+		{ 
+			MikireTalk
+ 		}
+	}
+ }
+
+//--RandomTalk 
+ 
+//*********************Advanced User Info*******************************
+//Can't link to other functions/pools in different .dic files
+//Can set dialouge in envelopes in other .dic files
+//Chains ~= linking outside dialogue. 
+//Chains--> presenting user with choices
+//***********************************************************************
+
+RandomTalk : nonoverlap
+{
+	if TOINT(upsetAfterFriday)==0
+	{
+		_rnd = RAND(100)
+		--
+		//if _rnd<50
+		//{
+			WantHome1
+			--
+			OnActedLikeABaby			
+			--		
+			SorryAboutDisorder
+			--	
+			BrotherHike
+			--		
+		//	PetsTalk
+			--		
+			AfterShoppingDay	
+			--
+			BakeCake			
+		//}
+			--	
+			RandomPool
+	}	
+	else
+	{
+		"\0\s[0]\i[2]\i[112]* (Zilch is very quiet.)\%(wx)"
+	}	
+}
+
+Select.IDoKnow
+{
+	"* (You tell Zilch you know them from another life.)\%(wx)\n\n%(z)\0\s[0]\i[5]\hmmph!\%(wx) \0\s[0]\i[5]\i[114]\i[113]Not true!%(d)\%(wx)\s[0]\e"
+}
+
+RandomPool
+{	
+	if isNilch==1
+	{
+		
+	}
+	elseif upset==0 
+	{
+		if notMyDay == 1
+		{
+			TalkAboutHarmonicaMistake
+		}	
+			
+	//	if artPaused == 0 && artClosed ==0
+	//	{	
+	//		OnArtTalk
+	//	}			
+	//
+	//	if themselfPaused == 0	&& themselfClosed ==0
+	//	{
+	//		OnThemselfTalk
+	//	}
+	//		
+	//	if sciencePaused == 0 && scienceClosed==0	
+	//	{
+	//		OnScienceTalk
+	//	}			
+	//
+	//	if thisPlacePaused == 0 && thisPlaceClosed==0	
+	//	{
+	//		OnThisPlaceTalk
+	//	}			
+	//
+	//	if dreamsPaused == 0 && dreamsClosed==0		
+	//	{
+	//		OnDreamsTalk
+	//	}	
+	//
+	//	if homePaused == 0 && homeClosed==0		
+	//	{
+	//		OnHomeTalk
+	//	}			
+	//
+	//	if brotherPaused == 0 && brotherClosed==0		
+	//	{
+	//		OnBrotherTalk
+	//	}			
+	//
+	//	if brotherPaused == 0	&& brotherClosed == 0	
+	//	{
+	//		OnBrotherTalk
+	//	}		
+			
+		PetsTalk	
+			
+		TalkAbtUnwantedPet
+			
+		if familiarity > 30 
+		{
+			"\0\s[0]%(z)I'll sing a song for you,\%(wx) %(username).\n\0\s[0]\i[102]\i[103]\%(wx)%(Zilchsong)%(d)\s[0]\e"
+		}
+	
+		if wantPets == 2 
+		{
+			"\0\s[0]\i[103]\i[102]%(z)Sometimes %(catName) plays and pretends like she bites me,\s[0]\i[108]\i[109]\%(wx) but she's actually very gentle!\%(wx)%(d)\s[0]\e"
+		}
+	
+		"\0\s[0]\i[103]%(z)Did you noticed it rained today?\%(wx)\n\n%(d)* (You think about the laundry.)\%(wx)\e"
+			
+		"\0\s[0]\i[103]%(z)Sometimes I try to think:\%(wx) if I wasn't myself,\%(wx) who would I be? \%(wx)\s[0]\i[109]...And I don't know.\%(wx)%(d)\e"
+		
+		"\0\s[0]\i[113]\i[114]%(z)I can't wait to be a grown up already.\%(wx) \s[0]\i[103]\i[102]You can do whatever you want!\%(wx)%(d)\s[0]\e"
+	
+		if canPet == 1 
+		{
+			"\0\s[0]\i[103]%(z)You can pet me now,\%(wx) if you want.\%(wx)%(d)\s[0]\e"
+		}	
+
+		"%(z)\0\s[0]\i[108]If you had a car with legs,\%(wx)\s[0]\i[115]\i[114]\%(wx) you could drive it through a staircase!%(d)\%(wx)\s[0]\e"
+
+	}
+	else
+	{
+		"\0\s[0]\i[5]\i[113]\i[114]* (Seems like they want to say something.\%(wx) But they don't.)\%(wx)\%(wx)\%(wx)\s[0]\e"
+		"\0\s[0]\i[5]* (Zilch frowns.)\%(wx)\%(wx)\%(wx)\e"
+		"\0\s[0]\i[2]\i[108]\i[109]* (Zilch sniffs and rubs their eyes.)\%(wx)\%(wx)\%(wx)\e"
+	}
+}
+
+
+TalkAbtUnwantedPet
+{
+	if unwantedPet == 1 
+	{	
+		"\0\s[0]%(z)Do you always touch people you don't know?\n\n%(d)"
+		--
+		if 	(reinstalled == 1 || didAreset == 1)
+		{
+			"\![*]\q[I actually do know you.,IDoKnow]\n"
+		}				
+		else
+		{
+			"* (Maybe if you talked to them they'd feel more comfortable.)\%(wx)\n"
+		}
+		--
+		"\e"
+	}	
+}
+//-OnHourChange-------------------------------------------------------------------//
+OnHourChange
+{
+	passmin = 0
+	passhour++
+	cumuhour++
+}
+
+
+
+//-OnMinuteChange-------------------------------------------------------------------------------------//
+//Time-related bits of dialogue. 
+//Simple version:
+/*
+OnMinuteChange
+{
+	timeslot = GetTimeSlot
+	if mikireflag == 1
+	{
+ 		MikireTalk
+	}
+}
+*/
+
+OnMinuteChange
+ {
+	timeslot = GetTimeSlot 
+	--
+	if passmin >=60
+	{
+		OnHourChange
+	}
+	--
+	if cumumin >= 60
+	{
+		cumumin = 0		
+		cumuhour++
+	}
+	--
+ 	if minute == 0 
+	{
+ 		if hour == 12 //noon
+		{
+ 			//"\0\s[0]It's noon.\w8.\e"
+		}
+ 		elseif hour == 0 //Midnight.
+		{
+
+		}
+		elseif hour == 23 
+		{
+			if minute == 55 
+			{
+				//"\0\s[0]5 minutes to midnight.\e"
+			}
+			else
+			{
+				//"\0\s[0]It's 11 pm.\e"
+			}
+		}
+		elseif hour == 7 && minute == 30 && weekday == 0
+		{
+			//"\0\s[0]It's 7:30 on Sunday.\e"
+		}
+		elseif hour == 16
+		{
+			//"\1\s[10]It's 4 pm.\e"
+		}
+		else //ghost annouces the time
+		{
+			//"\0\s[0]It's %(hour12)'o clock.\e"
+		}
+	}
+	//Don't touch this part.
+	elseif mikireflag == 1
+ 	{
+ 		MikireTalk
+	}
+ }
+
+//--OnSecondChange------------------------------------------------------------------------------------//
+//Gets called every second.
+OnSecondChange
+ {
+	if passsec == 60
+ 	{
+		passsec = 0
+		passmin ++
+		cumumin ++
+	}
+ 	else
+ 	{
+		passsec ++
+	}
+	if mikireflag == 1 && reference1 == 0
+	{
+		EndMikireTalk
+ 	}
+	mikireflag = reference1
+	if reference2 == 1 //two chars overlap
+	{
+	}
+ }
+
+ //---- MikireTalk ---------------------------------------------------------------------//
+ //Called when main char is off the screen.
+MikireTalk 
+ {
+	"\0\s[0]* (Zilch is off screen.\%(wx) You Can bring them back with Ctrl-Shift-F12.)\%(wx)\e"
+ }
+
+//----EndMikireTalk--------------------------------------------------------------------//
+ //For after you bring the character back on screen.
+ 
+EndMikireTalk
+ {
+	 if verbos == "HIGH"
+	 {
+		if isNilch == 0
+		{
+			"\0\s[0]* (That's better.)\%(wx)\e"
+		}
+		
+	 }
+ }
+
+
+//----OnSurfaceRestore -------------------------------------------------------------------//
+//Restores default pose. Also if used \s[-1] and made character disappear it brings them back
+//Can use if-else to make certain pose stay when OnSurfaceRestore is called 
+//Can use to clean up things left on the screen, primarily from using p[number]\s[] to call up other objects or characters. Just make sure to add a p[number]\s[-1] to OnSurfaceRestore
+
+OnSurfaceRestore
+ {
+	//You can check  the poses they're currently in, and comment on it
+	//reference0 for main char
+	//refernce1 for secondary
+ 	//if reference0 == 4
+	//if reference1 == 6 
+	
+	case bootPhase
+	{
+		when "Nilch"
+		{
+			"\1\s[-1]\0\s[0]\i[9]\e"			
+		}
+		when "Normal"
+		{
+			"%(Garbage)\0\s[0]\e"			
+		}
+	}
+	
+//	if isNilch == TOINT(1)
+//	{
+//		
+//	}
+//	else
+//	{
+//
+//		//"\1\s[-1]\0\s[0]\e"		
+//	}
+
+ }
+
+ 
+//--OnKeyPress-----------------------------------------------------------------------------------//
+//Hotkeys your ghost will use.
+OnKeyPress
+{
+	if reference0 == "t"
+	{
+		OnAiTalk
+	}
+	elseif reference0 == "r"
+	{
+		OnLastTalk
+	}
+	elseif reference0 == "f1"
+	{
+		"\![open,readme]"
+	}
+}

@@ -1,0 +1,34 @@
+SetPronouns
+{
+	"\0\s[0]* (Are you...)\%(wx)\n\n[half]\_q\![*]\q[He-His-Him,choicemasc]\n\![*]\q[She-Her-Her,choicefem]\n\![*]\q[They-Their-Them,choiceneither]\e"
+}
+
+Select.choicemasc
+{
+	presuffix = "masculine"
+	himher = "him"
+	heshe = "he"
+	hisher = "his"
+	--
+	"\0\s[0]Pronouns set to masculine.\e"
+}
+
+Select.choicefem
+{
+	presuffix = "feminine"
+	himher = "her"
+	heshe = "she"
+	hisher = "her"
+	--
+	"\0\s[0]Pronouns set to feminine.\e"
+}
+
+Select.choiceneither
+{
+	presuffix = "undefine"
+	himher = "them"
+	heshe = "they"
+	hisher = "their"
+	--
+	"\0\s[0]Pronouns set to gender neutral.\e"
+}

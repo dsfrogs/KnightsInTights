@@ -1,0 +1,55 @@
+/*
+
+//-------------------------------------BUGS------------------------------------------//
+
+//SSP NEW VERSION MESSES WITH NAR INSTALLATION! URGH!
+
+//-------------------------------------Events to test------------------------------------------//
+
+(verbosity high)
+
+Beginning               ||
+						||
+Reinstalled			--- ||
+						||
+Reset				---	||
+						||
+Ending				---	||
+						||
+Nilch				---	||			
+						||
+wantHome			---	|| 			
+						||
+BrotherHike			---	||	
+						||
+willGoShopping		--- ||
+						||
+BakeCake			---	||
+						||
+Fridate				---	||		
+						||
+FridateAftermath 	---	|| 
+						||
+DrawingInTrash 		---	||	
+
+SinList				--- ||
+
+//-------------------------------------OTHER-IDEAS-----------------------------------------//
+
+//At ending maybe let people move text blocks in their pace? not sure if that's a good idea...
+
+//talk about- Home, Brother & science tend to get stuck grey ---> More Exp????
+
+//put last chosen dialogue into lastTalk so 'repeat' plays it and not just randomTalk
+
+//\s[0]\i[10] I can see the arms and legs disappear :[
+
+//prevent people from spamming pet or give candy when Z is upset? or just repeating an action rapidly?
+
+//Harmonica: volume 
+
+//Harmonica: make up a tune: input numbers = different notes?
+
+//draw dinosaurs on a bus
+
+*/

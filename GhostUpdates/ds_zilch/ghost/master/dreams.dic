@@ -1,0 +1,296 @@
+Dreams
+{
+	if dreamsLvl > 0
+	{			
+		if dreamsPaused == 1 //&& dreamsClosed==0
+		{
+			"%(g)\![*]\q[Dreams,OnDreamsTalk]%(w)"			
+		}
+		else
+		{
+			"\![*]\q[Dreams,OnDreamsTalk]"			
+		}
+		
+	}
+}
+
+DreamsLvlUp  
+{	
+	exp = dreamsExp; lvl = dreamsLvl; paused = dreamsPaused;			
+	closed = dreamsClosed;
+	
+	ShouldLvlUp
+		
+	dreamsExp = exp; dreamsLvl = lvl; dreamsPaused = paused;
+	exp = 0; lvl = 0; paused = 0; closed = 0;	
+}
+
+DreamsUpsetAfterFriday
+{
+	"\s[0]\i[2]\i[108]\i[109]%(z)I don't really want to think about dreams right now...%(d)\%(wx)\%(wx)\%(wx)"	
+	--
+	dreamsPaused=1
+	//NumOfOpenSubjects--	
+	dreamsExp=0
+	upsetAfterFriday++	
+}
+
+maxDreamLvl
+{
+	"10"
+}
+
+OnDreamsTalk
+{
+	_rnd = RAND(100)
+	if _rnd < 5
+	{
+		dreamsExp++
+	}
+	--
+	if dreamsPaused == 0 && (TOINT(upsetAfterFriday))==0
+	{	
+		case dreamsLvl
+		{
+			when 1
+			{
+	
+				"\0\s[0]\i[7] * (You ask Zilch if all of their dreams are this weird.)\%(wx)\n\n%(z)Oh, no!\s[0]\i[115]\%(wx) Usually they're much weirder!%(d)\%(wx)\s[0]\n"
+				--
+				themselfExp ++	
+	
+			}
+			when 2
+			{
+				thisPlaceExp ++
+				--					
+				"\0\s[0] * (You ask them if this feels like a dream)\%(wx)\n\n\i[114]\i[115]%(z)No!\%(wx) This feels real.\s[0]\%(wx)\i[112] I've been practicing to have a lucid dream,\%(wx)\s[0]\i[102]\i[103] and obviously it's a success!%(d)\w6\s[0]"				
+			}
+			when 3
+			{
+				themselfExp++
+				--
+				"\0\s[0]\i[7]\i[117] * (You want to ask Zilch if they ever get dreams where they're naked in school.\%(wx) Wait, are they wearing clothes right now?\%(wx) You can't tell.\%(wx) Best not to mention it.)\%(wx)\0\s[0]"				
+			}
+			when 4
+			{
+				"\0\s[0]* (You tell them about your recurring dreams where your teeth fall out.)\%(wx)\n\n\0\s[0]\i[114]\i[113]%(z)Those are the worst!%(d)\%(wx)\0\s[0]"				
+			}
+			when 5
+			{
+
+				"\0\s[0]%(z)I keep dreaming I have to drive a car,\%(wx)\0\s[0]\i[106]\i[107] but I don't know how to!%(d)\%(wx)\s[0]\n"
+				--
+				brotherExp++		
+			}
+			when 6 
+			{
+				"\0\s[0]%(z)I dreamt I was stuck in a traffic jam.\%(wx) \s[0]\i[103]All the drivers talked about how they're stuck because of dinosaurs.\%(wx) \s[0]And I said,\%(wx)\s[0]\i[54]\i[55]\i[113]\i[114] 'don't blame the dinosaurs!',\%(wx) \s[0]\i[109]\but then I saw that a bus full of dinosaurs blocked the road.%(d)\%(wx)\n\n\![*]\q[Woah,DinoImpressed]\n\![*]\q[...,quietDino]"			
+			}
+			when 7
+			{				
+				thisPlaceExp ++
+				--				
+				"\0\s[0]\i[115]\i[105]%(z)This is still the weirdest dream I ever had!%(d)\%(wx)\n\n\s[0]* (They keep insisting this is a dream.\%(wx) Because what else could it be?)\%(wx)"
+			}
+			when 8
+			{
+				accidentExp++
+				--
+				"\0\s[0]%(z)I had this dream where I was runing up a bell tower,\0\s[0]\i[110] and werewolves were chasing me.%(d)\%(wx)\n\n"	
+				--
+				ScaredAboutWolves
+				
+			}
+			when 9
+			{
+				"\0\s[0]%(z)I dreamt I was playing the harmonica.\%(wx) \s[0]\i[102]\i[103]I'm so good in my dreams!%(d)\%(wx)\n\s[0]"
+				--
+				harmonicaExp++					
+			}			
+			when 10
+			{
+				parentsExp ++	
+				--
+				"\0\s[0]\i[2]\i[111]\i[110]%(z)You know how when someone dies,\%(wx) sometimes they're still alive in your dreams?\%(wx) \s[0]And then you wake up and remember.%(d)\%(wx)\n\n\![*]\q[I know.,IKnowWhatThatsLike]\n\![*]\q[...,quietParentsDream]"	
+				--
+				dreamsPaused = 1
+			}			
+		}
+		-- 
+		if dreamsLvl > TOINT(maxDreamLvl)
+		{
+			DreamsPool
+		}
+		else
+		{
+			dreamsPaused = 1	
+		}	
+	}
+	elseif (TOINT(upsetAfterFriday))!=0
+	{
+		DreamsUpsetAfterFriday
+	}
+	else
+	{		
+		"\0\s[0]\i[111]%(z)My dreams?\%(wx) *sigh*\%(wx) \0\s[0]I don't remember any.%(d)\%(wx)\n"
+		"\0\s[0]\i[111]%(z)I dreamt about...\%(wx)\%(wx)\%(wx)\0\s[0] Nevermind.%(d)\%(wx)\n"		
+	}
+	--
+	"\e"
+}
+
+
+//]\q[I know,IKnowWhatThatsLike]\n\![*]\q[...,quietParentsDream]"	
+
+
+Select.quietParentsDream
+{
+	quiet++
+}
+
+Select.IKnowWhatThatsLike
+{
+	LessUpsetNow
+}
+
+ScaredAboutWolves
+{
+	"\![*]\q[Were you scared?,NotScared]\n\![*]\q[...,quietWolves]\n"	
+}
+
+Select.NotScared
+{
+	"\0\s[0]\i[115]\i[105]\i[54]\i[55]\i[5]%(z)*huff* I was not scared!\s[0]\i[115]\i[105]\i[54]\i[55]\i[8].\%(wx).\%(wx).\%(wx)much!\w8\s[0]%(d)"
+
+}
+Select.quietWolves
+{
+	Quiet
+}
+
+Select.YesFlying
+{
+	LessUpsetNow
+	--
+	dreamPeoplesDreams	
+}
+
+Select.NoFlying
+{
+	dreamPeoplesDreams
+}
+
+
+dreamPeoplesDreams
+{
+	"\0\s[0]\i[110]\i[111]%(z)Hmm.\%(wx) Would people in your dreams have dreams too?%(d)\%(wx)"
+}
+
+Select.DinoImpressed
+{
+	"\0\s[0]\i[110]\i[111]%(z)Imagine if I could draw dinosaurs on a bus!%(d)\%(wx)\s[0]"	
+	--
+	artExp++
+	LessUpsetNow
+}
+
+Select.quietDino
+{
+	Quiet
+}
+
+MaxLinesInDreamsPool
+{
+	"10"
+}
+
+DreamsPool
+{
+	//"chooseDreams=%(chooseDreams)\n"
+	--
+	if chooseDreams >=TOINT( MaxLinesInDreamsPool) //match to total number of lines in pool
+	{
+		chooseDreams = 0	
+	}
+	--
+		chooseDreams++
+	--	
+	case chooseDreams
+	{
+		when 1
+		{
+			"\0\s[0]%(z)I dreamt we had another room in the house.\%(wx)\s[0]\i[102]\i[103] It was old and mysterious,\%(wx) filled with ancient books and furniture.%(d)\%(wx)\s[0]"			
+		}
+		when 2
+		{
+			"\0\s[0]\i[107]%(z)I dreamt we had a test at school and I was unprepared!\%(wx) \s[0]\i[102]Also there were lobsters on the table! They kept messing up the papers and stealing my pens!\%(wx)%(d)\s[0]"			
+		}
+		when 3
+		{
+			"\0\s[0]\i[102]\i[103]%(z)I dreamt the house was filled with spiders!\%(wx) \s[0]\i[109]But they were cleaning,\s[0]\i[102] so that was okay.%(d)\%(wx)\s[0]"			
+		}
+		when 4
+		{
+			"\0\s[0]\i[115]\i[114]%(z)I dreamt about a flying city.\%(wx) \s[0]\i[102]\i[103]They used many many propellors to stay afloat.%(d)\%(wx)\s[0]"			
+		}
+		when 5
+		{
+			"\0\s[0]\i[109]%(z)I dreamt there was a ton of chocolate in the cupboard!\%(wx) I opened the door and it kept falling out.\%(wx) \0\s[0]\i[102]\i[103]I was trying to eat it but I wasn't quick enough!\%(wx) The house was flooded!%(d)\%(wx)\s[0]"			
+		}
+		when 6
+		{
+			if wantPets == 2
+			{
+				"\0\s[0]\i[102]\i[103]%(z)I dreamt that %(catName) grew wings and started flying around the house!\%(wx) \s[0]\i[103]I couldn't catch her!%(d)\%(wx)\s[0]"
+				
+				"\0\s[0]\i[108]%(z)I dreamt that %(catName) talked.\%(wx) \s[0]\i[113]\i[114]She asked for catnip and ear scratches.%(d)\%(wx)\s[0]"
+				
+				"\0\s[0]%(z)I dreamt that %(catName) was cloned! There was another one every minute.\%(wx) \0\s[0]\i[102]\i[103]There was no end to it!%(d)\%(wx)\s[0]"
+			
+				{
+					"\0\s[0]%(z)I dreamt about %(catName)...\%(wx)\0\s[0]\i[2]\i[109] It was a bad dream.%(d)\%(wx)\s[0]"
+					--
+					dreamsPaused = 1
+					//NumOfOpenSubjects--	
+				}
+			}
+			else
+			{
+				DreamsPool
+			}			
+			
+		}	
+		when 7
+		{
+			"\0\s[0]\i[108]%(z)I dreamt I was looking at the mirror,\%(wx) and the reflection moved in a delay...\%(wx) \s[0]\i[113]\i[114]like it was mimicking me instead of reflecting me.\%(wx)\s[0] So I yelled to my brother:\%(wx)\s[0]\i[108]\i[109] the mirror is evil!\%(wx) \s[0]And then I woke up.%(d)\%(wx)\n\n* (You say you also hate it when the mirror is evil.)"
+			--
+			brotherExp++
+		}
+		when 8
+		{
+			"%(z)\0\s[0]\i[111]I dreamt that a beautiful bird flew into my house,\%(wx) and got trapped inside.\%(wx)\s[0] I wrapped it with a towel and took it outside.\%(wx)\n\n *sigh*\i[2]%(d)"
+		}
+		when 9
+		{
+			if didAreset == TOINT(1)
+			{
+				"* (You wonder if you should tell Zilch about that dream with the well...\%(wx) What would they make of it?)\%(wx)"
+				
+				"%(z)\0\s[0]\i[111]I dreamt that a stranger was trapped at the bottom of a well,\%(wx) and I tried to pull them out...\%(wx)\s[0]\i[113]\i[114] But it was so difficult!\%(wx)%(d)\s[0]"
+			}
+			else
+			{
+				DreamsPool
+			}
+		}
+		when 10
+		{
+			"\0\s[0]\i[102]\i[103]%(z)Can you fly in your dreams?\%(wx) \0\s[0]\i[105]If not, I could teach you.\%(wx) \0\s[0]\i[109]Just close your eyes and imagine the floor getting away from you.\%(wx)\%(wx)\%(wx) \0\s[0]\i[102]\i[103]Is it working?%(d) \n\n\![*]\q[Oh my god it's working Zilch look look,YesFlying]\n\![*]\q[No,NoFlying]\n"				
+		}
+
+	}
+	
+
+}
+

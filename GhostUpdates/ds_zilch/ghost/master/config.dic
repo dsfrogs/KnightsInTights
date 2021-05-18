@@ -1,0 +1,223 @@
+//Handles pronouns, talk rate, birthday, toggle uninstall-option
+//Captain Poncho doesn't need pronouns
+
+//--TalkConfig---------------------------------------------------------------------------//
+//change name, put in birthday, change talk rate. 
+Select.ConfigAfterFriday
+{
+	"\0\s[0]* (Zilch doesn't look like they want to mess with that right now.\%(wx) Maybe you should talk to them first.)\%(wx)" 
+}
+
+
+Config
+{
+	"\0\b[2]\_q" 
+	--
+	"Verbosity: (NOW : %(verbos) \![*]\q[Change,SetVerbos]?)\n\n[half]"
+	--
+	"Talk rate: %(talktime) (\![*]\q[Change,talkinter]?)\n\n[half]"
+	--
+	"Text speed: (NOW : %(textspeed) \![*]\q[Change,SetTextSpeed]?)\n\n[half]"	
+	--
+	"\![*]Enable Uninstall? (NOW : %(deleteshitai))\n\q[ON,deleteon] \q[OFF,deleteoff]\n\n[half]"
+	--
+//	"\![*]\q[Teach them your pronouns?,PRONOUN]\n"	
+	--
+	"\![*]\q[Your birthday,BDAY]\n"	
+	--	
+	"\![*]\q[Your name,yourName]\n"
+	--
+	"\![*]\q[Check how long it's been,TimeCheck]\n"
+	--
+	"\n\![*]\q[Back,BACK2MENU]\e"	
+}
+
+//----------------------------Verbosity-------------------------------//
+Select.SetVerbos
+{
+	"\0\s[0]Should Zilch comment on booting, closing, reloading, changing?\n\n[half]\![*]\q[Yes,VerbosityHigh]\n\![*]\q[No,VerbosityLow]\e"
+	
+}
+
+Select.VerbosityHigh
+{
+	verbos = "HIGH"
+	Config
+}
+
+Select.VerbosityLow
+{
+	verbos = "LOW"
+	Config
+}
+
+//-----------------------------TextSpeed-------------------------------//
+
+Select.SetTextSpeed
+{
+	"\0\s[0]Choose text speed:\n\n[half]/
+	\![*]\q[Slow,TextSpeedLow]\n/
+	\![*]\q[Medium,TextSpeedMedium]\n/	
+	\![*]\q[Fast,TextSpeedHigh]\e"
+}
+
+Select.TextSpeedLow
+{
+	textspeed = "SLOW"
+	wx = "w8"
+	".\%(wx).\%(wx).\%(wx)"
+	Config
+}
+
+Select.TextSpeedMedium
+{
+	textspeed = "MEDIUM"	
+	wx = "w6"
+	".\%(wx).\%(wx).\%(wx)"	
+	Config	
+}
+
+Select.TextSpeedHigh
+{
+	textspeed = "FAST"
+	wx = "w4"
+	".\%(wx).\%(wx).\%(wx)"
+	Config
+}
+
+//-----------------------------TimeCheck------------------------------//
+Select.TimeCheck
+{
+	"\s[0]* ("
+	--
+	if (passhour >= 1)
+	{
+		"%(passhour) hours and "		
+	}
+	--
+	"%(passmin) minutes passed since booted.)\%(wx)\n* (Overall, Zilch has been on your computer for"
+	--
+	if (cumuhour < 1)
+	{
+		" less than one hour.\%(wx)\n\e"		
+	}
+	elseif (cumuhour >= 2)
+	{
+		" %(cumuhour) hours.)\%(wx)\n\e"		
+	}
+	else
+	{
+		" more than one hour.)\%(wx)\n\e"		
+	}
+}
+
+
+Select.BACK2MENU
+{
+	MenuRun
+}
+
+Select.PRONOUN
+{
+	SetPronouns
+}
+
+
+//---------------BDAY----------------------//
+
+Select.BDAY
+{
+	SetBirthday
+}
+
+//Talk Rate----------------------------------------------------------------------------------//
+//talktime and aitalkinterval defined in bootend.dic
+
+Select.talkinter
+{
+	"\0\s[0]\b2How often should Zilch speak?\w8\s[0] Current interval is %(talktime)./
+	\0\n\n[half]/
+	\![*]\q[Every 30 seconds,TALKMAX]\n/
+	\![*]\q[Every minute,TALKHIGH]\n/
+	\![*]\q[Every 3 minutes,TALKNORMAL]\n/
+	\![*]\q[Every 5 minutes,TALKPOOR]\n/
+	\![*]\q[Never!!,TALKNONE]\n\n[half]/
+	\![*]\q[Don't change,TalksTill]\e"
+}
+
+TalkRateChanged
+{
+	"\0\s[0]Talk rate changed."
+}
+
+Select.TalksTill
+{
+	"\0\s[0]No change to the talk rate.\e"
+}
+
+Select.TALKMAX
+{
+	talktime = "30 seconds" 
+	aitalkinterval = 45 
+	--	
+	"\0\s[0]%(TalkRateChanged)\e"
+}
+
+Select.TALKHIGH
+{
+ 	talktime = "minute"
+	aitalkinterval = 90
+	--	
+ 	"\0\s[0]%(TalkRateChanged)\e"
+}
+
+Select.TALKNORMAL
+{
+ 	talktime = "3 minutes"
+	aitalkinterval = 270
+	--	
+	"\0\s[0]%(TalkRateChanged)\e"
+}
+
+Select.TALKPOOR
+{
+ 	talktime = "5 minutes"
+	aitalkinterval = 400
+	--	
+ 	"\0\s[0]%(TalkRateChanged)\e"
+}
+
+Select.TALKNONE
+{
+ 	talktime = "...never"
+	aitalkinterval = 0
+	--	
+	"\0\s[0]* (Zilch will be quiet now.)\e"
+}
+
+//-----Enable Uninstall------------------------------------------------------------//
+Select.deleteon
+{
+	deleteshitai = "ON"
+	Config
+}
+
+Select.deleteoff
+{
+	deleteshitai = "OFF"
+	Config
+}
+
+
+//-------------Your Name--------------------//
+Select.yourName
+{
+	if poncho == 0
+	{
+		"* (Zilch doesn't know your name.)\%(wx)\n\n\![*]\q[Change that?,TEACHNAME]\e"
+	}
+	else
+	{
+		"* (Your name is Captain Poncho.)\e"
+	}	
+}

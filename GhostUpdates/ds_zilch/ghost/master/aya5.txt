@@ -1,0 +1,60 @@
+﻿//These define what character set your ghost will be using. Don't touch any of them.
+
+charset, UTF-8
+charset.dic, UTF-8
+charset.output, UTF-8
+charset.file, UTF-8
+charset.save, UTF-8
+charset.extension, UTF-8
+
+
+//---- Dictionary Files ---------------------------------------------------------------------
+
+//.dic files used by ghost 
+//can add or remove
+//recommendation: adding ghost initials to front like z_bootend 
+
+dic, shiori3.dic		
+dic, string.dic			
+dic, aitalk.dic			
+dic, bootend.dic		
+dic, mouse.dic			
+dic, etc.dic			
+dic, menu.dic
+dic, word.dic
+dic, commu.dic
+dic, nameteach.dic
+dic, anchor.dic
+dic, 1st_intro.dic
+dic, config.dic
+dic, pronouns.dic
+dic, birthday.dic
+dic, set_vals.dic
+dic, fridate.dic
+dic, date_check.dic
+dic, talkAbout.dic
+dic, wanthome.dic
+dic, playground.dic
+dic, LvlExp.dic
+dic, thisPlace.dic
+dic, dreams.dic
+dic, themself.dic
+dic, home.dic
+dic, family.dic
+dic, brother.dic
+dic, parents.dic
+dic, accident.dic
+dic, art.dic
+dic, science.dic
+dic, harmonica.dic
+dic, disorder.dic
+dic, friends.dic
+dic, reinstalled.dic
+dic, quiet.dic
+dic, anending.dic
+dic, nilch.dic
+//---- Log Location -------------------------------------------------------------------------
+//I'm not entirely sure what this does, but basically don't touch it.
+
+
+//log, ayame.log		

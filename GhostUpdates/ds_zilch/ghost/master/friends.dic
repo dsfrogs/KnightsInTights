@@ -1,0 +1,89 @@
+Friends
+{
+	if friendsLvl > 0 && friendsClosed==0
+	{			
+		if friendsPaused == 1 
+		{
+			"%(g)\![*]\q[Friends,OnFriendsTalk]%(w)"			
+		}
+		else
+		{
+			"\![*]\q[Friends,OnFriendsTalk]"			
+		}
+		
+	}
+}
+
+FriendsLvlUp  
+{	
+	exp = friendsExp; lvl = friendsLvl; paused = friendsPaused;			
+	
+	ShouldLvlUp
+		
+	friendsExp = exp; friendsLvl = lvl; friendsPaused = paused;
+	exp = 0; lvl = 0; paused = 0;	
+	
+}
+
+OnFriendsTalk
+{
+	_rnd = RAND(100)
+	if _rnd < 5
+	{
+		friendsExp++
+	}
+	--
+	if friendsPaused == 0 && friendsClosed==0 && TOINT(upsetAfterFriday)==0
+	{
+		case friendsLvl
+		{
+			when 1
+			{
+				friendsExp++
+				--
+				"\0\s[0]%(z)Friends?\%(wx) \s[0]\i[102]\i[103]Yes,\%(wx) I have many friends!\%(wx) \s[0]\i[8]\i[110]\i[109]so many I can't talk about them right now,\%(wx)\s[0]\i[107]\i[8] haha!%(d)\%(wx)\s[0]" 
+			}
+			when 2
+			{
+				friendsExp++
+				--				
+				"\0\s[0]%(z)\i[102]A girl in my class said she'd buy me a candy if I helped her with some math excercises.\%(wx) \s[0]\i[103]So I did,\%(wx) and she gave me money to buy some candy.\%(wx) \s[0]\i[115]\i[105]\n\nBut I didn't need any money!\%(wx) \s[0]\i[102]\i[103]I wanted \%(wx)her\%(wx) to give me a candy.%(d)\s[0]\i[2]\%(wx)"
+			}
+			when 3
+			{		
+				"\![*]\q[Let's be friends,WannaBeFriends]\n\![*]\q[...,QuietFriends]"	
+				--
+				friendsClosed = 1					
+			}
+		}
+		--
+		friendsPaused = 1
+		//NumOfOpenSubjects--	
+	}
+	elseif TOINT(upsetAfterFriday)!=0
+	{
+		"\s[0]%(z)My friends..?\%(wx)\%(wx)\s[0]\i[2]\i[108]\i[109]\%(wx)\%(wx) I don't have any...\%(wx)%(d)"
+		--
+		friendsPaused=1
+		//NumOfOpenSubjects--	
+		friendsExp=0
+		upsetAfterFriday++
+	}
+	else
+	{		
+	}
+	--
+	"\e"
+}
+
+
+Select.QuietFriends
+{
+	Quiet
+}
+
+
+Select.WannaBeFriends
+{
+	"\0\s[0]\%(wx)%(z)\i[107]You're a person I've dreamt up.\%(wx) \0\s[0]\i[102]\i[103]So it would be like having an imaginary friend.\%(wx) \0\s[0]\i[115]\i[105]And I'm too old for that.\%(wx)\s[0]\n .\%(wx) .\%(wx) .\%(wx)\n\i[109]\i[110]Wait!\%(wx) Nevermind!\%(wx)\0\s[0]\i[102]\i[103] I'll make an exception!%(d)\s[0]\%(wx)"
+}

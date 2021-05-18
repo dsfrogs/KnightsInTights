@@ -1,0 +1,27 @@
+charset,UTF-8
+version,1
+option,DisableNoDefineSurfaces
+
+group Z //numbers = order of files?
+{
+	scope,0
+
+	1500,ZDefault	
+	1501,Angry
+	1502,Embarassed 
+	1503,Harmonica
+	1504,Holdhead
+	1505,Crying
+	1506,Folded
+	1507,Hugself
+
+}
+
+group T
+{
+	scope,1
+	
+	10,Default
+}
+
+//to have a group of surfaces disabled in surface test name it __disabled

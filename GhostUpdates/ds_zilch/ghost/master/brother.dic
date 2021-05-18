@@ -1,0 +1,351 @@
+
+Brother
+{
+	if brotherLvl > 0 //&& brotherClosed==0
+	{			
+		if brotherPaused == 1
+		{
+			"%(g)\![*]\q[Brother,OnBrotherTalk]%(w)\n"			
+		}
+		else
+		{
+			"\![*]\q[Brother,OnBrotherTalk]\n"			
+		}
+		
+	}
+}
+
+BrotherLvlUp  
+{	
+	exp = brotherExp; lvl = brotherLvl; paused = brotherPaused;			
+	closed = brotherClosed;
+	
+	ShouldLvlUp
+		
+	brotherExp = exp; brotherLvl = lvl; brotherPaused = paused;
+	exp = 0; lvl = 0; paused = 0; closed = 0;
+}
+
+BrotherUpsetAfterFriday
+{
+	"\s[0]\i[2]\i[111]%(z)My brother wouldn't like what I've been doing...%(d)\%(wx)\%(wx)"		
+	--
+	brotherPaused=1
+	//NumOfOpenSubjects--	
+	brotherExp=0
+	upsetAfterFriday++	
+}
+
+OnBrotherTalk
+{
+	_rnd = RAND(100)
+	if _rnd < 5 
+	{
+		brotherExp++
+	}
+	--
+	if brotherPaused == 0 && (TOINT(upsetAfterFriday))==0
+	{
+		case brotherLvl
+		{
+			when 1
+			{	
+				"\0\s[0]\i[103]\i[117]%(z)My brother?\%(wx) He takes care of me now.\%(wx)\s[0]\i[105]\i[115]\i[5] He is really annoying!%(d)\%(wx)\%(wx)\s[0]" 
+				--
+				parentsExp++
+			}
+			when 2			
+			{
+				"\0\s[0]%(z)My brother is always bossing me around.\%(wx) \s[0]\i[115]\i[105]\i[5]Not fair!\%(wx) I'm practically a grown up!%(d)\%(wx)\s[0]"	
+			}
+			when 3
+			{
+				themselfExp ++
+				--
+				"\0\s[0]\i[109]%(z)*sigh* My brother is always busy.%(d)\%(wx)\s[0]"	
+			}
+			
+			when 4
+			{				
+				dreamsExp++	
+				artExp++
+				--
+				"\0\s[0]\i[107]%(z)Sometimes I can get distracted.\%(wx) \0\s[0]\i[102]I get stuck in my own head and I won't even hear when people call my name.\%(wx) \s[0]When my brother notices he tell me, \s[0]\i[105]\i[115]'Zilch, stop dreaming.'\%(wx) \0\s[0]\i[56]\i[109]\i[2]But I can't help it.%(d)\%(wx)\0\s[0]"
+			}
+			when 5
+			{
+				disorderExp++ 
+				accidentExp++
+				--
+				"\0\s[0]\i[106]\i[105]%(z)We were really close when we were little.\%(wx) \s[0]\i[117]\i[56]Now...\%(wx) Well, I can't tell him everything.\%(wx)\n\n%(d)\![*]\q[Why?,AskWhyBrother]\n\![*]\q[...,doNotAsk]\%(wx)\n\s[0]"	
+			}
+			when 6
+			{
+				"\0\s[0]\i[103]%(z)Sometimes I'm really angry at my brother.\0\s[0]\i[107]\%(wx) And I don't know why...%(d)\%(wx)\n"
+				--
+				disorderExp++ 
+			}
+			when 7
+			{
+				"%(z)\s[0]\i[108]\i[109]When I was small,\%(wx) my brother used to walk to school with me.\%(wx) \s[0]\i[102]\i[103]We used to make up stories about the things we saw on our way.\%(wx) \nFor example,\s[0]\i[113]\i[114] there was a big dog that scared us,\%(wx)\s[0]\i[102]\i[103] so we decided it was a dragon.\%(wx)\%(wx)\%(wx)%(d)\c\s[0]%(z)So when we went shopping last week,\%(wx) I said,\%(wx) \s[0]\i[102]what if the grocery store is magical,\%(wx)\s[0]\i[103] and it can teleport from city to city?\%(wx) \s[0]\i[2]\i[56]\i[108]\n...But he was too busy to care about it.\%(wx)%(d)\s[0]"
+				--
+				dreamsExp++
+				brotherPaused=1
+				//NumOfOpenSubjects--		
+			}				
+				
+		}
+		--
+		if brotherLvl > TOINT(maxBrotherLvl)
+		{
+			BrotherPoolTalk
+		}
+		--	
+		brotherPaused = 1	
+		//NumOfOpenSubjects--		
+		//else
+		//{
+		//	brotherPaused = 1			
+		//}		
+	}
+	elseif (TOINT(upsetAfterFriday))!=0
+	{
+		BrotherUpsetAfterFriday
+	}
+	else
+	{
+		"\0\s[0]\i[102]%(z)He's not heavy.\%(wx) \s[0]\i[115]He's my brother.%(d)\%(wx)\s[0]"
+	}
+	--
+	"\e"
+
+}
+
+
+maxBrotherLvl
+{
+	"7"
+}
+
+brotherMaxLinesInPool
+{
+	"7"
+}
+
+BrotherPoolTalk
+{
+	if (ChooseBrother >= TOINT(brotherMaxLinesInPool))
+	{
+		ChooseBrother = 0		
+	}
+	--
+	ChooseBrother++
+	--
+	case ChooseBrother
+	{
+		when 1 
+		{
+			if wantPets == 1
+			{
+				wantPets= TOINT(2)
+				--
+				"%(jump)%(jump)%(z)Listen, listen! \%(wx) \0\s[0]\i[107]\i[106]Big news!\%(wx)\s[0]\i[102]\i[103] I finally convinced my brother to let me keep a cat!\%(wx) She has three colors.\%(wx)\s[0]\i[115]\i[105] She's pretty small,\%(wx) but that's okay too.\%(wx)\s[0]\n\n[half]\w8\c%(d)\![*] \q[What's her name?,AskCatName]\n\![*]\q[...,doNotAsk]"	
+			}
+			else
+			{
+				BrotherPoolTalk
+			}				
+		}
+		when 2 
+		{
+			"\0\s[0]\i[2]\i[111]%(z)I went to sleep in my brother's room because I couldn't sleep in mine.\%(wx) \s[0]\i[102]And his alarm went off at 6:00 AM!\%(wx)\s[0]\i[115]\i[105]\i[5] I will exact my revenge!\%(wx)%(d)\s[0]"	
+			--
+			themselfExp++
+			dreamsExp++				
+		}
+		when 3 
+		{
+			"\0\s[0]\i[117]\i[103]%(z)He tells me not to climb trees because I'll break a leg.\%(wx)\0\s[0] Hmmph.\%(wx)\0\s[0]\i[5]\i[102] Who do you think I learned that from?\%(wx)\0\s[0]%(d)"					
+		}
+		when 4 
+		{
+			if wantPets == 2
+			{
+				"%(z)\s[0]\i[102]I think %(catName) likes my brother more than me!\%(wx) \s[0]\i[103]She goes to sleep in his bed all the time,\%(wx) \s[0]and when he's not around,\%(wx) she scratches at his door.\%(wx)\s[0]\i[115]\i[105]\i[55]\i[54] I should tell her he didn't even want a pet!%(d)\s[0]"		
+			}
+			else
+			{
+				BrotherPoolTalk		
+			}			
+		}	
+		when 5 
+		{
+			"\0\s[0]* (You ask Zilch about their brother's work).\n\n%(z)\i[102]He works at a bakery!\%(wx)\s[0]%(d)\n\n"
+			--
+			if (themselfLvl >=5)
+			{
+				"* (Is that why Zilch likes eating sweet things so much?)\%(wx)\n\n%(z)\i[5]Hmmph, not!\%(wx) \i[115]\i[105]I liked it before!\%(wx)%(d)\s[0]"
+			}			
+		}
+		when 6 
+		{
+			if familiarity >20
+			{
+				musOn =0
+				--
+				"* (You ask them if there's something they want to tell their brother.)\i[109]\n\n\%(wx)%(z)Maybe...\n\n%(d)\s[0]\![*]\q[Want to practice?,PracticeBrother]"				
+			}
+			else
+			{
+				BrotherPoolTalk		
+			}					
+		}
+		when 7
+		{
+			"%(z)\s[0]If I don't feel like going to school,\%(wx) my brother tries to convice me to get out of bed.\%(wx)\n\s[0]\i[55]\i[54]\i[115]\i[114] He tricks me by putting cookies just out of reach so I would have to get up!\%(wx)\s[0]\i[109] But if he can't do that,\%(wx) he stays at home with me.\%(wx)\s[0]%(d)"
+		}
+
+	}
+}
+
+
+Select.PracticeBrother
+{
+	if musOn == 0
+	{
+		"\![*]\q[Put on a fake mustache,fakeMusOn]\n"		
+	}
+	else  
+	{
+		"\_q\![*]Fake mustache is on.\n"
+	}
+	--
+		"\![*]\q[Talk to me,Talk2Nilch]\n"	
+}
+
+Select.fakeMusOn
+{
+	musOn = 1
+	--
+	Select.PracticeBrother
+}
+
+Select.Talk2Nilch
+{
+	"\0\s[0]* (You say: I, who is Zilch's brother, am listening.)\%(wx)\n\n\0\s[0]\i[115]\i[105]%(z) *Huff* Well...\0\s[0]\%(wx) *Huff*\i[115]\i[105]\i[5] I don't like it when you tell me what to do, because, um...\%(wx) then it's like you're not my brother anymore...\%(wx) and I miss you.\s[0]\i[2]\i[110]\i[111]%(d)\%(wx)\n\n"
+	--
+	if (brotherLvl > 10 && familiarity > 50)
+	{
+		"\![*]\q[Say something,IWillAlways]"
+	}
+}
+
+Select.IWillAlways
+{
+	LessUpsetNow
+	--
+	"* (You say: but Zilch.\%(wx) I will always be your brother.)\%(wx)\n\n"
+	--
+	" %(z)Mmm.%(d)\%(wx)\%(wx)\%(wx)\s[0]"	
+}
+
+
+BrotherSketchbook
+{	
+	"\0\s[0]\i[108]%(z)My brother asked to see my sketchbook!%(d)\%(wx)\s[0]\n\n\![*]\q[And...?,showSketchbook]"
+	--
+	brotherExp++	
+}
+
+Select.showSketchbook
+{
+	if (brotherLvl > 7)
+	{
+		"\0\s[0]\i[102]\i[103]%(z)He liked them!\%(wx) \s[0]\i[115]\i[105]I could tell he wasn't pretending, too.\%(wx) \s[0]\i[109]He saw something that wasn't there.\%(wx) \s[0]Because they were mine.%(d)\%(wx)"
+	}
+	else
+	{
+		"\0\s[0]\i[2]%(z)...I didn't want to show him.%(d)\%(wx)"
+	}	
+	--
+	"\e"
+}
+
+Select.AskCatName
+{
+	LessUpsetNow
+	"\0\s[0]%(z)\i[102]Her name is...\%(wx) %(catName)!%(d)\%(wx)\s[0]"
+}
+
+
+Select.AskWhyBrother
+{
+	familiarity++
+	--
+	"\0\s[0]\i[2]%(z)He'll be hurt.%(d)\%(wx)"
+	--
+	"\n\n\![*]\q[say something,ComfortAskWhyBrother]\n\n"
+}
+
+
+Select.ComfortAskWhyBrother
+{
+	"* (You say that maybe he'll want to know anyway.)\%(wx)"
+	--
+	"\n\n%(z)...okay%(d)"
+	--
+	LessUpsetNow
+}
+
+Select.doNotAsk
+{
+	"\0\s[0]"
+	--
+	Quiet
+}
+
+
+Select.veryExcited
+{
+	"\s[0]\i[113]\i[114]\i[54]\i[55]%(z)Very!\%(wx)\s[0]%(d)"
+}
+
+BrotherHike
+{
+	_rnd = RAND(100)
+	--
+	if weekday==4 && willHike==0 && _rnd < 40
+	{
+		homeExp++
+		willHike = TOINT(1)
+		--
+		"\0\s[0]%(z)My brother says if there's time this weekend,\s[0]\i[102]\%(wx) we'll go hiking!%(d)\%(wx)\n\n\s[0]\![*]\q[excited?,veryExcited]\e"
+	}	
+	elseif willHike==1 && (weekday==1 || weekday==2 || weekday==3)	
+	{
+		willHike = TOINT(2)
+		--
+		"\0\s[0]* (You ask Zilch about hiking with their brother.)\%(wx)\n\n"
+		--
+		if brotherLvl <4
+		{
+			"%(z)Ugh!\%(wx) \s[0]\i[106]\i[5]We couldn't stop fighting so we went back home after only two hours!\%(wx)\s[0]\%(wx)\i[2]%(d)"
+		}
+		else
+		{
+			"%(z)\s[0]\i[113]\i[114]It was fun!\%(wx)\0\s[0]\i[108] But my legs hurt now.\n\%(wx)%(d)" 
+			--
+			if sawAboar == TOINT(0)
+			{
+				"%(z)\s[0]\i[115]\i[114]Also!\%(wx) I saw a wild boar on the trail!\%(wx)%(d)"
+				--
+				sawAboar = TOINT(1)	//in art- a drawing of a boar			
+			}
+			--
+			"\s[0]"
+		}
+		--
+		"\e"
+
+	}
+}

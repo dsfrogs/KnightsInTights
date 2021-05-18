@@ -1,0 +1,67 @@
+//This should go into DisorderTalk as lvl 1
+
+Accident
+{
+	if accidentLvl > 0 //&& accidentClosed==0
+	{			
+		if accidentPaused == 1
+		{
+			"%(g)\![*]\q[Accident,OnAccidentTalk]%(w)"			
+		}
+		else
+		{
+			"\![*]\q[Accident,OnAccidentTalk]"			
+		}
+		
+	}
+}
+
+AccidentLvlUp  
+{	
+	exp = accidentExp; lvl = accidentLvl; paused = accidentPaused;			
+	closed = accidentClosed;
+	
+	ShouldLvlUp
+		
+	accidentExp = exp; accidentLvl = lvl; accidentPaused = paused;
+	exp = 0; lvl = 0; paused = 0; closed = 0;
+}
+
+OnAccidentTalk	
+{
+	if accidentPaused == 0
+	{
+		case accidentLvl
+		{
+			when 1
+			{
+				
+			}
+		}
+		--
+		if accidentLvl > 1
+		{
+			AccidentPool
+		}			
+		--
+		accidentPaused = 1
+		//NumOfOpenSubjects--	
+	}
+	else
+	{
+		Doesn'tWantToTalkAboutAccident		
+	}
+	--
+	"\e"	
+}	
+	
+AccidentPool
+{
+	
+}	
+	
+Doesn'tWantToTalkAboutAccident
+{
+	
+}
+	

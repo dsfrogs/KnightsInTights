@@ -1,0 +1,102 @@
+//---------------------------Communication--------------------------
+//This files handels communication between ghosts.
+//Having our ghost speak with another via menu is outside the scope of this template for now.
+//There's a deprecated functionality to have the user teach your ghost things via the teach box.
+
+//There's a function in  string.dic  called On_otherghostname:
+//it sets ghostexcount as number of currently summoned ghost.
+//it sets ghostexlist as an array of ghost names.
+//So you can select a name from the array:
+//ghostexlist[i] when 0<=i<ghostexcount
+//And have your ghost comment on the other ghost according to their name
+
+//--OnCommunicate-------------------------------------------------------------------------------------//
+//Called when a ghost is targeting another for conversation, or is targeted by them.
+OnCommunicate
+ {
+	if reference0 == "user" || reference0 == "User"
+ 	{
+		ReplyToUser
+	}
+ 	else
+	{
+ 		ReplyToGhost
+ 	}
+}
+
+//Ignore this.
+ReplyToUser
+{
+	TalkToUser
+}
+
+//--ReplyToGhost---------------------------------------------------------------------------------//
+//reference0 is ghost sakuraname (defined in descript.txt), reference1 is what they're saying
+//It's possible to creat specific replies for certain reference0, reference1
+//res_reference0 is defined as the ghost being responded to
+//If the other ghost has this enabled, it'll allow them to respond
+//might create a loop between ghosts
+
+//I'm copying an example from Zarla's Gaster ghost  
+//And it's worth looking at his file for other cool things that can be done here
+//I think I won't have Zilch respond to other ghosts. -dsfrogs
+
+/*
+ReplyToGhost
+{
+	if reference0 == "Gaster"
+	{
+		res_reference0 = "Gaster" //erase this line if stuck in loop
+		"\0\s[0]Hello, Gaster.\e"
+	}
+	else
+	{
+		res_reference0 = reference0 
+		//if erased here, res_reference0 envelope might not work. Write around it in case of a loop.
+		{
+			"\0\s[0]Hello, %(res_reference0).\w8\1\s[10]Hope you're doing well.\e"
+			"\1\s[10]Hey, %(res_reference0).\e"
+		}
+	}
+}*/
+
+/*
+ReplyToGhost
+{
+	if reference0 == "Gaster"
+	{
+		res_reference0 = "Gaster" 
+		
+		if reference1 == "I'm a skeleton."
+		{
+			"\0\s[0]You sure are.\e"
+		}
+		else
+		{
+			"\0\s[0]Hello, Gaster.\e"
+		}
+	}
+	else
+	{
+		res_reference0 = reference0
+		{
+		"\0\s[0]Hello, %(res_reference0).\w8\1\s[10]Hope you're doing well.\e"
+		
+		"\1\s[10]Hey, %(res_reference0).\e"
+		}
+	}
+}*/
+
+//***********************************************************************
+
+
+
+
+ReplyToGhost
+{
+	//reference0 holds Ghost sakura name
+ 	res_reference0 = reference0 
+	{
+	}
+		
+}

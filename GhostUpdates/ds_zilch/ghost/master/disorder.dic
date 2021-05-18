@@ -1,0 +1,150 @@
+DisorderName
+{
+	if disorderLvl < 5
+	{
+		"Something else..."
+	}
+	else
+	{
+		"The disorder"
+	}		
+}
+
+//Display subject name
+//Should not be 'disorder' right at start
+Disorder
+{
+	if disorderLvl > 0 && parentsLvl > 1 && disorderClosed==0 && familiarity >50
+	{			
+		if disorderPaused == 1 
+		{
+			"%(g)\![*]\q[%(DisorderName),OnDisorderTalk]%(w)"			
+		}
+		else
+		{
+			"\![*]\q[%(DisorderName),OnDisorderTalk]"			
+		}
+		
+	}
+}
+
+DisorderLvlUp  
+{	
+	if talkedDisorderDay != GetDaySlot
+	{
+		exp = disorderExp; lvl = disorderLvl; paused = disorderPaused;			
+		closed = disorderClosed;
+		
+		ShouldLvlUp
+			
+		disorderExp = exp; disorderLvl = lvl; disorderPaused = paused;
+		exp = 0; lvl = 0; paused = 0; closed = 0;
+	}		
+}
+
+//probably won't happen because Disorder will be locked by now
+DisorderUpsetAfterFriday
+{
+	"\0\s[0]\i[2]\i[111]%(z)Let's not talk about that.%(d)\%(wx)"
+	--
+	disorderPaused=1
+	//NumOfOpenSubjects--	
+	disorderExp=0	
+	upsetAfterFriday++			
+}
+
+
+OnDisorderTalk
+{	
+	_rnd = RAND(100)
+	--
+	if _rnd < 5
+	{
+		disorderExp++
+	}
+	--
+	if disorderPaused == 0 && (TOINT(upsetAfterFriday))==0 && sawDisorder==0
+	{
+		talkedDisorderDay = GetDaySlot		
+		--
+		case disorderLvl
+		{
+			when 1
+			{
+				"\0\s[0]\i[111]%(z)There's something I never told anyone...%(d)\%(wx)\n\s[0]"	
+			}
+			when 2
+			{
+				"\0\s[0]\i[111]%(z)I never told this to anyone, but...\%(wx) \s[0]\i[2]\i[111]the night my parents dissappeared I saw something in our house.%(d)\%(wx)\n\s[0]"
+			}
+			when 3
+			{
+				"\0\s[0]* (You ask Zilch why they never told anyone about what they saw on the night of the accident.)\n\n\0\s[0]%(z)\i[102]\i[103]Who could I tell?\%(wx) \s[0]No-one would believe me.%(d)\%(wx)\n\n[half]\![*]\q[I'll believe you,IBelieve]\n\![*]\q[...,IBeliem]\n\n[half]\x" 
+			}
+			when 4
+			{
+				"\0\s[0]%(z)I'm trying to gather evidence that the thing I saw exists.\%(wx) \s[0]\i[115]\i[105]That's what my research is about!\%(wx) \s[0]\i[102]\i[103]I call it 'the disorder'.%(d)\n\%(wx)\s[0]"		
+			}	
+			when 5
+			{
+				"\0\s[0]%(z)If my research is successful,\%(wx) then they'll name it \s[0]\i[102]\i[103]the Zilch Disorder!\n\n\%(wx)...\s[0]\i[2]\i[111]\i[117]And my brother,\%(wx) he'll know the truth.%(d)\n\%(wx)\%(wx)\s[0]"			
+			}
+			when 6
+			{
+				"\0\s[0]\i[115]%(z)According to my calculations,\%(wx) the Disorder should appear soon!\s[0]\i[102]\i[103]\%(wx) You can see it too,\%(wx) if you like.%(d)\n\%(wx)\s[0]"			
+			}
+		}
+		--
+		disorderPaused = 1	
+		//NumOfOpenSubjects--			
+		--
+		if disorderLvl >=7
+		{
+			"\0%(excited)%(excited)\s[0]\i[102]\i[103]%(z)The disorder will appear this friday night!\%(wx) \s[0]\i[103]If you meet me here,\%(wx) I can show you!%(d)\n\n\%(wx)\![*]\q[Deal! It's a date,SetFriDate]\n\![*]\q[Got plans...,NoDate]\n\n[half]\x"			
+			--
+			disorderPaused = 0 //don't want it paused now
+		}		
+	}
+	elseif (TOINT(upsetAfterFriday))!=0
+	{
+		DisorderUpsetAfterFriday
+	}
+	elseif sawDisorder==TOINT(2)
+	{
+		SorryAboutDisorder
+	}
+	else
+	{
+		Doesn'tWannaDisorderTalk
+	}		
+	--
+	"\e"
+}
+
+Select.IBelieve
+{
+	LessUpsetNow
+	--
+	disorderExp++
+	--
+	"\0\s[0]\i[111]%(z)Thank you,\%(wx) %(username).\%(wx) \s[0]It's very nice of you.%(d)\%(wx)\n\s[0]"
+}
+
+Select.SetFriDate
+{
+	dateSetFriday = TOINT(1)
+	--
+	"\0\s[0]%(z)Yes! %(excited)%(excited)\s[0]\%(wx)Meet me here then!%(d)\%(wx)\n"	
+}
+
+Select.NoDate
+{
+	dateSetFriday = 1
+	--
+	"\0\s[0]\i[115]\i[105]%(z)Too bad you don't have a time machine!\%(wx) \s[0]\i[102]\i[103]Then you could be in two places at once!%(d)\%(wx)\s[0]\n"	
+}
+
+Doesn'tWannaDisorderTalk
+{
+	"\0\s[0]\i[109]\i[117]\i[2]* (Zilch fidgets)\%(wx)\n\n%(z)Actually, I don't feel like talking about it anymore today...\%(wx)\n\s[0]\i[103]Sorry...%(d)\n\%(wx)\s[0]"	
+}

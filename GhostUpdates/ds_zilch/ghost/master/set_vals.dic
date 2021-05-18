@@ -1,0 +1,323 @@
+
+
+//values to zero on first boot or at reset
+FirstSetValues
+{
+	"\1\s[-1]"
+	--
+	"\0\s[-1]* (Setting values...)\w8\n" //e?
+	--
+	NormalSetValues
+	
+	passmin = TOINT(0)
+	cumumin = TOINT(0)
+	passsec = TOINT(0)
+	
+ 	username         = "dream person" 
+	realusername     = "dream person" 
+	stroke           = TOINT(0)	// pet counter
+ 	teachusername    = TOINT(0)	//isNameKnown
+	mikireflag       = TOINT(0)	
+ 	aitalkinterval = 400 //talk rate.
+ 	birthdayprint = "????"	
+	talktime = "5 minutes" 
+	deleteshitai = "OFF" //toggle uninstall 
+	nowshell = "default_shell" 	
+	talkedDisorderDay = ""
+
+	zilchThought= ""
+	key= ""
+
+	dogName= "Dawg"
+	catName= "Begemot"
+	
+	canPet 		= TOINT(0) //they want you to pet them
+	blockPet	= TOINT(0) //blocks OnMouseMove
+	lockMenus	= TOINT(0) //blocks double click
+	
+	//accumulates when:
+
+	nPets 		= TOINT(0) //counts when you pet them
+	familiarity = TOINT(0) //you get to know them
+	cumuhour 	= TOINT(0) //they're on for another hour
+	youLiar 	= TOINT(0) //you lie to them
+	comforter 	= TOINT(0) //when you comfort them
+	quiet 		= TOINT(0) //...
+		
+	verbos = "HIGH"
+
+	textspeed = "MEDIUM"	
+	wx = "w6"	
+
+	poncho = TOINT(0) 
+	userbirthday = "???"
+	
+	hintproof		= TOINT(0) 
+	hintWhatNext	= TOINT(0)	
+		
+	exp 	= 	TOINT(0) 
+	lvl 	= 	TOINT(0) 
+	paused = 	TOINT(0)
+	closed = 	TOINT(0)
+	
+//	SetTalkSubjectsStatus
+	SetBeginTalkSubjectsLvl
+	SetTalkSubjectsExpToZero
+	SetTalkSubjectsPaused
+	SetTalkSubjectsUnClosed	
+//	SetTalkSubjectsClosed	
+	SetTalkSubjectsChoose
+	
+	loopCount  = TOINT(0)
+	
+	//unpause these three so we see them at beginning		
+	//thisPlacePaused = TOINT(0)
+	//dreamsPaused 	= TOINT(0)
+	//themselfPaused 	= TOINT(0)
+
+	//give exp to these three so we see them at beginning		
+	thisPlaceExp 	= TOINT(1)
+	dreamsExp 		= TOINT(1)
+	themselfExp 	= TOINT(1)
+	
+//	NumOfOpenSubjects = TOINT(3)
+	
+	SetBootingTimeCounter
+	
+	//phases for events
+	waitingForProof 	= TOINT(0)
+	betrayed 			= TOINT(0)
+	unwantedPet 		= TOINT(0)
+	wanthome 			= TOINT(0)
+	dateSetFriday 		= TOINT(0)
+	sawDisorder 		= TOINT(0)
+	actedLikeABaby 		= TOINT(0)
+	drawingInTrash 		= TOINT(0)
+	sorryAboutCritique 	= TOINT(0)
+	wantPets 			= TOINT(0)//animals, not on the head	
+	willHike 			= TOINT(0)
+	sawAboar 			= TOINT(0)
+	willGoShopping		= TOINT(0)
+	willBakeCake 		= TOINT(0)
+	tried2Punch 		= TOINT(0)
+	
+	
+	isNilch 			= TOINT(0)	//Nilch
+	talkedToNilchAbtZilch= TOINT(0)	
+	talkedToNilchAbtNilch= TOINT(0)	
+	nilchEventEndedToday	= ""
+
+			
+	isPlayingTheHarmonica	= TOINT(0)  //harmonica
+	madeAMistake			= TOINT(0)					
+	notMyDay				= TOINT(0)
+	mistakeDay 				= ""
+	
+	fridatePhase		= TOINT(0)
+	upsetAfterFriday	= TOINT(0)
+	
+	endPhase 			= TOINT(0)//the ending
+	truthButton			= TOINT(0) //can tell them the truth
+	keyPhase			= TOINT(0)
+	usedKey 			= "false"
+	
+	toldThemTheTruth 	= TOINT(0)
+	reinstalled 		= TOINT(0)	
+	sorryDisorder 		= TOINT(0)	
+	upset				= TOINT(0)	
+	canHaveCandy		= TOINT(0)	
+	
+	getMe	  			=	""
+	
+	upsetAbout			=	""
+	sinList  			=	""
+	sinListSize			=   TOINT(0)
+	latestSin			=	""
+	sinIndex			=   TOINT(0)
+	
+	--
+	"\c\0\s[-1]* (Values set.)\w8\n\c" 
+}
+
+
+NormalSetValues //Initialized for each session
+{
+	lastTalk = "" 
+	--
+	passhour 	= TOINT(0) 
+	passmin 	= TOINT(0) 
+//	cumumin 	= TOINT(0) 
+	passsec 	= TOINT(0) 
+	--
+	"%(d)"
+	--
+	if (notMyDay==1 && mistakeDay!=_today)
+	{
+		mistakeDay	= 	""
+		notMyDay	=	TOINT(0) 
+	}
+	--
+	//if wanthome == TOINT(1)
+	//{
+	//	wanthome = TOINT(2)
+	//}
+	--
+	if wanthome == TOINT(2) && actedLikeABaby == TOINT(0)
+	{
+		actedLikeABaby = TOINT(1)
+	}	
+	--
+	if willHike == TOINT(2) // to allow hiking event to happen again
+	{
+		willHike = TOINT(0)
+	}
+	--
+	zilchThought= ""
+}
+
+//You'd be able to talk about some subjects right away
+//other subjects will be open when you get Exp>0
+SetTalkSubjectsExpToZero
+{
+	thisPlaceExp 	= TOINT(0)
+	dreamsExp 		= TOINT(0)
+	themselfExp 	= TOINT(0)
+	homeExp 		= TOINT(0)
+	brotherExp 		= TOINT(0)
+	parentsExp 		= TOINT(0)
+	accidentExp 	= TOINT(0)
+	artExp 			= TOINT(0)
+	scienceExp 		= TOINT(0)
+	harmonicaExp 	= TOINT(0)
+	disorderExp 	= TOINT(0)	
+	friendsExp 		= TOINT(0)
+}
+
+SetTalkSubjectsExpToOne
+{
+	thisPlaceExp 	= TOINT(1)
+	dreamsExp 		= TOINT(1)
+	themselfExp 	= TOINT(1)
+	homeExp 		= TOINT(1)
+	brotherExp 		= TOINT(1)
+	parentsExp 		= TOINT(1)
+	accidentExp 	= TOINT(1)
+	artExp 			= TOINT(1)
+	scienceExp 		= TOINT(1)
+	harmonicaExp 	= TOINT(1)
+	disorderExp 	= TOINT(1)	
+	friendsExp 		= TOINT(1)
+}
+
+//each lvl has different talks
+SetBeginTalkSubjectsLvl
+{
+//	thisPlaceLvl 	= TOINT(1)
+//	dreamsLvl 		= TOINT(1)
+//	themselfLvl 	= TOINT(1)
+	thisPlaceLvl 	= TOINT(0)
+	dreamsLvl 		= TOINT(0)
+	themselfLvl 	= TOINT(0)
+	homeLvl 		= TOINT(0)
+	brotherLvl 		= TOINT(0)
+	parentsLvl 		= TOINT(0)
+	accidentLvl 	= TOINT(0)
+	artLvl 			= TOINT(0)
+	scienceLvl 		= TOINT(0)
+	harmonicaLvl 	= TOINT(0)
+	disorderLvl 	= TOINT(0)	
+	friendsLvl 		= TOINT(0)
+}
+
+//Subjects paused when you stop gaining exp
+//unpaused when you get new Exp
+SetTalkSubjectsPaused
+{	
+	thisPlacePaused = TOINT(1)
+	dreamsPaused 	= TOINT(1)
+	themselfPaused 	= TOINT(1)
+	homePaused 		= TOINT(1)
+	brotherPaused 	= TOINT(1)
+	parentsPaused 	= TOINT(1)
+	accidentPaused 	= TOINT(1)
+	artPaused 		= TOINT(1)
+	sciencePaused 	= TOINT(1)
+	harmonicaPaused = TOINT(1)
+	disorderPaused 	= TOINT(1)	
+	friendsPaused	= TOINT(1)	
+}
+
+//don't know if I'll actually use it
+//when we don't want to talk about it anymore
+//gaining exp won't help now
+SetTalkSubjectsClosed
+{
+	thisPlaceClosed = TOINT(1)
+	dreamsClosed 	= TOINT(1)
+	themselfClosed 	= TOINT(1)
+	homeClosed 		= TOINT(1)
+	brotherClosed 	= TOINT(1)
+	parentsClosed 	= TOINT(1)
+	accidentClosed 	= TOINT(1)
+	artClosed 		= TOINT(1)
+	scienceClosed 	= TOINT(1)
+	harmonicaClosed = TOINT(1)
+	disorderClosed 	= TOINT(1)	
+	friendsClosed	= TOINT(1)	
+}
+
+SetTalkSubjectsUnClosed
+{
+	thisPlaceClosed = TOINT(0)
+	dreamsClosed 	= TOINT(0)
+	themselfClosed 	= TOINT(0)
+	homeClosed 		= TOINT(0)
+	brotherClosed 	= TOINT(0)
+	parentsClosed 	= TOINT(0)
+	accidentClosed 	= TOINT(0)
+	artClosed 		= TOINT(0)
+	scienceClosed 	= TOINT(0)
+	harmonicaClosed = TOINT(0)
+	disorderClosed 	= TOINT(0)	
+	friendsClosed	= TOINT(0)		
+}
+
+
+//I feel like randomized dialouge isn't random enough lol 
+//let's count to see that all lines have an equal chance of being picked
+//counter initialised to 0
+//and if conditions aren't right for picked line: 
+//++counter and get back in pool for another line
+//for choosing a string out of a pool
+SetTalkSubjectsChoose
+{
+	chooseHome 		= TOINT(0)
+	chooseArt 		= TOINT(0)
+	chooseDreams 	= TOINT(0)
+	ChooseBrother 	= TOINT(0)
+	chooseThemself	= TOINT(0)
+	chooseThisPlace = TOINT(0)
+	chooseWhatThink = TOINT(0)
+	chooseFakeZ		= TOINT(0)
+}
+
+//attempted to use arrays for this but eh... gave up
+SetTalkSubjectsStatus
+{
+	thisPlaceTalkStatus = "0,0,0"
+	dreamsTalkStatus = "0,0,0"
+	themselfStatus = "0,0,0"
+	homeTalkStatus = "0,0,0"
+	brotherTalkStatus = "0,0,0"
+	parentsTalkStatus = "0,0,0"
+	accidentTalkStatus = "0,0,0"
+	artTalkStatus = "0,0,0"
+	scienceTalkStatus = "0,0,0"
+	harmonicaTalkStatus = "0,0,0"
+	disorderTalkStatus = "0,0,0"	
+}
+
+SetBootingTimeCounter
+{
+	bootingTime = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"	
+}

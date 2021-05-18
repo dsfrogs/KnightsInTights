@@ -1,0 +1,17 @@
+﻿charset,UTF-8
+
+name,Zilch
+type,ghost
+
+sakura.name,Zilch
+kero.name,Triangle
+
+craftman,dsfrogs
+craftmanw,dsfrogs
+craftmanurl,http://dsfrogs.tumblr.com
+
+//don't touch
+sstp.allowunspecifiedsend,0
+shiori,aya5.dll
+
+icon,Zilch.ico

@@ -1,0 +1,6 @@
+﻿
+charset,UTF-8
+type,ghost
+name,Zilch
+directory,ds_zilch
+balloon.directory,z_undertale

@@ -1,0 +1,116 @@
+
+Reinstalling_A
+{
+	beginPhase = TOINT(3)	
+	--
+	//enter passive agreesive mode
+	"\0\s[-1]So that's how it is.\%(wx)\nReturning to the scene of crime, are we?\n\n[half]\%(wx)\![*]\q[Yes,B]\n\![*]\q[No,B]\n\e"
+}
+
+Select.B
+{
+	Reinstalling_B
+}
+
+Wait5
+{
+	"\%(wx)...\%(wx)"
+}
+
+Reinstalling_B
+{
+	beginPhase = TOINT(7)	
+	--
+//	if sawEnding==TOINT(1) //You can't actually check this, obvio.
+//	{
+//		"\0\s[-1]* (Didn't you choose to let them go?)\n"
+//	}
+//	else
+	{
+		"\0\s[-1]Why are you here then?\n"
+	}
+	--
+	"\![open,inputbox,nothing]\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\![close,inputbox,nothing]\0\s[-1]\cActually, doesn't matter.\%(wx)\%(wx)\%(wx)\n\c"
+	--
+	Reinstalling_C
+}
+
+Reinstalling_C
+{
+	beginPhase = TOINT(8)	
+	--	
+	"\0\s[-1]Must be tempted by the idea of seeing all the dialogue, huh?\%(wx)\n\n[half]\![*]\q[Yes,D]\n\![*]\q[No,D]\n"
+}
+
+Select.D
+{
+	Reinstalling_D	
+}
+
+Reinstalling_D
+{
+	beginPhase = TOINT(9)	
+	--	
+	"\0\s[-1]Honestly?\%(wx) There really isn't that much.\%(wx)\n\n[half]\![*]\q[blip,E]\n\![*]\q[bloop,E]\n"
+}
+
+Select.E
+{
+	Reinstalling_E	
+}
+
+Reinstalling_E
+{	
+	beginPhase = TOINT(10)	
+	--		
+	"\0\s[-1]Hey.\%(wx) This isn't some form of reverse psychology!\%(wx)\n\n\w8\cBelieve me, you can just...\%(wx) look through the ghost folder.\%(wx)\%(wx)\n\n[half]\![*]\q[:),F]\n\![*]\q[:[,F]\n"
+}
+
+Select.F
+{
+	Reinstalling_F	
+}
+
+Reinstalling_F
+{
+	beginPhase = TOINT(11)	
+	--	
+	"\0\s[-1]It'll just get repetitive and boring.\%(wx)\n\nAnd you'll end up hating them for it.\%(wx)\n\%(wx)\c...Do you want to hate them?\%(wx)\%(wx)\n\n[half]\c%(ChangingAnswer)\n"	
+}
+
+ChangingAnswer
+{
+	"\![quicksection,1]\![*]Yes\w6\c\![*]Don't care\w6\c\![*]I'm a bad person\w6\c\![*]Wanna go again\![quicksection,0]"
+	--
+	Reinstalling_G
+}
+
+Reinstalling_G
+{
+	beginPhase = TOINT(12)	
+	--		
+	"\cSeriously though. Do you really want this?\%(wx)\n\n\n[half]\%(wx)\![*]\q[Bring Zilch back,YesReinstall]\n\n\%(wx)\![*]\q[Let them be,NoReinstall]\n\n"
+}
+
+Select.NoReinstall
+{
+	beginPhase = TOINT(13)
+	--
+	"\![enter,passivemode]* (You've made the right decision.\%(wx) Probably.\%(wx)\nZilch will remain uninstalled.)\%(wx)\n"
+	--
+	"\![vanishbymyself]\-\e" //How to quit instead of just changing ghosts?
+//	"\-\![vanishbymyself]"
+}
+
+Select.YesReinstall
+{
+	reinstalled = TOINT(1)
+	--
+	blockPet = TOINT(1)
+	lockMenus = TOINT(1)
+	--
+	OnFirstIntro
+}
+
+//leave passive mode
+

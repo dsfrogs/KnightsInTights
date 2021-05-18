@@ -1,0 +1,111 @@
+Nilcheck
+{
+	if dayslot == "4month 1day" && nilchEventEndedToday == "" && isNilch  == TOINT(0) && upsetAfterFriday == TOINT(0) && upset== TOINT(0)
+	{
+		isNilch   = TOINT(1)
+		bootPhase = "Nilch"
+		--
+		"%(n)\1\s[-1]\0\s[0]\i[9]\i[102]\i[103]Hello %(username)!\%(wx)\s[0]\i[9]\i[115]\i[114]\i[54]\i[55] I am totally not Zilch!\%(wx) \s[0]\i[9]\i[102]\i[114]\i[54]\i[55]I am Zilch's brother!\%(wx)\s[0]\i[9]\i[102]\i[105] My name is...\%(wx) Nilch!\%(wx)\s[0]\i[9]%(d)\e"	
+	}
+	elseif isNilch == TOINT(1)
+	{
+		"\1\s[-1]\0\s[0]\i[9]\i[102]\i[103%(n)Hello again!\%(wx)%(d)\0\s[0]\i[9]\e"
+	}
+	elseif  dayslot != "4month 1day"
+	{
+		nilchEventEndedToday = ""
+	}	
+}
+
+SetNilchToZero
+{
+	nilchEventEndedToday = ""
+}
+
+MenuNilch
+{
+	"\0\s[0]\i[9]\i[104]\i[105]%(n)Yes!%(d)\n\n%* (You talk about...)\n\n\_q\b2\![*]\q[Pets,TalkabPets]\n\![*]\q[Nilch,TalkabNilch]\n\![*]\q[Zilch,TalkabZilch]\n\![*]\q[Nevermind,CANCEL]\n"	
+}
+
+Select.TalkabNilch
+{
+	
+	case talkedToNilchAbtNilch
+	{
+		when 0 
+		{
+			"* (You ask 'Nilch' about his job.)\n\n%(n)\0\s[0]\i[9]\i[114]\i[113]\i[54]\i[55]I'm too busy to talk to you right now!\%(wx) \0\s[0]\i[9]\i[103]\i[102]There's a huge delivery of cakes to make!\%(wx) \s[0]\i[9]\i[105]\i[104]Very important cakes!\%(wx)%(d)\0\s[0]\i[9]%(d)"
+			--
+			talkedToNilchAbtNilch++
+		}
+		when 1 
+		{
+			"* (You ask Nilch about his home.)\%(wx)\n\n \0\s[0]\i[9]\i[113]\i[114]%(n)A good place for a child to grow up in!\%(wx) \0\s[0]\i[9]\i[102]So what if it's incredibly lonely and boring?\%(wx)%(d)\0\s[0]\i[9]"
+			--
+			talkedToNilchAbtNilch++			
+		}
+		when 2
+		{
+			"\0\s[0]\i[9]* (You tell Nilch it's nice to finally meet him.)\%(wx)\n\n\s[0]\i[9]\i[108]\i[109]%(z)*heehee*%(d)\%(wx)\s[0]\i[9]\i[102]\i[103]%(n)\n\nIt's time to reveal to truth!\%(wx) \s[0]\i[9]\i[113]\i[114]You have in fact fallen prey to a mischievous prank!\%(wx) \s[0]\i[9]\i[105]\i[115]I am not Nilch,\%(wx) I am actually really...\0\s[0]\i[9]\i[110]\i[111]\%(wx)\%(wx)\%(wx)%(d) \s[0]\i[102]\i[103]\n\n%(z)Zilch!%(d)\n\n\![*]\q[YOU DON'T SAY,dontsayNilch]\n\![*]\q[...,QuietNilch]\n"
+			--
+			EndNilchEvent
+
+		}
+	}
+
+}
+
+
+Select.dontsayNilch
+{
+	"\0\s[0]\i[104]\i[105]* (They pull their tongue out at you)\%(wx)\s[0]"
+}
+
+Select.QuietNilch
+{
+	"\0\s[0]"
+	--
+	Quiet
+}
+
+Select.TalkabZilch
+{
+	case talkedToNilchAbtZilch
+	{
+		when 0	
+		{
+			"* (You ask 'Nilch' what he thinks of his sibling.)\n\n%(n)\s[0]\i[9]Ha!\%(wx) \i[103]Don't ask what I think about that child!%(d)\s[0]\i[9]"
+			--
+			talkedToNilchAbtZilch++
+		}
+		when 1	
+		{
+			"%(n)\s[0]\i[9]\i[115]\i[114]\i[54]\i[55]I can't allow Zilch to climb trees!\%(wx) \0\s[0]\i[9]\i[102]\i[103]It's too much fun!\%(wx) \0\s[0]\i[9]Fun is disallowed!\%(wx)%(d)\0\s[0]\i[9]%(d)"
+			--
+			talkedToNilchAbtZilch++
+		}
+		when 2	
+		{
+			"\0\s[0]\i[9]\i[102]%(n)Well,\%(wx) Zilch is...\%(wx) They're...\%(wx) Well...\%(wx) \0\s[0]\i[9]\i[117]They're not...\%(wx) \0\s[0]\i[115]\i[114]\i[9]\nI'm too busy for them to wander around by themselves!\%(wx) \nAlso!\n\%(wx) \0\s[0]\i[103]\i[102]\i[9]There is such a thing as too many candies,\%(wx) Zilch!\0\s[0]\i[9]\i[117]\%(wx) \nand-\%(wx) \nand-\%(wx)\n\%(wx)\%(wx) \0\s[0]\i[9]I love them very much,\%(wx) I just worry and...%(d)\0\s[0]\i[9]\i[108]\i[109]\%(wx)\%(wx)\%(wx)%(z)\n\n*sniff*\0\s[0]\i[9]\i[110]\i[111]\%(wx)\%(wx)\0\s[0]\i[2]\n\nWell that was stupid anyway.\%(wx)%(d)\e" 
+			--
+			EndNilchEvent
+		}
+	}
+
+}
+
+Select.TalkabPets
+{
+	"\0\s[0]\i[9]\i[115]\i[105]%(n)Pets just leave hair everywhere and chew on furniture!\%(wx) \0\s[0]\i[9]\i[102]So what if they fill your heart with love and happiness?\%(wx)%(d)\0\s[0]\i[9]"		
+}
+
+EndNilchEvent
+{
+	isNilch 				= TOINT(0)
+	bootPhase 				= "Normal"
+	talkedToNilchAbtZilch	= TOINT(0)
+	talkedToNilchAbtNilch	= TOINT(0)
+	nilchEventEndedToday	= GetDaySlot
+	--
+	"\0\s[0]"
+}

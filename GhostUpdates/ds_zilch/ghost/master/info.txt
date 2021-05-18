@@ -1,0 +1,96 @@
+//Change ghost's clock: ctrl+shift+T + Hook Current Time API
+
+//Passivemode: balloons won't disappear, choices won't time out, ghost won't talk randomly, CAN double click/ move over mouse.
+//you CAN call other ghosts, but no changing into other ghosts
+//script testing possible and will get you out of passive mode 
+//Remember to leave it or ghost is stuck (can reset passive mode from ghost menu)
+
+//Close dialogue must end with \- instead of \e. \- will close the program.
+
+//OnFunctions Can be called from anywhere in any .dic file by using \![raise]. Other functions can only be called within that .file. 
+
+// ![raise,InsertFunctionName] can be used at the end of any piece of dialogue to call any function. useful for testing 
+
+//can't use Script Input or raise to test  OnFirstBoot- can use test variables: paste dialogue/choices only and not values. delete when done testing
+
+//Choices for a menu that'll only be used once: better to use Select.choice than starting all functions with On
+
+// -- loads up the next function in the sequence. You can use this method to set many values at once, then go to the same function afterwords.
+
+//Dialouge can be customised for times, dates, days... by using variables: hour,month, day 
+
+//\![*]\q[Displayed Name,linkedfunction]. \![*] balloon's option icon, \q sets up the choice, Displayed Name the text to be displayed, linkedfunction, is what the choice is linked to when the user clicks it. 
+
+//The body for select.options is often just a call to another function. Any function preceded with Select can only be called within its own file.
+
+//To link to a function from another .dic file, it needs to be a stand-alone fucntion
+
+//As a rule any complicated stuff should go in its own function, and be called by Select.option
+
+//Simple dialogue responses to a choice can stay inside a Select.option 
+
+// \![open,inputbox,OnUserBornMonth,-1]\e"
+//opens input box and calls to function OnUserBornMonth with input month, -1 means no timeout
+
+//s[-1] to make ghost disappear
+
+//\c to clear balloon
+
+//\x pause for user's input
+
+
+//\![quicksection,1] \![quicksection,0] text appears instantly- turn on/off
+
+//Test your dialogue with test variable function or with Script Input
+//test functions by adding \![raise,function]
+//or mode settings, item values, functions, raising or lowering numbers
+//Especially dialogue/choices from OnFirstBoot can't be tested via script input
+
+//%screenwidthx%screenheight to get user's  resolution
+
+//Chains set up the next line for the character, it won't display it immediately (altalk)
+
+/* font:
+\f[bold,true]
+\f[color,R,G,B]
+\f[height,number]
+\f[italic,default]
+\f[strike,true]
+\f[sub,true]
+\f[sup,true]
+\f[underline,true]
+
+remember to close it:
+/[underline,false]
+*/
+
+//\! [open, file, filename]
+//Execute the file. Specify a relative path from [Executed ghost folder] / ghost / master / or an absolute path.
+//You can use windows environment variables (% SYSTEMROOT%,% SYSTEM%,% TEMP% etc).
+//When an executable file is specified in the file name, the path is searched automatically.
+
+//\! [open, file, \ghost\Zilch\zilch_images\Zilch1.jpg]
+
+
+	//make a file appear in a folder?
+	//\! [open, file, filename]
+	//\![open,file,Zilch/ghost/master/_Zilch.png]
+	//relative path or absolute path from [Executed ghost folder] / ghost / master /
+
+
+//"\![raise,OnFoofoofoo,var1,var2,var3]"	
+//this works with OnFunctions only
+//var1,var2,var3 are set into reference0, reference1, reference2
+	
+	//can we do math with references?
+	//we can!
+	//reference1+=1
+
+//"\![raise,OnFoofoofoo,%(thisPlaceExp),%(thisPlaceLvl)]" 
+//this is how to send numeric value and not string
+
+
+//second char keeps appearing because of SHIORI3FW.MakeEmptyResponse in shiori3.dic
+//when "OnFirstBoot", "OnBoot", "OnWindowStateRestore", "OnGhostChanged"
+//I changed value to  \0\s[0]\1\s[-1]\e%(C_CRLF2)
+//hopefully this won't ruin everything forever

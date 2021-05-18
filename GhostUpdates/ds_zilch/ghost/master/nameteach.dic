@@ -1,0 +1,51 @@
+﻿//add check for special names?
+
+//realusername is kept- maybe use in end for drama 'your name couldn't possibly be Mrs Poopyhead, could it?'
+
+//Some functions mentioned here are from bootend.dic. 
+
+//Two different functions are called OnNameTeach and OnTeachName, a recipe for trouble
+
+//you can append or prepend pre/suffix to the username string: username = "Mrs." + tempname	+ "-chan"
+
+//-------------------------OnTeachName--------------------------------------------------------------//
+//Get here from double-click menu
+OnTeachName	
+{
+	if reference0 == "TEACHNAME" //ignore this
+	{
+		"\0\s[0]* (You can now tell them your name. Feel free to add any titles that may apply.) \![open,inputbox,OnNameTeach,-1]\e"
+	//Line ends with \![open,inputbox,OnNameTeach,-1]. Leads to next function. 
+	}
+}
+
+
+//--OnNameTeach---------------------------------------------------------------------------------//
+//Lets user input their name.
+//Ghost can respond to weird names or prevent using offensive names
+
+//Simple version:
+OnNameTeach
+{
+	tempname = reference0 
+	if tempname == ""
+	{
+		"* (No name has been entered.\%(wx) Try again.\%(wx) You cannot be named 'nothing'.)\%(wx)\![open,inputbox,OnNameTeach,-1]\n\e"
+	}
+	--
+	NameDone
+}
+	
+
+
+//--NameDone---------------------------------------------------------------------------//
+//Runs after name change done
+NameDone
+{
+	realusername = tempname //To be used later?
+	--
+	"\0\s[0]* (You've chosen to be called %(realusername).)\n\c.\%(wx) .\%(wx) .\%(wx)\c* (There's a bug.\%(wx) The information has been lost.\%(wx) Your name was not compatible.\%(wx) What have you done.\%(wx)\n\n[half]Zilch will now receive a random name from the Acceptable Names Generator.)\w8\n\c.\%(wx) .\%(wx) .\%(wx)\c\w8* (Zilch is confused, but tries not to show it.)\n\n%(z)\s[0]\i[107]You're called Captain...\%(wx) Poncho?%(d)\%(wx)\s[0]"
+	--
+	username = "Captain Poncho"
+	poncho = 1
+}

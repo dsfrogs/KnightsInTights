@@ -1,0 +1,271 @@
+//a place to put functions I want to experiment with
+
+//---------------------------------//
+//Show some dialouge
+//Give two choices, wait for user input
+//Play out the option selected
+//Continue the dialouge
+/*
+DiamondDialouge
+{
+	"\0\s[0]Here is some dialouge\n"
+	--
+	"\0\s[0]\![*]\q[ChoiceA,ChoiceA]\n/
+	\![*]\q[ChoiceB,ChoiceB]\n\x"
+}
+
+Select.ChoiceA
+{
+	"\0\s[0]choiceA selected\n"
+	--
+	MoreDialouge
+}
+
+Select.ChoiceB
+{
+	"\0\s[0]choiceB selected\n"
+	--	
+	MoreDialouge
+}
+
+MoreDialouge
+{
+	"\0\s[0]Here is more dialouge\e"	
+}
+*/
+//-------------------------------------
+//function checks if we should add
+//can do math with result
+//can't do minus
+//can't add variable to const
+// 0 + shouldAdd works
+// 1 + shouldAdd won't
+// 1 - shouldAdd won't 
+/*
+Addition
+{
+	if (1 == 1)
+	{
+		1
+	}
+	else
+	{
+		0
+	}
+}*/
+
+/*
+OnAttempt2Wrapper
+{
+	danny = 1
+
+	danny = danny + Addition	
+
+	"\0\s[0]danny is %(danny)\n\e"
+}*/
+
+//----------------
+/*
+OnBreakStuff
+{
+
+	"\0\s[0]reference0 is %(reference0)\n\e"
+}*/
+
+//----------------
+//Instead of case- when I can make an array 
+//	_currTalks = TalksList
+//	_talk = _currTalks[lvl]
+/*TalksList
+{
+	"talk0,talk1,talk2,talk3"	
+}*/
+//---------------------------------
+//wanted to create an array of ints but
+//can only create a string
+
+/*
+OnCreateArr
+{
+	//TalkStatus = IARRAY
+	TalkStatus = "0,1,0"
+}
+
+OnCheckArr
+{
+	"TalkStatus_0 %(TalkStatus[0]) is \n/
+	TalkStatus_1 %(TalkStatus[1]) is \n/
+	TalkStatus_2 %(TalkStatus[2]) is \n/
+	\e"
+}
+
+OnChangeArr
+{
+//	_ptr = TalkStatus
+//	_ptr[0] += 1 //doesn't influence TalkStatus
+	
+	TalkStatus[0] += 1
+}
+
+*/
+
+//-----------------------------------
+//Trying to minimize code duplications?
+//but still quite a lot is duplicated
+
+//	something = 0; thing = 1;
+//integers
+//	is that a way to create int array?
+//	arr = 1,2,3
+//how about this
+//arr = 1,2,3;
+//	"\n%(arr[2])"
+
+//exp = 0
+//lvl = 0
+//pause = 0
+//SetStatusDisorder
+//GetStatusDisorder
+// disorderExp = exp
+// disorderLvl = lvl
+// disorderPaused = pause
+/*
+ShouldLvlUp
+{	
+	if exp > 0
+	{
+		paused = 0
+		lvl += 1
+
+	GenericPayExp		
+}
+
+PayExp
+{
+	if exp == 1
+	{
+		exp = 0	
+	}
+	else
+	{
+		exp -= 1
+	}	
+}
+*/
+
+
+//At first boot
+//c Function: create a few arrays for subjects
+//Dinamically!
+//Create function return ptr to array
+//Can you even return ptr in aya?
+//At end
+//create and open file.txt
+//save arrays value in a file
+//close file
+//free arrays
+//At normal boot:
+//load data from file.txt
+//create function
+
+//-----------C functions that work here-----
+//	str = TOLOWER("HIIIIII") //Yep
+//	str = TOUPPER("hiiii") //Yep
+//	a = STRLEN("HIIIIII") //Yep
+//	d = STRCHR("ABCDE",2) //Nope!
+//	b = STRCPY("HIIIIII") //Nope!
+//	STRNCMP("HI","BI") //Nope!
+//	"\0\s[0]%(c)\n\e"	
+
+//----------------------------
+//Away to pretend to loop between different names for a function
+
+/*
+LoopyAnswer
+{	
+	"%(LoopyName)"	
+}
+
+Select.Foofoo
+{
+	"in Foofoo"
+}
+
+LoopyName
+{					"\![*]1\c\w4\![*]2\c\w4\![*]3\c\w4\![*]1\c\w4\![*]2\c\w4\![*]3\c\w4\![*]1\c\w4\![*]2\c\w4\![*]3\c\w4\![*]1\c\w4\![*]2\c\w4\![*]3"
+--
+"\c\![*]\q[3,Foofoo]"	
+}
+*/
+
+//-------------------------------
+//This performs the loops and only  later presents the envelope
+//Which isn't what I wanted
+/*	cnt = 0
+	mod = 0
+	--
+	while (cnt < 10)
+	{
+		
+		thing = SetThing
+		--
+		"%(thing)\w8"
+		--
+		cnt += 1
+		mod = cnt%2
+		--
+		"mod is %(mod) and cnt is %(cnt)\w8"
+		--
+		"\c" 
+	}*/
+	
+
+//------------------------------------------
+//an array of strings to be said by character- performing increment on a var is possible with envelop
+	
+/*	
+TestPool
+{
+	fooVal = 0
+	TestStrings = "Test1\s[0]\i[103]%(AddOne),\s[0]Test2,\s[0]\i[103]Test3,\s[0]Test4"
+	--
+	//"\nTest[0]=%(TestStrings[0]) Test[1]=%(TestStrings[1]) Test[2]=%(TestStrings[2]) Test[3]=%(TestStrings[3])\n"
+	
+	"%(TestStrings[2]) fooVal =%(fooVal)"
+}
+
+AddOne
+{
+	fooVal++
+}*/
+
+//------------------------------------------	
+	SwitchToAnotherGhostIfExist
+	{
+	}
+	
+	
+	
+//------------------------------------------
+//printing strings from array of strings in a loop:
+
+/*
+
+	foo
+	{
+			arrarr = "test1,test2,test3"
+			_i=0
+			toPrint = ""
+			--
+			while (_i<3)
+			{
+				toPrint += "%(arrarr[_i])"
+				_i++
+			}
+			--
+			"%(toPrint)"
+	}
+	
+	using %(foo) will present test1test2test3
+
+*/

@@ -1,0 +1,588 @@
+//I used Zarla's template http://www.ashido.com/ukagaka/walkthrough.html 
+//most comments here are abbreviated versions of her's. -dsfrogs 
+
+//reload ghost
+//ctrl shift d = surface test
+// \s[5] tag when writing dialogue calls pose under surface5 (with how many images said surface has)
+//main char images 1000-1999, side charecter images 2000-2999
+//surfaces can be 0-999
+//Best to make all images same size. Side and main don't have to be same sized.
+//Only want one character? make blank Surface10.png
+
+//--The Main Character's Poses---------------------------------------------------------
+
+
+
+//collision rectangle: 
+//top left x,y, bottom right x,y. 
+//can add more collision areas- add to mouse dic in same name. Must be defined seperately for each surface, unless using surface.append. 
+//some collisions may appear only for specific poses (high five)
+
+surface0 //default pose
+{
+//colisions:	
+
+	collision0,132,45, 245, 125,Head
+	collision1,132,45, 245, 125,Face 	
+//collision2,244,310,364,366,Belly//add2mouse.dic 
+
+//body:
+	element0,overlay,surface0.png,0,0 
+
+//heads:
+		
+	1interval, always //neutral
+	1pattern0,1000,0,overlay,0,0
+	1pattern1,1000,1,overlay,0,0
+	
+	2interval, never 	//lower
+	2pattern0,0,0,stop,1
+	2pattern1,1001,0,overlay,0,0
+	
+	3interval, never	//lowest
+	3pattern0,0,0,stop,1
+	3pattern1,1002,0,overlay,0,0
+	
+	4interval, never//teardrop low
+	4pattern1,1003,0,overlay,0,0
+	
+	5interval, never//angry x
+	5pattern1,1004,0,overlay,0,0
+		
+	6interval, never//harmonica
+	6pattern1,1005,0,overlay,0,0	
+
+	7interval, never//question
+	7pattern1,1006,0,overlay,0,0
+
+	8interval, never//teardrop high
+	8pattern1,1007,0,overlay,0,0
+
+	9interval, never//moustache high
+	9pattern1,1009,0,overlay,0,0
+
+	10interval, never//fake smile
+	10pattern0,0,0,stop,100  //stop arms
+	10pattern0,0,0,stop,101  //stop arms	
+	10pattern0,0,0,stop,50  	//stop legs
+	10pattern0,0,0,stop,51  	//stop legs	
+	10pattern1,1008,0,overlay,0,0	
+
+//legs:	
+
+	50interval, always //left leg (neutral)	
+	50pattern0,1100,0,overlay,0,0
+	50pattern1,1100,1,overlay,0,0
+		
+	51interval, always//right leg (neutral)	
+	51pattern0,1101,0,overlay,0,0
+	51pattern1,1101,1,overlay,0,0
+
+	52interval, never //left skip
+	52pattern0,0,0,stop,50
+	52pattern1,1102,0,overlay,0,0		
+			
+	53interval, never //right skip
+	53pattern0,0,0,stop,51
+	53pattern1,1103,0,overlay,0,0
+
+	54interval, never//left bent outward
+	54pattern0,0,0,stop,50
+	54pattern1,1104,0,overlay,0,0	
+
+	55interval, never//right bent outward
+	55pattern0,0,0,stop,51
+	55pattern1,1105,0,overlay,0,0
+	
+	56interval, never//right bent inward
+	56pattern0,0,0,stop,51
+	56pattern1,1107,0,overlay,0,0
+	
+	57interval, never//left folded 
+	57pattern0,0,0,stop,50
+	57pattern1,1108,0,overlay,0,0	
+
+	58interval, never//right folded 
+	58pattern0,0,0,stop,51
+	58pattern1,1109,0,overlay,0,0	
+	
+	
+//arms:
+				
+	100interval, always//left folded (neutral)
+	100pattern0,1200,0,overlay,0,0
+	100pattern1,1200,1,overlay,0,0
+		
+	101interval, always//right folded (neutral)
+	101pattern0,1201,0,overlay,0,0
+	101pattern1,1201,1,overlay,0,0
+
+	102interval, never//left open
+	102pattern0,0,0,stop,100
+	102pattern1,1202,0,overlay,0,0
+			
+	103interval, never//right open
+	103pattern0,0,0,stop,101
+	103pattern1,1203,0,overlay,0,0
+	
+	104interval, never//left hip
+	104pattern0,0,0,stop,100
+	104pattern1,1204,0,overlay,0,0
+			
+	105interval, never//right hip
+	105pattern0,0,0,stop,101
+	105pattern1,1205,0,overlay,0,0
+
+	106interval, never//left head top
+	106pattern0,0,0,stop,100
+	106pattern1,1206,0,overlay,0,0
+			
+	107interval, never//right head top
+	107pattern0,0,0,stop,101
+	107pattern1,1207,0,overlay,0,0
+
+	108interval, never//left harmonica
+	108pattern0,0,0,stop,100
+	108pattern1,1208,0,overlay,0,0
+			
+	109interval, never//right harmonica
+	109pattern0,0,0,stop,101
+	109pattern1,1209,0,overlay,0,0	
+
+	110interval, never//left cry
+	110pattern0,0,0,stop,100
+	110pattern1,1210,0,overlay,0,0
+			
+	111interval, never//right cry
+	111pattern0,0,0,stop,101
+	111pattern1,1211,0,overlay,0,0
+
+	112interval, never//left face palm
+	112pattern0,0,0,stop,100
+	112pattern1,1212,0,overlay,0,0	
+
+	113interval, never//left fist
+	113pattern0,0,0,stop,100
+	113pattern1,1214,0,overlay,0,0
+			
+	114interval, never//right fist
+	114pattern0,0,0,stop,101
+	114pattern1,1215,0,overlay,0,0
+	
+	115interval, never//left point
+	115pattern0,0,0,stop,100
+	115pattern1,1216,0,overlay,0,0	
+
+	116interval, never//left point higher
+	116pattern0,0,0,stop,100
+	116pattern1,1218,0,overlay,0,0	
+
+	117interval, never//left straight
+	117pattern0,0,0,stop,100
+	117pattern1,1220,0,overlay,0,0
+
+	118interval, never					//left wave
+	118pattern0,0,0,stop,100
+	118pattern1,1222,0,overlay,0,0
+
+	119interval, never					//right behind
+	119pattern0,0,0,stop,101
+	119pattern1,1223,0,overlay,0,0
+	
+	120interval, never					//left hug self
+	120pattern0,0,0,stop,100
+	120pattern1,1224,0,overlay,0,0
+			
+	121interval, never					//right hug self
+	121pattern0,0,0,stop,101
+	121pattern1,1225,0,overlay,0,0	
+	
+	122interval, never					//left wave lower
+	122pattern0,0,0,stop,100
+	122pattern1,1226,0,overlay,0,0
+	
+	124interval, never  				//left hold draw-widest
+	124pattern0,0,0,stop,100			//i[124] 1227
+	124pattern1,1227,0,overlay,0,0	
+
+	125interval, never  				//right hold draw-widest
+	125pattern0,0,0,stop,101			//i[125] 1228
+	125pattern1,1228,0,overlay,0,0	
+	
+	126interval, never  				//left hold draw-narrow				
+	126pattern0,0,0,stop,100			//i[126] 1229
+	126pattern1,1229,0,overlay,0,0
+	
+	127interval, never  				//right hold draw- narrow
+	127pattern0,0,0,stop,101			//i[127] 1230
+	127pattern1,1230,0,overlay,0,0	
+
+	128interval, never  				//left hold draw			
+	128pattern0,0,0,stop,100			//i[128] 1231
+	128pattern1,1231,0,overlay,0,0
+	
+	129interval, never  				//right hold draw
+	129pattern0,0,0,stop,101			//i[129] 1232
+	129pattern1,1232,0,overlay,0,0		
+	
+//Drawings:
+
+	201interval, never		//octopus
+	201pattern1,1300,0,overlay,0,0	//i[201] 1300
+
+	202interval, never		//otter
+	202pattern1,1301,0,overlay,0,0	//i[202] 1301
+
+	203interval, never		//elephant
+	203pattern1,1302,0,overlay,0,0	//i[203] 1302
+
+	204interval, never		//hedgehog?
+	204pattern1,1303,0,overlay,0,0	//i[204] 1303
+
+	205interval, never		//Skellibat?
+	205pattern1,1304,0,overlay,0,0	//i[205] 1304
+	
+	206interval, never		//puppy
+	206pattern1,1305,0,overlay,0,0	//i[206] 1305
+	
+	207interval, never		//monkey -wide
+	207pattern1,1306,0,overlay,0,0	//i[207] 1306
+
+	208interval, never		//deer
+	208pattern1,1307,0,overlay,0,0	//i[208] 1307
+
+	209interval, never		//chipmunk
+	209pattern1,1308,0,overlay,0,0	//i[209] 1308
+
+	210interval, never		//bunny
+	210pattern1,1309,0,overlay,0,0	//i[210] 1309
+
+	211interval, never		//boar
+	211pattern1,1310,0,overlay,0,0  //i[211] 1310
+	
+	212interval, never		//bee
+	212pattern1,1311,0,overlay,0,0	//i[212] 1311
+	
+	213interval, never		//turtle
+	213pattern1,1312,0,overlay,0,0	//i[213] 1312	
+	
+	214interval, never	//YOU!
+	214pattern1,1313,0,overlay,0,0 
+	
+	215interval, never	//disorder
+	215pattern0,0,0,stop,1
+	215pattern0,0,0,stop,50
+	215pattern0,0,0,stop,51
+	215pattern0,0,0,stop,100
+	215pattern0,0,0,stop,101	
+	215pattern1,1314,0,overlay,0,10 
+	
+	216interval, never	//forest stream
+	216pattern1,1315,0,overlay,0,0 
+
+	217interval, never	//knee
+	217pattern1,1316,0,overlay,0,0 //1315		
+	//\s[0]\i[217]\i[127]\i[126]
+		
+}
+
+
+//stationary poses - no animations
+//To add blinking and talking copy code from surface0 and add appropriate file numbers
+/*
+surface1 //angry
+{
+	element0,overlay,surface1501.png,0,0
+}
+
+surface2 //embarassed
+{
+	element0,overlay,surface1502.png,0,0
+}
+
+surface3 //harmonica
+{
+	element0,overlay,surface1503.png,0,0
+}
+
+surface4 //hold head
+{
+	element0,overlay,surface1504.png,0,0
+}
+
+surface5 //crying
+{
+	element0,overlay,surface1505.png,0,0
+}
+
+surface6 //neutral, arms folded
+{
+	element0,overlay,surface1506.png,0,0
+}
+
+surface7 //hugging self
+{
+	element0,overlay,surface1507.png,0,0
+}
+
+surface10  
+{
+
+	element0,overlay,surface10.png,0,0
+}
+
+surface11
+{
+	element0,overlay,surface1300.png,0,0	
+}
+*/
+
+//Layer multiple elements permanently in the pose:
+	//element0,overlay,surface0.png,0,0 //could be the body
+	//element1,overlay,surface9.png,0,0 //could be the head
+//For a body that doesn't change and a head that changes expressions
+
+//--Blinking---------------------------------------------------------------------------
+//interval is a set block defining animation, patterns are frames
+//1001, 1002 are the file images
+//10, 5, 10 are delays before frames
+//0,0 coordinates of image
+	//0interval,random,4
+		//0pattern0,-1,10,overlay,0,0
+		//0pattern1,1002,5,overlayfast,0,0
+		//0pattern2,1001,10,overlayfast,0,0
+		//0pattern3,-1,3,overlay,0,0
+
+//animation methods: overlay, overlayfast base, move, replace.
+
+//--Talking-----------------------------------------------------------------------------
+
+//runs every 4 characters
+//randomly selects an interval with number 2,3,4
+//1101,1102 are the file images
+//to add talking animation to other surfaces copy the following code for said surfaces 
+
+	//1interval,talk,4
+		//1pattern0,0,0,alternativestart,[2.3.4]
+
+		//2interval,never
+			//2pattern0,1102,10,overlay,0,0
+			//2pattern0,1101,13,overlay,0,0
+			//2pattern1,-1,10,overlay,0,0
+
+		//3interval,never
+			//3pattern0,1101,14,overlay,0,0
+			//3pattern1,-1,10,overlay,0,0
+
+		//4interval,never
+			//4pattern0,1102,14,overlay,0,0
+			//4pattern1,-1,10,overlay,0,0
+
+//----PROFILE--TALKING-----------------------------------------------------------------
+//IMPORTANT NOTE: IF YOU'RE DOING A PROFILE VIEW AND YOUR MOUTH IS MOVING OUTSIDE THE BODY meaning that if you had a silhouette of your base frame, the mouth's movement would be outside that silhouette, then you're going to need to use Replace instead. I'm sorry for your loss. You can look through the Advanced User box below until you find the section on Replace to try and figure out how it works. Your other option is to change your pose or move your mouth or do something to make sure your mouth's movement does not break your character's silhouette. As a rule of thumb, keeping your character's mouth movement inside their silhouette in general makes things much easier for you, but sometimes it's just not possible. If any furries are reading this, you will probably run into this problem a lot with any kind of side-view of a muzzle. Read on ahead to the Replace section.
+
+//IF YOU ABSOLUTELY CAN'T GET THE BLINKING/TALKING FRAMES TO LOOK RIGHT
+//If it comes to that, you can delete those chunks of code and just leave surface0 like the other simple poses below. It'd look something like
+
+//surface0
+//{
+	//collision0,57,22,112,46,Head
+	//collision1,65,50,105,91,Face
+	//element0,overlay,surface0.png,0,0
+//}
+
+//*********************Advanced User Info*******************************
+
+//--Random things
+	//6interval,random,60 //every 60ms there's a chance this will randomly happen.
+		//6pattern0,0404,0,overlayfast,0,0 //You'd replace 0404 with whatever image you'd be using
+		//6pattern1,-1,5000,overlayfast,0,0 //5000 is the delay on the frame, -1 return to base
+
+//--Other Animation Options
+//interval animations: bind, talk, random, never, always, sometimes, runonce, rarely.
+
+//This would always run this animation:
+	//20interval,always
+		//20pattern0,182,0,overlay,0,0
+
+//Run sometimes and return to base with -1. (like tail waving):
+	//6interval,sometimes
+		//6pattern0,604,13,replace,0,96
+		//6pattern1,606,14,replace,0,96
+		//6pattern2,605,14,replace,0,96
+		//6pattern3,-1,10,overlay,0,0
+
+//Run the animation once and stop on the last frame (like falling):
+	//0interval,runonce
+		//0pattern0,41,13,replace
+		//0pattern1,42,19,replace
+
+//Run the animation rarely (like coughing):
+	//20interval,rarely
+		//20pattern0,286,0,base
+		//20pattern0,288,0,replace,0,0
+		//20pattern1,287,15,replace,0,0
+		//20pattern2,-1,25,overlay,0,0
+
+
+//-------Unique Intervals--------------//
+//used mainly for expression- eyebrows, eyes..
+//add intervals to surface- set to never
+//call them explicitly \s[0]\i[8] to make the character change their expression
+//it allows different expression to the same pose
+//also you can call them one after another  \s[0]\i[5]\i[8]\i[22]
+
+//8interval,never
+	//8pattern0,224,0,overlayfast,0,0
+
+//--Stopping Intervals--------------------//
+//example: character always have ears layer, we want to change the ears with their mood:
+
+//Ears back
+	//20interval,always
+		//20pattern0,182,0,overlay,0,0
+
+//Ears neutral //21interval stop the 'ears-back' (20interval) that's always there.
+	//21interval,never
+		//21pattern0,0,0,stop,20
+		//21pattern0,172,0,overlay,0,0
+
+//another example: stop check to make character stop moving so that they can talk
+
+//--Layering
+//intervals in a Surface = layers in a PSD file. (top/ bottom layers)
+//example: hair layers should go above eye layers
+//exception: Replace does not care about layering. It pre-empts Always & Random. 
+//careful when using Replace.
+
+//--Base
+//changes the base of your pose from one file to another
+//example: moving a character's hand when it's behind their body
+//-1 goes back to the original image
+
+//Left arm half out
+	//21interval,never
+		//21pattern4,0504,0,base,0,0
+		//21pattern5,-1,800,base,0,0
+
+//--Replace
+//replaces image (or part image) with another image. 
+//last two numbers of  pattern lines almost always been 0,0 because
+//if all images are same sized, they'll always line up properly with each other
+//Unless you're using replace.
+//If you're replacing the ENTIRE image, you can leave replace as 0,0. 
+//Handy for full body animations: like someone getting hit
+//But if replace is used for small things (mouths in profile)
+//Coordinates are required. (like in collisions) 
+
+//hunter smoker example:
+//talking
+	//1interval,talk,4
+		//1pattern0,0,0,alternativestart,[2.3.4]
+
+	//2interval,never
+		//2pattern0,708,13,replace,0,72
+		//2pattern1,-1,10,overlay,0,0
+
+	//3interval,never
+		//3pattern0,709,14,replace,0,72
+		//3pattern1,-1,10,overlay,0,0
+
+	//4interval,never
+		//4pattern0,709,14,replace,0,72
+		//4pattern1,708,14,replace,0,72
+		//4pattern2,-1,10,overlay,0,0
+
+//You'll see at first that it's very similar to the talk function we set up above. However, there is a distinct difference. Overlay has been replaced with replace, and the final number is different. Those two numbers are the x,y coordinates for that image, and tell it where it needs to replace.
+//In the interest of making this as simple as possible, and avoiding a problem I ran into when I cropped things too tightly, what you're going to do is go into your image with your profile talk frames. You are going to draw a rectangle that VERTICALLY just about covers your mouth frames, and HORIZONTALLY spans your entire image. Then you'll crop your image down to that rectangle. What this will create is an image that is the same WIDTH as your base image, but a different HEIGHT. Save those images as your mouth frames.
+//Since your new mouth frame is the same width as your base image, you can leave it as 0. How do you find the second number then? The second number is the Y value, and it's the top of your rectangle. Undo your crop so your image is its base size again, hold your cursor at the top of your rectangle, and look at the coordinates in Photoshop info or MSPaint or whatever. Write down that Y number, and put it in here. Test your shell and see if the mouth frames line up properly. If they're a pixel too high or low, adjust the number until they line up right.
+//You'll notice the last line in each interval, the one with -1 and with the remaining overlay tag, is still set to 0,0. That's because that's the animation returning to normal. You don't have to mess with that line. Just replace the 708 709 whatever numbers in the replace lines with what you're using.
+
+//"But Zar!" you exclaim. "If I go all the way horizontally, then I run into my eye frames, and the blinking animation doesn't look right because replace doesn't care about me!" in which cause ouch, because that sucks and means you're going to have to get a little more into this.
+//Alright, this time, draw your same rectangle over your mouth frames. THIS TIME, however, don't stretch it all the way across. Draw it as close to your mouth frames as you can without filling up the entire rectangle. Specifically, leave at least ONE PIXEL blank in the top left corner if you possibly can. 
+//Once you've drawn your rectangle, take your cursor and find the coordinates again. This time, look for the y coordinate at the top of the rectangle, and x at the left side of it if I remember right. Write them down, come back over here, and fill out the last two numbers of each line as appropriate. Go back to your image, crop it down to your rectangle, and save your mouth frames. Test. Adjust. Repeat until it looks right.
+//You can see now why I recommended keeping your mouth frames inside your silhouette as much as you can. If you are running into the blink problem, you can try putting your blink interval above your talk interval. So if your talk intervals are 1-4 for example, you could put blink as 5interval instead.
+
+//As a side note, most interval functions like replace and overlay will go over bound items like dress-up items, which is exactly why I said doing clothes for a ghost that moves is more trouble than it's worth. This is also why it's really hard to do optional dress-up glasses that work with blink frames, because the eyes will always go over the glasses. Any interval animation of any kind will ALWAYS take precedent over bind.
+//Replace in particular will take precedent over most other functions like Random or Always. For example, if you set up something to always play in the background, like... let's say, a fire was behind your character, and at some point you wanted to use replace on the main body of your character to say, make them move their arm. Replace will then shut off the Always interval and do its own thing, no matter how you layer it. It works okay with Overlay though. Basically, you'll need to mess with it a bit yourself to see when it works and when it doesn't.
+
+//--Move
+//Moves a frame across the screen
+//no delay = teleport
+//sliding back slightly
+	//0interval,runonce
+		//0pattern0,0,15,move,1,0 //last two numbers are x,y values
+		//0pattern1,0,5,move,2,0
+		//0pattern2,0,7,move,3,0
+		//0pattern3,0,10,move,4,0
+		//0pattern2,0,15,move,5,0
+
+//character will stay where they moved until: 
+//you move them back, they go into another pose, or OnSurfaceRestore moves them //may want to set up some reverse move frames to bring them back to 0,0.
+//move can be used to make things bob up and down
+
+//***********************************************************************
+
+
+
+
+//--surface.append-------------------------------------------------------------------
+
+//Surface.append basically applies the coding within the brackets to the poses specified in the number range. Specifically in this case it applies to collisions. If the collision areas for your ghost don't change very much from pose to pose, then you can set them here for multiple surfaces at once and save yourself some time.
+//I'm not actually going to use surface.append since Girl and Triangle move around too much for their collisions to be that consistent between poses, but it's something could potentially come in handy for advanced users or ghost makers who have very stationary ghosts, so I'll leave it here and just append it to surfaces that don't exist so it won't get in the way. If you want to use this, study this example and see how it can apply to your own ghost.
+
+//surface.append500-590 //this is appending this code to Surface500 through Surface590.
+//There are actually a few special ways you can refine this! For example, surface.append500-590,205 would append the code to Surface500 to Surface590, as well as Surface205. 
+//surface.append500-590,205,!507-509 it would do the same, except it would skip Surfaces507 through 509.
+//you can have multiple surface.appends as well, if you want to append one set of code to one range of surfaces and another to another. For example, one set of collisions to your main character and one to your side character.
+//{
+//	collision0,15,16,111,48,Face
+//	collision1,40,50,102,84,Point
+
+//Because this is under surface.append, that means that these collisions are being set for every surface between the number range specified, in this case every Surface from 500 to 590. Make sure to put surface.append at the end of your file, so it can append the values to surfaces that exist.
+
+//--bind-------------------------------------------------------------------------------
+
+//Bind is an interval function only used for dress-up items, therefore if your ghost has no dress-up items, you will not need to bind anything and can safely disregard this. See the walkthrough page about clothing for more details about bind. I'll comment these out since the template won't have clothing items.
+
+	//51interval,bind
+	//51pattern0,999,2,bind,0,0
+
+//One final note on bind, note that it is also under surface.append along with the collisions up there. Meaning that this clothing would bind across those multiple surfaces just like the collisions. You can set up bind individually for a pose I think, but I honestly haven't messed around with it very much.
+//}
+
+//--Unique Collision cursors------------------
+//mouse cursor changes when you hover over collision
+//System cursors you can use: "arrow", "cross", "no", "hand", "grip", "finger", "wait", "text", "move", and "help".
+
+//sakura.cursor 
+//{ 
+	//mouseup0,Head,system:hand 
+	//mousedown0,Head,system:finger 
+	//mouseup1,Face,system:hand 
+	//mousedown1,Face,system:grip 
+//} 
+
+//To set this up for the secondary character, just change sakura to kero, as usual.
+
+
+//--Tooltips------------------
+//a pop up which hovers when user hovers over collision
+//useful for warning about punching
+//replace sakura with kero for secondary character
+	//sakura.tooltips 
+	//{ 
+		//Head,This is Girl's head. 
+		//Face,This is Girl's face.  
+	//}
+
+//--Surface.alias------------------
+//you can have multiple aliases for same surface
+//\s[6666] would call any of the alias surfaces
+	//sakura.surface.alias
+	//{
+		//6666,[1228,1230,1231,1235]
+		//6667,[1228,1232,1233]		
+	//}
+
+//---

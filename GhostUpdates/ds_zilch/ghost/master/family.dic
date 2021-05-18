@@ -1,0 +1,41 @@
+//This seems kinda unnecessary when I already have BrotherTalk and ParentsTalk
+
+/*
+Family
+{
+	if familyLvl > 0
+	{			
+		if familyPaused == 1
+		{
+			"%(g)\![*]\q[Family,OnFamilyTalk]%(w)"			
+		}
+		else
+		{
+			"%\![*]\q[Family,OnFamilyTalk]"			
+		}
+		
+	}
+}
+
+OnFamilyTalk
+{
+	if familyPaused == 0
+	{
+		case familyLvl
+		{
+			when 1
+			{
+			}
+		}
+		--
+		familyPaused = 1
+	}
+	else
+	{
+		
+	}
+	--
+	"\e"
+}
+
+*/

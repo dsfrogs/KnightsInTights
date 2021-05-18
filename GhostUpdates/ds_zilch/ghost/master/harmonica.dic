@@ -1,0 +1,529 @@
+
+Harmonica
+{
+	if harmonicaLvl > 0
+	{			
+		if harmonicaPaused == 1 //&& harmonicaClosed == 0
+		{
+			"%(g)\![*]\q[Harmonica,OnHarmonicaTalk]%(w)\n"			
+		}
+		else
+		{
+			"\![*]\q[Harmonica,OnHarmonicaTalk]"			
+		}		
+	}
+}
+
+HarmonicaLvlUp
+{		
+	exp = harmonicaExp; lvl = harmonicaLvl; paused = harmonicaPaused;			
+	closed = harmonicaClosed;
+	
+	ShouldLvlUp
+		
+	harmonicaExp = exp; harmonicaLvl = lvl; harmonicaPaused = paused;
+	exp = 0; lvl = 0; paused = 0; closed = 0;		
+}
+
+HarmonicaUpsetAfterFriday
+{
+	"\s[0]* (Maybe if they'll play something they'll feel better?)\%(wx)\n\n\s[0]\i[109]%(z)Yeah...\%(wx) Maybe...%(d)\%(wx)\%(wx)\s[0]"						
+	--
+	harmonicaPaused=1
+	//NumOfOpenSubjects--
+	harmonicaExp=0
+	upsetAfterFriday++			
+}
+
+OnHarmonicaTalk
+{
+	if harmonicaPaused == 0 &&  TOINT(upsetAfterFriday)==0
+	{	
+		if harmonicaLvl == 1
+		{
+			"\0\s[0]\i[115]\i[114]%(z) I can only play one thing!\%(wx)\%(wx)\s[0]\i[103]...want to hear it?%(d)\%(wx)\s[0]\n\n\![*]\q[Yes!,ForgotHarmonica]\n\![*]\q[...,Quiet]\n"
+		}
+		else
+		{
+			harmonicaExp++			
+			--
+			HarmonicaMenu
+		}
+		--
+		if 	harmonicaLvl<14
+		{
+			harmonicaPaused = 1	
+			//NumOfOpenSubjects--				
+		}		
+	}
+	elseif (TOINT(upsetAfterFriday))!=0
+	{
+		HarmonicaUpsetAfterFriday
+	}
+	else
+	{
+		"\0\s[0]\i[8]\i[109]\i[108]%(z)I'm a bit out of breath right now actually!!%(d)\%(wx)\s[0]"
+	}
+	--
+	"\e"	
+}
+
+
+Select.ForgotHarmonica
+{
+	harmonicaExp++
+	--
+	"\0\s[0]\i[109]\i[108]%(z)I forgot my harmonica in my other pocket.\%(wx) \0\s[0]\i[102]\i[103]Wanna see me dance instead?%(d)\%(wx)\n\n" 
+	--
+	DanceZilch
+}
+
+DanceZilch
+{
+	harmonicaExp++
+	--
+	"\![*]\q[YES PLEASE,YesDance]\n\![*]\q[Naaah...,NoDance]\n\n"
+}
+
+Select.YesDance
+{
+	"\0\s[0]\i[116]\i[105]\i[54]\w6\s[0]\i[116]\i[105]\i[55]\w6\s[0]\i[105]\i[117]\w6\w6\s[0]%(z)Is it good?%(d)\n\n\![*]\q[Yes,GoodDance]\n\![*]\q[...NO BWAHAHA!,badDance]\n\n"
+}
+
+Select.NoDance
+{
+	"\0\s[0]"
+}
+
+Select.GoodDance
+{
+	LessUpsetNow
+	--
+	"\0\s[0]\i[102]%(z)I could teach you.%(d)\%(wx)\s[0]"
+}
+
+Select.badDance
+{
+	"\0\s[0]\i[2]\i[4]\%(wx)%(z)okay...%(d)\%(wx)\%(wx)\s[0]"
+	--
+	upset+=3
+	latestSin = "DanceBad"
+	AddSinToList
+}
+
+
+MistakeCheck
+{
+	if RAND(100) > (70 + harmonicaLvl)
+	{
+		AMistake
+	}		
+}
+
+HarmonicaMenu
+{
+	_today = GetDaySlot
+	--
+	if notMyDay==1 && mistakeDay==_today
+	{
+		"* (Zilch doesn't feel like playing the harmonica today...)\%(wx)\n"
+	}
+	else
+	{
+		"\0\s[0]"
+		--
+		case harmonicaLvl	//well this is unfortunate
+		{
+			when 2
+			{
+				"* (Zilch can only play one thing, for now...)\n\n/
+				\![*]\q[Ode To Joy,OdeToJoy]\n"		
+			}						
+			when 3
+			{
+				"%(z)\i[102]\i[103]I learned another song!%(d)\%(wx)\s[0]\n\n/
+				\![*]\q[Ode To Joy,OdeToJoy]\n/
+				\![*]\q[Fahret Hin,FahretHin]\n"				
+			}			
+			when 4
+			{
+				"%(z)\i[102]\i[103]I know a few songs now!%(d)\%(wx)\s[0]\n\n/
+				\![*]\q[Ode To Joy,OdeToJoy]\n/
+				\![*]\q[Fahret Hin,FahretHin]\n/
+				\![*]\q[Green Sleeves,GreenSleeves]\n"		
+			}		
+			when 5		
+			{
+				"%(z)\i[102]\i[103]I know a few songs now!%(d)\%(wx)\s[0]\n\n/
+				\![*]\q[Ode To Joy,OdeToJoy]\n/
+				\![*]\q[Fahret Hin,FahretHin]\n/
+				\![*]\q[Green Sleeves,GreenSleeves]\n/
+				\![*]\q[Early One Morning,EarlyOneMorning]\n"	
+			}						
+			when 6      
+			{
+				"%(z)\i[102]\i[103]I know a few songs now!%(d)\%(wx)\s[0]\n\n/
+				\![*]\q[Ode To Joy,OdeToJoy]\n/
+				\![*]\q[Fahret Hin,FahretHin]\n/
+				\![*]\q[Green Sleeves,GreenSleeves]\n/
+				\![*]\q[Early One Morning,EarlyOneMorning]\n/
+				\![*]\q[Greenfields,Greenfields]\n"
+			}						
+			when 7      
+			{
+				"%(z)\i[102]\i[103]I know a few songs now!%(d)\%(wx)\s[0]\n\n/
+				\![*]\q[Ode To Joy,OdeToJoy]\n/
+				\![*]\q[Fahret Hin,FahretHin]\n/
+				\![*]\q[Green Sleeves,GreenSleeves]\n/
+				\![*]\q[Early One Morning,EarlyOneMorning]\n/
+				\![*]\q[Greenfields,Greenfields]\n/
+				\![*]\q[Allouette,Allouette]\n"			
+			}				
+			when 8     
+			{
+				"%(z)\i[102]\i[103]I know a lot of songs now!%(d)\%(wx)\s[0]\n\n/
+				\![*]\q[Ode To Joy,OdeToJoy]\n/
+				\![*]\q[Fahret Hin,FahretHin]\n/
+				\![*]\q[Green Sleeves,GreenSleeves]\n/
+				\![*]\q[Early One Morning,EarlyOneMorning]\n/
+				\![*]\q[Greenfields,Greenfields]\n/
+				\![*]\q[Allouette,Allouette]\n/
+				\![*]\q[Hares On The Mountain,HaresOnTheMountain]\n"				
+			}						
+			when 9     
+			{
+				"%(z)\i[102]\i[103]I know a lot of songs now!%(d)\%(wx)\s[0]\n\n/
+				\![*]\q[Ode To Joy,OdeToJoy]\n/
+				\![*]\q[Fahret Hin,FahretHin]\n/
+				\![*]\q[Green Sleeves,GreenSleeves]\n/
+				\![*]\q[Early One Morning,EarlyOneMorning]\n/
+				\![*]\q[Greenfields,Greenfields]\n/
+				\![*]\q[Allouette,Allouette]\n/
+				\![*]\q[Hares On The Mountain,HaresOnTheMountain]\n/
+				\![*]\q[Two Brothers,TwoBrothers]\n"			
+			}						
+			when 10     
+			{
+				"%(z)\i[102]\i[103]I know a lot of songs now!%(d)\%(wx)\s[0]\n\n/
+				\![*]\q[Ode To Joy,OdeToJoy]\n/
+				\![*]\q[Fahret Hin,FahretHin]\n/
+				\![*]\q[Green Sleeves,GreenSleeves]\n/
+				\![*]\q[Early One Morning,EarlyOneMorning]\n/
+				\![*]\q[Greenfields,Greenfields]\n/
+				\![*]\q[Allouette,Allouette]\n/
+				\![*]\q[Hares On The Mountain,HaresOnTheMountain]\n/
+				\![*]\q[Two Brothers,TwoBrothers]\n/
+				\![*]\q[Scarborough Fair,ScarboroughFair]\n"		
+			}						
+			when 11     
+			{
+				"%(z)\i[102]\i[103]I know all the songs now!%(d)\%(wx)\s[0]\n\n/
+				\![*]\q[Ode To Joy,OdeToJoy]\n/
+				\![*]\q[Fahret Hin,FahretHin]\n/
+				\![*]\q[Green Sleeves,GreenSleeves]\n/
+				\![*]\q[Early One Morning,EarlyOneMorning]\n/
+				\![*]\q[Greenfields,Greenfields]\n/
+				\![*]\q[Allouette,Allouette]\n/
+				\![*]\q[Hares On The Mountain,HaresOnTheMountain]\n/
+				\![*]\q[Two Brothers,TwoBrothers]\n/
+				\![*]\q[Scarborough Fair,ScarboroughFair]\n/
+				\![*]\q[Star Of The County Down,StarOfTheCountyDown]\n"		
+			}			
+			when 12    
+			{
+				"%(z)\i[102]\i[103]I know all the songs now!%(d)\%(wx)\s[0]\n\n/
+				\![*]\q[Ode To Joy,OdeToJoy]\n/
+				\![*]\q[Fahret Hin,FahretHin]\n/
+				\![*]\q[Green Sleeves,GreenSleeves]\n/
+				\![*]\q[Early One Morning,EarlyOneMorning]\n/
+				\![*]\q[Greenfields,Greenfields]\n/
+				\![*]\q[Allouette,Allouette]\n/
+				\![*]\q[Hares On The Mountain,HaresOnTheMountain]\n/
+				\![*]\q[Two Brothers,TwoBrothers]\n/
+				\![*]\q[Scarborough Fair,ScarboroughFair]\n/
+				\![*]\q[Star Of The County Down,StarOfTheCountyDown]\n/
+				\![*]\q[Strawberry Lane,StrawberryLane]\n"
+				
+			}						
+			when 13     
+			{
+				"%(z)\i[102]\i[103]I know all the songs now!%(d)\%(wx)\s[0]\n\n/
+				\![*]\q[Ode To Joy,OdeToJoy]\n/
+				\![*]\q[Fahret Hin,FahretHin]\n/
+				\![*]\q[Green Sleeves,GreenSleeves]\n/
+				\![*]\q[Early One Morning,EarlyOneMorning]\n/
+				\![*]\q[Greenfields,Greenfields]\n/
+				\![*]\q[Allouette,Allouette]\n/
+				\![*]\q[Hares On The Mountain,HaresOnTheMountain]\n/
+				\![*]\q[Two Brothers,TwoBrothers]\n/
+				\![*]\q[Scarborough Fair,ScarboroughFair]\n/
+				\![*]\q[Star Of The County Down,StarOfTheCountyDown]\n/
+				\![*]\q[Strawberry Lane,StrawberryLane]\n/
+				\![*]\q[Piano Man,PianoMan]\n"
+			
+			}					
+		}
+		--
+		if harmonicaLvl>=14
+		{
+			"\b2* (play us a tune, Harmonica!)\n\n/
+			\![*]\q[Ode To Joy,OdeToJoy]\n/
+			\![*]\q[Fahret Hin,FahretHin]\n/
+			\![*]\q[Green Sleeves,GreenSleeves]\n/
+			\![*]\q[Early One Morning,EarlyOneMorning]\n/
+			\![*]\q[Greenfields,Greenfields]\n/
+			\![*]\q[Allouette,Allouette]\n/
+			\![*]\q[Hares On The Mountain,HaresOnTheMountain]\n/
+			\![*]\q[Two Brothers,TwoBrothers]\n/
+			\![*]\q[Scarborough Fair,ScarboroughFair]\n/
+			\![*]\q[Star Of The County Down,StarOfTheCountyDown]\n/
+			\![*]\q[Strawberry Lane,StrawberryLane]\n/
+			\![*]\q[Piano Man,PianoMan]\n"
+			--
+			"\n\_q\![*] There are no more sound files... however!\nZilch continues to learn many songs.\nThank you.)\n"
+		}
+	}
+
+
+}
+
+HarmonicaEnv
+{
+	"\![*]\q[Ode To Joy,OdeToJoy]\n/
+	\![*]\q[Fahret Hin,FahretHin]\n/
+	\![*]\q[Green Sleeves,GreenSleeves]\n/
+	\![*]\q[Early One Morning,EarlyOneMorning]\n/
+	\![*]\q[Greenfields,Greenfields]\n/
+	\![*]\q[Allouette,Allouette]\n/
+	\![*]\q[Hares On The Mountain,HaresOnTheMountain]\n/
+	\![*]\q[Two Brothers,TwoBrothers]\n/
+	\![*]\q[Scarborough Fair,ScarboroughFair]\n/
+	\![*]\q[Star Of The County Down,StarOfTheCountyDown]\n/
+	\![*]\q[Strawberry Lane,StrawberryLane]\n/
+	\![*]\q[Piano Man,PianoMan]\n"
+}
+
+HarmonicaPose
+{
+	"\0\s[0]\i[6]\i[108]\i[109]"
+}
+
+StartPlaying
+{
+	isPlayingTheHarmonica=1
+	--
+	"\![enter,passivemode]"
+	--
+	HarmonicaPose	
+}
+
+Select.StopSong
+{
+	"\s[0]\![sound,stop]"
+	--
+	"\![leave,passivemode]"	
+	--
+	isPlayingTheHarmonica=0
+}
+
+Select.OdeToJoy			
+{
+	MistakeCheck
+	StartPlaying
+	--
+	"\_v[snd\OdeToJoy.mp3]"
+	--
+	"\![*]\q[Stop,StopSong]"
+} 
+
+Select.FahretHin			
+{
+	MistakeCheck	
+	StartPlaying
+	--
+	"\_v[snd\FahretHin.mp3]"
+	--
+	"\![*]\q[Stop,StopSong]"
+} 
+
+Select.GreenSleeves		
+{
+	MistakeCheck	
+	StartPlaying
+	--
+	"\_v[snd\GreenSleeves.mp3]"
+	--
+	"\![*]\q[Stop,StopSong]"	
+} 
+
+Select.EarlyOneMorning	
+{
+	MistakeCheck	
+	StartPlaying
+	--
+	"\_v[snd\EarlyOneMorning.mp3]"
+	--
+	"\![*]\q[Stop,StopSong]"	
+} 
+
+Select.Greenfields		
+{
+	MistakeCheck	
+	StartPlaying
+	--
+	"\_v[snd\Greenfields.mp3]"
+	--
+	"\![*]\q[Stop,StopSong]"	
+} 
+
+Select.Allouette			
+{
+	MistakeCheck	
+	StartPlaying
+	--	
+	"\_v[snd\Allouette.mp3]"
+	--
+	"\![*]\q[Stop,StopSong]"	
+} 
+
+Select.HaresOnTheMountain
+{
+	MistakeCheck	
+	StartPlaying
+	--
+	"\_v[snd\HaresOnTheMountain.mp3]"
+	--
+	"\![*]\q[Stop,StopSong]"	
+} 
+
+Select.TwoBrothers		
+{
+	MistakeCheck	
+	StartPlaying
+	--
+	"\_v[snd\TwoBrothers.mp3]"
+	--
+	"\![*]\q[Stop,StopSong]"	
+} 
+
+Select.ScarboroughFair	
+{
+	MistakeCheck	
+	StartPlaying
+	--
+	"\_v[snd\ScarboroughFair.mp3]"
+	--
+	"\![*]\q[Stop,StopSong]"	
+} 
+
+Select.StarOfTheCountyDown
+{
+	MistakeCheck	
+	StartPlaying
+	--
+	"\_v[snd\StarOfTheCountyDown.mp3]"
+	--
+	"\![*]\q[Stop,StopSong]"	
+} 
+
+Select.StrawberryLane	
+{
+	MistakeCheck	
+	StartPlaying
+	--
+	"\_v[snd\StrawberryLane.mp3]"
+	--
+	"\![*]\q[Stop,StopSong]"	
+} 
+
+Select.PianoMan			
+{
+	MistakeCheck	
+	StartPlaying
+	--
+	"\_v[snd\PianoMan.mp3]"
+	--
+	"\![*]\q[Stop,StopSong]"	
+} 
+
+AMistake			
+{
+		"\0\s[0]\%(wx)\%(wx)\i[6]\i[108]\i[109]\_v[snd\AMistake.mp3]\%(wx)\%(wx)\%(wx)\s[0]"
+		--
+		if (madeAMistake==0)	
+		{
+			"\s[0]\i[2]\i[4]\i[112]\i[56]%(z)That was a mistake...\%(wx) Sorry...%(d)"
+			--
+			madeAMistake= 1
+			mistakeDay = "%(month)month %(day)day"
+		}
+		elseif (madeAMistake==1)
+		{
+			today = GetDaySlot
+			--
+			if (today ==mistakeDay)
+			{
+				madeAMistake= 0			
+				notMyDay = 1
+				--
+				"\s[0]\i[5]\i[105]\i[115]\i[55]\i[54]%(z)Today is not my day!\%(wx)%(d)"				
+			}
+			else
+			{
+				"\s[0]\i[2]\i[4]\i[112]\i[56]%(z)That was a mistake...\%(wx) Sorry...%(d)"
+				--
+				mistakeDay = "%(month)month %(day)day"			
+			}
+		}
+		--
+		"%(Select.StopSong)"
+		--
+		"\%(wx)\s[0]\e"		
+}
+ 
+TalkAboutHarmonicaMistake
+{
+	"\s[0]* (You think about before,\%(wx) when Zilch got the notes wrong...)\%(wx)\n\n\![*]\q[Encourage,Encourage]	\n\![*]\q[Discourage,Discourage]  \n\![*]\q[say nothing,SayNothingAboutHarmonicaMistake] \n"
+}
+
+Select.SayNothingAboutHarmonicaMistake
+{
+	Quiet
+}
+
+Select.Encourage
+{
+	"* (You tell them not to worry about making a mistake,\%(wx) they should just keep practicing."
+	--
+	harmonicaExp++
+	LessUpsetNow
+	--
+	"\n\n\s[0]\i[115]\i[114]%(z)I will!\%(wx)\s[0] But not today!%(d)\s[0]"
+}
+
+Select.Discourage
+{
+	"\![*]\q[You suck as a musician HAHA,DiscourageYes]\n\![*]\q[Actually I don't want to say it,DiscourageNo]\n"
+}
+
+Select.DiscourageYes
+{
+	ZilchUpset	
+}
+
+Select.DiscourageNo
+{
+	"* (Too bad,\%(wx) you're saying it anyway.\%(wx) What did you think would happen when you pressed 'discourage'?)\%(wx)\n\n"
+	--
+	ZilchUpset
+}
+
+
+ZilchUpset
+{
+	"\s[0]\i[5]%(z)Hmmph.\%(wx) I told you,\%(wx)\s[0]\i[5]\i[113]\i[114]\i[55]\i[54] the problem is that this is not my day!\%(wx)%(d)\s[0]"
+	--
+	upset+=5
+	latestSin = "HarmonicaBad"
+	AddSinToList
+}

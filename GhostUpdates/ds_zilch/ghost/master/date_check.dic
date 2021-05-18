@@ -1,0 +1,138 @@
+//--GetTimeSlot-----------------------------------------------------------------------------------//
+//Can be used to define other things, such as the seasons. 
+GetTimeSlot
+{
+	if hour >= 5 && hour <= 8
+	{
+		"earlymorning"
+	}
+	elseif hour >= 9 && hour <= 11
+	{
+		"morning"
+	}
+	elseif hour >= 12 && hour <= 14
+	{
+		"lunch"
+	}
+	elseif hour >= 15 && hour <= 17
+	{
+		"afternoon"
+	}
+	elseif hour >= 18 && hour <= 20
+	{
+		"evening"
+	}
+	elseif hour >= 21 && hour <= 24
+	{
+		"latenight"
+	}
+	else
+	{
+		"midnight"
+	}
+}
+
+//--GetDaySlot------------------------------------------------------------------------------------//
+GetDaySlot
+{
+	"%(month)month %(day)day"
+}
+
+DialougeForThisDate
+{	
+	if dayslot == userbirthday
+	{
+		if upset==0 && upsetAfterFriday==TOINT(0)
+		{
+			"%(z)%(excited)%(excited)\0\s[0]\i[102]\i[103]Happy birthday, %(username)! \%(wx)Are you enjoying it?%(d)%(HowsUrBday)\e" 
+		}
+		else 
+		{
+			"\0\s[0]\i[2]\i[111]\i[117]%(z)So it's your birthday today,\%(wx) huh?%(d)\%(wx)\%(wx)\s[0]"		
+		}			
+	}
+	else
+	{	
+		"%(normalboottalk)"				
+	}	
+	//you can check for special dates, holloween, April's fools, etc
+}
+
+Fricheck
+{
+	if (dateSetFriday == 1 && sawDisorder == 0 && weekday == 5 && hour >= 19) 
+	{
+		Fridate
+	}
+	elseif sawDisorder == 1
+	{
+		FridateAfterMath
+	}
+}
+
+
+BootingStatistics
+{
+	bootingTime[hour]++
+	//this is a string and will accumulate as 111...
+	//But it's fine!
+	//the biggest string is still for the most frequently booted hour
+}
+
+//you can't print inside a loop apparently
+OnTryingToUseALoop
+{
+	_i=0
+	counter=0
+	max=0
+	hourNum = 0
+	--
+	while _i<23
+	{
+		counter = TOINT(bootingTime[_i])
+		--
+		if max<counter
+		{
+			max = counter
+			counter=0
+			hourNum = _i
+		}
+		--
+		_i+=1
+	}
+}
+
+
+OnFindMostVisitedHour
+{
+	OnTryingToUseALoop
+	--
+	if hourNum >= 5 && hourNum <= 8
+	{
+		"early morning"
+	}
+	elseif hourNum >= 9 && hourNum <= 11
+	{
+		"morning"
+	}
+	elseif hourNum >= 12 && hourNum <= 14
+	{
+		"lunch"
+	}
+	elseif hourNum >= 15 && hourNum <= 17
+	{
+		"the afternoon"
+	}
+	elseif hourNum >= 18 && hourNum <= 20
+	{
+		"evening"
+	}
+	elseif hourNum >= 21 && hourNum <= 24
+	{
+		"night"
+	}
+	elseif hourNum >= 0 && hourNum <= 5
+	{
+		"the middle of the night"
+	}
+}

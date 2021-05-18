@@ -1,0 +1,430 @@
+//talkSubject is paused after a line is given
+//talkSubject is unpaused when lvld up
+//talkSubject is lvl up when exp >0
+//1 exp is paid in return for lvl up
+//LvlUpChecks should done when entering main menu
+//Not TalkAboutMenu
+
+//maybe I should open all subjects at some point- without lvling
+
+TalkAbout
+{
+	//if upset!=0
+	//{
+	//	"* (They seem hesitant.)\%(wx) %(z)\n\nYou want to ask me something?%(d)\%(wx)\n"
+	//	"* (They seem hesitant.)\%(wx) %(z)\n\nYou want to talk to me?%(d)\%(wx)\n"
+	//	--
+	//	upset--
+	//}
+	//else
+	if (TOINT(upsetAfterFriday))!=0
+	{
+		"* (Zilch fidgets.)\n"
+	}
+	else
+	{
+		"* (You talk about...) \n\n"		
+	}
+	--
+		"\_q\0\s[0]"
+		--
+		"%(ThisPlace)   "
+		--
+		"%(Dreams)    "
+		--
+		"%(Themself)"
+		--	
+		"\n\n"
+		--
+		"%(Home)    "
+		--
+	//	"%(Family)   "	//unnecessary, got parents+ brother
+		--
+		"%(Brother)  "	
+		--
+		"%(Parents)  "
+		--
+		"\n\n"
+		--
+		"%(Friends)  "
+	//	"%(Accident)   "	//unnecessary, got Disorder
+		--		
+		"%(Art)  "	
+		--
+		"%(Science)   "
+		--
+		"%(Harmonica)   "
+		--
+		"\n\n"
+		--
+		"%(Disorder)  "
+		--
+		//CountOpenSubjects
+		--
+		//if  TOINT((upsetAfterFriday))==0 && familiarity >20
+		//if sumOpen<=4 && TOINT((upsetAfterFriday))==0 && familiarity >20
+		//if NumOfOpenSubjects<=4 && TOINT((upsetAfterFriday))==0
+		if  TOINT((upsetAfterFriday))==0 && familiarity >20
+		{
+			ZilchThought = ""
+			--
+			//"\n\![*]\q[Ask what they're thinking about,WhatThink]"
+			"\n\![*]\q[Ask what they're thinking about,WhatThinkCircular]"
+			--
+			
+		}
+		--		
+		if TOINT((upsetAfterFriday)) > 5
+		{
+			"\n\n\![*]\q[Zilch talk to me,TalkToMeAfterFriday]"
+		}
+	--
+	"\e"
+}
+
+Select.TalkToMeAfterFriday
+{
+	"\0\s[0]* (They still seem upset.\%(wx) Maybe you can make them snap out of it.\%(wx) You...\%(wx))\n\n\![*]\q[Sing a happy song,SingHappy]\n\![*]\q[Dance a goofy dance,DanceGoofy]	\n\![*]\q[Have a serious talk,SeriousTalky]\n\![*]\q[Actually I enjoy this,DoNothingy]"	
+}
+
+Select.DoNothingy
+{
+	
+}
+
+Select.SingHappy		
+{
+	"* You sing:\%(wx)\n\n%(Zilchsong)\%(wx) \n\n\0\s[0]\i[2]\i[108]\i[109] %(z)*sniff*%(d) \n\n* (Oh no!\%(wx) This is not the intended result!)\%(wx)\%(wx) \n\n %(z)Thank you for trying to cheer me up.\%(wx) I'll try to stop moping.\%(wx)\s[0] It's just that I hoped my experiment will help me with...\%(wx) \s[0]\i[2]well...\%(wx) It's not important anymore...\%(wx) \s[0]I guess I better try to get back into my routine.%(d)"
+	--
+	EndUpsetAfterFriday
+	--
+	"\e"
+}
+
+Select.DanceGoofy      
+{
+	"* (You dance the dance of your people).\%(wx)\%(wx)\n\n %(z)Haha...\%(wx) Yes...\%(wx) Very funny...\%(wx)%(d)\n\n\![*]\q[Flail your arms more,DanceGoofy2]\n\![*]\q[...,DanceGoofy2]"
+
+}
+
+Select.DanceGoofy2
+{
+	"%(z)*sigh* \0\s[0]\i[2]I get what you're trying to do,\%(wx)  you're trying to cheer me up.\%(wx)  But...\%(wx)\0\s[0]\i[2]\i[108]\i[109] I hoped my experiment will help me with...\%(wx) well...\%(wx)\0\s[0]\i[2] It's not important anymore...\%(wx) \s[0]I guess I better try to get back into my routine.%(d)"
+	--
+	EndUpsetAfterFriday
+	--
+	"\e"
+}
+
+//\0\s[0]\i[3]\i[108]\i[109]
+Select.SeriousTalky    
+{
+	"%(z)\s[0]\i[2]\i[108]\i[109]I guess I thought if I could prove something,\%(wx) it would help me with...\%(wx) \s[0]\i[115]\i[114]but it didn't help.\%(wx) It didn't help me at all.\%(wx) I was counting on it.\%(wx)\%(wx)\n\s[0]\i[113]\i[114]I don't want to think about this anymore.\%(wx)%(d)\s[0]"
+	--
+	EndUpsetAfterFriday
+	--
+	"\e"
+}
+
+
+EndUpsetAfterFriday
+{
+	SetTalkSubjectsExpToOne
+	--
+	upsetAfterFriday = TOINT(0)		
+}
+
+g
+{
+	"\f[color,192,192,192]"	
+}
+
+w
+{
+	"\f[color,255,255,255]"
+}
+
+//NumOfOpenSubjects
+
+CountOpenSubjects
+{ //you neede to count how many are NOT paused, since you start with just 3 subjects
+	sumOpen = TOINT(0)
+	sumOpen += TOINT(themselfPaused	 ==0 && themselfClosed 	==0) 
+	sumOpen += TOINT(dreamsPaused 	 ==0 && dreamsClosed 	==0)
+	sumOpen += TOINT(sciencePaused   ==0 && scienceClosed	==0)
+	sumOpen += TOINT(brotherPaused   ==0 && brotherClosed	==0)
+	sumOpen += TOINT(artPaused       ==0 && artClosed   	==0)
+	sumOpen += TOINT(homePaused      ==0 && homeClosed   	==0)
+	sumOpen += TOINT(thisPlacePaused ==0 && thisPlaceClosed ==0)
+	sumOpen += TOINT(harmonicaPaused ==0 && harmonicaClosed ==0) 
+	sumOpen += TOINT(disorderPaused  ==0 && disorderClosed  ==0) 
+	sumOpen += TOINT(parentsPaused   ==0 && parentsClosed	==0)
+	sumOpen += TOINT(friendsPaused   ==0 && friendsClosed	==0)	
+}
+
+Select.WhatThink  
+{                
+	//CountOpenSubjects
+	--
+	zilchThought = ""
+	zilchThought = "\_q\![*]Zilch is thinking about "
+	--
+	//think which is more likely to get paused
+	if brotherPaused==1
+	{
+		brotherExp ++	
+		--
+		zilchThought += "their brother"
+	}		
+	elseif themselfPaused==1
+	{
+		themselfExp ++	
+		--
+		zilchThought += "themself"
+	}		
+	elseif dreamsPaused==1
+	{
+		dreamsExp ++
+		--
+		zilchThought += "dreams"
+	}		
+	elseif  harmonicaPaused==1
+	{
+		harmonicaExp ++
+		--
+		zilchThought += "their harmonica"
+	}	
+	elseif scienceCPaused == 1 && scienceClosed == 0 
+	{
+		scienceExp ++
+		--
+		zilchThought += "science"					
+	}
+	elseif homePaused == 1
+	{
+		homeExp ++
+		--
+		zilchThought += "home"
+	}
+	elseif thisPlacePaused == 1		
+	{
+		thisPlaceExp ++
+		--
+		zilchThought += "this place"
+	}
+	elseif disorderPaused == 1	&&	disorderClosed == 0
+	{
+		disorderExp++
+		--
+		zilchThought +=	"the disorder"					
+	}
+	elseif parentsPaused == 1 && parentsClosed == 0
+	{
+		parentsExp++
+		--
+		zilchThought +=	"their parents"									
+	}
+	elseif friendsPaused == 1 && friendsClosed == 0
+	{
+		friendsExp++
+		--
+		zilchThought += "friends"								
+	}
+	--
+	"%(zilchThought)\n\n"
+	--
+	//"\![*]\q[Back,back2talkAbout]\n"
+}		
+
+Select.back2talkAbout
+{
+	CheckLvlUpAll
+	--
+	TalkAbout
+}
+
+
+
+//Endless loop if none of them paused :D :D
+//it also might get into same rand number over and over
+Select.WhatThinkCircular
+{
+	//CountOpenSubjects
+	--
+	//loopCount  = TOINT(0)
+	chooseWhatThink++
+	--
+	if chooseWhatThink > TOINT(11)
+	{
+		chooseWhatThink = TOINT(0)		
+	}
+	--
+//	"\n\nchooseWhatThink is %(chooseWhatThink)\n\n"
+	--
+	case chooseWhatThink
+	{
+		when 0
+		{	if brotherPaused==1
+			{
+				brotherExp ++	
+				--
+				"\_q\![*]Zilch is thinking about their brother"				
+			}	
+			else
+			{
+				".\n%(Select.WhatThinkCircular)"
+			}
+			
+		}		
+		when 1
+		{	if themselfPaused==1
+			{
+				themselfExp ++	
+				--
+				"\_q\![*]Zilch is thinking about themself"				
+			}
+			else
+			{
+				".\n%(Select.WhatThinkCircular)"
+			}
+		}
+		when 2
+		{	if dreamsPaused==1
+			{
+				dreamsExp ++
+				--
+				"\_q\![*]Zilch is thinking about dreams"				
+			}
+			else
+			{
+				".\n%(Select.WhatThinkCircular)"
+			}
+
+		}
+		when 3
+		{	if  harmonicaPaused==1
+			{
+				harmonicaExp ++
+				--
+				"\_q\![*]Zilch is thinking about their harmonica"					
+			}
+			else
+			{
+				".\n%(Select.WhatThinkCircular)"
+			}
+		
+		}
+		when 4
+		{	if sciencePaused == 1 && scienceClosed == 0
+			{
+				scienceExp ++
+				--
+				"\_q\![*]Zilch is thinking about science"				
+			}
+			else
+			{
+				".\n%(Select.WhatThinkCircular)"
+			}
+				
+		}
+		when 5
+		{	if homePaused == 1
+			{
+				homeExp ++
+				--
+				"\_q\![*]Zilch is thinking about home"				
+			}
+			else
+			{
+				".\n%(Select.WhatThinkCircular)"
+			}
+		
+		}
+		when 6
+		{	if thisPlacePaused == 1		
+			{
+				thisPlaceExp ++
+				--
+				"\_q\![*]Zilch is thinking about this place"				
+			}
+			else
+			{
+				".\n%(Select.WhatThinkCircular)"
+			}
+			
+		}
+		when 7
+		{	if disorderPaused == 1	&&	disorderClosed == 0 && talkedDisorderDay != GetDaySlot
+			{
+				disorderExp++
+				--
+				"\_q\![*]Zilch is thinking about %(TOLOWER((DisorderName)))..."					
+			}
+			else
+			{
+				".\n%(Select.WhatThinkCircular)"
+			}
+			
+		}
+		when 8
+		{	if parentsPaused == 1 && parentsClosed == 0
+			{
+				parentsExp++
+				--
+				"\_q\![*]Zilch is thinking about their parents"					
+			}
+			else
+			{
+				".\n%(Select.WhatThinkCircular)"
+			}
+
+		}
+		when 9
+		{
+			if friendsPaused == 1 && friendsClosed == 0
+			{
+				friendsExp++
+				--
+				"\_q\![*]Zilch is thinking about friends"
+				--
+				
+			}
+			else
+			{
+				".\n%(Select.WhatThinkCircular)"
+			}
+		}
+		when 10
+		{
+			if artPaused == 1 && artClosed == 0
+			{
+				artExp++
+				--
+				"\_q\![*]Zilch is thinking about art"
+			}
+			else
+			{
+				".\n%(Select.WhatThinkCircular)"
+			}			
+		}
+		when 11
+		{
+			if loopCount == TOINT(1)
+			{
+				"\_q\![*]Zilch is thinking about... \%(wx)nothing!"	
+				--
+				loopCount = TOINT(0)
+			}
+			else
+			{
+				loopCount = TOINT(1)
+				--
+				".\n%(Select.WhatThinkCircular)"
+			}
+		}
+	}
+	--
+	//"\nchooseWhatThink %(chooseWhatThink)"
+	//think which is more likely to get paused
+	//"\![*]\q[Back,back2talkAbout]\n"	
+}

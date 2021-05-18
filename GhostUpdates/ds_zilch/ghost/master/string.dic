@@ -1,0 +1,270 @@
+﻿///////// 빒?긕?긚긣긡깛긵깒?긣
+///////// 빒럻쀱깏??긚렖룕
+///////// written by umeici.
+
+
+//---------------------------Strings-------------------------------------------------------------//
+
+//Anyway, string.dic has to do with the right-click SSP menu. Important for Network Update for your ghost! Otherwise this is just an easy place to customize your ghost's menu to your tastes. 
+//Lines do not end with \e because the ghost isn't speaking
+
+//---- Username ------------------------------------------------------------------------------//
+//Don't touch this.
+
+On_username
+{
+	username
+}
+
+//---- Network Update URL-------------------------------------------------------------------------------//
+//This is the URL where your ghost will look for updates
+On_homeurl
+{
+	"http://www.somekindofwebhost.com/yourghostsdirectory/"
+}
+
+//---- Top Menu Option Caption ----------------------------------------------------------------------//
+
+On_recommendrootbutton.caption
+{
+	"Ghosts!"
+}
+
+
+//\f[height, 30]* (This is a thumbnail.)\f[height, default]
+
+//---- Top Menu Option Websites -----------------------------------------------------
+
+On_sakura.recommendsites
+ {
+//	"Ghost Template Walkthrough"
+//	--
+//	"%ASC(1)http://www.ashido.com/ukagaka/walkthrough.html%ASC(2)"
+//	--
+	//format is : %ASC(1) <website address> %ASC(2)
+	
+//	"Zarla's LJ"
+//	--
+//	"%ASC(1)http://zarla.livejournal.com/%ASC(2)"
+//	--
+//	
+//	"Zarla's Tumblr"
+//	--
+//	"%ASC(1)http://zarla-s.tumblr.com/%ASC(2)"
+//	--
+//	
+//	"Zarla's Dreamwidth"
+//	--
+//	"%ASC(1)http://zarla.dreamwidth.org/%ASC(2)"
+ 	"Zarla's walkthrough template"
+	--
+	"%ASC(1)http://www.ashido.com/ukagaka/walkthrough.html%ASC(2)"
+	--
+	"SSP"
+	--
+	"%ASC(1)http://ssp.shillest.net/%ASC(2)"
+	--
+	"sakura script list"
+	--
+	"%ASC(1)http://ssp.shillest.net/ukadoc/manual/list_sakura_script.html%ASC(2)"		
+	--	
+	"aya5-manual"
+	--
+	"%ASC(1)http://umeici.onjn.jp/etcetera/aya5_manual/manual.html%ASC(2)"
+	--
+	"ayaya manual, tips and function list"
+	--
+	"%ASC(1)http://emily.shillest.net/ayaya/index.php%ASC(2)"	
+	--
+	"ghost master files index"
+	--
+	"%ASC(1)http://ms.shillest.net/ghost/syoko/ghost/master/%ASC(2)"
+	--
+	"SSP commands"
+	--
+	"%ASC(1)http://crow.aqrs.jp/reference/all/index.html%ASC(2)"
+	--	
+	"ghost specifications"
+	--
+	"%ASC(1)http://usada.sakura.vg/contents/specification.html%ASC(2)"
+	--	
+	"Disc-2 (J)"
+	--
+	"%ASC(1)http://disc2.s56.xrea.com/%ASC(2)"
+	
+ }
+
+ 
+//---- The second option from the top's caption ---------------------------------------------//
+
+On_portalrootbutton.caption
+ {
+	"Science!"
+	//"Another Second Website Caption"
+ }
+
+//---- Websites in the Second Option -----------------------------------------------------//
+ 
+On_sakura.portalsites
+ {
+//	can add some conditions on which site ti show?
+	"doppler effect"
+	--
+	"%ASC(1)https://www.physicsclassroom.com/class/waves/Lesson-3/The-Doppler-Effect%ASC(2)"
+	--
+	"irrational numbers"
+	--
+	"%ASC(1)https://nrich.maths.org/2671%ASC(2)"
+	--
+	"roman concrete"
+	--
+	"%ASC(1)https://www.zmescience.com/science/geology/roman-concrete-seawater-043432/%ASC(2)"
+ }
+
+ 
+//---- Top Menu Option in the Second Character -----------------------------------------------//
+//Right-clicking secondary character:
+On_kero.recommendbuttoncaption
+ {
+	"Garbage"
+ }
+
+//---- Top Menu Websites for the Second Character --------------------------------------------// 
+On_kero.recommendsites
+ {
+	//"A Site"
+	//--
+	//"%ASC(1)http://www.asite.com/%ASC(2)"
+	//--
+	//"Another Site"
+	//--
+	//"%ASC(1)http://anothersite.org/%ASC(2)"
+ }
+
+//---- Update Menu Caption ------------------------------------------------------------
+On_updatebutton.caption
+{
+	"Update"
+}
+
+//---- Dress-up Menu Caption ----------------------------------------------------------
+On_dressuprootbutton.caption
+{
+	"Trash"
+}
+
+//---- Headlines and RSS Feeds ---------------------------------------------------------
+//headlines/RSS feeds the user may subscribe to
+
+On_headlinesenserootbutton.caption
+{
+	"Headlines + RSS Feeds"
+}
+
+//---- Readme Caption -------------------------------------------------------
+On_readmebutton.caption
+{
+	"readme"
+ }
+
+//---- Uninstall Caption -----------------------------------------------------
+On_vanishbutton.caption
+{
+	"Uninstall"
+}
+
+//---- Shell Caption -----------------------------------------------------
+On_shellrootbutton.caption
+{
+	"Change Shell"
+}
+
+//---- Change Ghost Caption -----------------------------------------------------
+On_ghostrootbutton.caption
+{
+	"Change Ghost"
+}
+
+//---- Call Ghosts Caption -----------------------------------------------------
+On_callghostrootbutton.caption
+{
+	"Call Ghost"
+}
+
+//---- Quit Caption -----------------------------------------------------
+On_quitbutton.caption
+{
+	"Quit"
+}
+
+
+//----------------------------------Stop!------------------------------------
+//Don't mess with anything after this point!
+
+
+ //---- 소멸 지시 버튼 표시 교체 -------------------------------------------------------
+On_vanishbutton.visible
+ {
+ 	if deleteshitai == "ON"
+ 	{
+		"1"
+	}
+	else
+	{
+		"0"
+	}
+}
+
+//---- 딳벍뭷궻뫜궻긕?긚긣뼹롦벦 -------------------------------------------------------
+On_otherghostname
+{
+	ghostexlist = ""
+	_i = 0
+	while _i >= 0 {
+		_ghostname = NAMETOVALUE("reference%_i")
+		if _ghostname != "" {
+			if _i > 0; ghostexlist += ","
+			ghostexlist += _ghostname[0]
+			_i++
+		}
+		else; _i = -1
+	}
+	ghostexcount = ARRAYSIZE(ghostexlist)
+}
+
+//---- SHIORI 듫쁀륃뺪 ------------------------------------------------------------------
+On_version
+{
+	GETSETTING(AYAINFO_VERSION)
+}
+
+On_craftman
+{
+	"umeici"
+}
+
+On_craftmanw
+{
+	"?럖"
+}
+
+On_name
+{
+	"AYA"
+}
+
+//---- Owned SSTP 뾭 uniqueid 롦벦 ------------------------------------------------------
+On_uniqueid
+{
+	uniqueid = reference0
+}
+
+//---- hwnd 롦벦 ------------------------------------------------------------------------
+On_hwnd
+{
+	sakurahwnd    = reference0[0]
+	kerohwnd      = reference0[1]
+	sakurablnhwnd = reference1[0]
+	keroblnhwnd   = reference1[1]
+}
+

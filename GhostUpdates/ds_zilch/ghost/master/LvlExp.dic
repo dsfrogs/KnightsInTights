@@ -1,0 +1,74 @@
+CheckLvlUpAll
+{
+	DisorderLvlUp
+	ArtLvlUp
+	ScienceLvlUp
+	BrotherLvlUp
+	ParentsLvlUp
+	AccidentLvlUp
+	HomeLvlUp
+	ThemselfLvlUp
+	DreamsLvlUp
+	ThisPlaceLvlUp
+	HarmonicaLvlUp
+	FriendsLvlUp
+}
+
+
+
+//so far so good 
+//let's try this:
+//nope!
+/*
+OnLvlUp
+{
+	exp = reference0; lvl= reference1; paused= reference2;	
+	
+	if exp > 0		//got exp?
+	{
+		lvl += 1		//lvl up		
+		paused = 0		//un pause
+
+		if exp == 1			//pay exp
+		{
+			exp = 0	
+		}
+		else
+		{
+			exp -= 1
+		}
+	}
+	--
+	"\nOnLvlUp: %(exp) %(lvl) %(paused) \n"	
+}*/
+
+//if subject not paused- we'll wait until you talk about it before leveling up
+//you can still accumilate exp
+//if it is paused- we'll check if there's at least 1 exp, then we'll open it and level up
+ShouldLvlUp
+{	
+	if (exp > 0 && paused == 1)
+	{
+		paused = 0
+		lvl ++
+		PayExp
+		//NumOfOpenSubjects++
+		
+		if (closed == 1)
+		{
+			closed = 0
+		}
+	}	
+}
+
+PayExp
+{
+	if exp == 1
+	{
+		exp = 0	
+	}
+	else
+	{
+		exp -= 1
+	}	
+}

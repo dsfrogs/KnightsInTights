@@ -1,0 +1,641 @@
+
+//\![raise,OnPsst]
+//\![raise,WhatNext]
+//\![*]\q[Art,OnArtTalk]
+//I should enter passive mode
+//And also think about what to do if user closes them in the middle
+//endPhase counter and go to next phase
+//Narrator: oh, dear, we had been rudely interrupted, let's continue right from where we stopped
+
+ReleaseAfterEnding
+{
+	lockMenus = TOINT(0)
+	blockPet  = TOINT(0)
+	endPhase  = TOINT(0)
+	bootPhase = "Normal"
+	--
+	"\![leave,passivemode]"
+}
+
+
+
+OnContinueEndPhase
+{
+	if endPhase!=TOINT(0)
+	{
+		"\1\s[-1]"
+		--
+		lockMenus = TOINT(1)
+		blockPet  = TOINT(1)
+		//bootPhase = "End"
+		--
+		"\![enter,passivemode]"
+		--
+		//"\0\s[-1]* (Oh dear,\%(wx) we had been rudely interrupted.\%(wx) Let's pick up right from where we left off.)\%(wx)\%(wx)\%(wx)\c"
+		--
+		case endPhase
+		{
+			when 1  
+			{
+			//	"endPhase 1"
+				--
+				OnPsst
+			}
+			when 2  
+			{
+			//	"endPhase 2"
+				--				
+				"%(Select.ItsMe)"
+			}
+			when 3  
+			{
+			//	"endPhase 3"
+				--	
+				"%(Select.Anaccident)"
+			}
+			when 4  
+			{
+			//	"endPhase 4"
+				--					
+				Buttons			
+			}
+			when 5  
+			{
+				Continue
+			}
+			when 6  
+			{
+				"%(Select.ZilchSaw)"
+			}
+			when 7  
+			{
+				OnSpill
+			}
+			when 8  
+			{
+				"%(Select.SayNothingEnding)"
+			}
+			when 9  
+			{
+				"%(Select.ZilchShock)"
+			}
+			when 10 
+			{
+				OnEnding
+			}
+			when 11 
+			{
+				"%(Select.EndingB)"
+			}
+			when 12 
+			{
+				"%(Select.EndingC)"
+			}
+			when 13 
+			{
+				"%(Select.EndingD)"
+			}
+			when 14 
+			{
+				"%(Select.CanDoThat)"
+			}
+			when 15
+			{
+				"%(Select.MakeStay)"
+			}	
+			when 16
+			{
+				"%(Select.LetGo)"
+			}
+		}	
+	}
+}
+
+
+OnPsst
+{
+	endPhase  = TOINT(1)
+	lockMenus = TOINT(1)
+	blockPet  = TOINT(1)
+	bootPhase = "End"
+	--
+	"\![enter,passivemode]"
+	--
+	"\0\s[-1]* (You wonder where Zilch has gone.)\%(wx)\%(wx)\%(wx)\cThey moved on to the real dreams.\%(wx) You know,\%(wx) it's really unhelpful that you're depriving them of real sleep.\%(wx)\n\n\![*]\q[Who am I talking to?,ItsMe]"
+}
+
+Select.ItsMe
+{
+	endPhase = TOINT(2)
+	--
+	"\0\s[-1]\%(wx)\%(wx)\%(wx)\cThe benevolent and handsome narrator,\%(wx) of course!\%(wx) \%(wx)\%(wx)\cIt was you who brought me here:\%(wx) to speak for you,\%(wx) to speak through you.\%(wx) You brought them here,\%(wx) too.\%(wx)\%(wx)\%(wx)\cRemember when you looked at that house?\%(wx) At those people?\%(wx) How they disappeared when you looked at them?\%(wx) \n\n...What a coincidence,\%(wx) right?\%(wx) Right?\%(wx) \nHa.\%(wx)\%(wx) \cHahahaha.\%(wx)\%(wx)\%(wx) \c\%(wx)No,\%(wx) wait,\%(wx) don't tell me.\%(wx)\n\n\![*]\q[I didn't mean to!,Anaccident]"	
+}
+
+Select.Anaccident
+{
+	endPhase = TOINT(3)
+	--
+	"\0\s[-1]'Mimimi!\%(wx) I didn't mean to!\%(wx) It was an accident!'\n\n\%(wx)\%(wx)\%(wx)\cIt's really amusing,\%(wx) how you assume that choices you make matter at this point.\n\n\%(wx)\%(wx)\%(wx)\cAll you're doing right now is picking one pre-written line of dialogue out of a basket of pre-written lines of dialogue.\%(wx)\%(wx) \n\nDid you really think you can become their friend this way?\%(wx)\%(wx)\%(wx)\n\c"
+	--	
+	yesSelected=0
+	noSelected=0
+	Buttons
+
+}
+
+Buttons
+{
+	endPhase = TOINT(4)
+	--
+	if yesSelected==0  
+	{
+		"\![*]\q[Yes.,YesButton]"
+	}
+	else
+	{
+		"\![*]\q[I'm an idiot,AButton]"	
+	}
+	--
+	"\n"
+	--
+	if	noSelected==0
+	{
+		"\![*]\q[No.,NoButton]"		
+	}	
+	else
+	{
+		"\![*]\q[I'm an idiot,AButton]"	
+	}	
+	--
+	if yesSelected!=0 && noSelected!=0
+	{
+		//"\0\s[-1]\1\s[-1]...see what I mean? \%(wx)\%(wx)\%(wx)"
+		"\0\s[-1]\n\n...see what I mean? \%(wx)\%(wx)\%(wx)"
+		--
+		Continue
+	}	
+}
+
+Select.YesButton
+{
+	yesSelected++
+	--
+	Buttons
+}
+
+Select.NoButton
+{
+	noSelected++
+	--
+	Buttons
+}
+
+Select.AButton
+{
+	Buttons	
+}
+
+Continue
+{
+	endPhase = TOINT(5)
+	--
+	"\0\s[-1]\n\nZilch really is a clever little scientist,\%(wx) aren't they?\%(wx) They could have figured it out.\%(wx)\%(wx)\%(wx)\n\cThe disorder.\%(wx) The thing that exists outside of their world.\%(wx) The thing that interacts with their world by disturbing it.\%(wx)\n\n\![*]\q[But wait,ZilchSaw]"  	
+}
+
+Select.ZilchSaw
+{
+	endPhase = TOINT(6)
+	--
+	"\0\s[-1]* (That friday night,\%(wx) you say,\%(wx) Zilch saw the disorder-\%(wx) \nit was a creature with many arms and legs-)\%(wx)\%(wx)\n\nThey saw a projection of a physical being into this plane.\%(wx) That's probably because of...\%(wx) quantom!\%(wx)\%(wx)\cAnyway,\%(wx) I had enough of you back talking between the brackets.\%(wx) \n\nWhen you're ready to end this,\%(wx) when you feel like taking responsibility and facing the truth,\%(wx) just say so.\%(wx) For now,\%(wx) I'll let you be.\%(wx)\n\n\![*]\q[Thank you kind narrator,TruthButton]"
+}
+
+Select.TruthButton
+{
+	truthButton = TOINT(1)
+	endPhase    = TOINT(0)
+	bootPhase	= "Normal"
+	lockMenus = TOINT(0)
+	blockPet  = TOINT(0)
+	--
+	"\![leave,passivemode]"
+	--
+	"\-\e"
+}
+
+OnSpill
+{
+	"\1\s[-1]" 
+	--
+	"\![enter,passivemode]"
+	--
+	bootPhase = "End"
+	lockMenus = TOINT(1)
+	blockPet  = TOINT(1)
+	endPhase = TOINT(7)
+	--
+	"\0\s[0]\i[7]* (You talk to Zilch.\%(wx) You tell them about the night you brought them here-\%(wx) it was night for them,\%(wx) even if it wasn't for you.)\s[0]\i[107]\%(wx)\%(wx)\%(wx)\n\n\c* (You tell them about the accident and how looking at someone changes them.\s[0]\i[109]\%(wx) That night,\%(wx) it changed them into not existing in that world.)\%(wx)\%(wx)\%(wx)\c%(z)Huh?%(d)\n\n* \s[0](Their parents.\%(wx) You looked at their parents,\%(wx) and then they were gone.)\%(wx)\n\n%(z)\s[0]\i[105]\i[115]\i[5]*Huff* This isn't very funny, %(username)!%(d)\n\n* (It's not funny,\%(wx) because it's not a joke.)\%(wx)\%(wx)\%(wx)\s[0]\c\![*]\q[Say you're sorry,SayNothingEnding]\n\![*]\q[Say you didn't mean it,SayNothingEnding]\n\![*]\q[Say you can fix it,SayNothingEnding]\n"	
+}
+
+Select.SayNothingEnding
+{
+	endPhase = TOINT(8)
+	--
+	"\0\s[0].\%(wx).\%(wx).\%(wx)\c.\%(wx).\%(wx).\%(wx)\c.\%(wx).\%(wx).\%(wx)\c* (You say nothing).\%(wx)\%(wx)\c\c%(z)%(username).\%(wx)\0\s[0]\i[114]\i[113] Are you saying that you\0\s[0]\i[115]\i[114]\%(wx)\%(wx)\%(wx) are the reason they're gone?\0\s[0]\i[106]\i[107]\%(wx)%(d)\n\n\![*]\q[Yes,ZilchShock]"
+}
+
+Select.ZilchShock
+{	
+	endPhase = TOINT(9)
+	--
+	"\0\s[0]\i[106]\i[107]\%(wx)\0\s[0]\i[2]\i[108]\i[109]\%(wx)\%(wx)\s[0]\i[3]\i[57]\i[58]\i[112]\i[111]\%(wx)"
+	--
+	toldThemTheTruth = 1 
+	--
+//	OnEnding
+	endPhase = TOINT(10)
+	--
+	"\-\e"
+}
+
+OnEnding
+{
+	endPhase = TOINT(10)
+	--
+	/*Zilch is gone. */
+	"\0\s[-1].\%(wx).\%(wx).\%(wx)\c.\%(wx).\%(wx).\%(wx)\c.\%(wx).\%(wx).\%(wx)\cThey won't come back.\%(wx) Wherever they are,\%(wx) if they're anywhere.\n\nIs that a problem?\%(wx) \nIs it your fault?\%(wx) \nAre you a bad person?\%(wx) \n\nProbably!\%(wx)\%(wx)\%(wx)\n\cIt's time to calculate your moral weight and see if it's heavier than a feather.\%(wx) This will determine the Ending Experience Package that's eligible to you.\%(wx)\%(wx)\%(wx)\cNaturally,\%(wx) possible endings are:\%(wx) good,\%(wx) bad,\%(wx) neutral and dog.\%(wx)\n.\%(wx).\%(wx).\%(wx)\c\%(wx)\%(wx)Counting number of soul shards...\%(wx)\%(wx)\cSo you didn't collect any soul shards?\%(wx) That was the entire purpose.\%(wx) Fine.\%(wx)\%(wx)\%(wx)\c.\%(wx).\%(wx).\%(wx)\cMeasuring level of butterfly essence...\%(wx)\n\nYes,\%(wx) that's for the evil route.\%(wx) Murder butterflies, drink their essence and become immortal.\%(wx) \n\nAs one does.\%(wx)\%(wx)\%(wx)"
+	--
+	dogChance = RAND(100)	
+	--
+	if (dogChance <= 10)
+	{
+		"\n\n\![*]\q[dog ending?,DogEnd]"
+	}
+	--
+	"\n\n\![*]\q[End this,EndingB]"	
+}
+
+//\![quicksection,1] \![quicksection,0]
+
+Select.DogEnd
+{
+	"\0\s[-1]\c...is what you mean to say,\%(wx) but what actually comes out is 'woof'.\%(wx) You have been a dog,\%(wx) all along.\%(wx)\%(wx)\%(wx)\n\cWho's a good dog?\%(wx) \nYou are.\%(wx) Yes you are.\%(wx) Yes you are.\%(wx)\%(wx)\cYou spend the rest of your days chewing shoes and running in parks.\%(wx)\%(wx)\%(wx)\cOne day,\%(wx) you fall asleep in a patch of sunlight.\%(wx) \n\nYou dream that you're a human.\%(wx) You use a computer.\%(wx) You play games on it.\%(wx) No,\%(wx) wait.\%(wx) This is all wrong.\%(wx)\%(wx)\%(wx)\c\![quicksection,1]WOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOFWOOF\![quicksection,0]\%(wx)\%(wx)\%(wx)\c"
+	--
+	"\![*]\q[End this,EndingB]"	
+}
+
+Select.EndingB
+{
+	endPhase = TOINT(11)
+	--
+	"\0\s[-1]So,\%(wx) well.\%(wx) As for your ending...\%(wx)\n\nAh!\%(wx) We must have a true neutralist.\%(wx) Mediocre at all things.\%(wx)\%(wx)\%(wx)\c\n\n\n\n~~~~~~~~~~The End~~~~~~~~~~\%(wx)\%(wx)\%(wx)\n\n\n\cWe hope you've enjoyed your experience.\%(wx)\%(wx)\%(wx) \n\n...What's this?\%(wx) You're not satisfied?\%(wx)\%(wx)\%(wx)\c\![*]\q[NO.,EndingC]"
+}
+
+Select.EndingC
+{
+	endPhase = TOINT(12)
+	--	
+	"\0\s[-1]Then maybe now you understand a fraction of the pointless existence of one such as I.\%(wx)\%(wx)\%(wx)\n\cWhen you take a moment from a real person's life and copy it,\%(wx) you create a copy of them too.\%(wx) The copy is not a person.\%(wx)\%(wx)\%(wx)\cThe entity telling the story is even less than that.\%(wx) Wish whoever made this,\%(wx) knew that before they started.\n\%(wx)\%(wx)\%(wx)\cWhat ever else you're searching for is simply...\%(wx) not_here.\%(wx)" 
+	--
+	"\n\n\![*]\q[Goodbye,GoodbyeEnd]"
+}
+
+
+Select.GoodbyeEnd
+{
+	endPhase = TOINT(13)
+	keyPhase =	TOINT(1)
+	--
+	"\-\e"			
+}
+
+notUsername
+{
+	if username== "dream person"
+	{
+		"drib person"
+	}
+	elseif username=="Captain Poncho"
+	{
+		"Catpain Boncho"
+	}
+	//%(realusername)  good time to bring that up?
+}
+
+TestPhase13
+{
+	lockMenus = TOINT(1)
+	blockPet  = TOINT(1)
+	endPhase  = TOINT(13)
+	bootPhase = "End"
+	keyPhase =	TOINT(1)
+	usedKey = "false"
+	--
+	"\![enter,passivemode]"	
+}
+
+Select.EndingD
+{
+	endPhase = TOINT(13)
+	--
+	"\0\s[-1]What you're searching for is not_here.\%(wx) ...but you just keep coming back,\%(wx) right?\%(wx) Eventually something will work out,\%(wx) right?\%(wx)\%(wx)\%(wx)\c...Here,\%(wx) let's roleplay.\%(wx) \nI'll be Zilch,\%(wx) and you can explain why you killed my parents.\%(wx)\%(wx)\%(wx)\c\s[0]\i[10]%(orange)Hello %(notUsername)!\%(wx) I am Zilcf!\%(wx) I want 2 be ur frind, %(realusername)!\%(wx)\%(wx)\%(wx)\n\n\c%(d)* (Explain away,\%(wx) you silver tongued devil,\%(wx) you.)\%(wx)"
+	--
+	"\![open,inputbox,OnExplainYourself,-1]"
+	--
+	"\n\n\![*]\q[open input box,ExplainAway]"	
+}
+
+OnExplainYourself
+{
+	key = reference0
+	key = TOLOWER(key) 
+	key = REPLACE(key," ","") 
+	key = REPLACE(key,"'","") 
+	--	
+	check = key+keyPhase
+	usedKey = "false"
+	--
+	"%(d)"
+	--
+	case check
+	{
+		when "zilch1"
+		{
+			"\0\s[-1]\%(wx)* (Hey, what are you-)\%(wx)\%(wx)\%(wx)\c\0\s[-1]%(z)This is a soul.\%(wx) It’s small and unimportant.\%(wx) But as much as you can,\%(wx) try to love it please.\%(wx)%(d)\n\n%(cyan)\![*]\q[Try,TryToLove]%(d)\e"	
+			--
+			usedKey = "true"
+			
+		}
+		when "itsme2"
+		{
+			"\0\s[0]\i[108]\i[109]%(cyan)It'stSTsMeeee%(d)\n\n\%(wx)\%(wx)\%(wx)\c* (Quiet.\%(wx) You be quiet now.)\%(wx)\%(wx)\%(wx)\c\0\s[0]\i[102]\i[103]%(z)Where are we?\%(wx) \s[0]\i[113]\i[114]I don't know when was the last time I’ve been home!\%(wx) \s[0]\i[106]\i[107]I don't remember waking up from these dreams!\%(wx) Should be yesterday,\%(wx) but it feels like it's been ages!\%(wx) \s[0]\i[109]\i[110]You looked at me too.\%(wx) I'm...\%(wx) \s[0]\i[2]\i[109]\i[110]Not dreaming,\%(wx) am I?\%(wx) I really am a ghost?\%(wx)%(d)"
+			--
+			keyPhase=3	
+			usedKey = "true"			
+			//"%(cyan)\![*]\q[Tell Them,WhereAreWe]%(d)"			
+		}
+		when "dream3"
+		{
+			"\s[0]\i[2]\i[109]\i[110]%(cyan)weeeEE arrRe in DreaMing Limbb\%(wx)b\%(wx)b\%(wx)o%(d)\n\n\%(wx)\%(wx)\c* (How can you even-)\%(wx)\%(wx)\%(wx)\c\0\s[0]\i[2]\i[109]\i[110]%(z)Alright.\%(wx) Alright.\%(wx) \s[0]\i[2]\i[111]Let me think it over,\%(wx) like a proper scientist.\%(wx) I think...\%(wx)\s[0] I know what we need to do.\%(wx)%(d)"
+			//"%(cyan)\![*]\q[We should go back,GoBack]%(d)\n" 
+			--
+			keyPhase=4	
+			usedKey = "true"			
+		}
+		when "time4"
+		{
+			"\0\s[0]%(cyan)tiiiIIIMMee Go baaaack%(d)\%(wx)\%(wx)\%(wx)\c\0\s[0]\i[113]\i[114]\%(wx)%(z)That's right!\%(wx) \0\s[0]\i[115]\i[114]We'll go back to before you brought me here.\%(wx) \s[0]\i[113]\i[114]My parents would still exist!\%(wx) \0\s[0]\i[109]\i[2]And my brother would be happier too.\%(wx) \s[0]\i[102]\i[103]You can do that,\%(wx) right?%(d)\%(wx)\%(wx)\s[0]%(cyan)\n\n\![*]\q[Yes,CanDoThat]%(d)\n\e"
+			--			
+			usedKey = "true"
+		}
+	}
+	--
+	if usedKey=="false"
+	{
+		fakeZSays
+	}
+	else
+	{
+		"%(cyan)"
+	}
+	--
+	"\![open,inputbox,OnExplainYourself,-1]"	
+	--
+	"\n\n\![*]\q[open input box,ExplainAway]"	
+//	--
+//	"%(d)"
+}
+
+
+fakeZSays
+{
+	if chooseFakeZ >= TOINT(4)
+	{
+		chooseFakeZ = TOINT(0)
+	}
+	--
+	chooseFakeZ++
+	--	
+	case TOINT(chooseFakeZ)
+	{
+		when 1
+		{
+			"%(orange)\0\s[0]\i[10]I play for you!\0\s[0]\i[10]\_v[snd\AMistake.mp3]%(d)\%(wx)\0\s[0]\i[10]\%(wx)"
+		}
+		when 2
+		{
+			"%(orange)\0\s[0]\i[10]Angry at my brother!%(d)\%(wx)\0\s[0]\i[10]"
+		}
+		when 3
+		{
+			"%(orange)\0\s[0]\i[10]Drew a snail!%(d)\%(wx)\0\s[0]\i[10]"
+		}
+		when 4
+		{
+			"%(orange)\0\s[0]\i[10]Want candies!%(d)\%(wx)\0\s[0]\i[10]"
+		}
+	}	
+	//"\![open,inputbox,OnExplainYourself,-1]"	
+	//--
+	//"\n\n\![*]\q[Explain away,ExplainAway]"
+}
+
+Select.ExplainAway
+{
+	if usedKey == "true"
+	{
+		"%(cyan)"
+	}
+	--
+	"\![open,inputbox,OnExplainYourself,-1]"	
+	--
+	"\![*]\q[open input box,ExplainAway]"	
+	--
+//	"%(d)"
+}
+
+//Select.GoBack //time
+//{
+//	keyPhase= 4
+//	--
+//	"\![open,inputbox,OnExplainYourself,-1]" 
+//}
+
+//Select.WhereAreWe //dream
+//{
+//	keyPhase= 3
+//	--
+//	"\![open,inputbox,OnExplainYourself,-1]" 	
+//}
+
+Select.TryToLove //itsme
+{
+	"\0\s[-1]%(cyan)ZilllCHHhZzzZZilllchzllCHZiiiiLLchCHch%(d)\%(wx)\%(wx)\%(wx)\c%(z).\%(wx).\%(wx).\%(wx)\s[0]\i[2]\i[108]\i[109]*sniff*\%(wx) %(username)?\%(wx)\s[0]\i[108]\i[109] You sound different.\%(wx)%(d)"
+	--
+	keyPhase=	2
+	--
+	"\![open,inputbox,OnExplainYourself,-1]"	
+	--
+	"%(cyan)"
+	--
+	"\n\n\![*]\q[open input box,ExplainAway]"		
+}
+
+Select.CanDoThat
+{
+	endPhase = TOINT(14)
+	--
+	"\0\s[0]%(cyan)CaaaAAnDOTHaaaaatRIgghht%(d)\n\n\0\s[-1]* (Enough with this.\%(wx) That means uninstalling them.\%(wx) Do you really want that?)\%(wx)\n\n%(Select.StayOrGo)"
+}
+
+Select.StayOrGo
+{
+	"%(cyan)\![*]\q[Let them go,LetGo]%(d)\n\![*]\q[Make them stay,MakeStay]"
+}
+
+Select.MakeStay
+{
+	endPhase = TOINT(15)
+	--
+	"\0\s[-1]Ha.\%(wx) I knew it.\%(wx) I knew if you had to choose between Zilch and yourself,\%(wx) you'd never...\%(wx)\%(wx)\%(wx) \n\n\cWell.\%(wx) You know.\%(wx) \nCan't keep them here like this,\%(wx) though.\%(wx) They know too much.\%(wx) Let's erase their memory.\%(wx)\%(wx)\n\n\![*]\q[Erase,WannaPunch]\n%(cyan)\![*]\q[No,StayOrGo]%(d)"
+}
+
+Select.WannaPunch
+{
+	"\0\s[-1]Actually...\%(wx) if we're erasing everything anyway,\%(wx) want to punch them while you're at it?\%(wx) They won't remember a thing...\%(wx)"
+	--	
+	if tried2Punch == TOINT(1)
+	{
+		" and I know you've tried before.\%(wx)"
+	}
+	--
+	"\n\n\![*]\q[Yes,YesPunch]\n%(cyan)\![*]\q[%(noPunch),NoPunch]%(d)"			
+}
+
+Select.YesPunch
+{
+	//CAREFUL!!!!!!!!!!!!!!
+	"\0\s[-1]Figures.\%(wx) As if I'd let you.\%(wx) But remember you wanted to.\%(wx)\nLet's do this,\%(wx) you piece of garbage:\%(wx)\n\n\![*]\q[Erase,Reset]\n%(cyan)\![*]\q[Let them go!,LetGo]%(d)"
+}
+
+Select.NoPunch
+{
+	if tried2Punch == TOINT(1)
+	{
+		"Of course,\%(wx) an accident.\%(wx) ;)\%(wx) \nLet's do this:\%(wx)\n\n"
+	}
+	else
+	{
+		"Of course,\%(wx) you wouldn’t.\%(wx) ;)\%(wx) \nLet's do this:\%(wx)\n\n"		
+	}
+	--
+	//CAREFUL!!!!!!!!!!!!!!
+	"\![*]\q[Erase,Reset]\n%(cyan)\![*]\q[Let them go!,LetGo]%(d)"
+}
+
+noPunch
+{
+	if tried2Punch == TOINT(1)
+	{
+		"That was an accident!"
+	}
+	else
+	{
+		"No!" 		
+	}
+}
+
+Select.Reset
+{
+	//DSFROGS!!!
+	//BACK UP EVERYTHING BEFORE TESTING THIS!!!!!!!!!!!!
+	//AAAAAAAAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	
+	"\0\s[-1]\%(wx) Wait.\%(wx) Does that mean I too would forget every-\%(wx)\%(wx)\%(wx)\c"
+	--
+	ReleaseAfterEnding
+	--
+	FirstSetValues
+	--
+	"\%(wx)\%(wx)\%(wx)\c\0\s[-1]* (You dream.\%(wx) You're trapped at the bottom of a well.\%(wx) You shout and shout but no-one hears.\%(wx) \n.\%(wx).\%(wx).\n\%(wx)And then,\%(wx) someone comes.\%(wx) They throw a rope in.\%(wx) They pull you out.)\%(wx)\%(wx)\%(wx)\c"
+	--
+	didAreset = TOINT(1)
+	--
+	"%(Select.ZilchIntro)"
+
+}
+
+Select.LetGo
+{
+	endPhase = TOINT(16)
+	--
+	//"\0\s[0]\i[111]\i[110]%(z)...%(username)?%(d)\n\n\s[0]\%(wx)"
+	--
+	"\0\s[0]\i[7]\b2 %(z)...?%(d)\n\n"
+	--
+	"%(cyan)\![*]\q[Apologize,SorryAboutEverything]%(d)\n%(cyan)\![*]\q[Pet,PetEnding]%(d)\n%(cyan)\![*]\q[Give candy,CandyEnding]%(d)\n%(cyan)\![*]\q[Sing,SingEnding]%(d)\n%(cyan)\![*]\q[Remember,RememberEnding]%(d)"
+	--	
+	//DSFROGS!!!
+	//BACK UP EVERYTHING BEFORE TESTING THIS!!!!!!!!!!!!
+	//AAAAAAAAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!	
+	"\n\n\n\n%(cyan)\![*]\q[Really let go,ReallyLetGo]%(d)"
+}
+
+
+Select.CandyEnding
+{
+	"\s[0]%(cyan)* (Candies for Zilch)%(d)\n\n%(z)\s[0]\i[102]\i[103]Thank you!\%(wx)\s[0]\i[108]\i[109] *nums*\%(wx)\%(wx)\%(wx)\s[0]%(d)\c"
+	--
+	"%(Select.LetGo)"	
+}
+
+Select.PetEnding
+{
+	if blockPet==TOINT(1)
+	{
+		blockPet = TOINT(0)	
+		--
+		"%(cyan)* (You tell Zilch you want to pet them.)%(d)\%(wx)\n\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\c"
+	}
+	else
+	{
+		blockPet = TOINT(0)			
+	}
+	--	
+	"%(Select.LetGo)"
+	//gosh, um 
+	//unblock pet here 
+	//in petting menu check endphase, give specific dialogue 
+	//and then call to here and block pet again
+}
+
+Select.SingEnding
+{
+	"\0\s[0]%(cyan)* (We sing together)%(d)\n\s[0]\i[102]\i[103]%(Zilchsong)%(Zilchsong)\%(wx)\c"
+	--
+	"%(Select.LetGo)"	
+}
+
+Select.RememberEnding
+{
+	"%(z)\0\s[0]\i[108]If I go now...\%(wx) None of this would have happened.\%(wx) \s[0]I would return to the time before the disorder took my parents.\%(wx) \s[0]\i[103]So... Would I forget you?\%(wx) Because...\%(wx) Not sure I'd want to.\%(wx)\n\n%(d)%(cyan)* (To Zilch this would all have been a dream.)\%(wx)%(d)\n\n%(z)\s[0]\i[115]\i[114]Yes!\%(wx) I always remember my dreams!%(d)\%(wx)\%(wx)\%(wx)\s[0]\c"
+	--
+	"%(Select.LetGo)"
+}
+
+Select.SorryAboutEverything
+{
+	"\0\s[0]%(cyan)I aaAAm SorrRRrry%(d)\n\n%(z)\s[0]\i[115]\i[105]There's nothing to forgive.\%(wx) \s[0]\i[103]\i[102]Nothing ever happened...\%(wx) right?\%(wx)\s[0]\i[112] It was all a dream.\%(wx)\%(wx)\%(wx)\s[0]%(d)\c"
+	--
+	"%(Select.LetGo)"
+}
+
+Select.ReallyLetGo
+{
+	"\0\s[0]\i[103]\i[102]%(z)Goodbye!%(d)\%(wx)\%(wx)\%(wx)"
+	--
+	ReleaseAfterEnding
+	--
+	sawEnding = TOINT(1)
+	--
+	"\![vanishbymyself]\e"
+}

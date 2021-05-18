@@ -1,0 +1,125 @@
+﻿//  \![enter,passivemode]
+//  \![leave,passivemode]
+
+WantHome1
+{
+	if passhour >= 1 && wanthome == 0
+	{
+		"\![enter,passivemode]"
+		--
+		wanthome = TOINT(1)
+		blockPet = TOINT(1)
+		lockMenus = TOINT(1)
+		bootPhase = "WantHome"
+		--
+		"\0\s[0]* (Zilch sighs.\%(wx)\n...\i[2]\i[108]\i[109]They rub their face.\%(wx)\n...They sniff.\0\s[0]\i[3]\i[108]\i[109])\%(wx)\n\n[half]\![*]\q[Ask them what happened,WantHome2]\n\%(wx)\![*]\q[Do not,WantHome2]\n\%(wx)\e"  
+	}
+}
+		
+Select.WantHome2
+{
+	//wanthome = 1
+	//actedLikeABaby = 1
+	--
+	"\0\s[0]\i[3]\i[108]\i[109]* (They take a breath.\%(wx) And another one.)\n\n\%(wx)%(z)I...\%(wx) I...\%(wx)\0\s[0]\i[113]\i[114] miss my brother!\%(wx)\n\n%(d)\0\s[0]\i[106]\i[107]* (They burst into tears)\n\n%(z)I want to go home!%(d)\0\s[0]\i[3]\i[108]\i[109]\%(wx)\%(wx)\%(wx)\c\![*]\q[Let me help,HelpThemLeave]\n\![*]\q[Nothing I can do,Can'tHelp]\n\%(wx)\![*]\q[Stop it,StopCrying]\n\%(wx)"
+}
+
+
+ResetWantHome
+{
+	lockMenus	= TOINT(0)
+	blockPet 	= TOINT(0)	
+	wanthome 	= TOINT(0)	
+	bootPhase 	= "Normal"
+	--
+	"\![leave,passivemode]"	
+}
+
+ConcludeWantHome
+{
+	lockMenus	= TOINT(0)
+	blockPet 	= TOINT(0)	
+	wanthome 	= TOINT(2)	
+	bootPhase 	= "Normal"
+	--
+	"\![leave,passivemode]"
+}
+
+Select.HelpThemLeave
+{
+	//"* (You can pet them now, if you like.)\n\w4\w4\w4\w4\w4\w4\w4\w4\w4\c%(OnMouseMove)%(HelpThemLeave2)\e"	
+	blockPet = TOINT(0)
+	--
+	"* (You can pet them now, if you like.)\n\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\c"
+	--
+	"\![*]\q[Help them leave,HelpThemLeave2]\%(wx)"
+}
+
+Select.HelpThemLeave2
+{
+	LessUpsetNow
+	--
+	"\%(wx)\%(wx)\c* (You tell them to take a deep breath.\%(wx)\nIf they close their eyes and imagine they're in their room, they'll be there soon.\%(wx)\%(wx)\%(wx)\c* (Zilch will now be able to leave this dream on their own.)\%(wx)\%(wx)\n\n\![*]\q[Goodbye,ZWentHome]"
+}
+
+Select.ZWentHome
+{
+	ConcludeWantHome
+	--
+	"\-\e"		
+}
+
+Select.StopCrying
+{
+	ConcludeWantHome
+	--
+	if scienceLvl > 4
+	{
+		"\0\s[0]\i[3]\i[108]\i[109]* (You ask Zilch if a brilliant scientist should whine everytime things don't go their way.)\n\n\%(wx)* (Zilch sniffs).\0\s[0]\i[2]\i[108]\i[109]\n\%(wx) %(z)\n...no.\%(wx)\0\s[0]\n\n\%(wx)%(d)* (They stop crying).\e"		  		
+	}
+	else
+	{
+		"\0\s[0]\i[3]\i[108]\i[109]* (You ask Zilch how they expect to be taken seriously if they act like a child.)\n\n\%(wx)* (Zilch sniffs).\0\s[0]\i[2]\i[108]\i[109]\n\%(wx)%(z)\nYou're right.\0\s[0]\n\n\%(wx)%(d)\0\s[0]* (They stop crying).\e"	
+	}	
+	--
+	upset+=5
+	latestSin = "StopCrying"
+	AddSinToList
+}
+
+
+
+
+
+Select.Can'tHelp
+{
+	ConcludeWantHome
+	--
+	youLiar ++
+	--
+	"\0\s[0]\i[3]\i[108]\i[109]* (You say sorry,\%(wx) can't help it.)\%(wx)\%(wx)\0\s[0]\n* (Liar.)\n\%(wx)\e"	
+}
+
+OnActedLikeABaby
+{
+	if (actedLikeABaby == TOINT(1))
+	{
+		actedLikeABaby = TOINT(2)
+		--
+		"\0\s[0]\i[2]I acted like a baby the other time...\%(wx) sorry.\n\n[half]\![*]\q[Not at all,NoWorries]\n\![*]\q[...,quietWorries]\e"		
+	}
+}
+
+Select.quietWorries
+{
+	Quiet
+}
+
+Select.NoWorries
+{	
+	LessUpsetNow
+	--
+	"\c\0\s[0]* (You tell them that feeling homesick is completely normal.\n\%(wx)They shouldn't be embarrassed.)\%(wx)\n\n[half]\n%(z)\0\s[0]\i[109]\i[2]\i[56]Oh- okay.\%(wx)%(d)\n\n[half]* (Zilch blushes.)\%(wx)\0\s[0]\e"		
+}
+
+		

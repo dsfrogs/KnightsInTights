@@ -1,0 +1,183 @@
+
+SetBirthday
+{
+	dayslot = GetDaySlot //This is setting up in case today is the user's birthday.
+		
+		"\0\s[0]* (What month were you born? \%(wx)Write the number.)\![open,inputbox,OnUserBornMonth,-1]\e"	
+}
+
+//--OnUserBornMonth
+OnUserBornMonth
+{
+	_tempmonth = reference0 //reference0 is input
+	if _tempmonth >= 1 && _tempmonth <= 12 //is valid 
+	{
+			bornmonth = _tempmonth
+			bornmonthprint = Printmonth
+			--
+			"\0\s[0]* (You tell them you were born in %(bornmonthprint).\n\%(wx)Which day of the month?)\![open,inputbox,OnUserBornDay,-1]\e"
+	}
+	else 
+	{
+		"\0\s[0]* (Incorrect Month thwarted.\%(wx) Try a number between 1 and 12. .)\![open,inputbox,OnUserBornMonth,-1]\e"
+	}
+}
+
+Printmonth
+{
+	if bornmonth == 1
+	{
+		"January"
+	}
+	elseif bornmonth == 2
+	{
+		"February"
+	}
+	elseif bornmonth == 3
+	{
+		"March"
+	}
+	elseif bornmonth == 4
+	{
+		"April"
+	}
+	elseif bornmonth == 5
+	{
+		"May"
+	}
+	elseif bornmonth == 6
+	{
+		"June"
+	}
+	elseif bornmonth == 7
+	{
+		"July"
+	}
+	elseif bornmonth == 8
+	{
+		"August"
+	}
+	elseif bornmonth == 9
+	{
+		"September"
+	}
+	elseif bornmonth == 10
+	{
+		"October"
+	}
+	elseif bornmonth == 11
+	{
+		"November"
+	}
+	else
+	{
+		"December"
+	}
+}
+
+//adds an appropriate suffix
+Printday
+{
+	if bornday == 1 || bornday == 21 || bornday == 31
+	{
+	"%(bornday)st"
+	}
+	elseif bornday == 2 || bornday == 22
+	{
+	"%(bornday)nd"
+	}
+	elseif bornday == 3 || bornday == 23
+	{
+	"%(bornday)rd"
+	}
+	else
+	{
+	"%(bornday)th"
+	}
+}	
+
+
+CheckNumberOfDaysInMonth
+{
+	is_febuary = 0
+	is_thirty = 0
+	is_thirty_one = 0
+	
+	if bornmonth == 2
+	{
+		is_febuary = 1
+	}
+	elseif (bornmonth == 1 || bornmonth == 3 || bornmonth == 5 || bornmonth == 7 || bornmonth == 8 || bornmonth == 10 || bornmonth == 12) 
+	{
+		is_thirty_one = 1
+	}
+	else
+	{
+		is_thirty = 1
+	}
+}
+
+//--OnUserBornDay
+OnUserBornDay
+{
+	tempday = reference0 //reference0 is input
+	
+	CheckNumberOfDaysInMonth
+	
+	if (is_febuary == 1 && (tempday < 1 || tempday > 29)) || (is_thirty_one == 1 && (tempday < 1 || tempday > 31)) || (is_thirty == 1 &&((tempday < 1 || tempday > 30) ) )
+	{
+		"\0\s[0]* (Invalid day number for this month.\%(wx) Try again.)\![open,inputbox,OnUserBornDay,-1]\e"
+	}
+	else
+	{
+		bornday = tempday
+		borndayprint = Printday
+		userbirthday = "%(bornmonth)month %(bornday)day"
+		birthdayprint = "%(bornmonthprint) %(borndayprint)"
+		
+		"%(birthchecked)"		
+	}
+}
+
+//--birthchecked
+birthchecked
+{
+	if userbirthday == dayslot
+	{
+		if upset==0 && upsetAfterFriday == TOINT(0)
+		{
+			"\0\s[0]%(z)%(excited)%(excited)\0\s[0]\i[102]\i[103]Happy birthday, %(username)! \%(wx)Are you enjoying it?%(d)%(HowsUrBday)"		
+		}
+		else
+		{
+			"\0\s[0]\i[2]\i[111]\i[117]%(z)So it's your birthday today,\%(wx) huh?%(d)\%(wx)\%(wx)\s[0]"		
+		}		
+	}
+	//elseif userbirthday == "12month 25day"
+	//{//can check for specific dates
+	//}
+	else 
+	{
+		"\0\s[0]* (%(bornmonthprint) %(borndayprint). Zilch will remember this.)\e"
+	}
+}
+
+HowsUrBday
+{
+	"\n\n\![*]\q[Yes,YBday]\n\![*]\q[No,NBday]\n\![*]\q[Not sure,MBday]\n\e"
+}
+
+Select.NBday
+{
+	"\0\s[0]* (You tell Zilch you're filled with ennui.)\n\n%(z)\i[102]\i[103]Sounds delicious!%(d)\%(wx)\0\s[0]"	
+}
+
+Select.MBday
+{
+	"\0\s[0]* (You tell Zilch the unyielding passage of time fills you with conflicting emotions.)\n\n%(z)\i[115]Me too!\%(wx) I'm always conflicted about my birthdays! %(d)\%(wx)\0\s[0]"	
+}
+
+Select.YBday
+{
+	"\0\s[0]* (You tell Zilch you're filled with cake.)\n\n%(z)\i[102]\i[103]Ooooh lucky!%(d)\%(wx)\0\s[0]"
+}

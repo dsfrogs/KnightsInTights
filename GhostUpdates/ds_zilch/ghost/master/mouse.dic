@@ -1,0 +1,258 @@
+﻿//---------------------------Mouse Functions-------------------------------------------------------//
+//Petting or double clicking
+
+//--OnMouseMove------------------------------------------------------------------------------------//
+//Code determining who the mouse is over. Don't touch
+OnMouseMove
+ {
+  	if nowmode != "QUIZ" && blockPet == 0
+ 	{
+		if reference3 == 0 //main character
+		{
+			MouseMoveSakura
+		}
+		else //Side character.
+		{
+			MouseMoveKero
+		}
+		//More than two characters? You can add ifs for their p number
+		//if reference3==3
+		//{
+			//MouseMoveThirdChar	
+		//}
+		//Also Copy MouseMove function for them below and make a new name for it
+	}
+ }
+
+
+
+//--MouseMoveSakura------------------------------------------------------------------------//
+//petting main character
+ 
+MouseMoveSakura
+ { 
+ 	// if wanthome == 1
+	// {
+	//	"* (They don't care about that now.)\%(wx)\n\n\c\0\s[0]\i[3]\i[108]\i[109]\%(wx)\%(wx)\%(wx)\![*]\q[Let me help,HelpThemLeave]\n\![*]\q[Nothing I can do,Can'tHelp]\n\%(wx)\![*]\q[Stop it,StopCrying]\n\%(wx)" 
+	--
+	if reference4 != "" //ignore
+ 	{
+ 		stroke++ 
+ 		if stroke >= 50 
+		{
+ 			stroke = 0 
+			if reference4 == "Head" 
+ 			{
+				if isPlayingTheHarmonica==1
+				{							
+					"\0\s[0]\i[6]\i[108]\i[109]\%(wx)\0\s[0]\i[6]\i[106]\i[109]\%(wx)\0\s[0]\i[6]\i[108]\i[109]\%(wx)\0\s[0]\i[6]\i[108]\i[107]\%(wx)\s[0]%(Select.StopSong)* (They find it difficult to keep playing)\n\n\%(wx)%(z)\s[0]\i[102]Did you like it or did you just want me to stop?\%(wx)%(d)"
+				}
+				elseif wanthome == 1
+				{
+					PetWhenTheyWantHome
+				}
+				elseif endPhase == TOINT(16)
+				{
+					PetAtEnding
+				}					
+				elseif canPet == 0
+				{
+					unwantedPet = 1	
+					UnwantedPet		
+				}
+				elseif upset != 0
+				{
+					"\s[0]\i[5]%(z)Hmmph!%(d)\%(wx)"
+					upset--
+				}
+				elseif TOINT(upsetAfterFriday)!=0
+				{
+					"\s[0]\i[2]* (Zilch shifts a little bit but keeps quiet.)\%(wx)"
+					--
+					upsetAfterFriday++
+				}
+				elseif isNilch == TOINT(1)
+				{
+					"%(n)\s[0]\i[9]\i[102]\i[103]Why are you petting me,\%(wx) \s[0]\i[9]\i[113]\i[114]when I am clearly not Zilch?\%(wx)\s[0]\i[9]%(d)"
+				}
+				else
+				{
+					nPets+=1
+					--
+					if unwantedPet == 1
+					{
+						unwantedPet = 2
+					}
+					--
+					WantedPet
+				}	
+ 			}
+ 			elseif reference4 == "Belly"
+ 			{
+				if canPet == 0
+				{
+					unwantedPet = 1	
+					UnwantedPet	
+				}			
+				else
+				{
+					"\0\s[0]* (You tickle Zilch.)\w4 \n \c .\w4.\w4.\w4\c%(z)\0\s[0]\i[102]\i[103]HAHAHA!!!\w4\4\nStopit, stopit!\0\s[0]\w4\n \n%(d)* (You let them catch their breath.)"
+				}				
+ 
+ 			}
+			
+ 		}
+	}
+ 	else //mouse isn't on the ghost
+	{
+		stroke = 0
+ 	}
+}
+
+//---------------PettingHelperFunctions-----//
+PetWhenTheyWantHome
+{
+	LessUpsetNow
+	--
+	"\0\w4* (You say, there, there.\w4 They relax slightly.)\w4\n"
+	--
+	"%(Select.HelpThemLeave2)"	
+}
+
+
+PetAtEnding
+{
+	"%(z)\s[0]\i[113]\i[114]Yes!\%(wx)\%(wx)\%(wx)%(d)\s[0]\c"
+	--
+	"%(Select.PetEnding)"
+}
+
+UnwantedPet
+{
+	"\0\s[0]\i[2]\4* (Zilch tries to escape your touch.)\i[4]\e"
+	"\0\s[0]\i[2]\4%(z)What are you doing?%(d)\i[4]\e"
+	"\0\s[0]\i[2]\4%(z)Why are you touching me?%(d)\i[4]\e"	
+}
+
+WantedPet
+{
+	"\0\s[0]\i[117]* (Zilch sighs gently).\%(wx)\s[0]\e"
+	"\0\s[0]\i[108]\i[109]* (Zilch giggles.)\%(wx)\s[0]\e"	
+	"\0\s[0]\i[106]\i[107]* (Good Zilch.)\%(wx)\s[0]\e"
+	"\0\s[0]\i[106]\i[107]* (You pet Zilch.)\%(wx)\s[0]\e"
+	"\0\s[0]\i[118]\i[109]* (Zilch tries to pet you.\%(wx) The screen is in the way.)\%(wx)\s[0]\e"
+	"\0\s[0]\i[113]* (Zilch grabs your finger)\%(wx) \n\n%(z)Heehee!%(d) \n\n\![*]\q[Give it back!,Finger]\n\![*]\q[...,quietFinger]\%(wx)\e"
+}
+
+Select.quietFinger //lol
+{
+	Quiet
+	--
+	"\%(wx)\%(wx)\c\0\s[0]\i[113]* (They let go.)\w4\s[0]\e"
+}
+
+Select.Finger
+{
+	"\0\s[0]\i[113]* (They let go.)\w4\s[0]\e" 
+}
+
+//---- MouseMoveKero -----------------------------------------------------------------
+//petting second character. 
+ 
+MouseMoveKero
+ {
+	if reference4 != ""
+ 	{
+ 		stroke++
+ 		if stroke >= 40
+		{
+			stroke = 0
+			if reference4 == "Face" 
+ 			{
+ 			}
+			elseif reference4 == "Point" 
+			{
+			}	
+ 		}
+	}
+ 	else
+	{
+		stroke = 0
+ 	}
+}
+
+//---- OnMouseDoubleClick -------------------------------------------------------
+
+OnMouseDoubleClick
+ {
+	if (TOINT(lockMenus) == 0)
+	{
+		if reference3 == 0
+		{
+			MouseDoubleClickSakura
+		}
+		else
+		{
+			MouseDoubleClickKero
+		}
+	}
+ }
+
+ //---- MouseDoubleClickSakura ----------------------------------------------------------
+ //Double clicking doesn't have to be hitting. talk about a bit of clothing, high-five in a certain pose, patting them, pointing behind them, tapping them
+ //To have main char not hittable at all:
+ 
+ //MouseDoubleClickSakura
+ //{
+	//OpenSakuraMenu
+ //}
+
+ 
+MouseDoubleClickSakura
+ {
+	 if wanthome == 1
+	 {
+		"* (They don't care about that now.)\%(wx)\n\n\c\0\s[0]\i[3]\i[108]\i[109]\%(wx)\%(wx)\%(wx)\![*]\q[Let me help,HelpThemLeave]\n\![*]\q[Nothing I can do,Can'tHelp]\n\%(wx)\![*]\q[Stop it,StopCrying]\n\%(wx)" 
+	 }
+	 --
+	 if isPlayingTheHarmonica==1
+	 "\s[0]%(Select.StopSong)"
+	 --
+ 	if reference4 == "Head" || reference4 == "Face" 
+	{
+		if isNilch == TOINT(1)
+		{
+			"\0\s[0]\i[9]%(n)If you keep making that face,\%(wx) it'll stick!\%(wx)%(d)"
+			--
+			tried2Punch = TOINT(1)
+		}				
+		else
+		{
+			"\0\s[0]\i[7]%(z)Why are you looking at me like that?%(d)\%(wx)\n\n\%(wx)\0\s[0]* (You can't punch Zilch,\%(wx) if that's what you want.\%(wx) Undoubtedly,\%(wx) you'll find other ways to hurt them.)\%(wx)"
+			--
+			tried2Punch = TOINT(1)
+			//upset+=5
+		}
+ 	}
+	else //where there's no collision
+ 	{
+		OpenSakuraMenu //menu.dic
+	}
+ }
+
+ 
+ //---- MouseDoubleClickKero -----------------------------------------------------------
+MouseDoubleClickKero
+ {
+ 	if reference4 == "Face" 
+	{
+ 	}
+	else 
+ 	{
+		OpenKeroMenu 
+	}
+ }
+
+ //*********************Advanced User Info*******************************
+ //Other mouse functions can be set up: OnMouseDragStart, OnMouseDragEnd, OnMouseWheel,  (CROW-SSP Encyclopedia)
+ //***********************************************************************

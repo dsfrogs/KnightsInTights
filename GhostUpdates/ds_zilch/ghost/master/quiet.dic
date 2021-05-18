@@ -1,0 +1,24 @@
+
+
+
+Quiet
+{
+	
+	quiet ++
+	--	
+	if quiet >= 4
+	{
+		"* (SaY NotHiNg.\%(wx) Just always...\%(wx) say nothing...\%(wx))\n\n[half]"
+		"* (You keep quiet.\%(wx) Zilch keeps quiet.\%(wx) It's so quiet.\%(wx)\n\n[half]" 
+		"* (You say nothing.\%(wx) Stoic cowboy that you are.)\%(wx)\n\n[half]"	
+		"* (If you keep being quiet all the time...\%(wx) Something wonderful will happen.\%(wx) You just know it.)\%(wx)\n\n[half]"	
+		"* (Dot,\%(wx) dot ,\%(wx) dot,\%(wx) you thought.\%(wx) Dot,\%(wx) dot,\%(wx) dot.)\%(wx)\n\n[half]"
+		"* (Silence is golden.\%(wx) But metal is noisy.)\%(wx)\n\n[half]"
+		"* (You wonder what you'll have for lunch.)\%(wx)"
+		"* (Maybe you'll talk later.\%(wx) But not now!\%(wx) No!\%(wx) Never now!)\%(wx)"	
+		"* (You hum).\%(wx)"
+		"* (Clint Eastwood on an average day).\%(wx)"			
+	}
+//	--
+//	"\e"
+}
