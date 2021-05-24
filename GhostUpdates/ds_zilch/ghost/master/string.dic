@@ -20,7 +20,11 @@ On_username
 //This is the URL where your ghost will look for updates
 On_homeurl
 {
-	"http://www.somekindofwebhost.com/yourghostsdirectory/"
+	//"http://www.somekindofwebhost.com/yourghostsdirectory/"
+	//"https://raw.githubusercontent.com/YourUsername/YourRepository/master/Updates/YourGhost/"
+	//"https://YourUsername.github.io/YourRepository/Updates/YourGhost/"
+	
+	"https://dsfrogs.github.io/KnightsInTights/GhostUpdates/ds_zilch"
 }
 
 //---- Top Menu Option Caption ----------------------------------------------------------------------//

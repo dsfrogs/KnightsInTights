@@ -4,7 +4,8 @@
 /*This affects every element on the site. You can change the font and font color here.*/
 *
 { 
-    font-family: 'Tahoma', sans-serif;
+   /* font-family: 'Tahoma', sans-serif;*/
+    font-family: 'Courier New';
     color: #222020; /*Text color*/
     text-align: left;
 }
