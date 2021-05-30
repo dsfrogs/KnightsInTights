@@ -97,7 +97,7 @@ OnDreamsTalk
 			{
 				accidentExp++
 				--
-				"\0\s[0]%(z)I had this dream where I was runing up a bell tower,\0\s[0]\i[110] and werewolves were chasing me.%(d)\%(wx)\n\n"	
+				"\0\s[0]%(z)I had this dream where I was running up a bell tower,\0\s[0]\i[110] and werewolves were chasing me.%(d)\%(wx)\n\n"	
 				--
 				ScaredAboutWolves
 				

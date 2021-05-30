@@ -139,7 +139,7 @@ RandomPool
 			
 		if familiarity > 30 
 		{
-			"\0\s[0]%(z)I'll sing a song for you,\%(wx) %(username).\n\0\s[0]\i[102]\i[103]\%(wx)%(Zilchsong)%(d)\s[0]\e"
+			"\0\s[0]\i[111]\i[110]%(z)I'll sing a song for you,\%(wx) %(username).\n\0\s[0]\i[102]\i[103]\%(wx)%(Zilchsong)%(d)\s[0]\e"
 		}
 	
 		if wantPets == 2 
@@ -151,7 +151,7 @@ RandomPool
 			
 		"\0\s[0]\i[103]%(z)Sometimes I try to think:\%(wx) if I wasn't myself,\%(wx) who would I be? \%(wx)\s[0]\i[109]...And I don't know.\%(wx)%(d)\e"
 		
-		"\0\s[0]\i[113]\i[114]%(z)I can't wait to be a grown up already.\%(wx) \s[0]\i[103]\i[102]You can do whatever you want!\%(wx)%(d)\s[0]\e"
+		"\0\s[0]\i[113]\i[114]%(z)I can't wait to be a grown up already.\%(wx) \s[0]\i[103]\i[102]You can do whatever you want!\%(wx)\n\n%(d)\![*]\q[Swallow bitterness,nothing]\s[0]\e"
 	
 		if canPet == 1 
 		{

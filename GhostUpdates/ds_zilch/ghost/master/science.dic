@@ -155,7 +155,7 @@ SciencePoolTalk
 
 Select.Feedback
 {
-	"\s[0]%(z)Your feedback is appreciated!\%(wx)%(d)"
+	"\s[0]\i[102]\i[102]%(z)Your feedback is appreciated!\%(wx)%(d)"
 }
 
 Select.Cool
@@ -202,7 +202,7 @@ Select.RomCon
 
 Select.RomCon2
 {
-	"%(z)They used water,\%(wx) volcanic ash and lime.\%(wx)\i[105]\i[115] But!\%(wx) They never specified that they used seawater.\%(wx) \s[0]\i[102]It was obvious to them.\%(wx)\%(wx)\%(wx)\c\s[0]%(z)Sea water reacts with the concrete and creates new compounds.\%(wx) \s[0]\i[104]\i[105]And this made the concrete stronger over time when it's exposed to sea water!\%(wx) \s[0]\i[102]\i[103]\nOurs only become weaker when it's exposed to sea water.%(d)\%(wx)\%(wx)\%(wx)\c\s[0]\i[111]%(z)You know, this makes me think.\%(wx)\s[0]\i[114]\i[116] I will definitely be sure to write everything I do.\%(wx)\s[0]\i[127]\i[128]People will not forget me!%(d)\%(wx)\s[0]\c\%(wx)\%(wx)\%(wx)\![quicksection,1]* (They will be forgotten.)\%(wx)\c\![quicksection,0]\e"	
+	"%(z)They used water,\%(wx) volcanic ash and lime.\%(wx)\i[105]\i[115] But!\%(wx) They never specified that they used seawater.\%(wx) \s[0]\i[102]It was obvious to them.\%(wx)\%(wx)\%(wx)\c\s[0]%(z)Sea water reacts with the concrete and creates new compounds.\%(wx) \s[0]\i[104]\i[105]And this made the concrete stronger over time when it's exposed to sea water!\%(wx) \s[0]\i[102]\i[103]\nOurs only become weaker when it's exposed to sea water.%(d)\%(wx)\%(wx)\%(wx)\c\s[0]\i[111]%(z)You know, this makes me think.\%(wx)\s[0]\i[114]\i[116] I will definitely be sure to write everything I do.\%(wx)\s[0]\i[127]\i[128] People will not forget me!%(d)\%(wx)\s[0]\c\%(wx)\%(wx)\%(wx)\![quicksection,1]* (They will be forgotten.)\%(wx)\c\![quicksection,0]\e"	
 }
 
 Select.Doppler

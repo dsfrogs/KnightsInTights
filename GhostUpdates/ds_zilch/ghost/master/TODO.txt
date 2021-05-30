@@ -2,11 +2,7 @@
 
 //-------------------------------------BUGS------------------------------------------//
 
-//SSP NEW VERSION MESSES WITH NAR INSTALLATION! URGH!
-
 //-------------------------------------Events to test------------------------------------------//
-
-(verbosity high)
 
 Beginning               ||
 						||
@@ -36,6 +32,7 @@ SinList				--- ||
 
 //-------------------------------------OTHER-IDEAS-----------------------------------------//
 
+
 //At ending maybe let people move text blocks in their pace? not sure if that's a good idea...
 
 //talk about- Home, Brother & science tend to get stuck grey ---> More Exp????
@@ -47,8 +44,6 @@ SinList				--- ||
 //prevent people from spamming pet or give candy when Z is upset? or just repeating an action rapidly?
 
 //Harmonica: volume 
-
-//Harmonica: make up a tune: input numbers = different notes?
 
 //draw dinosaurs on a bus
 

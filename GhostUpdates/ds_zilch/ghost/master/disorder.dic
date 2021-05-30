@@ -75,7 +75,7 @@ OnDisorderTalk
 			}
 			when 2
 			{
-				"\0\s[0]\i[111]%(z)I never told this to anyone, but...\%(wx) \s[0]\i[2]\i[111]the night my parents dissappeared I saw something in our house.%(d)\%(wx)\n\s[0]"
+				"\0\s[0]\i[111]%(z)I never told this to anyone, but...\%(wx) \s[0]\i[2]\i[111]the night my parents disappeared I saw something in our house.%(d)\%(wx)\n\s[0]"
 			}
 			when 3
 			{
@@ -83,11 +83,11 @@ OnDisorderTalk
 			}
 			when 4
 			{
-				"\0\s[0]%(z)I'm trying to gather evidence that the thing I saw exists.\%(wx) \s[0]\i[115]\i[105]That's what my research is about!\%(wx) \s[0]\i[102]\i[103]I call it 'the disorder'.%(d)\n\%(wx)\s[0]"		
+				"\0\s[0]\i[103]%(z)I'm trying to gather evidence that the thing I saw exists.\%(wx) \s[0]\i[115]\i[105]That's what my research is about!\%(wx) \s[0]\i[102]\i[103]I call it 'the disorder'.%(d)\n\%(wx)\s[0]"		
 			}	
 			when 5
 			{
-				"\0\s[0]%(z)If my research is successful,\%(wx) then they'll name it \s[0]\i[102]\i[103]the Zilch Disorder!\n\n\%(wx)...\s[0]\i[2]\i[111]\i[117]And my brother,\%(wx) he'll know the truth.%(d)\n\%(wx)\%(wx)\s[0]"			
+				"\0\s[0]%(z)If my research is successful,\%(wx) \i[113]\i[114]then they'll name it \s[0]\i[102]\i[103]the Zilch Disorder!\n\n\%(wx)...\s[0]\i[2]\i[111]\i[117]And my brother,\%(wx) he'll know the truth.%(d)\n\%(wx)\%(wx)\s[0]"			
 			}
 			when 6
 			{
@@ -127,7 +127,7 @@ Select.IBelieve
 	--
 	disorderExp++
 	--
-	"\0\s[0]\i[111]%(z)Thank you,\%(wx) %(username).\%(wx) \s[0]It's very nice of you.%(d)\%(wx)\n\s[0]"
+	"\0\s[0]\i[111]%(z)Thank you,\%(wx) %(username).\%(wx) \s[0]That's very nice of you.%(d)\%(wx)\n\s[0]"
 }
 
 Select.SetFriDate

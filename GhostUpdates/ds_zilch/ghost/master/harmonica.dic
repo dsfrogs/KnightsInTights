@@ -278,7 +278,8 @@ HarmonicaMenu
 			\![*]\q[Scarborough Fair,ScarboroughFair]\n/
 			\![*]\q[Star Of The County Down,StarOfTheCountyDown]\n/
 			\![*]\q[Strawberry Lane,StrawberryLane]\n/
-			\![*]\q[Piano Man,PianoMan]\n"
+			\![*]\q[Piano Man,PianoMan]\n/
+			\![*]\q[Compose a great masterpiece,Compose]\n"
 			--
 			"\n\_q\![*] There are no more sound files... however!\nZilch continues to learn many songs.\nThank you.)\n"
 		}
@@ -446,6 +447,12 @@ Select.PianoMan
 	"\![*]\q[Stop,StopSong]"	
 } 
 
+
+resetMistakeDay
+{
+	mistakeDay = ""
+}
+
 AMistake			
 {
 		"\0\s[0]\%(wx)\%(wx)\i[6]\i[108]\i[109]\_v[snd\AMistake.mp3]\%(wx)\%(wx)\%(wx)\s[0]"
@@ -526,4 +533,98 @@ ZilchUpset
 	upset+=5
 	latestSin = "HarmonicaBad"
 	AddSinToList
+}
+
+
+Select.Compose
+{
+	OnComposeAGreatMasterPiece
+}
+
+OnComposeAGreatMasterPiece
+{
+	"\_q * (use one of the following keys: ABCDEFG 12345)\![open,inputbox,OnPlayNote,-1]\n\n\![*]\q[Stop,StopSong]"
+}
+
+OnPlayNote
+{
+	note = ""
+	--
+	note = TOUPPER(reference0)
+	--
+	case note
+	{	
+		when "C" //do  
+		{
+			"\_v[snd\C.mp3]"
+		}	
+		when 1 //do#	
+		{
+			"\_v[snd\1.mp3]"
+		}			
+		when "D" //re
+		{
+			"\_v[snd\D.mp3]"
+		}	
+		when 2 //re#	
+		{
+			"\_v[snd\2.mp3]"
+		}			
+		when "E" //mi
+		{
+			"\_v[snd\E.mp3]"
+		}	
+		when "F" //fa
+		{
+			"\_v[snd\F.mp3]"
+		}	
+		when 3 //fa#	
+		{
+			"\_v[snd\3.mp3]"
+		}				
+		when "G" //sol
+		{
+			"\_v[snd\G.mp3]"
+		}	
+		when 4 //sol#
+		{
+			"\_v[snd\4.mp3]"
+		}	
+		when "A" //la	
+		{
+			"\_v[snd\A.mp3]"
+		}				
+		when 5 //la#
+		{
+			"\_v[snd\5.mp3]"
+		}	
+		when "B" //si	
+		{
+			"\_v[snd\B.mp3]"
+		}		
+	}
+	--
+	OnComposeAGreatMasterPiece
+}
+
+IsNeedleInString
+{
+	retVal = 0	
+	size = ARRAYSIZE(haystack)
+	--
+	x = 0
+	found = 0
+	--
+	while x< size && found == 0
+	{
+		if (haystack[x] == needle)
+		{
+			retVal = 1	
+			found = 1	
+			--
+		//	"\n\nfound %(haystack[x])\n\n"
+		}
+		--
+		x++	
+	}	
 }
