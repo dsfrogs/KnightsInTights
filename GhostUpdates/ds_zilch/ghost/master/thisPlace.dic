@@ -193,7 +193,7 @@ ThisPlacePool
 		}	
 		when 11
 		{
-			"%(z)\0\s[0]I wonder what's on the other side of the screen...%(d)\%(wx)\![move,0,0,3000]\%(wx)\0\s[-1]\![move,1200,0,0]\c\0\s[0]\i[111]\i[110]%(z)It wraps around!\%(wx)%(d)\s[0]"
+			"%(z)\0\s[0]\i[102]\i[103]I wonder what's on the other side of the screen...%(d)\%(wx)\s[0]\![move,0,0,3000]\%(wx)\0\s[-1]\![move,1200,0,0]\c\0\s[0]\i[111]\i[110]%(z)It wraps around!\%(wx)%(d)\s[0]"
 		}
 	}
 }
