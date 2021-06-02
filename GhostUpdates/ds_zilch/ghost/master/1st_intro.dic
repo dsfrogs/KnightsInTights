@@ -106,7 +106,7 @@ OnFirstIntro
 	dad = 0
 	houseSeen = 0
 	--
-	if reinstalled = TOINT(1)
+	if reinstalled == TOINT(1)
 	{
 		"\0\s[-1]You know how this goes.\%(wx)\n\n[half]\![*]\q[Look at the house?,LookAtHouse]\e"		
 	}
