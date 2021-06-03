@@ -1,5 +1,5 @@
 file,DragonZilch.png368bcb77fcc7fa6b1ffcad7aad94c08dsize=457672
-file,ghost/master/1st_intro.dic5c76174fcbc9c601a561a576c266d46asize=4487
+file,ghost/master/1st_intro.dic0652233f916b06b241b87f1fc400571bsize=4488
 file,ghost/master/accident.dic385dd8296914a5ae0d5eb3bedaf94c8bsize=885
 file,ghost/master/aitalk.dicc8d0e92e0c127e976aa7630bb776129csize=7658
 file,ghost/master/anchor.dic157ce243a44777e7127d254a40095c11size=2679
