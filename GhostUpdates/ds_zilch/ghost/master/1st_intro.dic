@@ -216,7 +216,7 @@ Select.LookAtChild
 
 Select.ZilchIntro
 {
-	"\0\s[0]\i[2]\i[108]\i[109]* (Zilch yawns.)\n\%(wx)\n %(z)...nmmmff\%(wx)\n\n\0\s[0]\i[107]who woke me up?%(d)\%(wx)\n\n* (Zilch blinks at the screen.)\%(wx)\n\s[0]\i[109]\n\n%(z)Oh, I see.\%(wx) It's a dream.\%(wx) I'm still asleep.\%(wx) \s[0]\i[122]Hello, dream person!%(d)\%(wx) \n\n[half]\![*]\q[Not a dream.,NotDream]\n\![*]\q[Say Nothing,SayNothing]\n\![*]\q[Hello Zilch!,HelloZilch]\n"		
+	"\0\s[0]\i[2]\i[108]\i[109]* (Zilch yawns.)\n\%(wx)\n %(z)...nmmmff\%(wx)\n\n\0\s[0]\i[107]who woke me up?%(d)\%(wx)\n\n* (Zilch blinks at the screen.)\%(wx)\n\0\s[0]\i[109]\n\n%(z)Oh, I see.\%(wx) It's a dream.\%(wx) I'm still asleep.\%(wx) \0\s[0]\i[122]Hello, dream person!%(d)\%(wx) \n\n[half]\![*]\q[Not a dream.,NotDream]\n\![*]\q[Say Nothing,SayNothing]\n\![*]\q[Hello Zilch!,HelloZilch]\n"		
 }
 
 ReleaseAfterBeginningEvent
@@ -237,7 +237,7 @@ Select.NotDream
 	--
 	ReleaseAfterBeginningEvent
 	--
-	"\0\s[0]* (You insist you're perfectly real.)\%(wx)\n\n%(z)\i[105]\i[115]That's exactly what a dream person would say!%(d)\%(wx)\0\s[0]\e"
+	"\0\s[0]* (You insist you're perfectly real.)\%(wx)\n\n%(z)\0\s[0]\i[105]\i[115]That's exactly what a dream person would say!%(d)\%(wx)\0\s[0]\e"
 }
 
 Select.SayNothing

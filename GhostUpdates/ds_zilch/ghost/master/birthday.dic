@@ -150,12 +150,10 @@ birthchecked
 		}
 		else
 		{
-			"\0\s[0]\i[2]\i[111]\i[117]%(z)So it's your birthday today,\%(wx) huh?%(d)\%(wx)\%(wx)\s[0]"		
+			"\0\s[0]\i[2]\i[111]\i[117]%(z)So it's your birthday today,\%(wx) huh?%(d)\%(wx)\%(wx)\0\s[0]"		
 		}		
 	}
-	//elseif userbirthday == "12month 25day"
-	//{//can check for specific dates
-	//}
+
 	else 
 	{
 		"\0\s[0]* (%(bornmonthprint) %(borndayprint). Zilch will remember this.)\e"
@@ -169,15 +167,15 @@ HowsUrBday
 
 Select.NBday
 {
-	"\0\s[0]* (You tell Zilch you're filled with ennui.)\n\n%(z)\i[102]\i[103]Sounds delicious!%(d)\%(wx)\0\s[0]"	
+	"\0\s[0]* (You tell Zilch you're filled with ennui.)\n\n%(z)\0\s[0]\i[102]\i[103]Sounds delicious!%(d)\%(wx)\0\s[0]"	
 }
 
 Select.MBday
 {
-	"\0\s[0]* (You tell Zilch the unyielding passage of time fills you with conflicting emotions.)\n\n%(z)\i[115]Me too!\%(wx) I'm always conflicted about my birthdays! %(d)\%(wx)\0\s[0]"	
+	"\0\s[0]* (You tell Zilch the unyielding passage of time fills you with conflicting emotions.)\n\n%(z)\0\s[0]\i[115]Me too!\%(wx) I'm always conflicted about my birthdays! %(d)\%(wx)\0\s[0]"	
 }
 
 Select.YBday
 {
-	"\0\s[0]* (You tell Zilch you're filled with cake.)\n\n%(z)\i[102]\i[103]Ooooh lucky!%(d)\%(wx)\0\s[0]"
+	"\0\s[0]* (You tell Zilch you're filled with cake.)\n\n%(z)\0\s[0]\i[102]\i[103]Ooooh lucky!%(d)\%(wx)\0\s[0]"
 }

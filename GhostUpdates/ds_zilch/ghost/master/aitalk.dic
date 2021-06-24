@@ -77,7 +77,7 @@ RandomTalk : nonoverlap
 
 Select.IDoKnow
 {
-	"* (You tell Zilch you know them from another life.)\%(wx)\n\n%(z)\0\s[0]\i[5]\hmmph!\%(wx) \0\s[0]\i[5]\i[114]\i[113]Not true!%(d)\%(wx)\s[0]\e"
+	"* (You tell Zilch you know them from another life.)\%(wx)\n\n%(z)\0\s[0]\i[5]\hmmph!\%(wx) \0\s[0]\i[5]\i[114]\i[113]Not true!%(d)\%(wx)\0\s[0]\e"
 }
 
 RandomPool
@@ -139,31 +139,31 @@ RandomPool
 			
 		if familiarity > 30 
 		{
-			"\0\s[0]\i[111]\i[110]%(z)I'll sing a song for you,\%(wx) %(username).\n\0\s[0]\i[102]\i[103]\%(wx)%(Zilchsong)%(d)\s[0]\e"
+			"\0\s[0]\i[111]\i[110]%(z)I'll sing a song for you,\%(wx) %(username).\n\0\s[0]\i[102]\i[103]\%(wx)%(Zilchsong)%(d)\0\s[0]\e"
 		}
 	
 		if wantPets == 2 
 		{
-			"\0\s[0]\i[103]\i[102]%(z)Sometimes %(catName) plays and pretends like she bites me,\s[0]\i[108]\i[109]\%(wx) but she's actually very gentle!\%(wx)%(d)\s[0]\e"
+			"\0\s[0]\i[103]\i[102]%(z)Sometimes %(catName) plays and pretends like she bites me,\0\s[0]\i[108]\i[109]\%(wx) but she's actually very gentle!\%(wx)%(d)\0\s[0]\e"
 		}
 	
 		"\0\s[0]\i[103]%(z)Did you noticed it rained today?\%(wx)\n\n%(d)* (You think about the laundry.)\%(wx)\e"
 			
-		"\0\s[0]\i[103]%(z)Sometimes I try to think:\%(wx) if I wasn't myself,\%(wx) who would I be? \%(wx)\s[0]\i[109]...And I don't know.\%(wx)%(d)\e"
+		"\0\s[0]\i[103]%(z)Sometimes I try to think:\%(wx) if I wasn't myself,\%(wx) who would I be? \%(wx)\0\s[0]\i[109]...And I don't know.\%(wx)%(d)\e"
 		
-		"\0\s[0]\i[113]\i[114]%(z)I can't wait to be a grown up already.\%(wx) \s[0]\i[103]\i[102]You can do whatever you want!\%(wx)\n\n%(d)\![*]\q[Swallow bitterness,nothing]\s[0]\e"
+		"\0\s[0]\i[113]\i[114]%(z)I can't wait to be a grown up already.\%(wx) \0\s[0]\i[103]\i[102]You can do whatever you want!\%(wx)\n\n%(d)\![*]\q[Swallow bitterness,nothing]\0\s[0]\e"
 	
 		if canPet == 1 
 		{
-			"\0\s[0]\i[103]%(z)You can pet me now,\%(wx) if you want.\%(wx)%(d)\s[0]\e"
+			"\0\s[0]\i[103]%(z)You can pet me now,\%(wx) if you want.\%(wx)%(d)\0\s[0]\e"
 		}	
 
-		"%(z)\0\s[0]\i[108]If you had a car with legs,\%(wx)\s[0]\i[115]\i[114]\%(wx) you could drive it through a staircase!%(d)\%(wx)\s[0]\e"
+		"%(z)\0\s[0]\i[108]If you had a car with legs,\%(wx)\0\s[0]\i[115]\i[114]\%(wx) you could drive it through a staircase!%(d)\%(wx)\0\s[0]\e"
 
 	}
 	else
 	{
-		"\0\s[0]\i[5]\i[113]\i[114]* (Seems like they want to say something.\%(wx) But they don't.)\%(wx)\%(wx)\%(wx)\s[0]\e"
+		"\0\s[0]\i[5]\i[113]\i[114]* (Seems like they want to say something.\%(wx) But they don't.)\%(wx)\%(wx)\%(wx)\0\s[0]\e"
 		"\0\s[0]\i[5]* (Zilch frowns.)\%(wx)\%(wx)\%(wx)\e"
 		"\0\s[0]\i[2]\i[108]\i[109]* (Zilch sniffs and rubs their eyes.)\%(wx)\%(wx)\%(wx)\e"
 	}
@@ -174,7 +174,7 @@ TalkAbtUnwantedPet
 {
 	if unwantedPet == 1 
 	{	
-		"\0\s[0]%(z)Do you always touch people you don't know?\n\n%(d)"
+		"\0\s[0]\i[102]%(z)Do you always touch people you don't know?\n\n%(d)\0\s[0]"
 		--
 		if 	(reinstalled == 1 || didAreset == 1)
 		{
@@ -340,17 +340,7 @@ OnSurfaceRestore
 		}
 	}
 	
-//	if isNilch == TOINT(1)
-//	{
-//		
-//	}
-//	else
-//	{
-//
-//		//"\1\s[-1]\0\s[0]\e"		
-//	}
 
- }
 
  
 //--OnKeyPress-----------------------------------------------------------------------------------//

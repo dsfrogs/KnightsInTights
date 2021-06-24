@@ -71,27 +71,27 @@ OnDisorderTalk
 		{
 			when 1
 			{
-				"\0\s[0]\i[111]%(z)There's something I never told anyone...%(d)\%(wx)\n\s[0]"	
+				"\0\s[0]\i[111]%(z)There's something I never told anyone...%(d)\%(wx)\n\0\s[0]"	
 			}
 			when 2
 			{
-				"\0\s[0]\i[111]%(z)I never told this to anyone, but...\%(wx) \s[0]\i[2]\i[111]the night my parents disappeared I saw something in our house.%(d)\%(wx)\n\s[0]"
+				"\0\s[0]\i[111]%(z)I never told this to anyone, but...\%(wx) \0\s[0]\i[2]\i[111]the night my parents disappeared I saw something in our house.%(d)\%(wx)\n\0\s[0]"
 			}
 			when 3
 			{
-				"\0\s[0]* (You ask Zilch why they never told anyone about what they saw on the night of the accident.)\n\n\0\s[0]%(z)\i[102]\i[103]Who could I tell?\%(wx) \s[0]No-one would believe me.%(d)\%(wx)\n\n[half]\![*]\q[I'll believe you,IBelieve]\n\![*]\q[...,IBeliem]\n\n[half]\x" 
+				"\0\s[0]* (You ask Zilch why they never told anyone about what they saw on the night of the accident.)\n\n%(z)\0\s[0]\i[102]\i[103]Who could I tell?\%(wx) \0\s[0]No-one would believe me.%(d)\%(wx)\n\n[half]\![*]\q[I'll believe you,IBelieve]\n\![*]\q[...,IBeliem]\n\n[half]\x" 
 			}
 			when 4
 			{
-				"\0\s[0]\i[103]%(z)I'm trying to gather evidence that the thing I saw exists.\%(wx) \s[0]\i[115]\i[105]That's what my research is about!\%(wx) \s[0]\i[102]\i[103]I call it 'the disorder'.%(d)\n\%(wx)\s[0]"		
+				"\0\s[0]\i[103]%(z)I'm trying to gather evidence that the thing I saw exists.\%(wx) \0\s[0]\i[115]\i[105]That's what my research is about!\%(wx) \0\s[0]\i[102]\i[103]I call it 'the disorder'.%(d)\n\%(wx)\0\s[0]"		
 			}	
 			when 5
 			{
-				"\0\s[0]%(z)If my research is successful,\%(wx) \i[113]\i[114]then they'll name it \s[0]\i[102]\i[103]the Zilch Disorder!\n\n\%(wx)...\s[0]\i[2]\i[111]\i[117]And my brother,\%(wx) he'll know the truth.%(d)\n\%(wx)\%(wx)\s[0]"			
+				"\0\s[0]%(z)If my research is successful,\%(wx) \0\s[0]\i[113]\i[114]then they'll name it \0\s[0]\i[102]\i[103]the Zilch Disorder!\n\n\%(wx)...\0\s[0]\i[2]\i[111]\i[117]And my brother,\%(wx) he'll know the truth.%(d)\n\%(wx)\%(wx)\0\s[0]"			
 			}
 			when 6
 			{
-				"\0\s[0]\i[115]%(z)According to my calculations,\%(wx) the Disorder should appear soon!\s[0]\i[102]\i[103]\%(wx) You can see it too,\%(wx) if you like.%(d)\n\%(wx)\s[0]"			
+				"\0\s[0]\i[115]%(z)According to my calculations,\%(wx) the Disorder should appear soon!\0\s[0]\i[102]\i[103]\%(wx) You can see it too,\%(wx) if you like.%(d)\n\%(wx)\0\s[0]"			
 			}
 		}
 		--
@@ -100,7 +100,7 @@ OnDisorderTalk
 		--
 		if disorderLvl >=7
 		{
-			"\0%(excited)%(excited)\s[0]\i[102]\i[103]%(z)The disorder will appear this friday night!\%(wx) \s[0]\i[103]If you meet me here,\%(wx) I can show you!%(d)\n\n\%(wx)\![*]\q[Deal! It's a date,SetFriDate]\n\![*]\q[Got plans...,NoDate]\n\n[half]\x"			
+			"\0%(excited)%(excited)\0\s[0]\i[102]\i[103]%(z)The disorder will appear this friday night!\%(wx) \s[0]\i[103]If you meet me here,\%(wx) I can show you!%(d)\n\n\%(wx)\![*]\q[Deal! It's a date,SetFriDate]\n\![*]\q[Got plans...,NoDate]\n\n[half]\x"			
 			--
 			disorderPaused = 0 //don't want it paused now
 		}		
@@ -127,24 +127,24 @@ Select.IBelieve
 	--
 	disorderExp++
 	--
-	"\0\s[0]\i[111]%(z)Thank you,\%(wx) %(username).\%(wx) \s[0]That's very nice of you.%(d)\%(wx)\n\s[0]"
+	"\0\s[0]\i[111]%(z)Thank you,\%(wx) %(username).\%(wx) \0\s[0]That's very nice of you.%(d)\%(wx)\n\0\s[0]"
 }
 
 Select.SetFriDate
 {
 	dateSetFriday = TOINT(1)
 	--
-	"\0\s[0]%(z)Yes! %(excited)%(excited)\s[0]\%(wx)Meet me here then!%(d)\%(wx)\n"	
+	"\0\s[0]%(z)Yes! %(excited)%(excited)\0\s[0]\%(wx)Meet me here then!%(d)\%(wx)\n"	
 }
 
 Select.NoDate
 {
 	dateSetFriday = 1
 	--
-	"\0\s[0]\i[115]\i[105]%(z)Too bad you don't have a time machine!\%(wx) \s[0]\i[102]\i[103]Then you could be in two places at once!%(d)\%(wx)\s[0]\n"	
+	"\0\s[0]\i[115]\i[105]%(z)Too bad you don't have a time machine!\%(wx) \0\s[0]\i[102]\i[103]Then you could be in two places at once!%(d)\%(wx)\0\s[0]\n"	
 }
 
 Doesn'tWannaDisorderTalk
 {
-	"\0\s[0]\i[109]\i[117]\i[2]* (Zilch fidgets)\%(wx)\n\n%(z)Actually, I don't feel like talking about it anymore today...\%(wx)\n\s[0]\i[103]Sorry...%(d)\n\%(wx)\s[0]"	
+	"\0\s[0]\i[109]\i[117]\i[2]* (Zilch fidgets)\%(wx)\n\n%(z)Actually, I don't feel like talking about it anymore today...\%(wx)\n\0\s[0]\i[103]Sorry...%(d)\n\%(wx)\0\s[0]"	
 }

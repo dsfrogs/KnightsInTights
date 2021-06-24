@@ -45,7 +45,7 @@ MouseMoveSakura
  			{
 				if isPlayingTheHarmonica==1
 				{							
-					"\0\s[0]\i[6]\i[108]\i[109]\%(wx)\0\s[0]\i[6]\i[106]\i[109]\%(wx)\0\s[0]\i[6]\i[108]\i[109]\%(wx)\0\s[0]\i[6]\i[108]\i[107]\%(wx)\s[0]%(Select.StopSong)* (They find it difficult to keep playing)\n\n\%(wx)%(z)\s[0]\i[102]Did you like it or did you just want me to stop?\%(wx)%(d)"
+					"\0\s[0]\i[6]\i[108]\i[109]\%(wx)\0\s[0]\i[6]\i[106]\i[109]\%(wx)\0\s[0]\i[6]\i[108]\i[109]\%(wx)\0\s[0]\i[6]\i[108]\i[107]\%(wx)\0\s[0]%(Select.StopSong)* (They find it difficult to keep playing)\n\n\%(wx)%(z)\0\s[0]\i[102]Did you like it or did you just want me to stop?\%(wx)%(d)"
 				}
 				elseif wanthome == 1
 				{
@@ -62,18 +62,18 @@ MouseMoveSakura
 				}
 				elseif upset != 0
 				{
-					"\s[0]\i[5]%(z)Hmmph!%(d)\%(wx)"
+					"\0\s[0]\i[5]%(z)Hmmph!%(d)\%(wx)"
 					upset--
 				}
 				elseif TOINT(upsetAfterFriday)!=0
 				{
-					"\s[0]\i[2]* (Zilch shifts a little bit but keeps quiet.)\%(wx)"
+					"\0\s[0]\i[2]* (Zilch shifts a little bit but keeps quiet.)\%(wx)"
 					--
 					upsetAfterFriday++
 				}
 				elseif isNilch == TOINT(1)
 				{
-					"%(n)\s[0]\i[9]\i[102]\i[103]Why are you petting me,\%(wx) \s[0]\i[9]\i[113]\i[114]when I am clearly not Zilch?\%(wx)\s[0]\i[9]%(d)"
+					"%(n)\0\s[0]\i[9]\i[102]\i[103]Why are you petting me,\%(wx) \0\s[0]\i[9]\i[113]\i[114]when I am clearly not Zilch?\%(wx)\0\s[0]\i[9]%(d)"
 				}
 				else
 				{
@@ -122,7 +122,7 @@ PetWhenTheyWantHome
 
 PetAtEnding
 {
-	"%(z)\s[0]\i[113]\i[114]Yes!\%(wx)\%(wx)\%(wx)%(d)\s[0]\c"
+	"%(z)\0\s[0]\i[113]\i[114]Yes!\%(wx)\%(wx)\%(wx)%(d)\0\s[0]\c"
 	--
 	"%(Select.PetEnding)"
 }
@@ -136,11 +136,11 @@ UnwantedPet
 
 WantedPet
 {
-	"\0\s[0]\i[117]* (Zilch sighs gently).\%(wx)\s[0]\e"
-	"\0\s[0]\i[108]\i[109]* (Zilch giggles.)\%(wx)\s[0]\e"	
-	"\0\s[0]\i[106]\i[107]* (Good Zilch.)\%(wx)\s[0]\e"
-	"\0\s[0]\i[106]\i[107]* (You pet Zilch.)\%(wx)\s[0]\e"
-	"\0\s[0]\i[118]\i[109]* (Zilch tries to pet you.\%(wx) The screen is in the way.)\%(wx)\s[0]\e"
+	"\0\s[0]\i[117]* (Zilch sighs gently).\%(wx)\0\s[0]\e"
+	"\0\s[0]\i[108]\i[109]* (Zilch giggles.)\%(wx)\0\s[0]\e"	
+	"\0\s[0]\i[106]\i[107]* (Good Zilch.)\%(wx)\0\s[0]\e"
+	"\0\s[0]\i[106]\i[107]* (You pet Zilch.)\%(wx)\0\s[0]\e"
+	"\0\s[0]\i[118]\i[109]* (Zilch tries to pet you.\%(wx) The screen is in the way.)\%(wx)\0\s[0]\e"
 	"\0\s[0]\i[113]* (Zilch grabs your finger)\%(wx) \n\n%(z)Heehee!%(d) \n\n\![*]\q[Give it back!,Finger]\n\![*]\q[...,quietFinger]\%(wx)\e"
 }
 
@@ -148,12 +148,12 @@ Select.quietFinger //lol
 {
 	Quiet
 	--
-	"\%(wx)\%(wx)\c\0\s[0]\i[113]* (They let go.)\w4\s[0]\e"
+	"\%(wx)\%(wx)\c\0\s[0]\i[113]* (They let go.)\w4\0\s[0]\e"
 }
 
 Select.Finger
 {
-	"\0\s[0]\i[113]* (They let go.)\w4\s[0]\e" 
+	"\0\s[0]\i[113]* (They let go.)\w4\0\s[0]\e" 
 }
 
 //---- MouseMoveKero -----------------------------------------------------------------
@@ -216,7 +216,7 @@ MouseDoubleClickSakura
 	 }
 	 --
 	 if isPlayingTheHarmonica==1
-	 "\s[0]%(Select.StopSong)"
+	 "\0\s[0]%(Select.StopSong)"
 	 --
  	if reference4 == "Head" || reference4 == "Face" 
 	{

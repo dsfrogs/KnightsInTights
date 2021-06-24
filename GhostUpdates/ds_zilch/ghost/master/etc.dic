@@ -17,7 +17,7 @@ OnFileDrop2
 			familiarity ++
 			scienceExp +=5
 			--
-			"\0\s[0]* (You gave Zilch a proof.)\%(wx)\n\n%(z)\s[0]\i[107]\i[106]Wawawa so it's true!\%(wx) \s[0]\i[102]\i[103]There's a multiverse and time travel is possible \s[0]\i[109]\i[108]and you can create hard light and-%(d)\%(wx)\n\n\s[0]* (You say you can't confirm or deny)\n\n\%(wx)\n[half]%(z)\s[0]\i[109]\i[108]Oooooh.%(d)\%(wx)\s[0]\n\e"
+			"\0\s[0]* (You gave Zilch a proof.)\%(wx)\n\n%(z)\0\s[0]\i[107]\i[106]Wawawa so it's true!\%(wx) \0\s[0]\i[102]\i[103]There's a multiverse and time travel is possible \0\s[0]\i[109]\i[108]and you can create hard light and-%(d)\%(wx)\n\n\0\s[0]* (You say you can't confirm or deny)\n\n\%(wx)\n[half]%(z)\0\s[0]\i[109]\i[108]Oooooh.%(d)\%(wx)\0\s[0]\n\e"
 			--
 			LessUpsetNow
 		}
@@ -93,7 +93,7 @@ OnInstallComplete
 		}
 		else //Any other shell
 		{
-		"\0\s[0]* (Shell installed: %(reference1).)\e"
+			"\0\s[0]* (Shell installed: %(reference1).)\e"
 		}
  	}
 	elseif reference0 == "ghost"
@@ -170,7 +170,7 @@ TalkVanishButtonHold
 //reference0 stores uninstalled ghost's name  
 OnVanished
 {
-	"\0\s[0]* (The wind whispers a name...\%(wx)\n\n) %(z)\s[0]\i[109]%(reference0)?%(d)\%(wx)\s[0]\e"
+	"\0\s[0]* (The wind whispers a name...\%(wx)\n\n) %(z)\0\s[0]\i[109]%(reference0)?%(d)\%(wx)\0\s[0]\e"
 }
 
 //**** Mail Checking ******************************************************//
@@ -363,17 +363,17 @@ OnHeadlinesense.OnFind
  	if reference2 == "First" || reference2 == "First and Last"
 	{
  		//---- First page
-		"\0\b2\s[0]%(reference0):"
+		"\0\b2\0\s[0]%(reference0):"
  	}
 	elseif reference2 == "Next"
  	{
 		//---- Second page
- 		"\0\b2\s[0]%(reference0):"
+ 		"\0\b2\0\s[0]%(reference0):"
 	}
  	elseif reference2 == "Last"
 	{
  		//---- Last page
-		"\0\b2\s[0]%(reference0):"
+		"\0\b2\0\s[0]%(reference0):"
  	}
 	--
  	//---- Headlines
@@ -655,7 +655,7 @@ OnShellScaling
 
 	if bootPhase == "Normal" && upsetAfterFriday==TOINT(0) && verbos == "HIGH"
 	{
-		"\1\s[-1]\0\s[0]\i[109]\i[108]%(z)Ugh..! \%(wx)Something bit me.\i[8]%(d)\%(wx)\s[0]\e"
+		"\1\s[-1]\0\s[0]\i[109]\i[108]%(z)Ugh..! \%(wx)Something bit me.\i[8]%(d)\%(wx)\0\s[0]\e"
 	}	
 	
 }

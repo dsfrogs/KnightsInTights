@@ -88,7 +88,7 @@ Select.TextSpeedHigh
 //-----------------------------TimeCheck------------------------------//
 Select.TimeCheck
 {
-	"\s[0]* ("
+	"\0\s[0]* ("
 	--
 	if (passhour >= 1)
 	{
@@ -135,14 +135,7 @@ Select.BDAY
 
 Select.talkinter
 {
-	"\0\s[0]\b2How often should Zilch speak?\w8\s[0] Current interval is %(talktime)./
-	\0\n\n[half]/
-	\![*]\q[Every 30 seconds,TALKMAX]\n/
-	\![*]\q[Every minute,TALKHIGH]\n/
-	\![*]\q[Every 3 minutes,TALKNORMAL]\n/
-	\![*]\q[Every 5 minutes,TALKPOOR]\n/
-	\![*]\q[Never!!,TALKNONE]\n\n[half]/
-	\![*]\q[Don't change,TalksTill]\e"
+	"\0\s[0]\b2How often should Zilch speak?\w8 Current interval is %(talktime).\n\n[half]\![*]\q[Every 30 seconds,TALKMAX]\n\![*]\q[Every minute,TALKHIGH]\n\![*]\q[Every 3 minutes,TALKNORMAL]\n\![*]\q[Every 5 minutes,TALKPOOR]\n\![*]\q[Never!!,TALKNONE]\n\n[half]\![*]\q[Don't change,TalksTill]\e"
 }
 
 TalkRateChanged

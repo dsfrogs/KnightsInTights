@@ -1,7 +1,7 @@
 ﻿
 seriko.alignmenttodesktop,free
-
-seriko.use_self_alpha,1 //smoother lines
+//smoother lines
+seriko.use_self_alpha,1 
 
 
 charset,UTF-8

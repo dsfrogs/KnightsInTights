@@ -83,11 +83,11 @@ normalboottalk
 	//Weekdays are numbered from mon to sun	
  	if familiarity == 0 || upset!=0
 	{
-		"\0\s[0]\i[109]%(z)I'm having bad dreams again...%(d)\n\%(wx)\s[0]"
+		"\0\s[0]\i[109]%(z)I'm having bad dreams again...%(d)\n\%(wx)\0\s[0]"
 	}	
 	elseif weekday == 5 && hour >= 19 && upsetAfterFriday== TOINT(0)
 	{
-		"\0\s[0]%(z)\i[117]\i[107]Fell asleep on Friday night...\%(wx) \0\s[0]Hmph.\%(wx)%(d)"		
+		"%(z)\0\s[0]\i[117]\i[107]Fell asleep on Friday night...\%(wx) \0\s[0]Hmph.\%(wx)%(d)"		
 	}
 	elseif upsetAfterFriday== TOINT(0)
  	{		
@@ -95,15 +95,15 @@ normalboottalk
 		{
 			when "earlymorning" 
 			{
-				"\0\s[0]\i[109]\i[108]%(z)I'll wake up soon, but for now,\0\s[0]\i[102]\i[103] I'll stay with you.%(d)\%(wx)\s[0]"
+				"\0\s[0]\i[109]\i[108]%(z)I'll wake up soon, but for now,\0\s[0]\i[102]\i[103] I'll stay with you.%(d)\%(wx)\0\s[0]"
 			}
 			when "morning"
 			{
-				"\0\s[0]\i[109]%(z)I hit the snooze button and fell asleep again...\%(wx)\s[0]\i[103] And here I am.\%(wx)\%(wx)%(d)\0\s[0]"				
+				"\0\s[0]\i[109]%(z)I hit the snooze button and fell asleep again...\%(wx)\0\s[0]\i[103] And here I am.\%(wx)\%(wx)%(d)\0\s[0]"				
 			}
 			when "lunch"
 			{
-				"\0\s[0]\i[109]%(z)Hmm...\%(wx) \s[0]\i[105]I must have dozed off after lunch.%(d)\0\s[0]\%(wx)"				
+				"\0\s[0]\i[109]%(z)Hmm...\%(wx) \0\s[0]\i[105]I must have dozed off after lunch.%(d)\0\s[0]\%(wx)"				
 			}
 			when "afternoon"
 			{
@@ -204,7 +204,7 @@ OnWindowStateRestore
 		{
 			if verbos == "HIGH"
 			{
-				"\1\s[-1]\0\s[0]\i[9]\i[107]%(n)What is the meaning of this?%(d)\%(wx)\s[0]\i[9]\e"				
+				"\1\s[-1]\0\s[0]\i[9]\i[107]%(n)What is the meaning of this?%(d)\%(wx)\0\s[0]\i[9]\e"				
 			}
 		}
 		when "Normal"			
@@ -213,45 +213,11 @@ OnWindowStateRestore
 			--
 			if verbos == "HIGH"
 			{
-				"\i[107]%(z)What happened?\s[0]\%(wx) I feel weird.\%(wx)%(d)\e"				
+				"\0\s[0]\i[107]%(z)What happened?\0\s[0]\%(wx) I feel weird.\%(wx)%(d)\e"				
 			}
 		}
 	}	
 	
-//	
-//	if (wanthome == TOINT(1)) //again, allowing user to stop event by minimizing window
-//	{
-//		ResetWantHome
-//	}
-//	elseif endPhase!=TOINT(0) 		
-//	{
-//		"\1\s[-1]\0\s[-1]"
-//		--
-//		OnContinueEndPhase
-//	}
-//	elseif beginPhase!=TOINT(0)     
-//	{
-//		"\1\s[-1]\0\s[-1]"
-//		--
-//		OnContinueBeginPhase
-//	}		
-//	elseif fridatePhase!=TOINT(0)   
-//	{
-//		"\1\s[-1]\0\s[-1]"
-//		--
-//		OnContinueFridatePhase
-//	}
-//	elseif verbos == 'HIGH' && upsetAfterFriday== TOINT(0)
-//	{
-//		if isNilch == 0
-//		{
-//			"\1\s[-1]\0\s[0]\i[107]%(z)What happened?\s[0]\%(wx) I feel weird.\%(wx)%(d)\e"
-//		}
-//		else
-//		{
-//			"\1\s[-1]\0\s[0]\i[9]\i[107]%(n)What is the meaning of this?%(d)\%(wx)\s[0]\i[9]\e"
-//		}
-//	}
 }
 
 //--OnGhostChanging---------------------------------------------------------------------------//
@@ -305,7 +271,7 @@ OnGhostChanging
 			{
 				if reference0 == "Zilch"
 				{
-					"\0\s[0]* (Zilch is reloading...)\%(wx)\n\n\c\s[0]\i[114]\i[113]\i[55]\i[54] %(z)Vroom! Vroom!%(d)\%(wx)\%(wx)\e"
+					"\0\s[0]* (Zilch is reloading...)\%(wx)\n\n\c\0\s[0]\i[114]\i[113]\i[55]\i[54] %(z)Vroom! Vroom!%(d)\%(wx)\%(wx)\e"
 				}
 				else
 				{
@@ -318,60 +284,8 @@ OnGhostChanging
 	
 	
 	
-//	if (wanthome == TOINT(1)) //allowing user to get out of this event by resetting and then reloading
-//	{
-//		ResetWantHome		
-//	}
-//	elseif  endPhase!=TOINT(0) || beginPhase!=TOINT(0) || fridatePhase!=TOINT(0)  
-//	{
-//		//allow user to switch to another ghost
-//		//But don't say anything
-//		"\0\s[-1]\1\s[-1]"
-//		--
-//		//"changed to another ghost from Z on special event"
-//	}
-//	else
-//	{
-//		if verbos == "LOW" || upsetAfterFriday!= TOINT(0)
-//		{
-//		}
-//		elseif reference0 == "Zilch"  
-//		{
-//			if isNilch == 1
-//			{
-//				"\0\s[0]\i[9]\i[112]\i[111]%(n)Mmm,\%(wx) reloading,\%(wx) yes...\%(wx)%(d)\e"
-//			}
-//			else
-//			{
-//				"\0\s[0]* (Zilch is reloading...)\%(wx)\n\n\c\s[0]\i[114]\i[113]\i[55]\i[54] %(z)Vroom! Vroom!%(d)\%(wx)\%(wx)\e"				
-//			}			
-//		}
-//		else 
-//		{
-//			if isNilch== TOINT(0)
-//			{
-//				"\0\s[0]%(z)Feels like I'm about to wake up...\0\s[0]\i[107]\%(wx)%(reference0)?\%(wx)\s[-1]...\%(wx)\%(wx)%(d)\e"
-//			}
-//			else
-//			{
-//				"\0\s[0]\i[9]\i[102]\i[103]%(n)Goodbye,\%(wx) %(username)!\%(wx) \0\s[0]\i[9]\i[114]\i[113]Good luck,\%(wx) %(reference0)!\%(wx) %(d)\%(wx)\e"
-//			}
-//		}		
-//	}
+
 }
-
-
-
-//case bootPhase
-//{
-// 	when "WantHome" 		{}
-// 	when "End" 				{}
-// 	when "Begin" 			{}
-// 	when "Fridate" 			{}
-// 	when "UpsetAfterFriday" {}
-// 	when "Nilch" 			{}
-// 	when "Normal" 			{}
-//}
 
 
 
@@ -433,7 +347,7 @@ OnGhostChanged
 			{
 				if reference0 == "Zilch"
 				{
-					"\0\s[0]\i[114]\i[113]\i[55]\i[54]%(z)...Vroom!%(d)\%(wx)\s[0]\e"
+					"\0\s[0]\i[114]\i[113]\i[55]\i[54]%(z)...Vroom!%(d)\%(wx)\0\s[0]\e"
 				}
 				else
 				{
@@ -443,65 +357,6 @@ OnGhostChanged
 		}
 	}
 	
-	
-//	if beginPhase!=TOINT(0)
-//	{
-//		"\0\s[-1]\1\s[-1]"
-//		--
-//		OnContinueBeginPhase
-//	}
-//	elseif endPhase!=TOINT(0)
-//	{
-////		"OnGhostChanged endPhase!=TOINT(0)\%(wx)"
-//		--
-//		//switch from another ghost in the ending
-//		"\0\s[-1]\1\s[-1]"
-//		--
-//		OnContinueEndPhase		
-//	}
-//	elseif fridatePhase!=TOINT(0)
-//	{
-//		"\0\s[-1]\1\s[-1]"
-//		--
-//		//prevent reset passive mode & then reloading
-//		//"changed from another ghost into Z on fridate"
-//		--
-//		OnContinueFridatePhase			
-//	}
-//	elseif	wanthome == TOINT(1)
-//	{
-//		ResetWantHome
-//	}	
-//	elseif upsetAfterFriday== TOINT(0)
-//	{
-//		"%(Garbage)\0\s[0]" //default poses
-//		--
-//		if verbos == "LOW"
-//		{
-//		}	
-//		elseif reference0 == "Zilch"
-//		{
-//			if isNilch == 0
-//			{
-//				"\0\s[0]\i[114]\i[113]\i[55]\i[54]%(z)...Vroom!%(d)\%(wx)\s[0]\e"
-//			}
-//			else
-//			{
-//				"\0\s[0]\i[9]\i[102]\i[103]%(n)...done!\%(wx)%(d)\0\s[0]\i[9]\e"
-//			}			
-//		}
-//		else 
-//		{
-//			if isNilch== TOINT(0)
-//			{
-//				"\0\s[0]%(z)Bye...\%(wx) \0\s[0]\i[107]%(reference0)?\%(wx) Who are they?\%(wx)%(d)\s[0]\e"
-//			}
-//			else
-//			{
-//				"\0\s[0]\i[9]%(n)Goodbye %(reference0)!%(d)\%(wx)"
-//			}			
-//		}			
-//	}
 }
 
 

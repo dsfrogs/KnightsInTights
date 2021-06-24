@@ -27,7 +27,7 @@ HarmonicaLvlUp
 
 HarmonicaUpsetAfterFriday
 {
-	"\s[0]* (Maybe if they'll play something they'll feel better?)\%(wx)\n\n\s[0]\i[109]%(z)Yeah...\%(wx) Maybe...%(d)\%(wx)\%(wx)\s[0]"						
+	"\0\s[0]* (Maybe if they'll play something they'll feel better?)\%(wx)\n\n\0\s[0]\i[109]%(z)Yeah...\%(wx) Maybe...%(d)\%(wx)\%(wx)\0\s[0]"						
 	--
 	harmonicaPaused=1
 	//NumOfOpenSubjects--
@@ -41,7 +41,7 @@ OnHarmonicaTalk
 	{	
 		if harmonicaLvl == 1
 		{
-			"\0\s[0]\i[115]\i[114]%(z) I can only play one thing!\%(wx)\%(wx)\s[0]\i[103]...want to hear it?%(d)\%(wx)\s[0]\n\n\![*]\q[Yes!,ForgotHarmonica]\n\![*]\q[...,Quiet]\n"
+			"\0\s[0]\i[115]\i[114]%(z) I can only play one thing!\%(wx)\%(wx)\0\s[0]\i[103]...want to hear it?%(d)\%(wx)\0\s[0]\n\n\![*]\q[Yes!,ForgotHarmonica]\n\![*]\q[...,Quiet]\n"
 		}
 		else
 		{
@@ -62,7 +62,7 @@ OnHarmonicaTalk
 	}
 	else
 	{
-		"\0\s[0]\i[8]\i[109]\i[108]%(z)I'm a bit out of breath right now actually!!%(d)\%(wx)\s[0]"
+		"\0\s[0]\i[8]\i[109]\i[108]%(z)I'm a bit out of breath right now actually!!%(d)\%(wx)\0\s[0]"
 	}
 	--
 	"\e"	
@@ -87,7 +87,7 @@ DanceZilch
 
 Select.YesDance
 {
-	"\0\s[0]\i[116]\i[105]\i[54]\w6\s[0]\i[116]\i[105]\i[55]\w6\s[0]\i[105]\i[117]\w6\w6\s[0]%(z)Is it good?%(d)\n\n\![*]\q[Yes,GoodDance]\n\![*]\q[...NO BWAHAHA!,badDance]\n\n"
+	"\0\s[0]\i[116]\i[105]\i[54]\w6\0\s[0]\i[116]\i[105]\i[55]\w6\0\s[0]\i[105]\i[117]\w6\w6\0\s[0]%(z)Is it good?%(d)\n\n\![*]\q[Yes,GoodDance]\n\![*]\q[...NO BWAHAHA!,badDance]\n\n"
 }
 
 Select.NoDance
@@ -99,12 +99,12 @@ Select.GoodDance
 {
 	LessUpsetNow
 	--
-	"\0\s[0]\i[102]%(z)I could teach you.%(d)\%(wx)\s[0]"
+	"\0\s[0]\i[102]%(z)I could teach you.%(d)\%(wx)\0\s[0]"
 }
 
 Select.badDance
 {
-	"\0\s[0]\i[2]\i[4]\%(wx)%(z)okay...%(d)\%(wx)\%(wx)\s[0]"
+	"\0\s[0]\i[2]\i[4]\%(wx)%(z)okay...%(d)\%(wx)\%(wx)\0\s[0]"
 	--
 	upset+=3
 	latestSin = "DanceBad"
@@ -141,20 +141,20 @@ HarmonicaMenu
 			}						
 			when 3
 			{
-				"%(z)\i[102]\i[103]I learned another song!%(d)\%(wx)\s[0]\n\n/
+				"%(z)\i[102]\i[103]I learned another song!%(d)\%(wx)\n\n/
 				\![*]\q[Ode To Joy,OdeToJoy]\n/
 				\![*]\q[Fahret Hin,FahretHin]\n"				
 			}			
 			when 4
 			{
-				"%(z)\i[102]\i[103]I know a few songs now!%(d)\%(wx)\s[0]\n\n/
+				"%(z)\i[102]\i[103]I know a few songs now!%(d)\%(wx)\n\n/
 				\![*]\q[Ode To Joy,OdeToJoy]\n/
 				\![*]\q[Fahret Hin,FahretHin]\n/
 				\![*]\q[Green Sleeves,GreenSleeves]\n"		
 			}		
 			when 5		
 			{
-				"%(z)\i[102]\i[103]I know a few songs now!%(d)\%(wx)\s[0]\n\n/
+				"%(z)\i[102]\i[103]I know a few songs now!%(d)\%(wx)\n\n/
 				\![*]\q[Ode To Joy,OdeToJoy]\n/
 				\![*]\q[Fahret Hin,FahretHin]\n/
 				\![*]\q[Green Sleeves,GreenSleeves]\n/
@@ -162,7 +162,7 @@ HarmonicaMenu
 			}						
 			when 6      
 			{
-				"%(z)\i[102]\i[103]I know a few songs now!%(d)\%(wx)\s[0]\n\n/
+				"%(z)\i[102]\i[103]I know a few songs now!%(d)\%(wx)\n\n/
 				\![*]\q[Ode To Joy,OdeToJoy]\n/
 				\![*]\q[Fahret Hin,FahretHin]\n/
 				\![*]\q[Green Sleeves,GreenSleeves]\n/
@@ -171,7 +171,7 @@ HarmonicaMenu
 			}						
 			when 7      
 			{
-				"%(z)\i[102]\i[103]I know a few songs now!%(d)\%(wx)\s[0]\n\n/
+				"%(z)\i[102]\i[103]I know a few songs now!%(d)\%(wx)\n\n/
 				\![*]\q[Ode To Joy,OdeToJoy]\n/
 				\![*]\q[Fahret Hin,FahretHin]\n/
 				\![*]\q[Green Sleeves,GreenSleeves]\n/
@@ -181,7 +181,7 @@ HarmonicaMenu
 			}				
 			when 8     
 			{
-				"%(z)\i[102]\i[103]I know a lot of songs now!%(d)\%(wx)\s[0]\n\n/
+				"%(z)\i[102]\i[103]I know a lot of songs now!%(d)\%(wx)\n\n/
 				\![*]\q[Ode To Joy,OdeToJoy]\n/
 				\![*]\q[Fahret Hin,FahretHin]\n/
 				\![*]\q[Green Sleeves,GreenSleeves]\n/
@@ -192,7 +192,7 @@ HarmonicaMenu
 			}						
 			when 9     
 			{
-				"%(z)\i[102]\i[103]I know a lot of songs now!%(d)\%(wx)\s[0]\n\n/
+				"%(z)\i[102]\i[103]I know a lot of songs now!%(d)\%(wx)\n\n/
 				\![*]\q[Ode To Joy,OdeToJoy]\n/
 				\![*]\q[Fahret Hin,FahretHin]\n/
 				\![*]\q[Green Sleeves,GreenSleeves]\n/
@@ -204,7 +204,7 @@ HarmonicaMenu
 			}						
 			when 10     
 			{
-				"%(z)\i[102]\i[103]I know a lot of songs now!%(d)\%(wx)\s[0]\n\n/
+				"%(z)\i[102]\i[103]I know a lot of songs now!%(d)\%(wx)\n\n/
 				\![*]\q[Ode To Joy,OdeToJoy]\n/
 				\![*]\q[Fahret Hin,FahretHin]\n/
 				\![*]\q[Green Sleeves,GreenSleeves]\n/
@@ -217,7 +217,7 @@ HarmonicaMenu
 			}						
 			when 11     
 			{
-				"%(z)\i[102]\i[103]I know all the songs now!%(d)\%(wx)\s[0]\n\n/
+				"%(z)\i[102]\i[103]I know all the songs now!%(d)\%(wx)\n\n/
 				\![*]\q[Ode To Joy,OdeToJoy]\n/
 				\![*]\q[Fahret Hin,FahretHin]\n/
 				\![*]\q[Green Sleeves,GreenSleeves]\n/
@@ -231,7 +231,7 @@ HarmonicaMenu
 			}			
 			when 12    
 			{
-				"%(z)\i[102]\i[103]I know all the songs now!%(d)\%(wx)\s[0]\n\n/
+				"%(z)\i[102]\i[103]I know all the songs now!%(d)\%(wx)\n\n/
 				\![*]\q[Ode To Joy,OdeToJoy]\n/
 				\![*]\q[Fahret Hin,FahretHin]\n/
 				\![*]\q[Green Sleeves,GreenSleeves]\n/
@@ -247,7 +247,7 @@ HarmonicaMenu
 			}						
 			when 13     
 			{
-				"%(z)\i[102]\i[103]I know all the songs now!%(d)\%(wx)\s[0]\n\n/
+				"%(z)\i[102]\i[103]I know all the songs now!%(d)\%(wx)\n\n/
 				\![*]\q[Ode To Joy,OdeToJoy]\n/
 				\![*]\q[Fahret Hin,FahretHin]\n/
 				\![*]\q[Green Sleeves,GreenSleeves]\n/
@@ -261,7 +261,9 @@ HarmonicaMenu
 				\![*]\q[Strawberry Lane,StrawberryLane]\n/
 				\![*]\q[Piano Man,PianoMan]\n"
 			
-			}					
+			}
+			--
+			"\0\s[0]"			
 		}
 		--
 		if harmonicaLvl>=14
@@ -320,7 +322,7 @@ StartPlaying
 
 Select.StopSong
 {
-	"\s[0]\![sound,stop]"
+	"\0\s[0]\![sound,stop]"
 	--
 	"\![leave,passivemode]"	
 	--
@@ -455,11 +457,11 @@ resetMistakeDay
 
 AMistake			
 {
-		"\0\s[0]\%(wx)\%(wx)\i[6]\i[108]\i[109]\_v[snd\AMistake.mp3]\%(wx)\%(wx)\%(wx)\s[0]"
+		"\0\s[0]\%(wx)\%(wx)\i[6]\i[108]\i[109]\_v[snd\AMistake.mp3]\%(wx)\%(wx)\%(wx)\0\s[0]"
 		--
 		if (madeAMistake==0)	
 		{
-			"\s[0]\i[2]\i[4]\i[112]\i[56]%(z)That was a mistake...\%(wx) Sorry...%(d)"
+			"\0\s[0]\i[2]\i[4]\i[112]\i[56]%(z)That was a mistake...\%(wx) Sorry...%(d)"
 			--
 			madeAMistake= 1
 			mistakeDay = "%(month)month %(day)day"
@@ -473,11 +475,11 @@ AMistake
 				madeAMistake= 0			
 				notMyDay = 1
 				--
-				"\s[0]\i[5]\i[105]\i[115]\i[55]\i[54]%(z)Today is not my day!\%(wx)%(d)"				
+				"\0\s[0]\i[5]\i[105]\i[115]\i[55]\i[54]%(z)Today is not my day!\%(wx)%(d)"				
 			}
 			else
 			{
-				"\s[0]\i[2]\i[4]\i[112]\i[56]%(z)That was a mistake...\%(wx) Sorry...%(d)"
+				"\0\s[0]\i[2]\i[4]\i[112]\i[56]%(z)That was a mistake...\%(wx) Sorry...%(d)"
 				--
 				mistakeDay = "%(month)month %(day)day"			
 			}
@@ -490,7 +492,7 @@ AMistake
  
 TalkAboutHarmonicaMistake
 {
-	"\s[0]* (You think about before,\%(wx) when Zilch got the notes wrong...)\%(wx)\n\n\![*]\q[Encourage,Encourage]	\n\![*]\q[Discourage,Discourage]  \n\![*]\q[say nothing,SayNothingAboutHarmonicaMistake] \n"
+	"\0\s[0]* (You think about before,\%(wx) when Zilch got the notes wrong...)\%(wx)\n\n\![*]\q[Encourage,Encourage]	\n\![*]\q[Discourage,Discourage]  \n\![*]\q[say nothing,SayNothingAboutHarmonicaMistake] \n"
 }
 
 Select.SayNothingAboutHarmonicaMistake
@@ -505,7 +507,7 @@ Select.Encourage
 	harmonicaExp++
 	LessUpsetNow
 	--
-	"\n\n\s[0]\i[115]\i[114]%(z)I will!\%(wx)\s[0] But not today!%(d)\s[0]"
+	"\n\n\0\s[0]\i[115]\i[114]%(z)I will!\%(wx)\0\s[0] But not today!%(d)\0\s[0]"
 }
 
 Select.Discourage
@@ -528,7 +530,7 @@ Select.DiscourageNo
 
 ZilchUpset
 {
-	"\s[0]\i[5]%(z)Hmmph.\%(wx) I told you,\%(wx)\s[0]\i[5]\i[113]\i[114]\i[55]\i[54] the problem is that this is not my day!\%(wx)%(d)\s[0]"
+	"\0\s[0]\i[5]%(z)Hmmph.\%(wx) I told you,\%(wx)\0\s[0]\i[5]\i[113]\i[114]\i[55]\i[54] the problem is that this is not my day!\%(wx)%(d)\0\s[0]"
 	--
 	upset+=5
 	latestSin = "HarmonicaBad"
@@ -607,7 +609,9 @@ OnPlayNote
 	OnComposeAGreatMasterPiece
 }
 
-IsNeedleInString
+//haystack = 
+//needle = 
+IsNeedleInHaystack
 {
 	retVal = 0	
 	size = ARRAYSIZE(haystack)

@@ -48,7 +48,7 @@ DialougeForThisDate
 		}
 		else 
 		{
-			"\0\s[0]\i[2]\i[111]\i[117]%(z)So it's your birthday today,\%(wx) huh?%(d)\%(wx)\%(wx)\s[0]"		
+			"\0\s[0]\i[2]\i[111]\i[117]%(z)So it's your birthday today,\%(wx) huh?%(d)\%(wx)\%(wx)\0\s[0]"		
 		}			
 	}
 	else

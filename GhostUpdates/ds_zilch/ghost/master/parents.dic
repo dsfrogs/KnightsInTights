@@ -48,7 +48,7 @@ OnParentsTalk
 			}
 			when 2
 			{
-				"* (You ask what happened to their parnets.\%(wx) They don't have to say, if they don't want to...)\%(wx)\n\n%(z)\i[112]\i[2]Um,\%(wx) there was an accident.\%(wx)\0\s[0] They were both working in the lab when it happened.%(d)\%(wx)\n"
+				"* (You ask what happened to their parnets.\%(wx) They don't have to say, if they don't want to...)\%(wx)\n\n%(z)\0\s[0]\i[112]\i[2]Um,\%(wx) there was an accident.\%(wx)\0\s[0] They were both working in the lab when it happened.%(d)\%(wx)\n"
 				--
 				disorderExp++
 			}

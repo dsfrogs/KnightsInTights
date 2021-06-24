@@ -28,7 +28,7 @@ ThisPlaceLvlUp
 
 ThisPlaceUpsetAfterFriday
 {
-	"\s[0]\i[2]\i[108]\i[109]%(z)I did say this place is like a limbo...%(d)\%(wx)\%(wx)\s[0]\i[2]\n\n * (They shudder.)\%(wx)\s[0]"
+	"\0\s[0]\i[2]\i[108]\i[109]%(z)I did say this place is like a limbo...%(d)\%(wx)\%(wx)\0\s[0]\i[2]\n\n * (They shudder.)\%(wx)\0\s[0]"
 	--
 	thisPlacePaused = 1
 	//NumOfOpenSubjects--	
@@ -52,7 +52,7 @@ OnThisPlaceTalk
 			{
 				dreamsExp ++
 				--
-				"\0\s[0]* (You ask Zilch what they think of this place.)\%(wx)\n\n[half]%(z)\i[115]\i[114]It's a very strange dream!\%(wx)%(d)\s[0]"
+				"\0\s[0]* (You ask Zilch what they think of this place.)\%(wx)\n\n[half]%(z)\0\s[0]\i[115]\i[114]It's a very strange dream!\%(wx)%(d)\0\s[0]"
 			}
 			when 2
 			{
@@ -60,7 +60,7 @@ OnThisPlaceTalk
 			}
 			when 3
 			{
-				"\0\s[0]* (You say that in this place, you can't always tell them exactly what you want to say.)\%(wx)\n\n%(z)\s[0]\i[102]\i[103]I know what that's like!\%(wx) \s[0]\i[109]Sometimes I can't explain myself at all%(d).\%(wx)"
+				"\0\s[0]* (You say that in this place, you can't always tell them exactly what you want to say.)\%(wx)\n\n%(z)\0\s[0]\i[102]\i[103]I know what that's like!\%(wx) \0\s[0]\i[109]Sometimes I can't explain myself at all%(d).\%(wx)"
 				--
 				if familiarity > 50 && upset==0
 				{
@@ -96,12 +96,12 @@ OnThisPlaceTalk
 
 Select.TellTruth
 {
-	"\0\s[0]* (You tell Zilch they're a ghost inside your computer)\%(wx)\%(wx)\c%(z)Ghosts aren't real\i[115], and even if they were...\%(wx) \s[0]\i[117]\i[103]Why would dead people want to haunt your computer?\%(wx) \s[0]\i[105]\i[102]Maybe watch less horror films?\%(wx)%(d)\s[0]"			
+	"\0\s[0]* (You tell Zilch they're a ghost inside your computer)\%(wx)\%(wx)\c%(z)Ghosts aren't real\0\s[0]\i[115], and even if they were...\%(wx) \0\s[0]\i[117]\i[103]Why would dead people want to haunt your computer?\%(wx) \0\s[0]\i[105]\i[102]Maybe watch less horror films?\%(wx)%(d)\0\s[0]"			
 }
 
 Select.MakeSomethingUp
 {
-	"\0\s[0]* (You tell Zilch that you have opened a portal into their dreams through SCIENCE!)\%(wx)\n\n\s[0]\i[110]\i[109]%(z)Cool!\%(wx) \s[0]I'm a scientist too.\%(wx)\s[0]\i[102]\i[105] So I want you to give me a proof!%(d)\%(wx)\s[0]\n"
+	"\0\s[0]* (You tell Zilch that you have opened a portal into their dreams through SCIENCE!)\%(wx)\n\n\0\s[0]\i[110]\i[109]%(z)Cool!\%(wx) \0\s[0]I'm a scientist too.\%(wx)\0\s[0]\i[102]\i[105] So I want you to give me a proof!%(d)\%(wx)\0\s[0]\n"
 	--
 	waitingForProof = 1
 	scienceExp++	
@@ -111,7 +111,7 @@ Select.MakeSomethingUp
 
 Select.notExplain
 {
-	"\0\s[0]* (You decide not to tell them.\%(wx) You dance a goofy dance instead.\%(wx)\s[0]\i[110]\i[109] It's very expressive.)\w8\n\n\c%(z)Heehee!\s[0]\i[113]\i[114]\i[53]\w6\s[0]\i[113]\i[114]\i[52]\w6\s[0]\i[113]\i[114]\i[53]\w6\s[0]\%(wx)\c%(d)* (It's better this way.)\n\%(wx)"
+	"\0\s[0]* (You decide not to tell them.\%(wx) You dance a goofy dance instead.\%(wx)\0\s[0]\i[110]\i[109] It's very expressive.)\w8\n\n\c%(z)Heehee!\0\s[0]\i[113]\i[114]\i[53]\w6\0\s[0]\i[113]\i[114]\i[52]\w6\0\s[0]\i[113]\i[114]\i[53]\w6\0\s[0]\%(wx)\c%(d)* (It's better this way.)\n\%(wx)"
 	--	
 	artExp ++
 	harmonicaExp ++
@@ -136,20 +136,20 @@ ThisPlacePool
 	{
 		when 1
 		{
-			"\0\s[0]\i[111]%(z)There's a lot of dust here. \s[0]\i[105]\i[102]When did you last clean this place, %(username)?%(d)\%(wx)\s[0]\e"
+			"\0\s[0]\i[111]%(z)There's a lot of dust here. \0\s[0]\i[105]\i[102]When did you last clean this place, %(username)?%(d)\%(wx)\0\s[0]\e"
 			
 		}
 		when 2
 		{
 			artExp++
 			--
-			"\0\s[0]\i[118]%(z)Is it okay if I look at the pictures in your folder?%(d)\%(wx)\s[0]\n\n[half]\![*]\q[Yes,nothing]\n\![*]\q[Get out of my folder Zilch!!!,nothing]\n"			
+			"\0\s[0]\i[118]%(z)Is it okay if I look at the pictures in your folder?%(d)\%(wx)\0\s[0]\n\n[half]\![*]\q[Yes,nothing]\n\![*]\q[Get out of my folder Zilch!!!,nothing]\n"			
 		}
 		when 3
 		{
 			scienceExp++
 			--		
-			"\0\s[0]\i[103]%(z)You know what I found out?\%(wx) \s[0]\i[115]\i[114]I mostly end up here at %(OnFindMostVisitedHour)!\s[0] More research is required!%(d)\%(wx)"			
+			"\0\s[0]\i[103]%(z)You know what I found out?\%(wx) \0\s[0]\i[115]\i[114]I mostly end up here at %(OnFindMostVisitedHour)!\0\s[0] More research is required!%(d)\%(wx)"			
 		}
 		when 4
 		{
@@ -160,21 +160,21 @@ ThisPlacePool
 			scienceExp++
 			dreamsExp++
 			--
-			"\0\s[0]\i[102]%(z)This place is like a limbo between the real world and the dream world.\%(wx) \s[0]\i[111]I need to research it!%(d)\%(wx)\s[0]"			
+			"\0\s[0]\i[102]%(z)This place is like a limbo between the real world and the dream world.\%(wx) \s[0]\i[111]I need to research it!%(d)\%(wx)\0\s[0]"			
 		}
 		when 6
 		{
-			"\0\s[0]%(z)\i[102]Is there anything to eat in this place?%(d)\%(wx)\s[0]\n\n%(FoodHere)"			
+			"\0\s[0]\i[102]%(z)Is there anything to eat in this place?%(d)\%(wx)\s[0]\n\n%(FoodHere)"			
 		}
 		when 7
 		{
 			artExp++
 			--
-			"\0\s[0]%(z)\i[103]How are things on your side of the screen?\%(wx) What's your wallpaper like?%(d)\%(wx)\s[0]"			
+			"\0\s[0]\i[103]%(z)How are things on your side of the screen?\%(wx) What's your wallpaper like?%(d)\%(wx)\0\s[0]"			
 		}
 		when 8
 		{
-			"\0\s[0]\i[108]\i[109]%(z)*sneeze* \%(wx)\s[0]...I had a really bad cold.\%(wx)%(d)\n\n* (Your computer is now infected with Zilch's virus.)\%(wx)\s[0]"
+			"\0\s[0]\i[108]\i[109]%(z)*sneeze* \%(wx)\s[0]...I had a really bad cold.\%(wx)%(d)\n\n* (Your computer is now infected with Zilch's virus.)\%(wx)\0\s[0]"
 		}
 		when 9
 		{
@@ -193,7 +193,7 @@ ThisPlacePool
 		}	
 		when 11
 		{
-			"%(z)\0\s[0]\i[102]\i[103]I wonder what's on the other side of the screen...%(d)\%(wx)\s[0]\![move,0,0,3000]\%(wx)\0\s[-1]\![move,1200,0,0]\c\0\s[0]\i[111]\i[110]%(z)It wraps around!\%(wx)%(d)\s[0]"
+			"%(z)\0\s[0]\i[102]\i[103]I wonder what's on the other side of the screen...%(d)\%(wx)\s[0]\![move,0,0,3000]\%(wx)\0\s[-1]\![move,1200,0,0]\c\0\s[0]\i[111]\i[110]%(z)It wraps around!\%(wx)%(d)\0\s[0]"
 		}
 	}
 }
@@ -235,7 +235,7 @@ Select.PressButton
 
 Select.YesWindow
 {
-	"%(z)\s[0]\i[113]\i[114]Ooooh,\%(wx) I wish I could do that!\%(wx) \s[0]\i[105]\i[115]Then I could just open a window to the northern pole\s[0]\i[102]\i[103] and use it as an ice-cream refrigerator!%(d)\%(wx)\s[0]"	
+	"%(z)\s[0]\i[113]\i[114]Ooooh,\%(wx) I wish I could do that!\%(wx) \s[0]\i[105]\i[115]Then I could just open a window to the northern pole\s[0]\i[102]\i[103] and use it as an ice-cream refrigerator!%(d)\%(wx)\0\s[0]"	
 }
 
 FoodHere
@@ -246,12 +246,12 @@ FoodHere
 
 Select.NoFood
 {
-	"\0\s[0]\i[2]%(z)Disappointment,\%(wx) your name is %(username)!%(d)\%(wx)\s[0]"	
+	"\0\s[0]\i[2]%(z)Disappointment,\%(wx) your name is %(username)!%(d)\%(wx)\0\s[0]"	
 }
 
 Select.Byte
 {
-	"\0\s[0]%(z)%(excited)%(excited)\s[0]\i[113]\i[114]I want a bite!\%(wx)\s[0]%(d)\%(wx)\n\n* (You can now feed Zilch with candy-bytes.\%(wx) They're worthless,\%(wx) nutrition-wise.\%(wx) Just like actual candies.)\%(wx)\n\n%(z)\s[0]\i[113]\i[114]\i[55]\i[54]But they're yummy!\%(wx)\s[0]%(d)"	
+	"\0\s[0]%(z)%(excited)%(excited)\s[0]\i[113]\i[114]I want a bite!\%(wx)\0\s[0]%(d)\%(wx)\n\n* (You can now feed Zilch with candy-bytes.\%(wx) They're worthless,\%(wx) nutrition-wise.\%(wx) Just like actual candies.)\%(wx)\n\n%(z)\0\s[0]\i[113]\i[114]\i[55]\i[54]But they're yummy!\%(wx)\0\s[0]%(d)"	
 	--
 	canHaveCandy=1
 }

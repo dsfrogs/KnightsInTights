@@ -44,7 +44,7 @@ NameDone
 {
 	realusername = tempname //To be used later?
 	--
-	"\0\s[0]* (You've chosen to be called %(realusername).)\n\c.\%(wx) .\%(wx) .\%(wx)\c* (There's a bug.\%(wx) The information has been lost.\%(wx) Your name was not compatible.\%(wx) What have you done.\%(wx)\n\n[half]Zilch will now receive a random name from the Acceptable Names Generator.)\w8\n\c.\%(wx) .\%(wx) .\%(wx)\c\w8* (Zilch is confused, but tries not to show it.)\n\n%(z)\s[0]\i[107]You're called Captain...\%(wx) Poncho?%(d)\%(wx)\s[0]"
+	"\0\s[0]* (You've chosen to be called %(realusername).)\n\c.\%(wx) .\%(wx) .\%(wx)\c* (There's a bug.\%(wx) The information has been lost.\%(wx) Your name was not compatible.\%(wx) What have you done.\%(wx)\n\n[half]Zilch will now receive a random name from the Acceptable Names Generator.)\w8\n\c.\%(wx) .\%(wx) .\%(wx)\c\w8* (Zilch is confused, but tries not to show it.)\n\n%(z)\0\s[0]\i[107]You're called Captain...\%(wx) Poncho?%(d)\%(wx)\0\s[0]"
 	--
 	username = "Captain Poncho"
 	poncho = 1

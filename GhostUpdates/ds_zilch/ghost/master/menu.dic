@@ -53,6 +53,13 @@ ResetFridate
 	bootPhase	 = "Fridate"
 }
 
+
+Select.testvariable
+{
+
+	
+}
+
 MenuRun
  {	
  //	wd = GetWeekDay
@@ -125,6 +132,8 @@ MenuRun
 		//"\n\n\![*]If you want to tell them the truth, just press \n\q[%(thisButton),OnSpill]"
 		"\n\n\![*]If you want to tell them the truth, just press \n   \![*]\q[...THIS BUTTON,OnSpill]"
 	}
+	--
+//	"\n\n\![*]\q[Test variable,testvariable]\n\n"	
 	//"\n%(green)La la la la la!\%(wx)\n%(blue)La la la la la!\%(wx)\n%(red)La la la la la!\%(wx)\n%(purple)La la la la la!\%(wx)\n"
 //	--
 	//"\_l[115,260]%(wd) %(nowhour):%(nowmin) %(ap), %(month)/%(day)/%(year)"
@@ -145,7 +154,7 @@ MenuRun
 
 Select.Nums
 {
-	"\s[0]\i[108]\i[109]%(z)Nums!\%(wx)%(d)\s[0]"
+	"\0\s[0]\i[108]\i[109]%(z)Nums!\%(wx)%(d)\0\s[0]"
 	--
 	LessUpsetNow
 }
@@ -206,7 +215,7 @@ Select.CanIPet
 	}
 	else
 	{
-		"\0\s[0]\i[109]%(z)Um...\i[8]\%(wx)\nWell...\%(wx)\nYou know...%(d)\%(wx)\n\%(wx)\c* (Their voice trails off.\%(wx) It's embarassing.\%(wx) Change the subject.)\%(wx)\s[0]\e"			
+		"\0\s[0]\i[109]%(z)Um...\i[8]\%(wx)\nWell...\%(wx)\nYou know...%(d)\%(wx)\n\%(wx)\c* (Their voice trails off.\%(wx) It's embarassing.\%(wx) Change the subject.)\%(wx)\0\s[0]\e"			
 	}
 }
 
@@ -384,7 +393,7 @@ Select.ChoiceGarbagecan
 	{
 		"\0\s[0]%(z)Meh,\0\s[0]\i[102] I'll do it later.%(d)\%(wx)\0\s[0]\i[105] \n\n* (Zilch is procrastinating.\%(wx)\0\s[0]"
 	
-		"\0\s[0]* (Zilch goes to check the recycle bin.)\n\n[half]\%(wx)\%(wx)\s[-1]* (They fall in.)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\c\s[0]\i[117]\i[8]\i[56]%(z)It's okay!\%(wx) I'm fine now!%(d)\%(wx)\n\n[half]\0\s[0]* (Did they take out the garbage at least?)\%(wx)\n\n[half]\0\s[0]\i[107]%(z)Um...%(d)\%(wx)\n\n[half]* (They did not.\%(wx)\0\s[0]"
+		"\0\s[0]* (Zilch goes to check the recycle bin.)\n\n[half]\%(wx)\%(wx)\s[-1]* (They fall in.)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\c\0\s[0]\i[117]\i[8]\i[56]%(z)It's okay!\%(wx) I'm fine now!%(d)\%(wx)\n\n[half]\0\s[0]* (Did they take out the garbage at least?)\%(wx)\n\n[half]\0\s[0]\i[107]%(z)Um...%(d)\%(wx)\n\n[half]* (They did not.\%(wx)\0\s[0]"
 		--
 		if _gomicheck >= 1 //is full.
 		{
@@ -404,7 +413,7 @@ Select.ChoiceGarbagecan
 	}
 	elseif _gomicheck >= 1 //is full.
 	{
-		"\0\s[0]* (Zilch goes to check the recycle bin.)\n\n[half]\%(wx)\%(wx)\%(wx)\s[-1]\![raise,OnGarbagecanEmpty]\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\c\s[0]%(z)Done!%(d)\e"
+		"\0\s[0]* (Zilch goes to check the recycle bin.)\n\n[half]\%(wx)\%(wx)\%(wx)\s[-1]\![raise,OnGarbagecanEmpty]\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\c\0\s[0]%(z)Done!%(d)\e"
 	}	
 
 
@@ -423,14 +432,7 @@ Select.ChoiceSystemInformation
 	os_version = FUNCTIONEX("saori_cpuid.dll","os.version")
 	cpu_name = FUNCTIONEX("saori_cpuid.dll","cpu.name")
 	cpu_clockex = FUNCTIONEX("saori_cpuid.dll","cpu.clockex")
-	"/
-	\0\s[0]\b[2]/
-	\_q\f[bold,1]OS:\f[bold,0] %(os_name) %(os_version)\n/
-	\f[bold,1]Memory Load:\f[bold,0] %(memoryload)%\n/
-	\f[bold,1]Physical Memory:\f[bold,0] %(memoryavailphys) KB\n/
-	\f[bold,1]CPU:\f[bold,0] %(cpu_name) %(cpu_clockex)MHz\n/
-	\f[bold,1]Ukagaka:\f[bold,0] %property[baseware.version]/
-	\e"
+	"\0\s[0]\b[2]\_q\f[bold,1]OS:\f[bold,0] %(os_name) %(os_version)\n\f[bold,1]Memory Load:\f[bold,0] %(memoryload)%\n\f[bold,1]Physical Memory:\f[bold,0] %(memoryavailphys) KB\n\f[bold,1]CPU:\f[bold,0] %(cpu_name) %(cpu_clockex)MHz\n\f[bold,1]Ukagaka:\f[bold,0] %property[baseware.version]\e"
 }
 	
 //The rest of this function plays out in etc.dic. 
@@ -494,11 +496,7 @@ CheckLvl
 	"\nthisPlaceLvl   	%(thisPlaceLvl)\ndreamsLvl 	    %(dreamsLvl)\nthemselfLvl    	%(themselfLvl)\nhomeLvl 	    %(homeLvl)\nbrotherLvl 		%(brotherLvl)\nparentsLvl 		%(parentsLvl)\naccidentLvl 	%(accidentLvl)\nartLvl 		%(artLvl)\nscienceLvl 		%(scienceLvl)\nharmonicaLvl   	%(harmonicaLvl)\ndisorderLvl 	%(disorderLvl)\nfriendsLvl 		%(friendsLvl)\n"
 }
 
-Select.testvariable
-{
 
-
-}
 
 //---- Secondary Character Menu ---------------------------------------------------------
 
@@ -546,7 +544,7 @@ Select.GiveDrawing
 	--
 	LessUpsetNow
 	--
-	"\0\s[0]You say:\n\n[half]You know kid.\%(wx) When you throw away your past...\%(wx) You throw away your future.\%(wx)\%(wx)\c%(z)\s[0]\i[107]Um,\%(wx) thank you.\%(wx)%(d)\![*]\q[Push sunglasses up,nothing].\n\e"
+	"\0\s[0]You say:\n\n[half]You know kid.\%(wx) When you throw away your past...\%(wx) You throw away your future.\%(wx)\%(wx)\c%(z)\0\s[0]\i[107]Um,\%(wx) thank you.\%(wx)%(d)\![*]\q[Push sunglasses up,nothing].\n\e"
 	--
 	"\1\s[-1]"
 }
@@ -663,41 +661,41 @@ Select.ApologozeForWhat
 	"You apologize for disco.)\%(wx)"
 	
 	--
-	"\s[0]\n\n%(z)\i[103]\i[102]I forgive you for that!%(d)\s[0]"		 
+	"\0\s[0]\i[103]\i[102]\n\n%(z)I forgive you for that!%(d)\0\s[0]"		 
  }
  
 ApologyResponse
 {
 	LessUpsetNow
 	--
-	"\nsinListSize is %(sinListSize) sinIndex is %(sinIndex)\n"
+//	"\nsinListSize is %(sinListSize) sinIndex is %(sinIndex)\n"
 	--
 	if sinListSize <3 && sinIndex<2  //1,2    0,1
 	{
-		"\s[0]\i[111]\i[108]%(z)Of course I forgive you"
+		"\0\s[0]\i[111]\i[108]%(z)Of course I forgive you"
 		--
 		if comforter!=0
 		{
-			",\%(wx) my friend!%(d)\%(wx)\s[0]"
+			",\%(wx) my friend!%(d)\%(wx)\0\s[0]"
 		}
 		else
 		{
-			"!\%(wx)\s[0]"
+			"!\%(wx)\0\s[0]"
 		}
 		--
 		upset = TOINT(0)
 	}
 	elseif sinListSize>=3 && sinIndex<2 //3,4,5,6    0,1
 	{
-		"\s[0]\i[109]%(z)Oh.\%(wx)\0\s[0] Apology accepted,\%(wx) then.\%(wx)%(d)\s[0]"
+		"\0\s[0]\i[109]%(z)Oh.\%(wx)\0\s[0] Apology accepted,\%(wx) then.\%(wx)%(d)\0\s[0]"
 	}	
 	elseif sinListSize >=4 && sinIndex >=4 	//4,5    4,5
 	{
-		"\s[0]\i[122]\i[105]%(z)Yes,\%(wx) yes,\%(wx) whatever.\%(wx)%(d)\s[0]"
+		"\0\s[0]\i[122]\i[105]%(z)Yes,\%(wx) yes,\%(wx) whatever.\%(wx)%(d)\0\s[0]"
 	}
 	elseif sinListSize>=2 && sinIndex>=2	//2,3    2,3
 	{
-		"\s[0]\i[108]\i[109]%(z)You seem to regret many of the things you do!\%(wx) \s[0]\i[114]\i[115]\i[55]\i[54]You must be a very impulsive person!\%(wx)\s[0]%(d)"
+		"\0\s[0]\i[108]\i[109]%(z)You seem to regret many of the things you do!\%(wx) \0\s[0]\i[114]\i[115]\i[55]\i[54]You must be a very impulsive person!\%(wx)\0\s[0]%(d)"
 	}		
 	--
 	sinIndex++

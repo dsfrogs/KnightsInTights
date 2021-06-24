@@ -28,7 +28,7 @@ ThemselfLvlUp
 
 ThemselfUpsetAfterFriday
 {
-	"\s[0]\i[2]\i[111]%(z)Nothing I do turns out right...%(d)\%(wx)\%(wx)\%(wx)"			
+	"\0\s[0]\i[2]\i[111]%(z)Nothing I do turns out right...%(d)\%(wx)\%(wx)\%(wx)"			
 	--
 	themselfPaused = 1
 	//NumOfOpenSubjects--	
@@ -50,7 +50,7 @@ OnThemselfTalk
 		{
 			when 1
 			{
-				"\0\s[0]* (You ask Zilch to tell you about themself.)\n\n\%(wx)\s[0]\i[107]%(z)Well...\%(wx)\s[0]\i[103]\i[102] My name is Zilch.\%(wx)\s[0]\i[111] Wait, you know that.\%(wx)\s[0]\i[103] I'm in school.\%(wx)\s[0]\i[108]\i[109] Um.\%(wx) I don't know what else to say.\%(wx)\s[0]\i[102] Oh!\%(wx)\s[0] I live in a village near the woods with my brother.\%(wx)\0\s[0]%(d)\n"
+				"\0\s[0]* (You ask Zilch to tell you about themself.)\n\n\%(wx)\0\s[0]\i[107]%(z)Well...\%(wx)\0\s[0]\i[103]\i[102] My name is Zilch.\%(wx)\0\s[0]\i[111] Wait, you know that.\%(wx)\0\s[0]\i[103] I'm in school.\%(wx)\0\s[0]\i[108]\i[109] Um.\%(wx) I don't know what else to say.\%(wx)\0\s[0]\i[102] Oh!\%(wx)\0\s[0] I live in a village near the woods with my brother.\%(wx)\0\s[0]%(d)\n"
 				--
 				brotherExp ++
 				homeExp ++
@@ -59,7 +59,7 @@ OnThemselfTalk
 			}
 			when 2
 			{
-				"\s[0]* (You ask them what they want to be when they grow up?)\%(wx)\n\n\s[0]\i[102]\i[103]%(z)A scientist!\%(wx)\s[0] ...But actually, I already am.%(d)\%(wx)\n"
+				"\0\s[0]* (You ask them what they want to be when they grow up?)\%(wx)\n\n\0\s[0]\i[102]\i[103]%(z)A scientist!\%(wx)\0\s[0] ...But actually, I already am.%(d)\%(wx)\n"
 				--
 				scienceExp ++
 			}			
@@ -77,7 +77,7 @@ OnThemselfTalk
 				//NumOfOpenSubjects--	
 				brotherExp++			
 				--
-				"\0\s[0]\i[2]\i[105]\i[112]%(z)One time, my brother told me that I never finish anything I start.%(d)\%(wx)\n\s[0]" 
+				"\0\s[0]\i[2]\i[105]\i[112]%(z)One time, my brother told me that I never finish anything I start.%(d)\%(wx)\n\0\s[0]" 
 			}	
 			when 5 
 			{
@@ -145,27 +145,27 @@ themselfPool
 			//NumOfOpenSubjects--	
 			brotherExp++
 			--
-			"\0\s[0]\i[102]\i[105]%(z)I wish people didn't treat me like a little kid all the time.\%(wx)\s[0]\i[105]\i[115] I'm not that small anymore!\%(wx)\%(wx)\%(wx)\s[0]%(d)\n"			
+			"\0\s[0]\i[102]\i[105]%(z)I wish people didn't treat me like a little kid all the time.\%(wx)\0\s[0]\i[105]\i[115] I'm not that small anymore!\%(wx)\%(wx)\%(wx)\0\s[0]%(d)\n"			
 		}
 		when 4 
 		{
 			brotherExp++
 			--
-			"\0\s[0]\i[111]%(z)I really like eating sweet things.\%(wx) \s[0]My brother hides all the chocolate cookies\s[0]\i[116]\i[114] up in the cabinet where I'm not tall enough to reach.\%(wx) \s[0]\i[113]\i[114]But if I jump,\%(wx) I can get to it.%(jump)%(jump) \s[0]He doesn't know that!\s[0]\i[111]\i[112]\%(wx) So don't tell him!\%(wx)\s[0]\n%(d)"		
+			"\0\s[0]\i[111]%(z)I really like eating sweet things.\%(wx) \0\s[0]My brother hides all the chocolate cookies\0\s[0]\i[116]\i[114] up in the cabinet where I'm not tall enough to reach.\%(wx) \0\s[0]\i[113]\i[114]But if I jump,\%(wx) I can get to it.%(jump)%(jump) \0\s[0]He doesn't know that!\0\s[0]\i[111]\i[112]\%(wx) So don't tell him!\%(wx)\0\s[0]\n%(d)"		
 		}
 		when 5 
 		{
 			dreamsExp++
 			artExp ++
 			--
-			"\0\s[0]\i[111]%(z)I can make up really cool things in my head.\%(wx) \s[0]\i[103]\i[102]Like a bed with wings, so you could go anywhere\s[0]\i[117]\i[105] without leaving your bed.\%(wx)%(d)\n"			
+			"\0\s[0]\i[111]%(z)I can make up really cool things in my head.\%(wx) \0\s[0]\i[103]\i[102]Like a bed with wings, so you could go anywhere\0\s[0]\i[117]\i[105] without leaving your bed.\%(wx)%(d)\n"			
 		}
 		when 6
 		{
 			dreamsExp++
 			artExp ++
 			--			
-			"\0\s[0]\i[107]\i[106]%(z)Here's another cool thing that I've made up:\s[0]\i[103]\i[102] ice cream that becomes colder the hotter it is outside!\%(wx)\s[0]\i[111] And in winter I guess it can turn into a molten chocolate cake.%(d)\%(wx)"
+			"\0\s[0]\i[107]\i[106]%(z)Here's another cool thing that I've made up:\0\s[0]\i[103]\i[102] ice cream that becomes colder the hotter it is outside!\%(wx)\0\s[0]\i[111] And in winter I guess it can turn into a molten chocolate cake.%(d)\%(wx)"
 			
 		}
 		when 7 
@@ -173,31 +173,31 @@ themselfPool
 			dreamsExp++
 			artExp ++
 			--			
-			"\0\s[0]\i[103]\i[102]%(z)I wish pterodactyles were still around.\%(wx)\s[0]\i[111]\i[110] And maybe they would let us ride them.\%(wx)\s[0]%(d)"
+			"\0\s[0]\i[103]\i[102]%(z)I wish pterodactyles were still around.\%(wx)\0\s[0]\i[111]\i[110] And maybe they would let us ride them.\%(wx)\0\s[0]%(d)"
 		}
 		when 8
 		{
 			dreamsExp++
 			--
-			"\0\s[0]\i[107]%(z)I've been having strange dreams lately.%(d)\%(wx)\n\s[0]"			
+			"\0\s[0]\i[107]%(z)I've been having strange dreams lately.%(d)\%(wx)\n\0\s[0]"			
 		}
 		when 9
 		{
 			harmonicaExp++
 			--
-			"\0\s[0]\i[111]%(z)I've been practicing the harmonica a lot lately.%(d)\%(wx)\n\s[0]"		
+			"\0\s[0]\i[111]%(z)I've been practicing the harmonica a lot lately.%(d)\%(wx)\n\0\s[0]"		
 		}
 		when 10
 		{
 			artExp++
 			--
-			"\0%(excited)%(excited)%(z)\s[0]\i[113]\i[114]I've made some new drawings.\%(wx)%(d)\n\s[0]"				
+			"\0%(excited)%(excited)%(z)\0\s[0]\i[113]\i[114]I've made some new drawings.\%(wx)%(d)\n\0\s[0]"				
 		}
 		when 11
 		{
 			homeExp++
 			--
-			"\0\s[0]%(z)I'm getting bored in this tiny town.\%(wx) \s[0]\i[115]\i[105]The woods are a lot more interesting!%(d)\%(wx)\s[0]"			
+			"\0\s[0]%(z)I'm getting bored in this tiny town.\%(wx) \0\s[0]\i[115]\i[105]The woods are a lot more interesting!%(d)\%(wx)\0\s[0]"			
 		}
 
 	}	
@@ -223,11 +223,11 @@ PetsTalk
 		wantPets = TOINT(1)
 		--
 		{
-			"\0\s[0]\i[56]\i[117]\i[111]%(z)My brother says he doesn't have enough time to take care of pets.\%(wx)\0\s[0]\i[56]\i[105]\i[102] I keep promising I can do it,\%(wx)\0\s[0]\i[115]\i[105] but he won't listen!%(d)\%(wx)\s[0]"
+			"\0\s[0]\i[56]\i[117]\i[111]%(z)My brother says he doesn't have enough time to take care of pets.\%(wx)\0\s[0]\i[56]\i[105]\i[102] I keep promising I can do it,\%(wx)\0\s[0]\i[115]\i[105] but he won't listen!%(d)\%(wx)\0\s[0]"
 		
 			"\0\s[0]%(z)If I had pets, I would call them...\%(wx)\0\s[0]\i[107] actually I haven't decided yet.\%(wx) \0\s[0]\i[103]Want to help? \n\n[half]%(d)\![*]\q[Yes!,NameCat]\n\![*]\q[Nah...,NoNamePet]\%(wx)"		
 			
-			"\0\s[0]%(z)I wish I had a pet.\%(wx) Or two.\%(wx) \i[111]A dog and a cat.\%(wx)\s[0]\i[105]\i[102] I want the cat to be really big, and the dog to be really small, \s[0]\i[105]\i[115]because that's interesting.%(d)\%(wx)\s[0]"		
+			"\0\s[0]%(z)I wish I had a pet.\%(wx) Or two.\%(wx) \0\s[0]\i[111]A dog and a cat.\%(wx)\0\s[0]\i[105]\i[102] I want the cat to be really big, and the dog to be really small, \0\s[0]\i[105]\i[115]because that's interesting.%(d)\%(wx)\0\s[0]"		
 		}
 		--
 		//"\e"
@@ -275,7 +275,7 @@ Select.Begemot
 
 NameDog
 {
-	"\0\s[0]\i[111]%(z)How should I name my dog?\%(wx)%(d)\n\n[half]\s[0]"
+	"\0\s[0]\i[111]%(z)How should I name my dog?\%(wx)%(d)\n\n[half]\0\s[0]"
 	--
 	LessUpsetNow
 	--
@@ -299,19 +299,19 @@ Select.Tulip
 
 Select.ProofNoseTongue
 {
-	"\0\s[0]* (You say no way.)\%(wx)\%(wx)\c%(z)Yes way!\%(wx)\i[114]\i[115] Look!\%(wx)\%(wx)\c%(d)*\s[0]\i[104]\i[105] (They use their tongue,\%(wx) which they have,\%(wx) to touch their nose,\%(wx) which they also have.\%(wx) You can see it clearly and it's very impressive.)\%(wx)\%(wx)\n\s[0]\e"
+	"\0\s[0]* (You say no way.)\%(wx)\%(wx)\c%(z)Yes way!\%(wx)\0\s[0]\i[114]\i[115] Look!\%(wx)\%(wx)\c%(d)*\0\s[0]\i[104]\i[105] (They use their tongue,\%(wx) which they have,\%(wx) to touch their nose,\%(wx) which they also have.\%(wx) You can see it clearly and it's very impressive.)\%(wx)\%(wx)\n\0\s[0]\e"
 }
 
 Select.ShowNoseTongue
 {
-	"\0\s[0]* (You tell them your skills far surpass their's.\i[7]\%(wx) \n\nBehold!\%(wx)\n\nYou push your tongue into one of your nostrils.)\%(wx)\%(wx)\c\s[0]\i[109]\i[110]%(z)Woah!%(d)\%(wx)\%(wx)\c* (You have impressed a child.\%(wx)\n+1 to confidence.\%(wx)\n-17 to self respect.)\n\%(wx)\%(wx)\s[0]\e"
+	"\0\s[0]* (You tell them your skills far surpass their's.\i[7]\%(wx) \n\nBehold!\%(wx)\n\nYou push your tongue into one of your nostrils.)\%(wx)\%(wx)\c\0\s[0]\i[109]\i[110]%(z)Woah!%(d)\%(wx)\%(wx)\c* (You have impressed a child.\%(wx)\n+1 to confidence.\%(wx)\n-17 to self respect.)\n\%(wx)\%(wx)\0\s[0]\e"
 }
 
 Select.AskOfIceCream
 {
 	LessUpsetNow
 	--
-	"\0\s[0]%(z)You know how they always scoop a huge amount,\i[117]\i[107]\%(wx) and they put it into a tiny cone,\%(wx)\s[0]\i[103] so it feels like it's about to fall or melt any second,\%(wx)\s[0]\i[108] and then even though you have a tone of ice-cream,\s[0]\i[102]\%(wx) you have to stress over eating all of it as fast as you can?\%(wx) \n\n\s[0]...Why do they do that?%(d)\%(wx)\n\e"		
+	"\0\s[0]%(z)You know how they always scoop a huge amount,\i[117]\i[107]\%(wx) and they put it into a tiny cone,\%(wx)\0\s[0]\i[103] so it feels like it's about to fall or melt any second,\%(wx)\0\s[0]\i[108] and then even though you have a tone of ice-cream,\0\s[0]\i[102]\%(wx) you have to stress over eating all of it as fast as you can?\%(wx) \n\n\0\s[0]...Why do they do that?%(d)\%(wx)\n\e"		
 }
 
 Select.NotAskOfIceCream

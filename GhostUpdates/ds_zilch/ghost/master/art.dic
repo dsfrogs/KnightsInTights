@@ -27,7 +27,7 @@ ArtLvlUp
 
 ArtUpsetAfterFriday
 {
-	"\s[0]* (You ask Zilch if they want to draw something?)\%(wx)\n\n%(z)\s[0]\i[109]Actually...\%(wx)\s[0]I might do something later.%(d)\%(wx)\%(wx)"		
+	"\0\s[0]* (You ask Zilch if they want to draw something?)\%(wx)\n\n%(z)\0\s[0]\i[109]Actually...\%(wx)\0\s[0]I might do something later.%(d)\%(wx)\%(wx)"		
 	--
 	artPaused=1
 	//NumOfOpenSubjects--	
@@ -120,48 +120,48 @@ ArtPool
 		}		
 		when 2
 		{
-			"\0\s[0]\i[125]\i[124]\i[207]* (Zilch shows you a drawing. It's a monkey)\%(wx)\n\n\0\s[0]\i[125]\i[102]\i[207]%(z)We are good at climbing trees!\%(wx) \0\s[0]\i[125]\i[115]\i[207]Because of our feet!%(d)\%(wx)\%(wx)\%(wx)\s[0]"			
+			"\0\s[0]\i[125]\i[124]\i[207]* (Zilch shows you a drawing. It's a monkey)\%(wx)\n\n\0\s[0]\i[125]\i[102]\i[207]%(z)We are good at climbing trees!\%(wx) \0\s[0]\i[125]\i[115]\i[207]Because of our feet!%(d)\%(wx)\%(wx)\%(wx)\0\s[0]"			
 		}			
 		when 3
 		{
-			"\0\s[0]\i[126]\i[127]\i[208]* (Zilch shows you a drawing of a...\%(wx) deer?\%(wx) stag?\%(wx) elk?)\%(wx)\n\n\0\s[0]\i[126]\i[127]\i[208]%(z)I don't know either!%(d)\%(wx)\%(wx)\%(wx)\s[0]"	
+			"\0\s[0]\i[126]\i[127]\i[208]* (Zilch shows you a drawing of a...\%(wx) deer?\%(wx) stag?\%(wx) elk?)\%(wx)\n\n\0\s[0]\i[126]\i[127]\i[208]%(z)I don't know either!%(d)\%(wx)\%(wx)\%(wx)\0\s[0]"	
 		}		
 		when 4
 		{
-			"\0\s[0]\i[127]\i[126]\i[209]* (Zilch shows you a drawing.\%(wx) It's a squirrel.)\%(wx)\n\n\0\s[0]\i[127]\i[126]\i[209]%(z)Gnawing and hiding in trees!%(d)\%(wx)\%(wx)\%(wx)\s[0]"		
+			"\0\s[0]\i[127]\i[126]\i[209]* (Zilch shows you a drawing.\%(wx) It's a squirrel.)\%(wx)\n\n\0\s[0]\i[127]\i[126]\i[209]%(z)Gnawing and hiding in trees!%(d)\%(wx)\%(wx)\%(wx)\0\s[0]"		
 		}			
 		when 5 
 		{
-			"\0\s[0]\i[129]\i[128]\i[201]* (Zilch shows you a drawing.\%(wx) It's an octopus.\%(wx) Where's the eighth leg?)\%(wx) \n\n%(z)\0\s[0]\i[115]\i[129]\i[201]He lost a leg in battle!\%(wx) \%(wx)\%(wx)\0\s[0]\i[129]\i[201]\i[102]He's a pirate octopus.\0\s[0]\i[129]\i[201]\i[128] \n\n%(d)* (Zilch lost track of the legs.)\s[0]\%(wx)"
+			"\0\s[0]\i[129]\i[128]\i[201]* (Zilch shows you a drawing.\%(wx) It's an octopus.\%(wx) Where's the eighth leg?)\%(wx) \n\n%(z)\0\s[0]\i[115]\i[129]\i[201]He lost a leg in battle!\%(wx) \%(wx)\%(wx)\0\s[0]\i[129]\i[201]\i[102]He's a pirate octopus.\0\s[0]\i[129]\i[201]\i[128] \n\n%(d)* (Zilch lost track of the legs.)\0\s[0]\%(wx)"
 			--
 			dreamsExp++
 		}				
 		when 6 
 		{
-			"\0\s[0]\i[129]\i[128]\i[202]* (Zilch shows you a drawing.\%(wx) It's an otter.)\%(wx)\n\n\0\s[0]\i[129]\i[102]\i[202]%(z)Swim,\%(wx) swim,\%(wx) swim!%(d)\%(wx)\%(wx)\%(wx)\s[0]"		
+			"\0\s[0]\i[129]\i[128]\i[202]* (Zilch shows you a drawing.\%(wx) It's an otter.)\%(wx)\n\n\0\s[0]\i[129]\i[102]\i[202]%(z)Swim,\%(wx) swim,\%(wx) swim!%(d)\%(wx)\%(wx)\%(wx)\0\s[0]"		
 		}		
 		when 7 
 		{
-			"\0\s[0]\i[129]\i[128]\i[203]* (Zilch shows you a drawing of an elephant.)\n\n\%(wx)\%(wx)\%(wx)\0\s[0]\i[203]\i[129]\i[110]%(z)I want to have a pet.\%(wx)\0\s[0]\i[203]\i[129]\i[115] But not an elephant!\%(wx)\%(wx)\s[0]%(d)"
+			"\0\s[0]\i[129]\i[128]\i[203]* (Zilch shows you a drawing of an elephant.)\n\n\%(wx)\%(wx)\%(wx)\0\s[0]\i[203]\i[129]\i[110]%(z)I want to have a pet.\%(wx)\0\s[0]\i[203]\i[129]\i[115] But not an elephant!\%(wx)\%(wx)\0\s[0]%(d)"
 		}		
 		when 8 
 		{			
-			"\0\s[0]\i[129]\i[128]\i[204]* (Zilch shows you a drawing of a hedgehog)\%(wx)\n\n\0\s[0]\i[129]\i[115]\i[204]%(z)Careful!\%(wx)\0\s[0]\i[129]\i[128]\i[204]\%(wx) We are too prickly to pat!%(d)\%(wx)\%(wx)\%(wx)\s[0]"						
+			"\0\s[0]\i[129]\i[128]\i[204]* (Zilch shows you a drawing of a hedgehog)\%(wx)\n\n\0\s[0]\i[129]\i[115]\i[204]%(z)Careful!\%(wx)\0\s[0]\i[129]\i[128]\i[204]\%(wx) We are too prickly to pat!%(d)\%(wx)\%(wx)\%(wx)\0\s[0]"						
 		}		
 		when 9 
 		{
-			"\0\s[0]\i[129]\i[128]\i[205]* (Zilch shows you a drawing of a ..?)\%(wx)\n\n\0\s[0]\i[102]\i[129]\i[205]%(z)This is from a museum!\%(wx) \0\s[0]\i[108]\i[129]\i[205]It's a skellibat!%(d)\%(wx)\%(wx)\%(wx)\%(wx)\s[0]"
+			"\0\s[0]\i[129]\i[128]\i[205]* (Zilch shows you a drawing of a ..?)\%(wx)\n\n\0\s[0]\i[102]\i[129]\i[205]%(z)This is from a museum!\%(wx) \0\s[0]\i[108]\i[129]\i[205]It's a skellibat!%(d)\%(wx)\%(wx)\%(wx)\%(wx)\0\s[0]"
 			
 		}		
 		when 10
 		{
-			"\0\s[0]%(z)I've made a drawing of...\%(wx) \i[102]\i[127]\i[214]you!\%(wx)\%(wx) \0\s[0]\i[115]\i[127]\i[214]...It's an abstract picture,\%(wx) representing the true meaning of who you are,\%(wx)\0\s[0]\i[102]\i[127]\i[214] rather than your appearance.\%(wx)\n\n%(d)* (They've captured you perfectly)\0\s[0]"
+			"\0\s[0]%(z)I've made a drawing of...\%(wx) \0\s[0]\i[102]\i[127]\i[214]you!\%(wx)\%(wx) \0\s[0]\i[115]\i[127]\i[214]...It's an abstract picture,\%(wx) representing the true meaning of who you are,\%(wx)\0\s[0]\i[102]\i[127]\i[214] rather than your appearance.\%(wx)\n\n%(d)* (They've captured you perfectly)\0\s[0]"
 			-- 
 			thisPlaceExp ++							
 		}
 		when 11
 		{
-			"\0\s[0]\i[127]\i[126]\i[210]* (Zilch shows you a drawing of a bunny.)\%(wx)\n\n\0\s[0]\i[127]\i[126]\i[210]%(z)Hop hop!%(d)\%(wx)\%(wx)\%(wx)\%(wx)\s[0]"			
+			"\0\s[0]\i[127]\i[126]\i[210]* (Zilch shows you a drawing of a bunny.)\%(wx)\n\n\0\s[0]\i[127]\i[126]\i[210]%(z)Hop hop!%(d)\%(wx)\%(wx)\%(wx)\%(wx)\0\s[0]"			
 		}			
 		when 12
 		{
@@ -176,17 +176,17 @@ ArtPool
 		}		
 		when 13
 		{
-			"\0\s[0]\i[129]\i[128]\i[212]* (a BEE!)\%(wx)\n\n\0\s[0]\i[129]\i[128]\i[212]%(z)bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz%(d)\%(wx)\%(wx)\%(wx)\s[0]"				
+			"\0\s[0]\i[129]\i[128]\i[212]* (a BEE!)\%(wx)\n\n\0\s[0]\i[129]\i[128]\i[212]%(z)bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz%(d)\%(wx)\%(wx)\%(wx)\0\s[0]"				
 		}		
 		when 14
 		{
-			"\0\s[0]\i[129]\i[128]\i[213]* (Zilch shows you a drawing. It's a turtle.)\%(wx)\n\n\0\s[0]\i[129]\i[102]\i[213]%(z)We're crawling very slowly...%(d)\%(wx)\%(wx)\%(wx)\s[0]"			
+			"\0\s[0]\i[129]\i[128]\i[213]* (Zilch shows you a drawing. It's a turtle.)\%(wx)\n\n\0\s[0]\i[129]\i[102]\i[213]%(z)We're crawling very slowly...%(d)\%(wx)\%(wx)\%(wx)\0\s[0]"			
 		}	
 		when 15
 		{
 			if (sawDisorder == 2)
 			{
-				"\0\s[0]%(z)Since you haven't seen the disorder, I drew it for you.\%(wx)\i[103] But do you promise not to get scared?\%(wx)\0\s[0]\n\n%(d)\![*]\q[Can't make any promises,NoDisorder]\n\![*]\q[Sure,YesDisorder]\n"
+				"\0\s[0]%(z)Since you haven't seen the disorder, I drew it for you.\%(wx)\0\s[0]\i[103] But do you promise not to get scared?\%(wx)\0\s[0]\n\n%(d)\![*]\q[Can't make any promises,NoDisorder]\n\![*]\q[Sure,YesDisorder]\n"
 			}
 			else
 			{
@@ -195,23 +195,23 @@ ArtPool
 		}			
 		when 16
 		{
-			"\s[0]\i[216]\i[128]\i[129]* (Zilch shows you a drawing of a rocky stream)\%(wx) \n\n\s[0]\i[216]\i[129]\i[102]%(z)Here is a drawing of where I fell and hurt my knee!\%(wx)"
+			"\0\s[0]\i[216]\i[128]\i[129]* (Zilch shows you a drawing of a rocky stream)\%(wx) \n\n\0\s[0]\i[216]\i[129]\i[102]%(z)Here is a drawing of where I fell and hurt my knee!\%(wx)"
 			--
 			homeExp++
 		}	
 		when 17
 		{
-			"\s[0]\i[217]\i[126]\i[103]Here is a drawing of my knee after I fell.\%(wx)%(d)\s[0]"	
+			"\0\s[0]\i[217]\i[126]\i[103]Here is a drawing of my knee after I fell.\%(wx)%(d)\0\s[0]"	
 		}
 		when 18
 		{
-			"\s[0]* (You ask Zilch if they'll ever draw their brother.)\%(wx)\n\n %(z)\s[0]\i[109]Mmm...\%(wx) People are too difficult!%(d)\%(wx)"
+			"\0\s[0]* (You ask Zilch if they'll ever draw their brother.)\%(wx)\n\n %(z)\0\s[0]\i[109]Mmm...\%(wx) People are too difficult!%(d)\%(wx)"
 			--
 			brotherExp++
 		}
 		when 19
 		{	
-			"\0\s[0]\i[126]\i[127]\i[206]* (Zilch shows you a drawing of a puppy)\%(wx)\n\n\%(wx)\0\s[0]\i[126]\i[103]\i[206]%(z)This is my dog- if I'll ever get one!\%(wx)\0\s[0]\i[126]\i[107]\i[206] His name will be %(dogName)!%(d)\%(wx)\%(wx)\%(wx)\s[0]"						
+			"\0\s[0]\i[126]\i[127]\i[206]* (Zilch shows you a drawing of a puppy)\%(wx)\n\n\%(wx)\0\s[0]\i[126]\i[103]\i[206]%(z)This is my dog- if I'll ever get one!\%(wx)\0\s[0]\i[126]\i[107]\i[206] His name will be %(dogName)!%(d)\%(wx)\%(wx)\%(wx)\0\s[0]"						
 		}
 	}
 }
@@ -227,7 +227,7 @@ Select.YesDisorder
 	
 	//\![quicksection,1]AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!)\%(wx)\c\![quicksection,0]
 	
-	"\0\i[215]* (The anatomy is\w8\c* (The linework\w8\c* (The perspective\w8\c\%(wx)%(z)\0\s[0]\i[115]\i[105]You said you wouldn't get scared!\%(wx)%(d)\s[0]"
+	"\0\s[0]\i[215]* (The anatomy is\w8\c* (The linework\w8\c* (The perspective\w8\c\%(wx)%(z)\0\s[0]\i[115]\i[105]You said you wouldn't get scared!\%(wx)%(d)\0\s[0]"
 
 }
 
@@ -255,7 +255,7 @@ Select.NoTalented
 
 Select.Sorry
 {
-	"\0\s[0]* (You say you're sorry about before.)\n\n\%(wx)\%(wx)\c\0\s[0]%(z)\i[102]It's not a problem!\%(wx) I did ask you.\%(wx) \s[0]\i[107]I just thought you would say the dragon is capitalism or something.%(d)\%(wx)\n\s[0]"	
+	"\0\s[0]* (You say you're sorry about before.)\n\n\%(wx)\%(wx)\c%(z)\0\s[0]\i[102]It's not a problem!\%(wx) I did ask you.\%(wx) \0\s[0]\i[107]I just thought you would say the dragon is capitalism or something.%(d)\%(wx)\n\0\s[0]"	
 	--
 	LessUpsetNow
 }
@@ -302,7 +302,7 @@ FirstPicConclude
 
 Select.DragonTheme
 {
-	"\0\s[0]* (You say the dragon is capitalism.)\%(wx)\n\n%(z)\i[108]Uh...\%(wx)\0\s[0]\i[115]\i[105]\Definitely!%(d)\%(wx)\0\s[0]"
+	"\0\s[0]* (You say the dragon is capitalism.)\%(wx)\n\n%(z)\0\s[0]\i[108]Uh...\%(wx)\0\s[0]\i[115]\i[105]\Definitely!%(d)\%(wx)\0\s[0]"
 }
 
 Select.SayNothingAboutDragon

@@ -233,7 +233,7 @@ OnSpill
 	blockPet  = TOINT(1)
 	endPhase = TOINT(7)
 	--
-	"\0\s[0]\i[7]* (You talk to Zilch.\%(wx) You tell them about the night you brought them here-\%(wx) it was night for them,\%(wx) even if it wasn't for you.)\s[0]\i[107]\%(wx)\%(wx)\%(wx)\n\n\c* (You tell them about the accident and how looking at someone changes them.\s[0]\i[109]\%(wx) That night,\%(wx) it changed them into not existing in that world.)\%(wx)\%(wx)\%(wx)\c%(z)Huh?%(d)\n\n* \s[0](Their parents.\%(wx) You looked at their parents,\%(wx) and then they were gone.)\%(wx)\n\n%(z)\s[0]\i[105]\i[115]\i[5]*Huff* This isn't very funny, %(username)!%(d)\n\n* (It's not funny,\%(wx) because it's not a joke.)\%(wx)\%(wx)\%(wx)\s[0]\c\![*]\q[Say you're sorry,SayNothingEnding]\n\![*]\q[Say you didn't mean it,SayNothingEnding]\n\![*]\q[Say you can fix it,SayNothingEnding]\n"	
+	"\0\s[0]\i[7]* (You talk to Zilch.\%(wx) You tell them about the night you brought them here-\%(wx) it was night for them,\%(wx) even if it wasn't for you.)\0\s[0]\i[107]\%(wx)\%(wx)\%(wx)\n\n\c* (You tell them about the accident and how looking at someone changes them.\0\s[0]\i[109]\%(wx) That night,\%(wx) it changed them into not existing in that world.)\%(wx)\%(wx)\%(wx)\c%(z)Huh?%(d)\n\n* \0\s[0](Their parents.\%(wx) You looked at their parents,\%(wx) and then they were gone.)\%(wx)\n\n%(z)\0\s[0]\i[105]\i[115]\i[5]*Huff* This isn't very funny, %(username)!%(d)\n\n* (It's not funny,\%(wx) because it's not a joke.)\%(wx)\%(wx)\%(wx)\0\s[0]\c\![*]\q[Say you're sorry,SayNothingEnding]\n\![*]\q[Say you didn't mean it,SayNothingEnding]\n\![*]\q[Say you can fix it,SayNothingEnding]\n"	
 }
 
 Select.SayNothingEnding
@@ -247,7 +247,7 @@ Select.ZilchShock
 {	
 	endPhase = TOINT(9)
 	--
-	"\0\s[0]\i[106]\i[107]\%(wx)\0\s[0]\i[2]\i[108]\i[109]\%(wx)\%(wx)\s[0]\i[3]\i[57]\i[58]\i[112]\i[111]\%(wx)"
+	"\0\s[0]\i[106]\i[107]\%(wx)\0\s[0]\i[2]\i[108]\i[109]\%(wx)\%(wx)\0\s[0]\i[3]\i[57]\i[58]\i[112]\i[111]\%(wx)"
 	--
 	toldThemTheTruth = 1 
 	--
@@ -337,7 +337,7 @@ Select.EndingD
 {
 	endPhase = TOINT(13)
 	--
-	"\0\s[-1]What you're searching for is not_here.\%(wx) ...but you just keep coming back,\%(wx) right?\%(wx) Eventually something will work out,\%(wx) right?\%(wx)\%(wx)\%(wx)\c...Here,\%(wx) let's roleplay.\%(wx) \nI'll be Zilch,\%(wx) and you can explain why you killed my parents.\%(wx)\%(wx)\%(wx)\c\s[0]\i[10]%(orange)Hello %(notUsername)!\%(wx) I am Zilcf!\%(wx) I want 2 be ur frind, %(realusername)!\%(wx)\%(wx)\%(wx)\n\n\c%(d)* (Explain away,\%(wx) you silver tongued devil,\%(wx) you.)\%(wx)"
+	"\0\s[-1]What you're searching for is not_here.\%(wx) ...but you just keep coming back,\%(wx) right?\%(wx) Eventually something will work out,\%(wx) right?\%(wx)\%(wx)\%(wx)\c...Here,\%(wx) let's roleplay.\%(wx) \nI'll be Zilch,\%(wx) and you can explain why you killed my parents.\%(wx)\%(wx)\%(wx)\c\0\s[0]\i[10]%(orange)Hello %(notUsername)!\%(wx) I am Zilcf!\%(wx) I want 2 be ur frind, %(realusername)!\%(wx)\%(wx)\%(wx)\n\n\c%(d)* (Explain away,\%(wx) you silver tongued devil,\%(wx) you.)\%(wx)"
 	--
 	"\![open,inputbox,OnExplainYourself,-1]"
 	--
@@ -367,7 +367,7 @@ OnExplainYourself
 		}
 		when "itsme2"
 		{
-			"\0\s[0]\i[108]\i[109]%(cyan)It'stSTsMeeee%(d)\n\n\%(wx)\%(wx)\%(wx)\c* (Quiet.\%(wx) You be quiet now.)\%(wx)\%(wx)\%(wx)\c\0\s[0]\i[102]\i[103]%(z)Where are we?\%(wx) \s[0]\i[113]\i[114]I don't know when was the last time I’ve been home!\%(wx) \s[0]\i[106]\i[107]I don't remember waking up from these dreams!\%(wx) Should be yesterday,\%(wx) but it feels like it's been ages!\%(wx) \s[0]\i[109]\i[110]You looked at me too.\%(wx) I'm...\%(wx) \s[0]\i[2]\i[109]\i[110]Not dreaming,\%(wx) am I?\%(wx) I really am a ghost?\%(wx)%(d)"
+			"\0\s[0]\i[108]\i[109]%(cyan)It'stSTsMeeee%(d)\n\n\%(wx)\%(wx)\%(wx)\c* (Quiet.\%(wx) You be quiet now.)\%(wx)\%(wx)\%(wx)\c\0\s[0]\i[102]\i[103]%(z)Where are we?\%(wx) \0\s[0]\i[113]\i[114]I don't know when was the last time I’ve been home!\%(wx) \0\s[0]\i[106]\i[107]I don't remember waking up from these dreams!\%(wx) Should be yesterday,\%(wx) but it feels like it's been ages!\%(wx) \0\s[0]\i[109]\i[110]You looked at me too.\%(wx) I'm...\%(wx) \0\s[0]\i[2]\i[109]\i[110]Not dreaming,\%(wx) am I?\%(wx) I really am a ghost?\%(wx)%(d)"
 			--
 			keyPhase=3	
 			usedKey = "true"			
@@ -375,7 +375,7 @@ OnExplainYourself
 		}
 		when "dream3"
 		{
-			"\s[0]\i[2]\i[109]\i[110]%(cyan)weeeEE arrRe in DreaMing Limbb\%(wx)b\%(wx)b\%(wx)o%(d)\n\n\%(wx)\%(wx)\c* (How can you even-)\%(wx)\%(wx)\%(wx)\c\0\s[0]\i[2]\i[109]\i[110]%(z)Alright.\%(wx) Alright.\%(wx) \s[0]\i[2]\i[111]Let me think it over,\%(wx) like a proper scientist.\%(wx) I think...\%(wx)\s[0] I know what we need to do.\%(wx)%(d)"
+			"\0\s[0]\i[2]\i[109]\i[110]%(cyan)weeeEE arrRe in DreaMing Limbb\%(wx)b\%(wx)b\%(wx)o%(d)\n\n\%(wx)\%(wx)\c* (How can you even-)\%(wx)\%(wx)\%(wx)\c\0\s[0]\i[2]\i[109]\i[110]%(z)Alright.\%(wx) Alright.\%(wx) \0\s[0]\i[2]\i[111]Let me think it over,\%(wx) like a proper scientist.\%(wx) I think...\%(wx)\0\s[0] I know what we need to do.\%(wx)%(d)"
 			//"%(cyan)\![*]\q[We should go back,GoBack]%(d)\n" 
 			--
 			keyPhase=4	
@@ -383,7 +383,7 @@ OnExplainYourself
 		}
 		when "time4"
 		{
-			"\0\s[0]%(cyan)tiiiIIIMMee Go baaaack%(d)\%(wx)\%(wx)\%(wx)\c\0\s[0]\i[113]\i[114]\%(wx)%(z)That's right!\%(wx) \0\s[0]\i[115]\i[114]We'll go back to before you brought me here.\%(wx) \s[0]\i[113]\i[114]My parents would still exist!\%(wx) \0\s[0]\i[109]\i[2]And my brother would be happier too.\%(wx) \s[0]\i[102]\i[103]You can do that,\%(wx) right?%(d)\%(wx)\%(wx)\s[0]%(cyan)\n\n\![*]\q[Yes,CanDoThat]%(d)\n\e"
+			"\0\s[0]%(cyan)tiiiIIIMMee Go baaaack%(d)\%(wx)\%(wx)\%(wx)\c\0\s[0]\i[113]\i[114]\%(wx)%(z)That's right!\%(wx) \0\s[0]\i[115]\i[114]We'll go back to before you brought me here.\%(wx) \0\s[0]\i[113]\i[114]My parents would still exist!\%(wx) \0\s[0]\i[109]\i[2]And my brother would be happier too.\%(wx) \0\s[0]\i[102]\i[103]You can do that,\%(wx) right?%(d)\%(wx)\%(wx)\0\s[0]%(cyan)\n\n\![*]\q[Yes,CanDoThat]%(d)\n\e"
 			--			
 			usedKey = "true"
 		}
@@ -469,7 +469,7 @@ Select.ExplainAway
 
 Select.TryToLove //itsme
 {
-	"\0\s[-1]%(cyan)ZilllCHHhZzzZZilllchzllCHZiiiiLLchCHch%(d)\%(wx)\%(wx)\%(wx)\c%(z).\%(wx).\%(wx).\%(wx)\s[0]\i[2]\i[108]\i[109]*sniff*\%(wx) %(username)?\%(wx)\s[0]\i[108]\i[109] You sound different.\%(wx)%(d)"
+	"\0\s[-1]%(cyan)ZilllCHHhZzzZZilllchzllCHZiiiiLLchCHch%(d)\%(wx)\%(wx)\%(wx)\c%(z).\%(wx).\%(wx).\%(wx)\0\s[0]\i[2]\i[108]\i[109]*sniff*\%(wx) %(username)?\%(wx)\0\s[0]\i[108]\i[109] You sound different.\%(wx)%(d)"
 	--
 	keyPhase=	2
 	--
@@ -568,7 +568,7 @@ Select.LetGo
 {
 	endPhase = TOINT(16)
 	--
-	//"\0\s[0]\i[111]\i[110]%(z)...%(username)?%(d)\n\n\s[0]\%(wx)"
+	//"\0\s[0]\i[111]\i[110]%(z)...%(username)?%(d)\n\n\0\s[0]\%(wx)"
 	--
 	"\0\s[0]\i[7]\b2 %(z)...?%(d)\n\n"
 	--
@@ -583,7 +583,7 @@ Select.LetGo
 
 Select.CandyEnding
 {
-	"\s[0]%(cyan)* (Candies for Zilch)%(d)\n\n%(z)\s[0]\i[102]\i[103]Thank you!\%(wx)\s[0]\i[108]\i[109] *nums*\%(wx)\%(wx)\%(wx)\s[0]%(d)\c"
+	"\0\s[0]%(cyan)* (Candies for Zilch)%(d)\n\n%(z)\0\s[0]\i[102]\i[103]Thank you!\%(wx)\0\s[0]\i[108]\i[109] *nums*\%(wx)\%(wx)\%(wx)\0\s[0]%(d)\c"
 	--
 	"%(Select.LetGo)"	
 }
@@ -610,21 +610,21 @@ Select.PetEnding
 
 Select.SingEnding
 {
-	"\0\s[0]%(cyan)* (We sing together)%(d)\n\s[0]\i[102]\i[103]%(Zilchsong)%(Zilchsong)\%(wx)\c"
+	"\0\s[0]%(cyan)* (We sing together)%(d)\n\0\s[0]\i[102]\i[103]%(Zilchsong)%(Zilchsong)\%(wx)\c"
 	--
 	"%(Select.LetGo)"	
 }
 
 Select.RememberEnding
 {
-	"%(z)\0\s[0]\i[108]If I go now...\%(wx) None of this would have happened.\%(wx) \s[0]I would return to the time before the disorder took my parents.\%(wx) \s[0]\i[103]So... Would I forget you?\%(wx) Because...\%(wx) Not sure I'd want to.\%(wx)\n\n%(d)%(cyan)* (To Zilch this would all have been a dream.)\%(wx)%(d)\n\n%(z)\s[0]\i[115]\i[114]Yes!\%(wx) I always remember my dreams!%(d)\%(wx)\%(wx)\%(wx)\s[0]\c"
+	"%(z)\0\s[0]\i[108]If I go now...\%(wx) None of this would have happened.\%(wx) \0\s[0]I would return to the time before the disorder took my parents.\%(wx) \0\s[0]\i[103]So... Would I forget you?\%(wx) Because...\%(wx) Not sure I'd want to.\%(wx)\n\n%(d)%(cyan)* (To Zilch this would all have been a dream.)\%(wx)%(d)\n\n%(z)\0\s[0]\i[115]\i[114]Yes!\%(wx) I always remember my dreams!%(d)\%(wx)\%(wx)\%(wx)\0\s[0]\c"
 	--
 	"%(Select.LetGo)"
 }
 
 Select.SorryAboutEverything
 {
-	"\0\s[0]%(cyan)I aaAAm SorrRRrry%(d)\n\n%(z)\s[0]\i[115]\i[105]There's nothing to forgive.\%(wx) \s[0]\i[103]\i[102]Nothing ever happened...\%(wx) right?\%(wx)\s[0]\i[112] It was all a dream.\%(wx)\%(wx)\%(wx)\s[0]%(d)\c"
+	"\0\s[0]%(cyan)I aaAAm SorrRRrry%(d)\n\n%(z)\0\s[0]\i[115]\i[105]There's nothing to forgive.\%(wx) \0\s[0]\i[103]\i[102]Nothing ever happened...\%(wx) right?\%(wx)\0\s[0]\i[112] It was all a dream.\%(wx)\%(wx)\%(wx)\s[0]%(d)\c"
 	--
 	"%(Select.LetGo)"
 }

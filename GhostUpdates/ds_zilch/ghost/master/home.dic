@@ -27,7 +27,7 @@ HomeLvlUp
 
 HomeUpsetAfterFriday
 {
-	"\s[0]%(z)My home..?%(d)\%(wx)\%(wx)\s[0]\i[2]\i[108]\i[109]\%(wx)\%(wx)"	
+	"\0\s[0]%(z)My home..?%(d)\%(wx)\%(wx)\0\s[0]\i[2]\i[108]\i[109]\%(wx)\%(wx)"	
 	--
 	homePaused=1
 	//NumOfOpenSubjects--	
@@ -49,20 +49,20 @@ OnHomeTalk
 		{
 			when 1
 			{
-				"\0\s[0]%(z)\i[105]\i[102]It's a really small town,\%(wx) so my brother has to go to the city once a week to get everything we need.\s[0]\%(wx) If I forget to ask him for something,\%(wx) \0\s[0]\i[113]\i[114]I have to wait an entire week!%(d)\%(wx)\0\s[0]\n"
+				"\0\s[0]%(z)\i[105]\i[102]It's a really small town,\%(wx) so my brother has to go to the city once a week to get everything we need.\0\s[0]\%(wx) If I forget to ask him for something,\%(wx) \0\s[0]\i[113]\i[114]I have to wait an entire week!%(d)\%(wx)\0\s[0]\n"
 				--
 				brotherExp++
 				friendsExp++
 			}
 			when 2
 			{
-				"\0\s[0]%(z)\i[103]If there's enough time,\%(wx) my brother takes me to the city with him.\%(wx) \s[0]One day I'll move there,\%(wx) \i[102]\i[103]and then I can watch movies and eat ice cream all the time.%(d)\%(wx)\s[0]\n"
+				"\0\s[0]%(z)\i[103]If there's enough time,\%(wx) my brother takes me to the city with him.\%(wx) \0\s[0]One day I'll move there,\%(wx) \0\s[0]\i[102]\i[103]and then I can watch movies and eat ice cream all the time.%(d)\%(wx)\0\s[0]\n"
 				--
 				brotherExp++				
 			}
 			when 3
 			{
-				"\0\s[0]%(z)\i[111]There are lots of trails in the woods, I like to wander around in there.\%(wx) \s[0]\i[107]My brother doesn't like it, though, \s[0]so I keep it as a secret.\%(wx)%(d)\n"
+				"\0\s[0]%(z)\i[111]There are lots of trails in the woods, I like to wander around in there.\%(wx) \0\s[0]\i[107]My brother doesn't like it, though, \0\s[0]so I keep it as a secret.\%(wx)%(d)\n"
 				--
 				themselfExp++
 				artExp++				
@@ -87,7 +87,7 @@ OnHomeTalk
 	}
 	else 
 	{
-		"%(z)\0\s[0]\i[102]\i[103]It's where I live!%(d)\%(wx)\s[0]"
+		"%(z)\0\s[0]\i[102]\i[103]It's where I live!%(d)\%(wx)\0\s[0]"
 	}
 	--
 	"\e"
@@ -115,7 +115,7 @@ HomePool
 			--
 			if (willGoShopping == TOINT(0) && _rnd < 40)
 			{	
-				"\0\s[0]\i[109]%(z)Next week my brother will take me to the city with him!\%(wx)\s[0]\i[103] Want me to get you something?\%(wx)%(d)%(Shopping)"				
+				"\0\s[0]\i[109]%(z)Next week my brother will take me to the city with him!\%(wx)\0\s[0]\i[103] Want me to get you something?\%(wx)%(d)%(Shopping)"				
 			}
 			else
 			{
@@ -125,28 +125,28 @@ HomePool
 		}
 		when 2
 		{
-			"\0\s[0]\i[105]%(z)This town is very isolated.\%(wx) \s[0]\i[103]I can get far on my bicycles,\%(wx) but with a car I'll get even further.\%(wx) \s[0]\i[102]Cars must be easier to ride-\%(wx) \s[0]\i[115]because you don't have to turn the pedals by yourself!%(d)\%(wx)\s[0]"
+			"\0\s[0]\i[105]%(z)This town is very isolated.\%(wx) \0\s[0]\i[103]I can get far on my bicycles,\%(wx) but with a car I'll get even further.\%(wx) \0\s[0]\i[102]Cars must be easier to ride-\%(wx) \0\s[0]\i[115]because you don't have to turn the pedals by yourself!%(d)\%(wx)\0\s[0]"
 			--
 			brotherExp++			
 		}
 		when 3
 		{
-			"\0\s[0]\i[111]%(z)Once,\%(wx) I went into one of the trails in the woods and found a dead goat.\%(wx) \0\s[0]I don't know what happened to it.%(d)\%(wx)\s[0]"	
+			"\0\s[0]\i[111]%(z)Once,\%(wx) I went into one of the trails in the woods and found a dead goat.\%(wx) \0\s[0]I don't know what happened to it.%(d)\%(wx)\0\s[0]"	
 			--
 			scienceExp++
 			
 		}
 		when 4
 		{
-			"\0\s[0]%(z)In the winter we might get snow.\0\s[0]\%(wx)\i[103]\i[102] If that happens, there'll be no school.\%(wx) We can play outside.%(d)\%(wx)\0\s[0]"				
+			"\0\s[0]%(z)In the winter we might get snow.\0\s[0]\i[103]\i[102] \%(wx)If that happens, there'll be no school.\%(wx) We can play outside.%(d)\%(wx)\0\s[0]"				
 		}
 		when 5
 		{
-			"\0\s[0]\i[115]%(z)In the summer,\%(wx) even if it's extremely hot,\%(wx) \s[0]\i[109]you can sit in a tree's shade and it'll always be breezy.%(d)\%(wx)\s[0]"			
+			"\0\s[0]\i[115]%(z)In the summer,\%(wx) even if it's extremely hot,\%(wx) \0\s[0]\i[109]you can sit in a tree's shade and it'll always be breezy.%(d)\%(wx)\0\s[0]"			
 		}
 		when 6
 		{
-			"\0\s[0]%(z)People created trails in the woods so that it's easier to get around.\%(wx) \s[0]\i[102]You could even walk all the way down to the sea.\%(wx) \s[0]\i[115]It will take you days, though!\%(wx) \s[0]I'll do it when I'm older.%(d)\%(wx)"	
+			"\0\s[0]%(z)People created trails in the woods so that it's easier to get around.\%(wx) \0\s[0]\i[102]You could even walk all the way down to the sea.\%(wx) \0\s[0]\i[115]It will take you days, though!\%(wx) \0\s[0]I'll do it when I'm older.%(d)\%(wx)"	
 		}
 
 	}
@@ -178,7 +178,7 @@ AfterShoppingDay
 	{
 		willGoShopping = TOINT(0)
 		--
-		"\0\s[0]%(z)We went shopping today!\%(wx)\s[0]\i[102]\i[103] I got what you wanted!\%(wx)%(d)\n\n\s[0]"
+		"\0\s[0]%(z)We went shopping today!\%(wx)\0\s[0]\i[102]\i[103] I got what you wanted!\%(wx)%(d)\n\n\0\s[0]"
 		--
 		case getMe
 		{
@@ -188,11 +188,11 @@ AfterShoppingDay
 			}
 			when "sweets"
 			{
-				"* (They give you a chocolate tablet.\%(wx) There's a piece missing..?)\n\n\%(wx)%(z)\s[0]\i[108]\i[109]\i[8]Um,\%(wx) probably a mouse bit it!\%(wx)\s[0]%(d)"
+				"* (They give you a chocolate tablet.\%(wx) There's a piece missing..?)\n\n\%(wx)%(z)\0\s[0]\i[108]\i[109]\i[8]Um,\%(wx) probably a mouse bit it!\%(wx)\0\s[0]%(d)"
 			}
 			when "flour"
 			{
-				"* (Finally,\%(wx) you can start working on that cake you've been meaning to bake.)\%(wx)\n\n%(z)\0\s[0]\i[109]\i[108]Save me a piece!%(d)\%(wx)\s[0]"	
+				"* (Finally,\%(wx) you can start working on that cake you've been meaning to bake.)\%(wx)\n\n%(z)\0\s[0]\i[109]\i[108]Save me a piece!%(d)\%(wx)\0\s[0]"	
 				--
 				willBakeCake =  TOINT(1)				
 			}
@@ -202,7 +202,7 @@ AfterShoppingDay
 			}
 		}
 		--
-		"\s[0]\e"
+		"\0\s[0]\e"
 		--
 		getMe = ""
 	}	
@@ -219,7 +219,7 @@ Select.GetTP
 
 Select.GetMeSugar
 {
-	"* (You want something sweet.)\%(wx)\n\n %(z)\s[0]\i[108]\i[109]Me too!\%(wx)%(d)\s[0]"
+	"* (You want something sweet.)\%(wx)\n\n %(z)\0\s[0]\i[108]\i[109]Me too!\%(wx)%(d)\0\s[0]"
 	--
 	willGoShopping = TOINT(1)	
 	getMe =  "sweets"
@@ -227,7 +227,7 @@ Select.GetMeSugar
 
 Select.GetMeFlour
 {
-	"* (You need flour for that cake you're planning to bake.)\%(wx)\s[0]"
+	"* (You need flour for that cake you're planning to bake.)\%(wx)\0\s[0]"
 	--
 	willGoShopping = TOINT(1)	
 	getMe =  "flour"
@@ -237,7 +237,7 @@ BakeCake
 {
 	if (willBakeCake ==  TOINT(1) && willGoShopping == TOINT(0))
 	{		
-		"\0\s[0]* (You tell Zilch you've baked a cake.)\%(wx)\n\n\s[0]\i[110]\i[109]%(z)Ooooh!\%(wx) \0\s[0]\i[102]\i[103]Can I taste it?\%(wx)%(d)\s[0]\%(wx)\c\![*]\q[Sure!,YesCake]\n\![*]\q[No!,NoCake]\n\e"
+		"\0\s[0]* (You tell Zilch you've baked a cake.)\%(wx)\n\n\0\s[0]\i[110]\i[109]%(z)Ooooh!\%(wx) \0\s[0]\i[102]\i[103]Can I taste it?\%(wx)%(d)\0\s[0]\%(wx)\c\![*]\q[Sure!,YesCake]\n\![*]\q[No!,NoCake]\n\e"
 	}
 }
 
@@ -254,18 +254,18 @@ Select.YesCake
 	--
 	if 	cakesuccessLvl<33 
 	{
-		"* (A fruit cake!)\%(wx)\n\n\0\s[0]\i[109]\i[110]%(z)Yum!\%(wx)\n...\%(wx)\n...\%(wx)\n...\%(wx) \n\s[0]\i[113]\i[114]Blech!\%(wx)%(d)\s[0]\n\n\s[0]* (You accidentally put salt instead of sugar.)\%(wx)\n\n%(z)\s[0]\i[56]\i[117]\i[2]\i[4]Sorry...%(d)\%(wx)\%(wx)\s[0]"
+		"* (A fruit cake!)\%(wx)\n\n\0\s[0]\i[109]\i[110]%(z)Yum!\%(wx)\n...\%(wx)\n...\%(wx)\n...\%(wx) \n\0\s[0]\i[113]\i[114]Blech!\%(wx)%(d)\0\s[0]\n\n\0\s[0]* (You accidentally put salt instead of sugar.)\%(wx)\n\n%(z)\0\s[0]\i[56]\i[117]\i[2]\i[4]Sorry...%(d)\%(wx)\%(wx)\0\s[0]"
 	}
 	elseif  cakesuccessLvl>=33 &&cakesuccessLvl<66 
 	{
-		"* (A strawberry cheesecake!)\%(wx)\n\n\0\s[0]\i[109]\i[110]%(z)Yum!\%(wx)\n...\%(wx)\n\s[0]It's fine.\%(wx)%(d) \n\n\s[0]* (This is a mediocre cake.)\%(wx)\s[0]\n\n%(z)\s[0]\i[115]\i[105]My brother says you needed to fluff the eggs more!%(d)\%(wx)\s[0]"
+		"* (A strawberry cheesecake!)\%(wx)\n\n\0\s[0]\i[109]\i[110]%(z)Yum!\%(wx)\n...\%(wx)\n\0\s[0]It's fine.\%(wx)%(d) \n\n\0\s[0]* (This is a mediocre cake.)\%(wx)\0\s[0]\n\n%(z)\0\s[0]\i[115]\i[105]My brother says you needed to fluff the eggs more!%(d)\%(wx)\0\s[0]"
 	}
 	else	// cakesuccessLvl>=66
 	{
-		"* (A chocolate banana Cake!)\%(wx)\n\n\0\s[0]\i[109]\i[110]%(z)Yum!\%(wx)\n...\%(wx)\n \s[0]\i[113]\i[114]It's delicious!\%(wx)%(d) \n\n\s[0]* (This is the best cake.)\%(wx)\s[0]"
+		"* (A chocolate banana Cake!)\%(wx)\n\n\0\s[0]\i[109]\i[110]%(z)Yum!\%(wx)\n...\%(wx)\n \0\s[0]\i[113]\i[114]It's delicious!\%(wx)%(d) \n\n\0\s[0]* (This is the best cake.)\%(wx)\0\s[0]"
 	}				
 	--
-	"\n\0\s[0]\i[102]\i[103]%(z)If you ever want to bake another cake,\%(wx) \s[0]\i[114]\i[113]you can ask me for flour!%(d)\%(wx)\s[0]"
+	"\n\0\s[0]\i[102]\i[103]%(z)If you ever want to bake another cake,\%(wx) \0\s[0]\i[114]\i[113]you can ask me for flour!%(d)\%(wx)\0\s[0]"
 	--
 	willBakeCake =  TOINT(0)
 }

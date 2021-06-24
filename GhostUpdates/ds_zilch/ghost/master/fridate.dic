@@ -17,7 +17,7 @@ Select.OtherTime
 	lockMenus 	 = TOINT(0)
 	blockPet     = TOINT(0)	
 	--
-	"\0\s[0]* (You ask Zilch about the disorder.\%(wx))\n\n%(z)\0\s[0]\i[2]\i[4]\i[110]\i[56]I got the calculations wrong!\%(wx)\s[0] It's supposed to be the next friday,\%(wx) oof.%(d)\%(wx)\s[0]\![leave,passivemode]\e"
+	"\0\s[0]* (You ask Zilch about the disorder.\%(wx))\n\n%(z)\0\s[0]\i[2]\i[4]\i[110]\i[56]I got the calculations wrong!\%(wx)\0\s[0] It's supposed to be the next friday,\%(wx) oof.%(d)\%(wx)\0\s[0]\![leave,passivemode]\e"
 }
 
 OnContinueFridatePhase
@@ -91,12 +91,12 @@ Select.Now
 {
 	fridatePhase = TOINT(2)
 	--
-	"\0\s[0]%(z)%(excited)%(excited)\s[0]You're here!\%(wx) I'm glad!%(d)\n\%(wx)\0\s[0]\i[102]\i[103]%(z)I brought these chords,\%(wx) I'll tie them in a circle and pass a current of magnetic quantom-\%(wx)%(d)\n\n* (Pretty sure that is not a thing.)\%(wx)\n\n%(z)...magnetic quantom through them so the disorder can't get outside!%(d)\%(wx)\%(wx)\s[0]\c\s[0]\![move,0,0,2000]* (Zilch walks around your computer and ties the chords in a circle.)\%(wx)\%(wx)\c \![move,1200,400,2000]* (Sorry, the\n 'm a g n e t i c   q u a n t o m' chords.)\%(wx)\c\![move,1200,0,2000]%(z)Almost done!%(d)\n\![move,0,400,2000]%(z)There!%(d)\![move,600,200,2000]\%(wx) %(z)Now we have to wait.\%(wx) Close your eyes and concentrate.%(d)\%(wx)\%(wx)\%(wx)\c\![*]\q[Concentrate on what?,ConcentrateOnWhat]\n\![*]\q[...,QuietOnConcentrate]\n"
+	"\0\s[0]%(z)%(excited)%(excited)\0\s[0]You're here!\%(wx) I'm glad!%(d)\n\%(wx)\0\s[0]\i[102]\i[103]%(z)I brought these chords,\%(wx) I'll tie them in a circle and pass a current of magnetic quantom-\%(wx)%(d)\n\n* (Pretty sure that is not a thing.)\%(wx)\n\n%(z)...magnetic quantom through them so the disorder can't get outside!%(d)\%(wx)\%(wx)\0\s[0]\c\0\s[0]\![move,0,0,2000]* (Zilch walks around your computer and ties the chords in a circle.)\%(wx)\%(wx)\c \![move,1200,400,2000]* (Sorry, the\n 'm a g n e t i c   q u a n t o m' chords.)\%(wx)\c\![move,1200,0,2000]%(z)Almost done!%(d)\n\![move,0,400,2000]%(z)There!%(d)\![move,600,200,2000]\%(wx) %(z)Now we have to wait.\%(wx) Close your eyes and concentrate.%(d)\%(wx)\%(wx)\%(wx)\c\![*]\q[Concentrate on what?,ConcentrateOnWhat]\n\![*]\q[...,QuietOnConcentrate]\n"
 }
 
 Select.ConcentrateOnWhat
 {
-	"\0\s[0]\i[102]\i[103] %(z)Doesn't matter!\%(wx) Just concentrate!%(d)\%(wx)\s[0]\n\n"
+	"\0\s[0]\i[102]\i[103] %(z)Doesn't matter!\%(wx) Just concentrate!%(d)\%(wx)\0\s[0]\n\n"
 	--
 	"\![*]\q[Concentrate,FridateContinue]"
 }
@@ -112,7 +112,7 @@ Select.FridateContinue
 {
 	fridatePhase = TOINT(3)
 	--
-	"\0\s[0]\w8\c* (You wait .\%(wx) .\%(wx) .\%(wx))\n* (You wait .\%(wx) .\%(wx) .\%(wx))\n* (You wait .\%(wx) .\%(wx) .\%(wx))\n\%(wx)\c%(z)Hey what's that behind y%(d)\c\0\s[0]\%(wx)\s[-1]\%(wx)\s[0]\i[128]\i[127]\i[126]\i[125]\i[124]\i[122]\i[118]\i[117]\i[116]\i[115]\i[112]\i[111]\i[110]\i[109]\i[108]\i[107]\i[106]\i[105]\i[104]\i[103]\i[102]\w2\s[-1]* (The light flickers)\n\c\w8\0\s[0]\i[106]\i[107]\i[56]\w6\s[-1]\_q%(z)AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA%(d)\%(wx)\%(wx)\c* (Zilch ran away)\%(wx)"
+	"\0\s[0]\w8\c* (You wait .\%(wx) .\%(wx) .\%(wx))\n* (You wait .\%(wx) .\%(wx) .\%(wx))\n* (You wait .\%(wx) .\%(wx) .\%(wx))\n\%(wx)\c%(z)Hey what's that behind y%(d)\c\0\s[0]\%(wx)\s[-1]\%(wx)\0\s[0]\i[128]\i[127]\i[126]\i[125]\i[124]\i[122]\i[118]\i[117]\i[116]\i[115]\i[112]\i[111]\i[110]\i[109]\i[108]\i[107]\i[106]\i[105]\i[104]\i[103]\i[102]\w2\s[-1]* (The light flickers)\n\c\w8\0\s[0]\i[106]\i[107]\i[56]\w6\s[-1]\_q%(z)AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA%(d)\%(wx)\%(wx)\c* (Zilch ran away)\%(wx)"
 	--
 	"\n\n\![*]\q[Zilch..?,WhereAreYouZ]" 
 }
@@ -150,7 +150,7 @@ Select.Gone
 	fridatePhase = TOINT(6)
 	sawDisorder = 2
 	--
-	"\0\s[0]\i[106]\i[107]\i[56]%(z)*huff* *huff*\n ...\%(wx) I was just messing around!\%(wx) I didn't think anything would actually happen!\%(wx)\n\n \s[0]\i[103]\i[102]...I was going to pretend to measure something!\%(wx) \s[0]\i[3]\i[110]\i[111]\i[56]There's no such thing as quantom magnets!%(d)\%(wx)\n\n* (They hyperventilate)\n\n[half]\![*]\q[Calm them down,Calm]\n\![*]\q[Ask what they saw,WhatSaw]\n"		
+	"\0\s[0]\i[106]\i[107]\i[56]%(z)*huff* *huff*\n ...\%(wx) I was just messing around!\%(wx) I didn't think anything would actually happen!\%(wx)\n\n \0\s[0]\i[103]\i[102]...I was going to pretend to measure something!\%(wx) \0\s[0]\i[3]\i[110]\i[111]\i[56]There's no such thing as quantom magnets!%(d)\%(wx)\n\n* (They hyperventilate)\n\n[half]\![*]\q[Calm them down,Calm]\n\![*]\q[Ask what they saw,WhatSaw]\n"		
 	
 }
 
@@ -158,7 +158,7 @@ Select.Calm
 {
 	fridatePhase = TOINT(7)
 	--//OOF I managed to use menu click here 
-	"\%(wx)\%(wx)\c\0\s[0]\i[3]\i[110]\i[111]\i[56]* (You tell Zilch to take a deep breath...)\n\%(wx)\n* (They do that.)\n\%(wx)\s[0]\i[2]\i[110]\i[111]\n* (...and slowly release it.)\n\%(wx)\%(wx)\c.\%(wx).\%(wx).\%(wx)\%(wx)\s[0]\i[113]\i[114]\i[2]\c* (...and again)\n\%(wx)\c.\%(wx).\%(wx).\%(wx)\%(wx)\c* (Better now?)\n\%(wx)\n\s[0]* (They nod.)\n\%(wx)\%(wx)"
+	"\%(wx)\%(wx)\c\0\s[0]\i[3]\i[110]\i[111]\i[56]* (You tell Zilch to take a deep breath...)\n\%(wx)\n* (They do that.)\n\%(wx)\0\s[0]\i[2]\i[110]\i[111]\n* (...and slowly release it.)\n\%(wx)\%(wx)\c.\%(wx).\%(wx).\%(wx)\%(wx)\0\s[0]\i[113]\i[114]\i[2]\c* (...and again)\n\%(wx)\c.\%(wx).\%(wx).\%(wx)\%(wx)\c* (Better now?)\n\%(wx)\n\0\s[0]* (They nod.)\n\%(wx)\%(wx)"
 	--
 	LessUpsetNow
 	familiarity ++
@@ -175,7 +175,7 @@ TellWhatSawNotCalm
 {
 	fridatePhase = TOINT(8)
 	--
-	"\%(wx)\%(wx)\c\s[0]\i[3]\i[110]\i[111]\i[56]%(z)Didn't you see it?%(d)\%(wx)\n\n[half]* (You did not.\%(wx) The lights flickered.\%(wx) ...Something flickered.\%(wx))\n\n[half] %(z)It looked like- it looked like- \s[0]\i[102]\i[103]I'm not sure!%(d)\%(wx)\n\n[half]\s[0]\i[108]\i[109]\i[2]* (Zilch grows quiet)\%(wx)\n\n%(z)I think I want to go home now.%(d)\%(wx)\n\n\![*]\q[You can leave.,ZilchLeavesAfterFriday]\n\![*]\q[Zilch wait-,ZilchLeavesAfterFriday]"//"%(WantToGoHomeNow)"
+	"\%(wx)\%(wx)\c\0\s[0]\i[3]\i[110]\i[111]\i[56]%(z)Didn't you see it?%(d)\%(wx)\n\n[half]* (You did not.\%(wx) The lights flickered.\%(wx) ...Something flickered.\%(wx))\n\n[half] %(z)It looked like- it looked like- \0\s[0]\i[102]\i[103]I'm not sure!%(d)\%(wx)\n\n[half]\0\s[0]\i[108]\i[109]\i[2]* (Zilch grows quiet)\%(wx)\n\n%(z)I think I want to go home now.%(d)\%(wx)\n\n\![*]\q[You can leave.,ZilchLeavesAfterFriday]\n\![*]\q[Zilch wait-,ZilchLeavesAfterFriday]"//"%(WantToGoHomeNow)"
 	
 }
 
@@ -183,7 +183,7 @@ TellWhatSawCalm
 {
 	fridatePhase = TOINT(9)
 	--
-	"\%(wx)\%(wx)\c\0\s[0]%(z)Didn't you see it?%(d)\%(wx)\n\n[half]* (You did not.\%(wx) The lights flickered.\%(wx) ...Something flickered.\%(wx))\n\n[half] %(z)It looked like a big lump of goo, but stuff was poking out of it.%(d)\%(wx)\n\n[half]* (What kind of stuff?)\n\n[half]\w8\c%(z)Blech...\n\%(wx)\s[0]\i[108]\i[109]\i[2] H u m a n  b o d y  p a r t s.\%(wx)\n Arms, legs, heads.\%(wx)\nIt was in the circle for less than a second. Then it was gone.%(d)\n\n[half]* (Zilch grows quiet)\%(wx)\n\nI think I want to go home now.%(d)\%(wx)\n\n\![*]\q[You can leave.,ZilchLeavesAfterFriday]\n\![*]\q[Zilch wait-,ZilchLeavesAfterFriday]"//"%(WantToGoHomeNow)"
+	"\%(wx)\%(wx)\c\0\s[0]%(z)Didn't you see it?%(d)\%(wx)\n\n[half]* (You did not.\%(wx) The lights flickered.\%(wx) ...Something flickered.\%(wx))\n\n[half] %(z)It looked like a big lump of goo, but stuff was poking out of it.%(d)\%(wx)\n\n[half]* (What kind of stuff?)\n\n[half]\w8\c%(z)Blech...\n\%(wx)\0\s[0]\i[108]\i[109]\i[2] H u m a n  b o d y  p a r t s.\%(wx)\n Arms, legs, heads.\%(wx)\nIt was in the circle for less than a second. Then it was gone.%(d)\n\n[half]* (Zilch grows quiet)\%(wx)\n\nI think I want to go home now.%(d)\%(wx)\n\n\![*]\q[You can leave.,ZilchLeavesAfterFriday]\n\![*]\q[Zilch wait-,ZilchLeavesAfterFriday]"//"%(WantToGoHomeNow)"
 	
 }
 
@@ -209,6 +209,6 @@ SorryAboutDisorder
 		sorryDisorder 	= TOINT(1)
 		disorderClosed 	= TOINT(1)
 		--
-		"\0\s[0]\i[2]\i[56]\i[111]\i[117]%(z)What happened with my experiment...\%(wx) It must have scared you.\%(wx) \0\s[0]\i[2]\i[102]\i[103]I'm sorry.%(d)\%(wx)\s[0]\i[2]\e"
+		"\0\s[0]\i[2]\i[56]\i[111]\i[117]%(z)What happened with my experiment...\%(wx) It must have scared you.\%(wx) \0\s[0]\i[2]\i[102]\i[103]I'm sorry.%(d)\%(wx)\0\s[0]\i[2]\e"
 	}
 }

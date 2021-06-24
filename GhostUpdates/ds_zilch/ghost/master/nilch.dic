@@ -5,7 +5,7 @@ Nilcheck
 		isNilch   = TOINT(1)
 		bootPhase = "Nilch"
 		--
-		"%(n)\1\s[-1]\0\s[0]\i[9]\i[102]\i[103]Hello %(username)!\%(wx)\s[0]\i[9]\i[115]\i[114]\i[54]\i[55] I am totally not Zilch!\%(wx) \s[0]\i[9]\i[102]\i[114]\i[54]\i[55]I am Zilch's brother!\%(wx)\s[0]\i[9]\i[102]\i[105] My name is...\%(wx) Nilch!\%(wx)\s[0]\i[9]%(d)\e"	
+		"%(n)\1\s[-1]\0\s[0]\i[9]\i[102]\i[103]Hello %(username)!\%(wx)\0\s[0]\i[9]\i[115]\i[114]\i[54]\i[55] I am totally not Zilch!\%(wx) \0\s[0]\i[9]\i[102]\i[114]\i[54]\i[55]I am Zilch's brother!\%(wx)\0\s[0]\i[9]\i[102]\i[105] My name is...\%(wx) Nilch!\%(wx)\0\s[0]\i[9]%(d)\e"	
 	}
 	elseif isNilch == TOINT(1)
 	{
@@ -34,7 +34,7 @@ Select.TalkabNilch
 	{
 		when 0 
 		{
-			"* (You ask 'Nilch' about his job.)\n\n%(n)\0\s[0]\i[9]\i[114]\i[113]\i[54]\i[55]I'm too busy to talk to you right now!\%(wx) \0\s[0]\i[9]\i[103]\i[102]There's a huge delivery of cakes to make!\%(wx) \s[0]\i[9]\i[105]\i[104]Very important cakes!\%(wx)%(d)\0\s[0]\i[9]%(d)"
+			"* (You ask 'Nilch' about his job.)\n\n%(n)\0\s[0]\i[9]\i[114]\i[113]\i[54]\i[55]I'm too busy to talk to you right now!\%(wx) \0\s[0]\i[9]\i[103]\i[102]There's a huge delivery of cakes to make!\%(wx) \0\s[0]\i[9]\i[105]\i[104]Very important cakes!\%(wx)%(d)\0\s[0]\i[9]%(d)"
 			--
 			talkedToNilchAbtNilch++
 		}
@@ -46,7 +46,7 @@ Select.TalkabNilch
 		}
 		when 2
 		{
-			"\0\s[0]\i[9]* (You tell Nilch it's nice to finally meet him.)\%(wx)\n\n\s[0]\i[9]\i[108]\i[109]%(z)*heehee*%(d)\%(wx)\s[0]\i[9]\i[102]\i[103]%(n)\n\nIt's time to reveal to truth!\%(wx) \s[0]\i[9]\i[113]\i[114]You have in fact fallen prey to a mischievous prank!\%(wx) \s[0]\i[9]\i[105]\i[115]I am not Nilch,\%(wx) I am actually really...\0\s[0]\i[9]\i[110]\i[111]\%(wx)\%(wx)\%(wx)%(d) \s[0]\i[102]\i[103]\n\n%(z)Zilch!%(d)\n\n\![*]\q[YOU DON'T SAY,dontsayNilch]\n\![*]\q[...,QuietNilch]\n"
+			"\0\s[0]\i[9]* (You tell Nilch it's nice to finally meet him.)\%(wx)\n\n\0\s[0]\i[9]\i[108]\i[109]%(z)*heehee*%(d)\%(wx)\0\s[0]\i[9]\i[102]\i[103]%(n)\n\nIt's time to reveal to truth!\%(wx) \0\s[0]\i[9]\i[113]\i[114]You have in fact fallen prey to a mischievous prank!\%(wx) \0\s[0]\i[9]\i[105]\i[115]I am not Nilch,\%(wx) I am actually really...\0\s[0]\i[9]\i[110]\i[111]\%(wx)\%(wx)\%(wx)%(d) \0\s[0]\i[102]\i[103]\n\n%(z)Zilch!%(d)\n\n\![*]\q[YOU DON'T SAY,dontsayNilch]\n\![*]\q[...,QuietNilch]\n"
 			--
 			EndNilchEvent
 
@@ -58,7 +58,7 @@ Select.TalkabNilch
 
 Select.dontsayNilch
 {
-	"\0\s[0]\i[104]\i[105]* (They pull their tongue out at you)\%(wx)\s[0]"
+	"\0\s[0]\i[104]\i[105]* (They stick their tongue out at you)\%(wx)\0\s[0]"
 }
 
 Select.QuietNilch
@@ -74,13 +74,13 @@ Select.TalkabZilch
 	{
 		when 0	
 		{
-			"* (You ask 'Nilch' what he thinks of his sibling.)\n\n%(n)\s[0]\i[9]Ha!\%(wx) \i[103]Don't ask what I think about that child!%(d)\s[0]\i[9]"
+			"* (You ask 'Nilch' what he thinks of his sibling.)\n\n%(n)\0\s[0]\i[9]Ha!\%(wx) \0\s[0]\i[9]\i[103]Don't ask what I think about that child!%(d)\0\s[0]\i[9]"
 			--
 			talkedToNilchAbtZilch++
 		}
 		when 1	
 		{
-			"%(n)\s[0]\i[9]\i[115]\i[114]\i[54]\i[55]I can't allow Zilch to climb trees!\%(wx) \0\s[0]\i[9]\i[102]\i[103]It's too much fun!\%(wx) \0\s[0]\i[9]Fun is disallowed!\%(wx)%(d)\0\s[0]\i[9]%(d)"
+			"%(n)\0\s[0]\i[9]\i[115]\i[114]\i[54]\i[55]I can't allow Zilch to climb trees!\%(wx) \0\s[0]\i[9]\i[102]\i[103]It's too much fun!\%(wx) \0\s[0]\i[9]Fun is disallowed!\%(wx)%(d)\0\s[0]\i[9]%(d)"
 			--
 			talkedToNilchAbtZilch++
 		}

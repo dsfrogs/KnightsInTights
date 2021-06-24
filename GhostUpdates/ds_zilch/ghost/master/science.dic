@@ -56,7 +56,7 @@ OnScienceTalk
 		{
 			when 1
 			{
-				"\0\s[0]\i[104]\i[105]%(z)I am a scientist!\%(wx) Just like my parents.%(d)\%(wx)\0\s[0]\n\n* (Isn't Zilch too young for that?)\%(wx) \n\n\0\s[0]\i[115]\i[105]%(z)An ameture, obviously.%(d)\%(wx)\s[0]"
+				"\0\s[0]\i[104]\i[105]%(z)I am a scientist!\%(wx) Just like my parents.%(d)\%(wx)\0\s[0]\n\n* (Isn't Zilch too young for that?)\%(wx) \n\n\0\s[0]\i[115]\i[105]%(z)An ameture, obviously.%(d)\%(wx)\0\s[0]"
 				--				
 				parentsExp++				
 			}
@@ -70,11 +70,11 @@ OnScienceTalk
 			{
 				brotherExp++
 				--				
-				"\0\s[0]\i[102]%(z)The other day,\%(wx) I was experimenting with my chemistry kit.\%(wx) \0\s[0]\i[112]\i[8]I've made a small mistake and mixed the wrong ingredients.\%(wx) \0\s[0]\i[117]There was just the tiniest explosion.\%(wx) My brother got angry.\%(wx) \0\s[0]\i[5]\i[115]\i[114]He took my kit away!\%(wx) Hmpph!%(d)\%(wx)\s[0]"
+				"\0\s[0]\i[102]%(z)The other day,\%(wx) I was experimenting with my chemistry kit.\%(wx) \0\s[0]\i[112]\i[8]I've made a small mistake and mixed the wrong ingredients.\%(wx) \0\s[0]\i[117]There was just the tiniest explosion.\%(wx) My brother got angry.\%(wx) \0\s[0]\i[5]\i[115]\i[114]He took my kit away!\%(wx) Hmpph!%(d)\%(wx)\0\s[0]"
 			}
 			when 4
 			{
-				"\0\s[0]\i[102]\i[103]%(z)look what I can do!%(d)\j[http://www.scholarpedia.org/article/Perturbation_theory_(dynamical_systems)]\%(wx)\s[0]"				
+				"\0\s[0]\i[102]\i[103]%(z)look what I can do!%(d)\j[http://www.scholarpedia.org/article/Perturbation_theory_(dynamical_systems)]\%(wx)\0\s[0]"				
 			}
 		}
 		--
@@ -94,7 +94,7 @@ OnScienceTalk
 	}
 	else
 	{
-		"*\0\s[0]\i[109] (Zilch has nothing to say about that.)\%(wx)\s[0]"	
+		"*\0\s[0]\i[109] (Zilch has nothing to say about that.)\%(wx)\0\s[0]"	
 	}
 	--
 	"\e"
@@ -108,7 +108,7 @@ Select.QuietResearch
 				
 Select.ShowInterestInResearch
 {
-	"\0\s[0]\i[111]\i[56]%(z)Um...\%(wx) Maybe I'll tell you some other time.%(d)\%(wx)\s[0]" 
+	"\0\s[0]\i[111]\i[56]%(z)Um...\%(wx) Maybe I'll tell you some other time.%(d)\%(wx)\0\s[0]" 
 	--
 	LessUpsetNow
 }
@@ -127,7 +127,7 @@ SciencePoolTalk
 
 		"\0\s[0]\i[103]\i[102]%(z)Quantom!%(d)\%(wx)\0\s[0]\n"	
 
-		"\0\s[0]%(z)\i[103]Today I learned about the doppler effect and the universe expansion. \s[0]\i[7]Want to hear about it?\%(wx)\s[0]%(d)\n\n\![*]\q[Enlighten me,Doppler]\n\![*]\q[I think I already did,nothing]\n\n"	
+		"\0\s[0]\i[103]%(z)Today I learned about the doppler effect and the universe expansion. \s[0]\i[7]Want to hear about it?\%(wx)\s[0]%(d)\n\n\![*]\q[Enlighten me,Doppler]\n\![*]\q[I think I already did,nothing]\n\n"	
 
 		"%(z)\0\s[0]\i[111]I'm reading about Roman Concrete.\%(wx)\s[0]\i[102] Want to hear it?\%(wx)%(d)\s[0]\n\n\![*]\q[Sure,RomCon]\n\![*]\q[Nah,nothing]"
 		
@@ -135,7 +135,7 @@ SciencePoolTalk
 				
 		"%(z)\0\s[0]\i[102]Do you like trigonometry?\%(wx)\s[0]%(d)\n\n\![*]\q[Yes!,EarthCircum1]\n\![*]\q[No!,EarthCircum1]\n\![*]\q[...,nothing]"
 		
-		"\0\s[0]* (You ask Zilch which science they'd like to learn in university.)\%(wx)\n\n%(z)\s[0]\i[102]\i[103]All of the sciences!\%(wx) I'll multi-class.\%(wx)%(d)\s[0]"
+		"\0\s[0]* (You ask Zilch which science they'd like to learn in university.)\%(wx)\n\n%(z)\s[0]\i[102]\i[103]All of the sciences!\%(wx) I'll multi-class.\%(wx)%(d)\0\s[0]"
 		
 		if brotherLvl>4
 		{				
@@ -165,7 +165,7 @@ Select.Cool
 
 Select.Kids
 {
-	"\0\s[0]%(z)*Scoff*\%(wx) No.\%(wx) \s[0]\i[102]\i[105]It's for young scientists.\%(wx)%(d)\s[0]"
+	"\0\s[0]%(z)*Scoff*\%(wx) No.\%(wx) \s[0]\i[102]\i[105]It's for young scientists.\%(wx)%(d)\0\s[0]"
 }
 
 Select.Thank
@@ -180,7 +180,7 @@ Select.Hippasus
 
 Select.Hippasus2
 {
-	"\0\s[0]%(z)\i[102]\i[103]In ancient greece, there was a group of philosophers called 'Pythagoreans'.\%(wx) \s[0]They believed that all numbers were ratios of whole numbers,\%(wx) and that the world is built with these numbers.\%(wx)\%(wx)\%(wx)%(d) \c%(z)Hippasus was one of them.\%(wx) \s[0]\i[115]\i[105]One day,\%(wx) he tried to calculate the hypotenuse of a right angled triangle,\%(wx) \s[0]with both sides' length being one.\%(wx) This wasn't a problem for Pythagoreans-\%(wx) \s[0]\i[102]they've invented the Pythagoras' theorem!\%(wx)\%(wx)\%(wx)%(d) \c%(z)So, the hypotenuse had to be the square root of two!\%(wx)\s[0] But what was that?\%(wx)\s[0]\i[102] It wasn't one,\%(wx) \s[0]\i[103]and it wasn't two.\%(wx) \s[0]They tried to find  two whole numbers that gave the correct ratio.\%(wx)\s[0]\i[115]\i[105] But they couldn't!\%(wx)\s[0]\i[102] Hippasus discovered a number that wasn't rational.\%(wx)\%(wx)\%(wx)\s[0]\i[116]\i[114] \n\nSo they drowned him!\%(wx)%(d)\s[0]\n\n\![*]\q[Be skeptic,HippasusSkep]\n\![*]\q[Be excited,HippasusWoa]"	
+	"\0\s[0]\i[102]\i[103]%(z)In ancient greece, there was a group of philosophers called 'Pythagoreans'.\%(wx) \s[0]They believed that all numbers were ratios of whole numbers,\%(wx) and that the world is built with these numbers.\%(wx)\%(wx)\%(wx)%(d) \c%(z)Hippasus was one of them.\%(wx) \s[0]\i[115]\i[105]One day,\%(wx) he tried to calculate the hypotenuse of a right angled triangle,\%(wx) \s[0]with both sides' length being one.\%(wx) This wasn't a problem for Pythagoreans-\%(wx) \s[0]\i[102]they've invented the Pythagoras' theorem!\%(wx)\%(wx)\%(wx)%(d) \c%(z)So, the hypotenuse had to be the square root of two!\%(wx)\s[0] But what was that?\%(wx)\s[0]\i[102] It wasn't one,\%(wx) \s[0]\i[103]and it wasn't two.\%(wx) \s[0]They tried to find  two whole numbers that gave the correct ratio.\%(wx)\s[0]\i[115]\i[105] But they couldn't!\%(wx)\s[0]\i[102] Hippasus discovered a number that wasn't rational.\%(wx)\%(wx)\%(wx)\s[0]\i[116]\i[114] \n\nSo they drowned him!\%(wx)%(d)\s[0]\n\n\![*]\q[Be skeptic,HippasusSkep]\n\![*]\q[Be excited,HippasusWoa]"	
 
 }
 
@@ -191,7 +191,7 @@ Select.HippasusSkep
 
 Select.HippasusWoa
 {
-	"\0\s[0]* (You say it's so irrational.)\n\n\%(wx)\s[0]\i[114]\i[113]\i[55]\i[54]%(z)For real!%(d)\%(wx)\s[0]"	
+	"\0\s[0]* (You say it's so irrational.)\n\n\%(wx)\s[0]\i[114]\i[113]\i[55]\i[54]%(z)For real!%(d)\%(wx)\0\s[0]"	
 }
 
 Select.RomCon
@@ -202,25 +202,25 @@ Select.RomCon
 
 Select.RomCon2
 {
-	"%(z)They used water,\%(wx) volcanic ash and lime.\%(wx)\i[105]\i[115] But!\%(wx) They never specified that they used seawater.\%(wx) \s[0]\i[102]It was obvious to them.\%(wx)\%(wx)\%(wx)\c\s[0]%(z)Sea water reacts with the concrete and creates new compounds.\%(wx) \s[0]\i[104]\i[105]And this made the concrete stronger over time when it's exposed to sea water!\%(wx) \s[0]\i[102]\i[103]\nOurs only become weaker when it's exposed to sea water.%(d)\%(wx)\%(wx)\%(wx)\c\s[0]\i[111]%(z)You know, this makes me think.\%(wx)\s[0]\i[114]\i[116] I will definitely be sure to write everything I do.\%(wx)\s[0]\i[127]\i[128] People will not forget me!%(d)\%(wx)\s[0]\c\%(wx)\%(wx)\%(wx)\![quicksection,1]* (They will be forgotten.)\%(wx)\c\![quicksection,0]\e"	
+	"%(z)They used water,\%(wx) volcanic ash and lime.\%(wx)\s[0]\i[105]\i[115] But!\%(wx) They never specified that they used seawater.\%(wx) \s[0]\i[102]It was obvious to them.\%(wx)\%(wx)\%(wx)\c\s[0]%(z)Sea water reacts with the concrete and creates new compounds.\%(wx) \s[0]\i[104]\i[105]And this made the concrete stronger over time when it's exposed to sea water!\%(wx) \s[0]\i[102]\i[103]\nOurs only become weaker when it's exposed to sea water.%(d)\%(wx)\%(wx)\%(wx)\c\s[0]\i[111]%(z)You know, this makes me think.\%(wx)\s[0]\i[114]\i[116] I will definitely be sure to write everything I do.\%(wx)\s[0]\i[127]\i[128] People will not forget me!%(d)\%(wx)\s[0]\c\%(wx)\%(wx)\%(wx)\![quicksection,1]* (They will be forgotten.)\%(wx)\c\![quicksection,0]\e"	
 }
 
 Select.Doppler
 {
-	"%(z)So...\%(wx) Do you know how when a car passes next to you it sounds like this:\%(wx)\s[0]\i[103]\i[102]\nweeeeeeeeeoooooooooh?\%(wx) \s[0]\i[102]\nThis is because wave frequency is higher for sound sources that are moving towards us.%(d)\%(wx)\%(wx)\%(wx) \s[0]\i[103]\c%(z)And frequency is lower for sources that are moving away from us!\%(wx)\s[0] That's true for light waves as well as sound waves.\%(wx)%(d)\n\n\![*]\q[Please continue,Doppler2]\n\![*]\q[Goof around,GoofWaves]\n\n"		
+	"%(z)So...\%(wx) Do you know how when a car passes next to you it sounds like this:\%(wx)\0\s[0]\i[103]\i[102]\nweeeeeeeeeoooooooooh?\%(wx) \0\s[0]\i[102]\nThis is because wave frequency is higher for sound sources that are moving towards us.%(d)\%(wx)\%(wx)\%(wx) \0\s[0]\i[103]\c%(z)And frequency is lower for sources that are moving away from us!\%(wx)\0\s[0] That's true for light waves as well as sound waves.\%(wx)%(d)\n\n\![*]\q[Please continue,Doppler2]\n\![*]\q[Goof around,GoofWaves]\n\n"		
 	
 }
 
 Select.GoofWaves
 {
-	"\c\s[0]* (You wave your arms and ask,\%(wx) hey,\%(wx) what about this wave?)\%(wx)\n\n"
+	"\c\0\s[0]* (You wave your arms and ask,\%(wx) hey,\%(wx) what about this wave?)\%(wx)\n\n"
 	--
 	Select.Doppler2
 }
 
 Select.Doppler2
 {
-	"%(z)...so they've measured the shift in frequency for stars around us.\%(wx) And do you know what they've found? \s[0]\i[115]\nEveryone's running away from us!\%(wx)\s[0]\i[2]\i[109] We'll be left alone at this rate!\%(wx)%(d)\n\n* (Zilch seems troubled by this)\%(wx)\%(wx)\%(wx)\c\![*]\q[Comfort them,ComfortDoppler]\n\![*]\q[...,Quiet]\n\n"
+	"%(z)...so they've measured the shift in frequency for stars around us.\%(wx) And do you know what they've found? \0\s[0]\i[115]\nEveryone's running away from us!\%(wx)\0\s[0]\i[2]\i[109] We'll be left alone at this rate!\%(wx)%(d)\n\n* (Zilch seems troubled by this)\%(wx)\%(wx)\%(wx)\c\![*]\q[Comfort them,ComfortDoppler]\n\![*]\q[...,Quiet]\n\n"
 }
 
 Select.ComfortDoppler
@@ -234,7 +234,7 @@ Select.ComfortDoppler
 
 Select.EarthCircum1
 {
-	"%(z)I get it!\%(wx) \0\s[0]\i[103]I used to dislike it,\%(wx) \0\s[0]but then I read that in ancient times they used trigonometry to measure the earth's circumference.\%(wx)\%(wx)\n \s[0]\i[115]\i[105]They did that with a stick!%(d)\%(wx)\%(wx)\%(wx)\c %(z)\s[0]\i[113]\i[114]They planted a stick in the ground in two cities,\%(wx) and measured the length of the stick's shadow, at noon.%(d) \%(wx)\%(wx)\%(wx)\c %(z)\s[0]\i[112]The length was different,\%(wx) because the angle between the sun's rays and the stick is not the same.\%(wx)\s[0]\i[103]\i[102] That's a result of our world being round.%(d)\%(wx)\0\s[0]"
+	"%(z)I get it!\%(wx) \0\s[0]\i[103]I used to dislike it,\%(wx) \0\s[0]but then I read that in ancient times they used trigonometry to measure the earth's circumference.\%(wx)\%(wx)\n \0\s[0]\i[115]\i[105]They did that with a stick!%(d)\%(wx)\%(wx)\%(wx)\c %(z)\0\s[0]\i[113]\i[114]They planted a stick in the ground in two cities,\%(wx) and measured the length of the stick's shadow, at noon.%(d) \%(wx)\%(wx)\%(wx)\c %(z)\0\s[0]\i[112]The length was different,\%(wx) because the angle between the sun's rays and the stick is not the same.\%(wx)\0\s[0]\i[103]\i[102] That's a result of our world being round.%(d)\%(wx)\0\s[0]"
 	--
 	"\n\n\![*]\q[Keep listening,EarthCircum2]\n\![*]\q[Deny that the earth is round,Diskworld]\n\n"
 	
@@ -242,7 +242,7 @@ Select.EarthCircum1
 
 Select.EarthCircum2
 {
-	"%(z)\%(wx)\%(wx)\s[0]We can calculate the angles from the stick's length, and the shadow's length.\s[0]\i[102] \%(wx)\%(wx)\n\c%(z)The distance between the cities was known,\%(wx) so they had the length of the arc on the circle.\%(wx) And if you have an angle and it's arc's length-\%(wx)\s[0]\i[103]\i[102] you can calculate the circumference!\%(wx) QED!\%(wx)\s[0] %(d)"
+	"%(z)\%(wx)\%(wx)\0\s[0]We can calculate the angles from the stick's length, and the shadow's length.\0\s[0]\i[102] \%(wx)\%(wx)\n\c%(z)The distance between the cities was known,\%(wx) so they had the length of the arc on the circle.\%(wx) And if you have an angle and it's arc's length-\%(wx)\0\s[0]\i[103]\i[102] you can calculate the circumference!\%(wx) QED!\%(wx)\0\s[0] %(d)"
 }
 
 Select.Diskworld
@@ -251,5 +251,5 @@ Select.Diskworld
 	--
 	youLiar++
 	--
-	"\n\n\s[0]%(z)Um...\%(wx)\s[0]\i[115] Yes!\%(wx) And they stand on the back of a turtle!\%(wx)%(d)\s[0]"
+	"\n\n\0\s[0]%(z)Um...\%(wx)\0\s[0]\i[115] Yes!\%(wx) And they stand on the back of a turtle!\%(wx)%(d)\0\s[0]"
 }

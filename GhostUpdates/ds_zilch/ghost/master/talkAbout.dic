@@ -94,7 +94,7 @@ Select.DoNothingy
 
 Select.SingHappy		
 {
-	"* You sing:\%(wx)\n\n%(Zilchsong)\%(wx) \n\n\0\s[0]\i[2]\i[108]\i[109] %(z)*sniff*%(d) \n\n* (Oh no!\%(wx) This is not the intended result!)\%(wx)\%(wx) \n\n %(z)Thank you for trying to cheer me up.\%(wx) I'll try to stop moping.\%(wx)\s[0] It's just that I hoped my experiment will help me with...\%(wx) \s[0]\i[2]well...\%(wx) It's not important anymore...\%(wx) \s[0]I guess I better try to get back into my routine.%(d)"
+	"* You sing:\%(wx)\n\n%(Zilchsong)\%(wx) \n\n\0\s[0]\i[2]\i[108]\i[109] %(z)*sniff*%(d) \n\n* (Oh no!\%(wx) This is not the intended result!)\%(wx)\%(wx) \n\n %(z)Thank you for trying to cheer me up.\%(wx) I'll try to stop moping.\%(wx)\0\s[0] It's just that I hoped my experiment will help me with...\%(wx) \0\s[0]\i[2]well...\%(wx) It's not important anymore...\%(wx) \0\s[0]I guess I better try to get back into my routine.%(d)"
 	--
 	EndUpsetAfterFriday
 	--
@@ -109,7 +109,7 @@ Select.DanceGoofy
 
 Select.DanceGoofy2
 {
-	"%(z)*sigh* \0\s[0]\i[2]I get what you're trying to do,\%(wx)  you're trying to cheer me up.\%(wx)  But...\%(wx)\0\s[0]\i[2]\i[108]\i[109] I hoped my experiment will help me with...\%(wx) well...\%(wx)\0\s[0]\i[2] It's not important anymore...\%(wx) \s[0]I guess I better try to get back into my routine.%(d)"
+	"%(z)*sigh* \0\s[0]\i[2]I get what you're trying to do,\%(wx)  you're trying to cheer me up.\%(wx)  But...\%(wx)\0\s[0]\i[2]\i[108]\i[109] I hoped my experiment will help me with...\%(wx) well...\%(wx)\0\s[0]\i[2] It's not important anymore...\%(wx) \0\s[0]I guess I better try to get back into my routine.%(d)"
 	--
 	EndUpsetAfterFriday
 	--
@@ -119,7 +119,7 @@ Select.DanceGoofy2
 //\0\s[0]\i[3]\i[108]\i[109]
 Select.SeriousTalky    
 {
-	"%(z)\s[0]\i[2]\i[108]\i[109]I guess I thought if I could prove something,\%(wx) it would help me with...\%(wx) \s[0]\i[115]\i[114]but it didn't help.\%(wx) It didn't help me at all.\%(wx) I was counting on it.\%(wx)\%(wx)\n\s[0]\i[113]\i[114]I don't want to think about this anymore.\%(wx)%(d)\s[0]"
+	"%(z)\0\s[0]\i[2]\i[108]\i[109]I guess I thought if I could prove something,\%(wx) it would help me with...\%(wx) \s[0]\i[115]\i[114]but it didn't help.\%(wx) It didn't help me at all.\%(wx) I was counting on it.\%(wx)\%(wx)\n\0\s[0]\i[113]\i[114]I don't want to think about this anymore.\%(wx)%(d)\0\s[0]"
 	--
 	EndUpsetAfterFriday
 	--
