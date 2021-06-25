@@ -86,7 +86,7 @@ Select.TalkabZilch
 		}
 		when 2	
 		{
-			"\0\s[0]\i[9]\i[102]%(n)Well,\%(wx) Zilch is...\%(wx) They're...\%(wx) Well...\%(wx) \0\s[0]\i[9]\i[117]They're not...\%(wx) \0\s[0]\i[115]\i[114]\i[9]\nI'm too busy for them to wander around by themselves!\%(wx) \nAlso!\n\%(wx) \0\s[0]\i[103]\i[102]\i[9]There is such a thing as too many candies,\%(wx) Zilch!\0\s[0]\i[9]\i[117]\%(wx) \nand-\%(wx) \nand-\%(wx)\n\%(wx)\%(wx) \0\s[0]\i[9]I love them very much,\%(wx) I just worry and...%(d)\0\s[0]\i[9]\i[108]\i[109]\%(wx)\%(wx)\%(wx)%(z)\n\n*sniff*\0\s[0]\i[9]\i[110]\i[111]\%(wx)\%(wx)\0\s[0]\i[2]\n\nWell that was stupid anyway.\%(wx)%(d)\e" 
+			"\0\s[0]\i[9]\i[102]%(n)Well,\%(wx) Zilch is...\%(wx) They're...\%(wx) Well...\%(wx) \0\s[0]\i[9]\i[117]They're not...\%(wx) \0\s[0]\i[115]\i[114]\i[9]\nI'm too busy for them to wander around by themself!\%(wx) \nAlso!\n\%(wx) \0\s[0]\i[103]\i[102]\i[9]There is such a thing as too many candies,\%(wx) Zilch!\0\s[0]\i[9]\i[117]\%(wx) \nand-\%(wx) \nand-\%(wx)\n\%(wx)\%(wx) \0\s[0]\i[9]I love them very much,\%(wx) I just worry and...%(d)\0\s[0]\i[9]\i[108]\i[109]\%(wx)\%(wx)\%(wx)%(z)\n\n*sniff*\0\s[0]\i[9]\i[110]\i[111]\%(wx)\%(wx)\0\s[0]\i[2]\n\nWell that was stupid anyway.\%(wx)%(d)\e" 
 			--
 			EndNilchEvent
 		}
