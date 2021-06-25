@@ -544,7 +544,7 @@ Select.GiveDrawing
 	--
 	LessUpsetNow
 	--
-	"\0\s[0]You say:\n\n[half]You know kid.\%(wx) When you throw away your past...\%(wx) You throw away your future.\%(wx)\%(wx)\c%(z)\0\s[0]\i[107]Um,\%(wx) thank you.\%(wx)%(d)\![*]\q[Push sunglasses up,nothing].\n\e"
+	"\0\s[0]You say:\n\n[half]You know kid.\%(wx) When you throw away your past...\%(wx) You throw away your future.\%(wx)\%(wx)\c%(z)\0\s[0]\i[107]Um,\%(wx) thank you.\%(wx)%(d)\n\n\![*]\q[Push sunglasses up,nothing].\n\e"
 	--
 	"\1\s[-1]"
 }
