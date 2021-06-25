@@ -74,7 +74,7 @@ OnScienceTalk
 			}
 			when 4
 			{
-				"\0\s[0]\i[102]\i[103]%(z)look what I can do!%(d)\j[http://www.scholarpedia.org/article/Perturbation_theory_(dynamical_systems)]\%(wx)\0\s[0]"				
+				"\0\s[0]\i[102]\i[103]%(z)look what I can do!%(d)\j[https://en.wikipedia.org/wiki/Perturbation_theory]\%(wx)\0\s[0]"				
 			}
 		}
 		--
