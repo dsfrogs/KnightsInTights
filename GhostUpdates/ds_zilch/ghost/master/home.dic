@@ -262,7 +262,7 @@ Select.YesCake
 	}
 	else	// cakesuccessLvl>=66
 	{
-		"* (A chocolate banana Cake!)\%(wx)\n\n\0\s[0]\i[109]\i[110]%(z)Yum!\%(wx)\n...\%(wx)\n \0\s[0]\i[113]\i[114]It's delicious!\%(wx)%(d) \n\n\0\s[0]* (This is the best cake.)\%(wx)\0\s[0]"
+		"* (A chocolate banana Cake!)\%(wx)\n\n\0\s[0]\i[109]\i[110]%(z)Yum!\%(wx)\n...\%(wx)\n \0\s[0]\i[113]\i[114]It's delicious!\%(wx)%(d) \n\n\0\s[0]* (This is the best cake.)\n\%(wx)\0\s[0]"
 	}				
 	--
 	"\n\0\s[0]\i[102]\i[103]%(z)If you ever want to bake another cake,\%(wx) \0\s[0]\i[114]\i[113]you can ask me for flour!%(d)\%(wx)\0\s[0]"
