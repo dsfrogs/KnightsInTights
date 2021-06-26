@@ -594,7 +594,7 @@ Select.PetEnding
 	{
 		blockPet = TOINT(0)	
 		--
-		"%(cyan)* (You tell Zilch you want to pet them.)%(d)\%(wx)\n\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\c"
+		"%(cyan)* (I tell Zilch I want to pet them.)%(d)\%(wx)\n\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\%(wx)\c"
 	}
 	else
 	{
