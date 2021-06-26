@@ -183,7 +183,7 @@ TellWhatSawCalm
 {
 	fridatePhase = TOINT(9)
 	--
-	"\%(wx)\%(wx)\c\0\s[0]%(z)Didn't you see it?%(d)\%(wx)\n\n[half]* (You did not.\%(wx) The lights flickered.\%(wx) ...Something flickered.\%(wx))\n\n[half] %(z)It looked like a big lump of goo, but stuff was poking out of it.%(d)\%(wx)\n\n[half]* (What kind of stuff?)\n\n[half]\w8\c%(z)Blech...\n\%(wx)\0\s[0]\i[108]\i[109]\i[2] H u m a n  b o d y  p a r t s.\%(wx)\n Arms, legs, heads.\%(wx)\nIt was in the circle for less than a second. Then it was gone.%(d)\n\n[half]* (Zilch grows quiet)\%(wx)\n\nI think I want to go home now.%(d)\%(wx)\n\n\![*]\q[You can leave.,ZilchLeavesAfterFriday]\n\![*]\q[Zilch wait-,ZilchLeavesAfterFriday]"//"%(WantToGoHomeNow)"
+	"\%(wx)\%(wx)\c\0\s[0]%(z)Didn't you see it?%(d)\%(wx)\n\n[half]* (You did not.\%(wx) The lights flickered.\%(wx) ...Something flickered.\%(wx))\n\n[half] %(z)It looked like a big lump of goo, but stuff was poking out of it.%(d)\%(wx)\n\n[half]* (What kind of stuff?)\n\n[half]\w8\c%(z)Blech...\n\%(wx)\0\s[0]\i[108]\i[109]\i[2] H u m a n  b o d y  p a r t s.\%(wx)\n Arms, legs, heads.\%(wx)\nIt was in the circle for less than a second. Then it was gone.%(d)\n\n[half]* (Zilch grows quiet)\%(wx)\n\n%(z)I think I want to go home now.%(d)\%(wx)\n\n\![*]\q[You can leave.,ZilchLeavesAfterFriday]\n\![*]\q[Zilch wait-,ZilchLeavesAfterFriday]"//"%(WantToGoHomeNow)"
 	
 }
 
